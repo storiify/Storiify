@@ -1,0 +1,626 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Storiify - Torne suas histórias reais</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="description" content="Aplicativo web que permite ao usuário armazenar suas histórias de maneira estruturada" />
+    <meta name="author" content="Grupo 3 PI" />
+
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+    <!-- CSS Principal, com todos os estilos -->
+    <link href="css/styles.css" type="text/css" rel="stylesheet" />
+    <!--CSS para editarmos-->
+    <link href="css/geral.css" rel="stylesheet" />
+    <!--Nestable Lists-->
+    <link href="plugins/form-nestable/jquery.nestable.css" type="text/css" rel="stylesheet" />
+    <!--ICheck-->
+    <link href="plugins/icheck-1.x/skins/flat/_all.css" rel="stylesheet" />
+    <!--IONRangeSlider-->
+    <link href="plugins/Ion.RangeSlider/css/ion.rangeSlider.css" rel="stylesheet" />
+    <link href="plugins/Ion.RangeSlider/css/ion.rangeSlider.skinNice.css" rel="stylesheet" />
+</head>
+<body>
+    <!--CABEÇALHO ORIGINAL-->
+    <header id="topnav" class="navbar navbar-fixed-top clearfix navbar-inverse" role="banner">
+
+
+        <a id="leftmenu-trigger" class="" data-toggle="tooltip" data-placement="right" title="Toggle Sidebar"></a>
+
+        <ul class="nav navbar-nav toolbar pull-right">
+
+            <!--NOTIFICAÇÕES-->
+            <li class="dropdown toolbar-icon-bg">
+                <a href="#" class="hasnotifications dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="icon-bg"><i class="fa fa-fw fa-bell"></i></span><span class="badge badge-alizarin">2</span></a>
+                <div class="dropdown-menu notifications arrow">
+                    <div class="dd-header">
+                        <span>Notifications</span>
+                        <span><a href="#">Settings</a></span>
+                    </div>
+
+                    <ul class="scrollthis">
+                        <!--CADA NOTIFICAÇÃO-->
+                        <li class="">
+                            <a href="#" class="notification-success">
+                                <div class="notification-icon"><i class="fa fa-check"></i></div>
+                                <div class="notification-content"><strong>Lorem ipsum</strong> dolor sit amet consectetur adipisicing elit!</div>
+                                <div class="notification-time">40m</div>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#" class="notification-danger">
+                                <div class="notification-icon"><i class="fa fa-times fa-fw"></i></div>
+                                <div class="notification-content">Etiam porta sem malesuada</div>
+                                <div class="notification-time">5h</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="dd-footer">
+                        <a href="#">View all notifications</a>
+                    </div>
+                </div>
+            </li>
+            <!--NOTIFICAÇÕES/-->
+            <!--MENSAGENS-->
+            <li class="dropdown toolbar-icon-bg hidden-xs">
+                <a href="#" class="hasnotifications dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="icon-bg"><i class="fa fa-fw fa-envelope"></i></span><span class="badge badge-info">2</span></a>
+                <div class="dropdown-menu messages arrow">
+                    <div class="dd-header">
+                        <span>Messages</span>
+                        <span><a href="#">Settings</a></span>
+                    </div>
+
+                    <ul class="scrollthis">
+                        <!--CADA MENSAGEM INDIVIDUAL-->
+                        <li class="">
+                            <a href="#">
+                                <img class="msg-avatar" src="imagens/avatares/avatar_09.png" alt="avatar">
+                                <div class="msg-content">
+                                    <span class="name">Steven Shipe</span>
+                                    <span class="msg">Nonummy nibh epismod lorem ipsum</span>
+                                </div>
+                                <span class="msg-time">30s</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img class="msg-avatar" src="imagens/avatares/avatar_01.png" alt="avatar">
+                                <div class="msg-content">
+                                    <span class="name">Roxann Hollingworth <i class="fa fa-paperclip attachment"></i></span>
+                                    <span class="msg">Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+                                </div>
+                                <span class="msg-time">5m</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="dd-footer"><a href="#">View all messages</a></div>
+                </div>
+            </li>
+            <!--MENSAGENS/-->
+            <!--BUSCA-->
+            <li class="dropdown toolbar-icon-bg demo-search-hidden mr5">
+                <a href="#" class="dropdown-toggle tooltips" data-toggle="dropdown" data-original-title="" title="" aria-expanded="false"><span class="icon-bg"><i class="fa fa-fw fa-search"></i></span></a>
+
+                <div class="dropdown-menu arrow search dropdown-menu-form">
+                    <div class="dd-header">
+                        <span>Search</span>
+                        <span><a href="#">Advanced search</a></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="">
+
+                        <span class="input-group-btn">
+
+                            <a class="btn btn-primary" href="#">Search</a>
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <!--BUSCA/-->
+            <!--PROFILE-->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle username" data-toggle="dropdown">
+                    <span class="hidden-xs">Alexander Smith</span>
+                    <img class="img-circle" src="imagens/avatares/avatar_06.png" alt="Dangerfield">
+                </a>
+                <ul class="dropdown-menu userinfo">
+                    <li><a href="#"><span class="pull-left">Edit Profile</span> <i class="pull-right fa fa-pencil"></i></a></li>
+                    <li><a href="#"><span class="pull-left">Account Settings</span> <i class="pull-right fa fa-cogs"></i></a></li>
+                    <li><a href="#"><span class="pull-left">Help</span> <i class="pull-right fa fa-question-circle"></i></a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><span class="pull-left">Sign Out</span> <i class="pull-right fa fa-sign-out"></i></a></li>
+                </ul>
+            </li>
+            <!--PROFILE/-->
+        </ul>
+
+    </header>
+    <!--CABEÇALHO ORIGINAL/-->
+    <div id="wrapper">
+        <div id="layout-static">
+            <!--MENU LATERAL ESQUERDO-->
+            <div class="static-sidebar-wrapper sidebar-inverse">
+                <div class="static-sidebar" style="top: 50px;">
+                    <div class="sidebar">
+
+                        <div class="widget stay-on-collapse">
+                            <div class="widget-body welcome-box tabular">
+                                <div class="tabular-row">
+                                    <div class="tabular-cell welcome-avatar">
+                                        <a href="#">
+                                            <img src="imagens/imagem_historia.png" class="avatar" />
+                                        </a>
+                                    </div>
+                                    <div class="tabular-cell welcome-options">
+                                        <span class="welcome-text">Bem-vindo à </span>
+                                        <a href="#" class="name">Título da História</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget stay-on-collapse" id="widget-sidebar">
+                            <!--Título do Menu Lateral-->
+                            <span class="widget-heading">Explore seus Tipos!</span>
+                            <nav role="navigation" class="widget-body">
+                                <ul class="acc-menu">
+                                    <!--Link Simples-->
+                                    <li><a href="cadastrarHistoria.html"><i class="fa fa-book"></i><span>História</span><span class="badge badge-dark">1</span></a></li>
+                                    <li>
+                                        <a href="javascript:;"><i class="fa fa-users"></i><span>Personagens</span><span class="badge badge-dark">6</span></a>
+                                        <ul class="acc-menu">
+                                            <li><a href="javascript:;">Criar novo Personagem &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                            <li><a href="listarPersonagens.html">Listar Personagens<span class="badge badge-dark">6</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;"><i class="fa fa-globe"></i><span>Mundos</span><span class="badge badge-dark">2</span></a>
+                                        <ul class="acc-menu">
+                                            <li><a href="cadastrarMundo.html">Criar novo Mundo &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                            <li><a href="javascript:;">Listar Mundos<span class="badge badge-dark">2</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;"><i class="fa fa-bank"></i><span>Localizações</span><span class="badge badge-dark">5</span></a>
+                                        <ul class="acc-menu">
+                                            <li><a href="javascript:;">Criar nova Localização &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                            <li><a href="javascript:;">Listar Localizações<span class="badge badge-dark">5</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;"><i class="fa fa-comments-o"></i><span>Cenas</span><span class="badge badge-dark">3</span></a>
+                                        <ul class="acc-menu">
+                                            <li><a href="javascript:;">Criar nova Cena &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                            <li><a href="javascript:;">Listar Cenas<span class="badge badge-dark">3</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;"><i class="fa fa-key"></i><span>Objetos</span><span class="badge badge-dark">4</span></a>
+                                        <ul class="acc-menu">
+                                            <li><a href="javascript:;">Criar novo Objeto &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                            <li><a href="javascript:;">Listar Objetos<span class="badge badge-dark">4</span></a></li>
+                                        </ul>
+                                    </li>
+
+                                    <!--Level Único-->
+                                    <!--
+                                    <li>
+                                        <a href="javascript:;"><i class="fa fa-columns"></i><span>Layouts</span><span class="badge badge-dark">23</span></a>
+                                        <ul class="acc-menu">
+                                            <li><a href="layout-grids.html">Grid Scaffolding</a></li>
+                                            <li><a href="layout-fixed-sidebars.html">Stretch Sidebars</a></li>
+                                            <li><a href="layout-sidebar-scroll.html">Sidebar Scroll</a></li>
+                                            <li><a href="layout-static-leftbar.html">Static Sidebar</a></li>
+                                            <li><a href="layout-infobar-offcanvas.html">Offcanvas Infobar</a></li>
+                                            <li><a href="layout-infobar-overlay.html">Overlay Infobar</a></li>
+                                            <li><a href="layout-breadcrumb-top.html">Breadcrumb on Top</a></li>
+                                            <li><a href="layout-page-tabs.html">Page Tabs</a></li>
+                                            <li><a href="layout-fullheight-content.html">Fixed Height Content</a></li>
+                                            <li><a href="layout-fullheight-panel.html">Fixed Height Panel</a></li>
+                                            <li><a href="layout-leftbar-widgets.html">Leftbar Widgets <span class="label label-grape">Cool</span></a></li>
+                                            <li><a href="layout-rightbar-widgets.html">Rightbar Widgets <span class="label label-grape">Cool</span></a></li>
+                                            <li><a href="layout-topnav-options.html">Topnav Options</a></li>
+                                            <li>
+                                                <a href="javascript:;">Horizontal Nav <span class="badge badge-dark">2</span></a>
+                                                <ul class="acc-menu">
+                                                    <li><a href="layout-horizontal-small.html">Small Menu</a></li>
+                                                    <li><a href="layout-horizontal-large.html">Large Menu</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="layout-chatbar-overlay.html">Chatbar</a></li>
+                                            <li><a href="layout-boxed.html">Boxed</a></li>
+                                            <li><a href="layout-compact.html">Compact Leftbar</a></li>
+                                        </ul>
+                                    </li>-->
+                                    <!--Múltiplos Leveis-->
+                                    <!--
+                                    <li>
+                                        <a href="javascript:;"><i class="fa fa-sitemap"></i><span>Multiple Level Menu</span><span class="badge badge-dark">99</span></a>
+                                        <ul class="acc-menu">
+                                            <li><a href="javascript:;">Menu Item 1</a></li>
+                                            <li>
+                                                <a href="javascript:;">Menu Item 2</a>
+                                                <ul class="acc-menu">
+                                                    <li><a href="javascript:;">Menu Item 2.1</a></li>
+                                                    <li>
+                                                        <a href="javascript:;">Menu Item 2.2</a>
+                                                        <ul class="acc-menu">
+                                                            <li><a href="javascript:;">Menu Item 2.2.1</a></li>
+                                                            <li>
+                                                                <a href="javascript:;">Menu Item 2.2.2</a>
+                                                                <ul class="acc-menu">
+                                                                    <li><a href="javascript:;">And deeper yet!</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="disabled-link"><a href="index.html">Disabled Menu Item</a></li>
+                                        </ul>
+                                    </li>-->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--MENU LATERAL ESQUERDO/-->
+            <!--CORPO DA PÁGINA-->
+            <div class="static-content-wrapper">
+                <div class="static-content">
+                    <!--CORPO DE VERDADE-->
+                    <div class="page-content col-md-9">
+                        <div class="page-heading mb0">
+                            <div class="marquee">Aqui aparecerão dicas valiosas que o ajudarão a usar o Storiify de maneira profissional. Primeira dica: Leia as dicas que aparecerão aqui!!!</div>
+                            <h1>Mundo</h1>
+                            <div class="options">
+                                <div class="btn-toolbar">
+                                    <a href="#" class="btn btn-default"><i class="fa fa-fw fa-cog"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="page-tabs">
+                            <ul class="nav nav-tabs">
+                                <li class="dropdown pull-right tabdrop hide">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown-menu"></ul>
+                                </li>
+                                <!--ABAS-->
+                                <li class="active"><a data-toggle="tab" href="#abaGeral">Geral</a></li>
+                                <li><a data-toggle="tab" href="#abaBiologia">Biologia</a></li>
+                                <li><a data-toggle="tab" href="#abaCultura">Cultura</a></li>
+                                <li><a data-toggle="tab" href="#abaEconomia">Economia</a></li>
+                                <li><a data-toggle="tab" href="#abaPolítica">Política</a></li>
+                                <li><a data-toggle="tab" href="#abaTecnologia">Tecnologia</a></li>
+                                <li><a data-toggle="tab" href="#abaMagia">Magia</a></li>
+
+                            </ul>
+                        </div>
+
+                        <div class="container-fluid">
+                            <div class="tab-content">
+                                <!--ABA 1-->
+                                <div class="tab-pane active" id="abaGeral">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="tab-pane active" id="bordered-rowGeral">
+                                                <form class="form-horizontal row-border">
+
+                                                    <div class="form-group">
+                                                        <label for="imgImagem" class="col-sm-2 control-label">Imagem</label>
+                                                        <div class="col-sm-8">
+                                                            <div style="padding: 2% 50% 2% 50%;">
+                                                                <img src="" id="imgImagem" class="img-circle" style="margin: 0 0 10px 0" />
+                                                                <a href="#" class="btn btn-default">Upload Imagem</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtNome" class="col-sm-2 control-label">Título</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="txtNome" placeholder="Digite o Nome aqui" />
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <p class="help-block">Obrigatório!</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtVisaoGeral" class="col-sm-2 control-label">Visão Geral</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="txtVisaoGeral" placeholder="Digite a Visão Geral aqui" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtHistoria" class="col-sm-2 control-label">História</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="txtHistoria" placeholder="Digite a História aqui" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtEra" class="col-sm-2 control-label">Era</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="txtEra" placeholder="Descreva a Era aqui" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtArredores" class="col-sm-2 control-label">Era</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="txtArredores" placeholder="Descreva os Arredores aqui" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="minMaxHostilidade" class="col-sm-2 control-label">Hostilidade</label>
+                                                        <div class="col-xs-8">
+                                                            <div id="minmaxHostilidade"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="imgInspiracoes" class="col-sm-2 control-label">Inspirações</label>
+                                                        <div class="col-sm-8">
+                                                            <div style="padding: 2% 50% 2% 50%;">
+                                                                <img src="" id="imgInspiracoes" class="img-circle" style="margin: 0 0 10px 0" />
+                                                                <a href="#" class="btn btn-default">Upload Imagem</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtLocalizacoes" class="col-sm-2 control-label">Localizações</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="txtLocalizacoes" placeholder="Relacione suas Localizações aqui" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="txtCenas" class="col-sm-2 control-label">Cenas</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="txtCenas" placeholder="Relacione suas Cenas aqui" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="checkbox" class="col-sm-2 control-label">Quem pode visualizar essa instância?</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="checkbox-inline">
+                                                                <input type="checkbox" id="ckbTodos" />
+                                                                <label for="ckbTodos">Todos</label>
+                                                            </div>
+                                                            <div class="checkbox-inline">
+                                                                <input type="checkbox" name="publicidade" id="ckbAmigos" class="cBoxClass" />
+                                                                <label for="ckbAmigos">Amigos</label>
+                                                            </div>
+                                                            <div class="checkbox-inline">
+                                                                <input type="checkbox" name="publicidade" id="ckbEquipes" class="cBoxClass" />
+                                                                <label for="ckbEquipes">Equipe</label>
+                                                            </div>
+                                                            <div class="checkbox-inline">
+                                                                <input type="checkbox" name="publicidade" id="ckbPublico" class="cBoxClass" />
+                                                                <label for="ckbPublico">Público</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--ABA 2-->
+                                <div class="tab-pane" id="abaBiologia">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="tab-pane active" id="bordered-rowBiologia">
+                                                <form class="form-horizontal row-border">
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Raças</label>
+                                                        <div class="col-md-8">
+
+                                                            <div class="input-group bootstrap-touchspin">
+                                                                <span class="input-group-btn">
+                                                                    <button id="incluirRacaRemover" class="minus btn btn-default" data-duplicate-remove="raca" type="button">Remover</button>
+                                                                </span>
+
+                                                                <input id="incluirRaca" value="1" class="form-control" style="display: block;text-align:center;" />
+
+                                                                <span class="input-group-btn">
+                                                                    <button id="incluirRacaAdicionar" class="add btn btn-default" data-duplicate-add="raca" type="button">Adicionar</button>
+                                                                </span>
+                                                            </div>
+
+                                                            <div data-duplicate="raca" class="row  well well-sm" style="padding: 10px 30px 10px 30px; margin: 15px;">
+                                                                <div class="form-group col-md-11">
+                                                                    <input type="text" class="form-control" id="txtNomeRaca" placeholder="Nome da Raça" style="margin-bottom: 5px;" />
+                                                                    <textarea id="txtDescricaoRaca" placeholder="Descrição da Raça" title="Campo para inserir a Descrição da Raça"></textarea>
+                                                                    <textarea id="txtPovoamentoRaca" placeholder="Povoamento da Raça" title="Campo para inserir a Povoamento da Raça"></textarea>
+                                                                    <div id="minMaxReputacao"></div>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <a href="#" data-duplicate-remove="raca" class="btn btn-default" style="margin: 0 50% 0 50%;"><i class="fa fa-times"></i></a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--ABA 3-->
+                                <div class="tab-pane" id="tab3">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-success">
+                                                <div class="panel-heading">
+                                                    <h2>Success</h2>
+                                                </div>
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="tab4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    <h2>Info</h2>
+                                                </div>
+                                                <div class="panel-body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="tab5">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-danger">
+                                                <div class="panel-heading">
+                                                    <h2>Danger</h2>
+                                                </div>
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="tab6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-warning">
+                                                <div class="panel-heading">
+                                                    <h2>Warning</h2>
+                                                </div>
+                                                <div class="panel-body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="tab7">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-inverse">
+                                                <div class="panel-heading">
+                                                    <h2>Inverse</h2>
+                                                </div>
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CORPO DE VERDADE/ -->
+                    <!--DRAG AND DROP RIGHT MENU-->
+                    <div id="listaTudo" class="col-md-3">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="border-top-right-radius: 0px; border-top-left-radius: 0px;">
+                                <h2>Suas Instâncias</h2>
+                            </div>
+                            <div class="panel-body" style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; margin: 0px -5px 0 -0px;">
+
+                                <div class="dd" id="nestable_list_1">
+                                    <ol class="dd-list">
+                                        <!--PERSONAGENS-->
+                                        <li class="dd-item" data-id="1">
+                                            <div class="dd-handle">Personagens</div>
+                                            <ol class="dd-list" style="">
+                                                <li class="dd-item" data-id="6">
+                                                    <div class="dd-handle">Personagem 1</div>
+                                                </li>
+                                                <li class="dd-item" data-id="7">
+                                                    <div class="dd-handle">Personagem 2</div>
+                                                </li>
+                                            </ol>
+                                        </li>
+                                        <!--MUNDOS-->
+                                        <li class="dd-item" data-id="2">
+                                            <div class="dd-handle">Mundos</div>
+                                        </li>
+                                        <!--LOCALIZAÇÕES-->
+                                        <li class="dd-item" data-id="3">
+                                            <div class="dd-handle">Localizações</div>
+                                        </li>
+                                        <!--CENAS-->
+                                        <li class="dd-item" data-id="4">
+                                            <div class="dd-handle">Cenas</div>
+                                        </li>
+                                        <!--OBJETOS-->
+                                        <li class="dd-item" data-id="5">
+                                            <div class="dd-handle">Objetos</div>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--DRAG AND DROP RIGHT MENU/-->
+
+                </div>
+                <!--RODAPÉ-->
+                <footer role="contentinfo">
+                    <div class="clearfix">
+                        <ul class="list-unstyled list-inline pull-left">
+                            <li>
+                                <h6 style="margin: 0;">© 2018 Storiify</h6>
+                            </li>
+                        </ul>
+                        <button class="pull-right btn btn-link btn-xs hidden-print" id="back-to-top"><i class="fa fa-arrow-up"></i></button>
+                    </div>
+                </footer>
+            </div>
+            <!--CORPO DA PÁGINA/-->
+        </div>
+    </div>
+
+    <!-- Load site level scripts -->
+    <!-- Load jQuery -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <!-- Load jQueryUI -->
+    <script src="js/jqueryui-1.9.2.min.js"></script>
+    <!-- Load Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--Javascript para editarmos-->
+    <script src="js/marquee.js"></script>
+    <!--Listas aninhadas-->
+    <script src="plugins/form-nestable/jquery.nestable.min.js"></script>
+    <!--Text Scroll Plugin-->
+    <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>
+    <!--TextArea autosize-->
+    <script src="plugins/autosize-TextArea/dist/autosize.js"></script>
+    <!--IChek-->
+    <script src="plugins/icheck-1.x/icheck.js"></script>
+    <!--IonRangeSlider-->
+    <script src="plugins/Ion.RangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+    <!--Verificar o que tem dentro (faz o toggle do menu lateral)-->
+    <script src="js/application.js"></script>
+    <!-- End loading site level scripts -->
+    <!-- Load page level scripts-->
+    <!-- End loading page level scripts-->
+</body>
+</html>
