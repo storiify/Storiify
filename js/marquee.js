@@ -18,66 +18,6 @@
     //TextArea autosize
     autosize(document.querySelectorAll('textarea'));
 
-    //IChek - Aqui que muda a cor
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_flat-red',
-        radioClass: 'iradio_flat-red'
-    });
-    //Master CheckBox
-    var mudadoPeloFilho = false;
-
-    $('#ckbTodos').on('ifChecked', function () {
-        $(".cBoxClass").iCheck('check');
-        mudadoPeloFilho = false;
-    });
-    $('#ckbTodos').on('ifUnchecked', function () {
-        if (!mudadoPeloFilho) {
-            $(".cBoxClass").iCheck('uncheck');
-            mudadoPeloFilho = false;
-        }
-    });
-    $('.cBoxClass').on('ifUnchecked', function () {
-        mudadoPeloFilho = true;
-        $("#ckbTodos").iCheck('uncheck');
-    });
-
-    //IonRangeSlider
-    $("#minmaxHostilidade").ionRangeSlider({
-        from: 2,
-        values: [
-            "Inofensivos", "Pacíficos", "Neutros", "Ameaçadores", "Agressivos"
-        ],
-        type: 'single',
-        hasGrid: false
-    });
-    $("#minMaxReputacao").ionRangeSlider({
-        from: 2,
-        values: [
-            "Vergonhosos", "Desvalorizados", "Neutros", "Respeitados", "Glorificados"
-        ],
-        type: 'single',
-        hasGrid: false
-    });
-
-    //Nestable List
-    $('#nestable_list_1').nestable({
-        group: 1
-    })
-        .on('change', updateOutput);
-
-    // output initial serialised data
-    updateOutput($('#nestable_list_1').data('output', $('#nestable_list_1_output')));
-
-    function updateOutput(e) {
-        var list = e.length ? e : $(e.target),
-            output = list.data('output');
-        if (window.JSON) {
-            output.val(window.JSON.stringify(list.nestable('serialize'))); //, null, 2));
-        } else {
-            output.val('JSON browser support required for this demo.');
-        }
-    }
-
     //Input Incluir
     $.duplicate = function () {
         var body = $('body');
@@ -145,4 +85,10 @@
 
     $.duplicate();
 
+    //Select2
+    $(".select2").select2({
+        tags: true,
+        insertTag: function (data, tag) {
+        }
+    });
 });
