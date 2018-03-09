@@ -1,29 +1,45 @@
 ﻿$(document).ready(function () {
     var imgAlvo;
+    var imgUploader = $("#imgUploader");
+    var imgAntiga;
 
     $('.imgClicavel').click(function () {
         imgAlvo = this;
-        $('#imgUploader').trigger('click');
+        imgUploader.trigger('click');
     });
 
-    function readURL() {
-        $(imgAlvo).attr('src', '').hide();
+    imgUploader.change(function () {
+        if (imgUploader.val.length) {
 
-        if (this.files && this.files[0]) {
             var reader = new FileReader();
 
             $(reader).load(function (e) {
                 $(imgAlvo).attr('src', e.target.result)
+                imgAntiga = e.target.result;
             });
-
             reader.readAsDataURL(this.files[0]);
 
-            //Recarrega a imagem -- Antes estava dentro de document.ready, mas eu perdia minhas configurações da imagem placeholder
-            $(imgAlvo).load(function () {
-                $(this).css({ width: '100px', opacity: '1' }).show();
-            }).hide();
+            aplicarEstilos(imgAlvo);
         }
+    });
+
+    function aplicarEstilos(img) {
+        $(img).load(function () {
+            $(this).css({ width: '100px', height: '100px'}).show();
+        }).hide();
     }
 
-    $("#imgUploader").change(readURL);
+    //Posicionando o botão de resetar a imagem
+    $(".imgReset").each(function () {
+        $(this).position({
+            my: "left bottom",
+            at: "left bottom",
+            of: $(this).siblings('.imgClicavel'),
+            collision: "flip"
+        });
+    });
+    //Resetando ao apertar no botão de resetar imagem
+    $(".imgReset").click(function () {
+        $(this).siblings('.imgClicavel').attr('src', 'imagens/no_photo.png');
+    });
 });

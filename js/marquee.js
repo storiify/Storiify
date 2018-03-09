@@ -91,4 +91,9 @@
         insertTag: function (data, tag) {
         }
     });
+    
+    //Abrir e fechar detalhes
+    $('.inputDetalhes').click(function () {
+        $(this).next().toggle();
+    });
 });
