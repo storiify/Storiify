@@ -21,7 +21,6 @@
 
 </head>
 <body>
-
     <div id="wrapper">
         <div id="layout-static">
 
@@ -63,187 +62,282 @@
 
                                                     <!--Inputs Texto-->
                                                     <div class="form-group">
-                                                        <label for="txtAttObg" class="col-sm-2 control-label">Atributo Obrigatório</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="txtAttObg" placeholder="Digite o atributo aqui" />
+                                                        <div class="col-sm-10 inputWrapper">
+                                                            <label for="txtAttObg" class="col-sm-2 control-label">Atributo de Uma Linhas</label>
+                                                            <div class="inputCorpo col-sm-10">
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" class="form-control" id="txtAttObg" placeholder="Digite o atributo aqui" />
+                                                                </div>
+                                                                <!--Detalhes-->
+                                                                <div class="col-sm-12">
+                                                                    <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                                    <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                                        <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
                                                         </div>
                                                         <div class="col-sm-2">
-                                                            <p class="help-block">Obrigatório!</p>
-                                                        </div>
-                                                        <a class="col-md-offset-3 inputDetalhes">Adicionar Detalhes</a>
-                                                        <div class="conteudoDetalhes" style="display:none;">
-                                                            <label for="txtAttObg" class="col-sm-2 control-label"></label>
-                                                            <div class="col-sm-8">
-                                                                <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtAttNaoObg" class="col-sm-2 control-label">Atributo Não-Obrigatório</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="txtAttNaoObg" placeholder="Digite o atributo aqui" />
-                                                        </div>
-                                                        <a class="col-md-offset-3 inputDetalhes">Adicionar Detalhes</a>
-                                                        <div class="conteudoDetalhes" style="display:none;">
-                                                            <label for="txtAttObg" class="col-sm-2 control-label"></label>
-                                                            <div class="col-sm-8">
-                                                                <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
-                                                            </div>
+                                                            <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                                            <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                                         </div>
                                                     </div>
                                                     <!--/Inputs Texto-->
                                                     <!--Inputs TextoArea-->
                                                     <div class="form-group">
-                                                        <label for="txtArea" class="col-sm-2 control-label">Área de Texto</label>
-                                                        <div class="col-sm-8">
-                                                            <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                        <div class="col-sm-10 inputWrapper">
+                                                            <label for="txtArea" class="col-sm-2 control-label">Área de Texto</label>
+                                                            <div class="inputCorpo col-sm-10">
+                                                                <div class="col-sm-12">
+                                                                    <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                                </div>
+                                                                <!--Não tem detalhes-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                                            <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                                         </div>
                                                     </div>
                                                     <!--/Inputs TextoArea-->
                                                     <!--Inputs TextoSelect-->
                                                     <div class="form-group">
-                                                        <label for="sel1" class="col-sm-2 control-label">Virtudes</label>
-                                                        <div class="col-sm-8">
-                                                            <select class="form-control select2" multiple="multiple" id="sel1">
-                                                                <option selected="selected">Autêntico</option>
-                                                                <option>Humor</option>
-                                                                <option>Sábio</option>
-                                                                <option>Espiritualidade</option>
-                                                                <option selected="selected">Criativo</option>
-                                                                <option>Boa Memória</option>
-                                                                <option>Mente Aberta</option>
-                                                                <option>Competitivo</option>
-                                                                <option>Coragem</option>
-                                                                <option>Amizades Facilmente</option>
-                                                                <option>Integridade</option>
-                                                                <option>Objetivo</option>
-                                                                <option selected="selected">Perseverança</option>
-                                                                <option>Higiênico</option>
-                                                                <option>Generosidade</option>
-                                                                <option>Saudável Mentalmente</option>
-                                                                <option>Justiça</option>
-                                                                <option>Firme</option>
-                                                                <option>Liderança</option>
-                                                                <option>Heróico</option>
-                                                                <option>Perdoar</option>
-                                                                <option>Romântico</option>
-                                                                <option>Humildade</option>
-                                                                <option>Código de Conduta</option>
-                                                                <option>Prudência</option>
-                                                                <option>Autruísta</option>
-                                                                <option selected="selected">Autocontrole</option>
-                                                                <option>Apreciação da Beleza</option>
-                                                            </select>
+                                                        <div class="col-sm-10 inputWrapper">
+                                                            <label for="sel1" class="col-sm-2 control-label">Virtudes</label>
+                                                            <div class="inputCorpo col-sm-10">
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-control select2" multiple="multiple" id="sel1">
+                                                                        <option selected="selected">Autêntico</option>
+                                                                        <option>Humor</option>
+                                                                        <option>Sábio</option>
+                                                                        <option>Espiritualidade</option>
+                                                                        <option selected="selected">Criativo</option>
+                                                                        <option>Boa Memória</option>
+                                                                        <option>Mente Aberta</option>
+                                                                        <option>Competitivo</option>
+                                                                        <option>Coragem</option>
+                                                                        <option>Amizades Facilmente</option>
+                                                                        <option>Integridade</option>
+                                                                        <option>Objetivo</option>
+                                                                        <option selected="selected">Perseverança</option>
+                                                                        <option>Higiênico</option>
+                                                                        <option>Generosidade</option>
+                                                                        <option>Saudável Mentalmente</option>
+                                                                        <option>Justiça</option>
+                                                                        <option>Firme</option>
+                                                                        <option>Liderança</option>
+                                                                        <option>Heróico</option>
+                                                                        <option>Perdoar</option>
+                                                                        <option>Romântico</option>
+                                                                        <option>Humildade</option>
+                                                                        <option>Código de Conduta</option>
+                                                                        <option>Prudência</option>
+                                                                        <option>Autruísta</option>
+                                                                        <option selected="selected">Autocontrole</option>
+                                                                        <option>Apreciação da Beleza</option>
+                                                                    </select>
+                                                                </div>
+                                                                <!--Não tem detalhes-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                                            <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                                         </div>
                                                     </div>
                                                     <!--/Inputs TextoSelect-->
                                                     <!--Inputs CheckBox-->
                                                     <div class="form-group">
-                                                        <label for="checkbox" class="col-sm-2 control-label">Visibilidade</label>
-                                                        <div class="col-sm-8">
-                                                            <div class="checkbox-inline">
-                                                                <input type="checkbox" id="ckbTodos" />
-                                                                <label for="ckbTodos">Todos</label>
-                                                            </div>
-                                                            <div class="checkbox-inline">
-                                                                <input type="checkbox" name="publicidade" id="ckbAmigos" class="cBoxClass" />
-                                                                <label for="ckbAmigos">Amigos</label>
-                                                            </div>
-                                                            <div class="checkbox-inline">
-                                                                <input type="checkbox" name="publicidade" id="ckbEquipes" class="cBoxClass" />
-                                                                <label for="ckbEquipes">Equipe</label>
-                                                            </div>
-                                                            <div class="checkbox-inline">
-                                                                <input type="checkbox" name="publicidade" id="ckbPublico" class="cBoxClass" />
-                                                                <label for="ckbPublico">Público</label>
+                                                        <div class="col-sm-10 inputWrapper">
+                                                            <label for="checkbox" class="col-sm-2 control-label">Visibilidade</label>
+                                                            <div class="inputCorpo col-sm-10">
+                                                                <div class="col-sm-12">
+                                                                    <div class="checkbox-inline">
+                                                                        <input type="checkbox" id="ckbTodos" />
+                                                                        <label for="ckbTodos">Todos</label>
+                                                                    </div>
+                                                                    <div class="checkbox-inline">
+                                                                        <input type="checkbox" name="publicidade" id="ckbAmigos" class="cBoxClass" />
+                                                                        <label for="ckbAmigos">Amigos</label>
+                                                                    </div>
+                                                                    <div class="checkbox-inline">
+                                                                        <input type="checkbox" name="publicidade" id="ckbEquipes" class="cBoxClass" />
+                                                                        <label for="ckbEquipes">Equipe</label>
+                                                                    </div>
+                                                                    <div class="checkbox-inline">
+                                                                        <input type="checkbox" name="publicidade" id="ckbPublico" class="cBoxClass" />
+                                                                        <label for="ckbPublico">Público</label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <!--<div class="col-sm-2">
+                                                            <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                                            <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                                        </div>-->
                                                     </div>
                                                     <!--/Inputs CheckBox-->
                                                     <!--Inputs MinMax-->
                                                     <div class="form-group">
-                                                        <label for="idMinMaxHosti" class="col-sm-2 control-label">Hostilidade</label>
-                                                        <div class="col-xs-8">
-                                                            <div id="idMinMaxHosti" class="minMaxInput"></div>
-                                                        </div>
-                                                        <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
-                                                        <div class="conteudoDetalhes" style="display:none;">
-                                                            <label for="txtAttObg" class="col-sm-2 control-label"></label>
-                                                            <div class="col-sm-8">
-                                                                <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                        <div class="col-sm-10 inputWrapper">
+                                                            <label for="idMinMaxHosti" class="col-sm-2 control-label">Hostilidade</label>
+                                                            <div class="inputCorpo col-sm-10">
+                                                                <div class="col-sm-12">
+                                                                    <div id="idMinMaxHosti" class="minMaxInput"></div>
+                                                                </div>
+                                                                <!--Detalhes-->
+                                                                <div class="col-sm-12">
+                                                                    <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                                    <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                                        <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                                            <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="idMinMaxAltura" class="col-sm-2 control-label">Altura</label>
-                                                        <div class="col-xs-8">
-                                                            <div id="idMinMaxAltura" class="minMaxInput"></div>
-                                                        </div>
-                                                        <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
-                                                        <div class="conteudoDetalhes" style="display:none;">
-                                                            <label for="txtAttObg" class="col-sm-2 control-label"></label>
-                                                            <div class="col-sm-8">
-                                                                <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                        <div class="col-sm-10 inputWrapper">
+                                                            <label for="idMinMaxAltura" class="col-sm-2 control-label">Altura</label>
+                                                            <div class="inputCorpo col-sm-10">
+                                                                <div class="col-sm-12">
+                                                                    <div id="idMinMaxAltura" class="minMaxInput"></div>
+                                                                </div>
+                                                                <!--Detalhes-->
+                                                                <div class="col-sm-12">
+                                                                    <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                                    <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                                        <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                                            <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="idMinMaxCorpo" class="col-sm-2 control-label">Corpo</label>
-                                                        <div class="col-xs-8">
-                                                            <div id="idMinMaxCorpo" class="minMaxInput"></div>
-                                                        </div>
-                                                        <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
-                                                        <div class="conteudoDetalhes" style="display:none;">
-                                                            <label for="txtAttObg" class="col-sm-2 control-label"></label>
-                                                            <div class="col-sm-8">
-                                                                <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                        <div class="col-sm-10 inputWrapper">
+                                                            <label for="idMinMaxCorpo" class="col-sm-2 control-label">Corpo</label>
+                                                            <div class="inputCorpo col-sm-10">
+                                                                <div class="col-sm-12">
+                                                                    <div id="idMinMaxCorpo" class="minMaxInput"></div>
+                                                                </div>
+                                                                <!--Detalhes-->
+                                                                <div class="col-sm-12">
+                                                                    <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                                    <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                                        <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                                            <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                                         </div>
                                                     </div>
                                                     <!--/Inputs MinMax-->
                                                     <!--Inputs Imagem-->
                                                     <!--Só precisa de um input desse na página, por isso, deixarei o ID controlando-->
                                                     <input type='file' id="imgUploader" style="display:none;" />
-
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
-                                                        <div class="col-sm-8">
-                                                            <img src="imagens/no_photo.png" class="img-circle imgClicavel" style="display:block;margin: 0 auto; width:100px;" />
-                                                            <a class="imgReset"><i class="fa fa-ban"></i></a>
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <a class="delForm"><i class="fa fa-times"></i></a>
-                                                        </div>
-                                                        <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
-                                                        <div class="conteudoDetalhes" style="display:none;">
-                                                            <label class="col-sm-2"></label>
-                                                            <div class="col-sm-8">
-                                                                <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                        <div class="col-sm-10 inputWrapper">
+                                                            <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
+                                                            <div class="inputCorpo col-sm-10">
+                                                                <div class="col-sm-12">
+                                                                    <img src="imagens/no_photo.png" class="img-circle imgClicavel" style="display:block;margin: 0 auto; width:100px;" />
+                                                                    <a class="imgReset"><i class="fa fa-ban"></i></a>
+                                                                </div>
+                                                                <!--Detalhes-->
+                                                                <div class="col-sm-12">
+                                                                    <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                                    <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                                        <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
-                                                        <div class="col-sm-8">
-                                                            <img src="imagens/no_photo.png" class="img-circle imgClicavel" style="display:block;margin: 0 auto; width:100px;" />
-                                                            <a class="imgReset"><i class="fa fa-ban"></i></a>
-                                                        </div>
                                                         <div class="col-sm-2">
-                                                            <a class="delForm"><i class="fa fa-times"></i></a>
-                                                        </div>
-                                                        <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
-                                                        <div class="conteudoDetalhes" style="display:none;">
-                                                            <label class="col-sm-2"></label>
-                                                            <div class="col-sm-8">
-                                                                <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
-                                                            </div>
+                                                            <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                                            <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                                         </div>
                                                     </div>
                                                     <!--/Inputs Imagem-->
                                                     <!--Inputs Incluir-->
+
+                                                    <div class="form-group">
+                                                        <div class="col-sm-10 inputWrapper">
+                                                            <label class="col-sm-2 control-label">Incluir</label>
+                                                            <div class="inputCorpo col-sm-10">
+                                                                <div class="col-sm-12">
+                                                                    <!--Parte que Importa-->
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-default incluirRemover" type="button">Remover</button>
+                                                                        </span>
+                                                                        <input value="0" class="form-control incluirStatus" />
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-default incluirAdicionar" type="button">Adicionar</button>
+                                                                        </span>
+                                                                    </div>
+                                                                    <!--Molde da Instância-->
+                                                                    <div class="incluirWrapper">
+                                                                        <div id="inputIncluir1" class="form-group col-md-12 moldeIncluir" style="display:block;">
+                                                                            <!--Texto-->
+                                                                            <div class="col-sm-11 inputWrapper">
+                                                                                <label for="txtAttObg" class="col-sm-2 control-label">Nome</label>
+                                                                                <div class="inputCorpo col-sm-10">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="text" class="form-control" id="txtAttObg" placeholder="Digite o atributo aqui" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1">
+                                                                                <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                                                            </div>
+                                                                            <!--TextoArea-->
+                                                                            <div class="col-sm-11 inputWrapper">
+                                                                                <label for="txtArea" class="col-sm-2 control-label">Descrição</label>
+                                                                                <div class="inputCorpo col-sm-10">
+                                                                                    <div class="col-sm-12">
+                                                                                        <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--MinMax-->
+                                                                            <div class="col-sm-11 inputWrapper">
+                                                                                <label for="idMinMaxHosti" class="col-sm-2 control-label">Hostilidade</label>
+                                                                                <div class="inputCorpo col-sm-10">
+                                                                                    <div class="col-sm-12">
+                                                                                        <div id="idMinMaxHosti" class="minMaxInput"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/Molde da Instância-->
+                                                                    <!--/Parte que Importa-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                                            <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Raça</label>
                                                         <div class="col-md-8">
@@ -322,6 +416,8 @@
     <script src="js/input/checkBox.js"></script>
     <!--Imagem-->
     <script src="js/input/imagem.js"></script>
+    <!--Incluir-->
+    <script src="js/input/incluir.js"></script>
     <!--/Seção dos Inputs-->
     <!--Text Scroll Plugin-->
     <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>

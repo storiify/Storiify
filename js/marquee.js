@@ -96,4 +96,13 @@
     $('.inputDetalhes').click(function () {
         $(this).next().toggle();
     });
+
+    //Minimizar Input
+    $('.inputToggle').click(function () {
+        $(this).parent().siblings('.inputWrapper').children('.inputCorpo').toggle();        
+    });
+    //Deletar Input
+    $('.inputDelet').click(function () {
+        $(this).parent().parent().remove();
+    });
 });

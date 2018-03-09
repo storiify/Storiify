@@ -21,3 +21,11 @@ a.delForm {
     color: #5f7676;
 }
 
+.button-icon {
+    margin: 0px 8px 0px 8px;
+    cursor: pointer;
+}
+
+.incluirStatus {
+    text-align: center;
+}
