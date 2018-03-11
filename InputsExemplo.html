@@ -181,10 +181,10 @@
                                                     <!--Inputs MinMax-->
                                                     <div class="form-group">
                                                         <div class="col-sm-10 inputWrapper">
-                                                            <label for="idMinMaxHosti" class="col-sm-2 control-label">Hostilidade</label>
+                                                            <label for="minMaxInput1" class="col-sm-2 control-label">Hostilidade</label>
                                                             <div class="inputCorpo col-sm-10">
                                                                 <div class="col-sm-12">
-                                                                    <div id="idMinMaxHosti" class="minMaxInput"></div>
+                                                                    <div id="minMaxInput1" class="minMaxInput mmHosti"></div>
                                                                 </div>
                                                                 <!--Detalhes-->
                                                                 <div class="col-sm-12">
@@ -204,10 +204,10 @@
 
                                                     <div class="form-group">
                                                         <div class="col-sm-10 inputWrapper">
-                                                            <label for="idMinMaxAltura" class="col-sm-2 control-label">Altura</label>
+                                                            <label for="minMaxInput2" class="col-sm-2 control-label">Altura</label>
                                                             <div class="inputCorpo col-sm-10">
                                                                 <div class="col-sm-12">
-                                                                    <div id="idMinMaxAltura" class="minMaxInput"></div>
+                                                                    <div id="minMaxInput2" class="minMaxInput mmAltura"></div>
                                                                 </div>
                                                                 <!--Detalhes-->
                                                                 <div class="col-sm-12">
@@ -227,10 +227,10 @@
 
                                                     <div class="form-group">
                                                         <div class="col-sm-10 inputWrapper">
-                                                            <label for="idMinMaxCorpo" class="col-sm-2 control-label">Corpo</label>
+                                                            <label for="minMaxInput3" class="col-sm-2 control-label">Corpo</label>
                                                             <div class="inputCorpo col-sm-10">
                                                                 <div class="col-sm-12">
-                                                                    <div id="idMinMaxCorpo" class="minMaxInput"></div>
+                                                                    <div id="minMaxInput3" class="minMaxInput mmCorpo"></div>
                                                                 </div>
                                                                 <!--Detalhes-->
                                                                 <div class="col-sm-12">
@@ -283,7 +283,7 @@
                                                             <div class="inputCorpo col-sm-10">
                                                                 <div class="col-sm-12">
                                                                     <!--Parte que Importa-->
-                                                                    <div class="input-group">
+                                                                    <div class="input-group inputIncluir">
                                                                         <span class="input-group-btn">
                                                                             <button class="btn btn-default incluirRemover" type="button">Remover</button>
                                                                         </span>
@@ -292,42 +292,9 @@
                                                                             <button class="btn btn-default incluirAdicionar" type="button">Adicionar</button>
                                                                         </span>
                                                                     </div>
-                                                                    <!--Molde da Instância-->
-                                                                    <div class="incluirWrapper">
-                                                                        <div id="inputIncluir1" class="form-group col-md-12 moldeIncluir" style="display:block;">
-                                                                            <!--Texto-->
-                                                                            <div class="col-sm-11 inputWrapper">
-                                                                                <label for="txtAttObg" class="col-sm-2 control-label">Nome</label>
-                                                                                <div class="inputCorpo col-sm-10">
-                                                                                    <div class="col-sm-12">
-                                                                                        <input type="text" class="form-control" id="txtAttObg" placeholder="Digite o atributo aqui" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-sm-1">
-                                                                                <span class="button-icon has-bg incluirRemoverIndividual"><i class="fa fa-times"></i></span>
-                                                                            </div>
-                                                                            <!--TextoArea-->
-                                                                            <div class="col-sm-11 inputWrapper">
-                                                                                <label for="txtArea" class="col-sm-2 control-label">Descrição</label>
-                                                                                <div class="inputCorpo col-sm-10">
-                                                                                    <div class="col-sm-12">
-                                                                                        <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!--MinMax-->
-                                                                            <div class="col-sm-11 inputWrapper">
-                                                                                <label for="idMinMaxHosti" class="col-sm-2 control-label">Hostilidade</label>
-                                                                                <div class="inputCorpo col-sm-10">
-                                                                                    <div class="col-sm-12">
-                                                                                        <div id="idMinMaxHosti" class="minMaxInput"></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                    <div id="incluirWrapper">
+                                                                        <!--Aqui entrarão as instâncias-->
                                                                     </div>
-                                                                    <!--/Molde da Instância-->
                                                                     <!--/Parte que Importa-->
                                                                 </div>
                                                             </div>
@@ -369,7 +336,7 @@
     <script src="js/marquee.js"></script>
 
     <!--Seção dos Inputs-->
-    <!--MinMax-->
+    <!--MinMax - Tem que vir antes do incluir -->
     <script src="js/input/minMax.js"></script>
     <!--CheckBox-->
     <script src="js/input/checkBox.js"></script>
@@ -377,6 +344,7 @@
     <script src="js/input/imagem.js"></script>
     <!--Incluir-->
     <script src="js/input/incluir.js"></script>
+    <script src="js/input/incluirTeste.js"></script>
     <!--/Seção dos Inputs-->
     <!--Text Scroll Plugin-->
     <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>

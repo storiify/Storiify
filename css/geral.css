@@ -26,6 +26,10 @@ a.delForm {
     cursor: pointer;
 }
 
+.imgClicavel {
+    cursor: pointer;
+}
+
 .incluirStatus {
     text-align: center;
 }
