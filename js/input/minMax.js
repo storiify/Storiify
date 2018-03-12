@@ -10,13 +10,13 @@ function trazerMinMax(objeto) {
 
     var valores;
 
-    if (objeto.className.indexOf("mmHosti") != -1) {
+    if ($(objeto).hasClass("mmHosti")) {
         valores = ["Inofensivos", "Pacíficos", "Neutros", "Ameaçadores", "Agressivos"];
     }
-    else if (objeto.className.indexOf("mmAltura") != -1) {
+    else if ($(objeto).hasClass("mmAltura")) {
         valores = ["Nanica", "Baixa", "Média", "Alta", "Gigante"];
     }
-    else if (objeto.className.indexOf("mmCorpo") != -1) {
+    else if ($(objeto).hasClass("mmCorpo")) {
         valores = ["Raquítico", "Magro", "Normal", "Gordo", "Obeso"];
     }
 

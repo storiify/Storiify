@@ -1,112 +1,105 @@
 ﻿$(document).ready(function () {
-
-    var nomeIncluir = "Raca";
-    var qtdMaxima = 5;
-    atualizarStatus()
-
     //Botão Adicionar
-    $('.incluirAdicionar').click(function () {
+    $('.inputIncluir').on("click", "button.incluirAdicionar", function () { InputIncluir.Adicionar($(this)) });
+    //Botão Remover
+    $('.inputIncluir').on("click", "button.incluirRemover", function () { InputIncluir.Remover($(this), "removerUltimo") });
+    $('.inputIncluir').on("click", ".incluirRemoverIndividual", function () { InputIncluir.Remover($(this), "removerClicado") });
 
-        var wrapperAlvo = document.getElementById('incluirWrapper');
+    $('.incluirRemover').attr('disabled', true);
+
+});
+
+InputIncluir = {
+    qtdMaxima: 5,
+
+    Adicionar: function (btnOrigem) {
+
+        var nomeIncluir = InputIncluir.DefinirNome(btnOrigem);
+
+        alert(nomeIncluir);
 
         var qtdAtual = $('.Incluir' + nomeIncluir).length,
             idASerAtribuido = new Number(qtdAtual + 1),
-            novoElemento = GerarInstancia(idASerAtribuido, nomeIncluir);
+            novoElemento = InputIncluir.Gerar(idASerAtribuido, nomeIncluir);
 
-        wrapperAlvo.insertAdjacentHTML('beforeend', novoElemento);
+        $(btnOrigem).parent().parent().siblings('.incluirWrapper').append(novoElemento);
 
-        //Ativa o MinMax criado
-        trazerMinMax(document.getElementById('minMaxIncluir' + idASerAtribuido));
+        //Ativa o MinMax criado - dá pra melhorar
+        trazerMinMax(document.getElementById('minMaxIncluir' + idASerAtribuido + nomeIncluir));
 
-        //Ativa botão de remover
-        $('.incluirRemover').attr('disabled', false);
-        //Desativa botão de adicionar
-        if (idASerAtribuido == qtdMaxima) {
-            $('.incluirAdicionar').attr('disabled', true).prop('value', "Limite!");
-        }
-        atualizarStatus()
+        InputIncluir.Atualizar()
+    },
 
-        //Colocar as funções nos controles criados
-        $('.incluirRemoverIndividual').click(function () {
-            $(this).parent().parent().remove();
-        });
-    });
+    Remover: function (btnOrigem, metodo) {
+        var nomeIncluir = InputIncluir.DefinirNome(btnOrigem);
 
-    //Botão Remover
-    $('.incluirRemover').click(function () {
-        //Caixa de dialogo de confirmação
         if (confirm("Deseja mesmo excluir?")) {
-            var num = $('.Incluir' + nomeIncluir).length;
-            $('#inputIncluir' + num).slideUp('slow', function () {
-                $(this).remove();
-                //Ativa botão de adicionar
-                $('.incluirAdicionar').attr('disabled', false).prop('value', "Adicionar");
-                //Desativa botão de remover
-                if ((num - 1) == 0) {
-                    $('.incluirRemover').attr('disabled', true);
-                }
+            if (metodo == "removerUltimo") {
+                $('.Incluir' + nomeIncluir + ':last').remove();
+            } else {
+                btnOrigem.parent().parent().remove();
+            }
 
-                atualizarStatus()
-            });
+            InputIncluir.Atualizar();
         }
-        return false;
-    });
+    },
 
-    //Botão remover Individual
-    $('.incluirRemoverIndividual').click(function () {
-        $(this).parent().parent().remove();
-        atualizarStatus();
-    });
+    Atualizar: function () {
+        //Contagem
+        qtdAtual = $('.Incluir' + nomeIncluir).length;
+        $('.icl' + nomeIncluir).find('.incluirStatus').val(qtdAtual);
 
-    //Atualiza incluirStatus
-    function atualizarStatus() {
-        $('.incluirStatus').val($('.Incluir' + nomeIncluir).length);
-    }
+        if (qtdAtual == InputIncluir.qtdMaxima) {
+            $('.icl' + nomeIncluir).find('.incluirAdicionar').attr('disabled', true);
+        }
+        else if (qtdAtual == 0) {
+            $('.icl' + nomeIncluir).find('.incluirRemover').attr('disabled', true);
+        }
+        else {
+            $('.icl' + nomeIncluir).find('.incluirRemover').attr('disabled', false);
+            $('.icl' + nomeIncluir).find('.incluirAdicionar').attr('disabled', false);
+        }
+    },
 
-    // Enable the "add" button
-    $('.incluirAdicionar').attr('disabled', false);
-    // Disable the "remove" button
-    $('.incluirRemover').attr('disabled', true);
-
-    function GerarInstancia(id, nomeDoIncluir) {
+    Gerar: function (id, nomeIncluir) {
         //Abrindo instância
         var moldeInputIncluirAbertura = [
-            "<div id='inputIncluir" + id + "' class='form-group col-md-12 Incluir" + nomeDoIncluir + "' style='display:block;'>"
+            "<div id='inputIncluir" + id + "' class='form-group col-md-12 Incluir" + nomeIncluir + "' style='display:block;'>"
         ].join("\n");
         //Molde Texto
         var moldeTexto = [
             "<div class='col-sm-11 inputWrapper'>",
-            "<label for='txtIncluir" + id + "' class=col-sm-2 control-label'>Nome</label>",
-            "<div class='inputCorpo col-sm-10'>",
-            "<div class='col-sm-12'>",
-            "<input type='text' class='form-control' id='txtIncluir" + id + "' placeholder='Digite o atributo aqui' />",
-            "</div>",
-            "</div>",
+            "   <label for='txtIncluir" + id + "' class=col-sm-2 control-label'>Nome</label>",
+            "   <div class='inputCorpo col-sm-10'>",
+            "       <div class='col-sm-12'>",
+            "           <input type='text' class='form-control' id='txtIncluir" + id + "' placeholder='Digite o atributo aqui' />",
+            "       </div>",
+            "   </div>",
             "</div>",
             "<div class='col-sm-1'>",
-            "<span class='button-icon has-bg incluirRemoverIndividual'><i class='fa fa-times'></i></span>",
+            "   <span class='button-icon has-bg incluirRemoverIndividual'><i class='fa fa-times'></i></span>",
             "</div>"
         ].join("\n");
         //Molde TextoArea
         var moldeTextoArea = [
             "<div class='col-sm-11 inputWrapper'>",
-            "<label for='txtAreaIncluir" + id + "' class='col-sm-2 control-label'>Descrição</label>",
-            "<div class='inputCorpo col-sm-10'>",
-            "<div class='col-sm-12'>",
-            "<textarea id='txtAreaIncluir" + id + "' placeholder='Campo de texto autoexpansível' title='Digite seu texto aqui'></textarea>",
-            "</div>",
-            "</div>",
+            "   <label for='txtAreaIncluir" + id + "' class='col-sm-2 control-label'>Descrição</label>",
+            "   <div class='inputCorpo col-sm-10'>",
+            "       <div class='col-sm-12'>",
+            "           <textarea id='txtAreaIncluir" + id + "' placeholder='Campo de texto autoexpansível' title='Digite seu texto aqui'></textarea>",
+            "       </div>",
+            "   </div>",
             "</div>"
         ].join("\n");
         //Molde MinMax
         var moldeMinMax = [
             "<div class='col-sm-11 inputWrapper'>",
-            "<label for='minMaxIncluir" + id + "' class='col-sm-2 control-label'>Hostilidade</label>",
-            "<div class='inputCorpo col-sm-10'>",
-            "<div class='col-sm-12'>",
-            "<div id='minMaxIncluir" + id + "' class='minMaxInput mmHosti'></div>",
-            "</div>",
-            "</div>",
+            "   <label for='minMaxIncluir" + id + "' class='col-sm-2 control-label'>Hostilidade</label>",
+            "   <div class='inputCorpo col-sm-10'>",
+            "       <div class='col-sm-12'>",
+            "           <div id='minMaxIncluir" + id + nomeIncluir +"' class='minMaxInput mmHosti'></div>",
+            "       </div>",
+            "   </div>",
             "</div>"
         ].join("\n");
 
@@ -116,5 +109,19 @@
         ].join("\n");
 
         return [moldeInputIncluirAbertura, moldeTexto, moldeTextoArea, moldeMinMax, moldeInputIncluirFechamento].join("\n");
+    },
+
+    DefinirNome: function (btnOrigem) {
+        if (btnOrigem.parent().parent().parent().hasClass("icl-raca")) {
+            nomeIncluir = "-raca";
+        }
+        if (btnOrigem.parent().parent().parent().hasClass("icl-criatura")) {
+            nomeIncluir = "-criatura";
+        }
+        if (btnOrigem.parent().parent().parent().hasClass("icl-bioma")) {
+            nomeIncluir = "-bioma";
+        }
+
+        return nomeIncluir;
     }
-});
+}
