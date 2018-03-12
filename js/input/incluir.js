@@ -16,8 +16,6 @@ InputIncluir = {
 
         var nomeIncluir = InputIncluir.DefinirNome(btnOrigem);
 
-        alert(nomeIncluir);
-
         var qtdAtual = $('.Incluir' + nomeIncluir).length,
             idASerAtribuido = new Number(qtdAtual + 1),
             novoElemento = InputIncluir.Gerar(idASerAtribuido, nomeIncluir);
