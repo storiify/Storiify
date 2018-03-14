@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        
+
         <title>Storiify - Torne suas histórias reais</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -17,10 +17,14 @@
         <link href="css/styles.css" type="text/css" rel="stylesheet" />
         <!--CSS para editarmos-->
         <link href="css/geral.css" rel="stylesheet" />
-        <!--Nestable Lists-->
-        <link href="plugins/form-nestable/jquery.nestable.css" type="text/css" rel="stylesheet" />
         <!--ICheck-->
         <link href="plugins/icheck-1.x/skins/flat/_all.css" rel="stylesheet" />
+        <!--IONRangeSlider-->
+        <link href="plugins/Ion.RangeSlider/css/ion.rangeSlider.css" rel="stylesheet" />
+        <link href="plugins/Ion.RangeSlider/css/ion.rangeSlider.skinNice.css" rel="stylesheet" />
+        <!--Select2-->
+        <link href="plugins/select2/css/select2.css" rel="stylesheet" />
+
     </head>
     <body>
         <!--CABEÇALHO ORIGINAL-->
@@ -73,21 +77,21 @@
                             <li class="">
                                 <a href="#">
                                     <img class="msg-avatar" src="imagens/avatares/avatar_09.png" alt="avatar">
-                                        <div class="msg-content">
-                                            <span class="name">Steven Shipe</span>
-                                            <span class="msg">Nonummy nibh epismod lorem ipsum</span>
-                                        </div>
-                                        <span class="msg-time">30s</span>
+                                    <div class="msg-content">
+                                        <span class="name">Steven Shipe</span>
+                                        <span class="msg">Nonummy nibh epismod lorem ipsum</span>
+                                    </div>
+                                    <span class="msg-time">30s</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <img class="msg-avatar" src="imagens/avatares/avatar_01.png" alt="avatar">
-                                        <div class="msg-content">
-                                            <span class="name">Roxann Hollingworth <i class="fa fa-paperclip attachment"></i></span>
-                                            <span class="msg">Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
-                                        </div>
-                                        <span class="msg-time">5m</span>
+                                    <div class="msg-content">
+                                        <span class="name">Roxann Hollingworth <i class="fa fa-paperclip attachment"></i></span>
+                                        <span class="msg">Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+                                    </div>
+                                    <span class="msg-time">5m</span>
                                 </a>
                             </li>
                         </ul>
@@ -107,10 +111,10 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="">
 
-                                <span class="input-group-btn">
+                            <span class="input-group-btn">
 
-                                    <a class="btn btn-primary" href="#">Search</a>
-                                </span>
+                                <a class="btn btn-primary" href="#">Search</a>
+                            </span>
                         </div>
                     </div>
                 </li>
@@ -174,7 +178,7 @@
                                         <li>
                                             <a href="javascript:;"><i class="fa fa-globe"></i><span>Mundos</span><span class="badge badge-dark">2</span></a>
                                             <ul class="acc-menu">
-                                                <li><a href="cadastrarMundo.html">Criar novo Mundo &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                                <li><a href='?categoria=mundo&acao=cadastrar'>Criar novo Mundo &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
                                                 <li><a href="javascript:;">Listar Mundos<span class="badge badge-dark">2</span></a></li>
                                             </ul>
                                         </li>
@@ -209,11 +213,13 @@
                 <!--CORPO DA PÁGINA-->
                 <div class="static-content-wrapper">
                     <div class="static-content">
-                        
+
                         <!-- CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS -->
                         <div class="conteudo">
-                            <? 
-                            if(isset($file_dir) && $file_dir!='none'){
+                            <?php
+                            consoleLog("chegeueeeisidi");
+
+                            if (isset($file_dir) && $file_dir != 'none') {
                                 include_once $file_dir;
                             }
                             ?>
@@ -244,10 +250,19 @@
         <script src="js/jqueryui-1.9.2.min.js"></script>
         <!-- Load Bootstrap -->
         <script src="js/bootstrap.min.js"></script>
-        <!--Javascript para editarmos-->
+        <!--Controlador da Rolagem de Texto-->
         <script src="js/marquee.js"></script>
-        <!--Listas aninhadas-->
-        <script src="plugins/form-nestable/jquery.nestable.min.js"></script>
+
+        <!--Seção dos Inputs-->
+        <!--MinMax - Tem que vir antes do incluir -->
+        <script src="js/input/minMax.js"></script>
+        <!--CheckBox-->
+        <script src="js/input/checkBox.js"></script>
+        <!--Imagem-->
+        <script src="js/input/imagem.js"></script>
+        <!--Incluir-->
+        <script src="js/input/incluir.js"></script>
+        <!--/Seção dos Inputs-->
         <!--Text Scroll Plugin-->
         <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>
         <!--TextArea autosize-->
@@ -258,8 +273,9 @@
         <script src="plugins/Ion.RangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
         <!--Verificar o que tem dentro (faz o toggle do menu lateral)-->
         <script src="js/application.js"></script>
+        <!--Selector2-->
+        <script src="plugins/select2/js/select2.js"></script>
         <!-- End loading site level scripts -->
-
         <!-- Load page level scripts-->
         <!-- End loading page level scripts-->
     </body>

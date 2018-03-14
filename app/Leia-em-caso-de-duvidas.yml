@@ -1,11 +1,11 @@
-# TUDO dentro da pasta app é arquivo logico feito na base MVC
+# TUDO dentro da pasta app é arquivo lógico feito na base MVC
 #
-# Para criar CATEGORIAS copie e use a "exemplo" como base logica para a sua, lembrando sempre de mudar nome
+# Para criar CATEGORIAS copie e use a "exemplo" como base lógica para a sua, lembrando sempre de mudar nome
 # mas sem mudar a sintaxe.
 # 
-# Caso queria adicionar mini funções para usar em qualquer lugar do sistema, vá em autoload > helper.php e fique
-# a vontade para criar mais funções para facilitar o desenvolvimento, mas lembre-se de não apagar uma ja existente
-# para não correr o risco de estragar alguma funcionalidade ja em produção.
+# Caso queira adicionar mini funções para usar em qualquer lugar do sistema, vá em autoload > helper.php e fique
+# a vontade para criar mais funções para facilitar o desenvolvimento, mas lembre-se de não apagar uma já existente
+# para não correr o risco de estragar alguma funcionalidade já em produção.
 #
 # Configurações de sintaxe:
 
@@ -16,7 +16,7 @@ Nome_Modelo: Modelo{NOME_CATEGORIA}
 
 Comentario_Metodo: 
     /*
-    * Comentario exemplo (Comentar todas as funções sempre que possivel!)
+    * Comentário exemplo (Comentar todas as funções sempre que possivel!)
     *
     * @param descrição
     * @var $nomevariavel descrição
@@ -31,5 +31,5 @@ Metodos_Padroes_Obrigatorios:
     - atualizar
     - listar
 
-# Não crie arquivos na pasta "classes" pois la ficaram as bases das outras classes do sistema como Controles e Modelos
-# Caso tenha mais alguma duvida é so perguntar no grupo que alguem vai te ajudar.
+# Não crie arquivos na pasta "classes" pois lá ficarão as bases das outras classes do sistema como Controles e Modelos
+# Caso tenha mais alguma dúvida é so perguntar no grupo que alguém vai te ajudar.

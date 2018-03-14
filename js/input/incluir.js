@@ -67,7 +67,7 @@ InputIncluir = {
         //Molde Texto
         var moldeTexto = [
             "<div class='col-sm-11 inputWrapper'>",
-            "   <label for='txtIncluir" + id + "' class='col-sm-2 control-label'>Nome</label>",
+            "   <label for='txtIncluir" + id + "' class=col-sm-2 control-label'>Nome</label>",
             "   <div class='inputCorpo col-sm-10'>",
             "       <div class='col-sm-12'>",
             "           <input type='text' class='form-control' id='txtIncluir" + id + "' placeholder='Digite o atributo aqui' />",
@@ -115,6 +115,12 @@ InputIncluir = {
         }
         if (btnOrigem.parent().parent().parent().hasClass("icl-criatura")) {
             nomeIncluir = "-criatura";
+        }
+        if (btnOrigem.parent().parent().parent().hasClass("icl-flora")) {
+            nomeIncluir = "-flora";
+        }
+        if (btnOrigem.parent().parent().parent().hasClass("icl-recurso")) {
+            nomeIncluir = "-recurso";
         }
         if (btnOrigem.parent().parent().parent().hasClass("icl-bioma")) {
             nomeIncluir = "-bioma";

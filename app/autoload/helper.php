@@ -1,12 +1,14 @@
 <?php
 
-/* 
- * Contem funções para facilitar a vida (Usavel eu qualquer parte do codigo!)
+/*
+ * Contém funções para facilitar a vida (Usável em qualquer parte do código!)
  * 
  */
 
 function proccessRequest() {
-    $arrayTratado = ['categoria'=>'login','acao'=>'logar','parametros'=>[]];    
+    $arrayTratado = ['categoria' => 'login', 'acao' => 'logar', 'parametros' => []];
+    //$arrayTratado = ['categoria' => 'mundo', 'acao' => 'cadastrar', 'parametros' => []];
+
     foreach ($_GET as $key => $val) {
         switch ($key) {
             case 'categoria':
@@ -19,7 +21,6 @@ function proccessRequest() {
                 $arrayTratado['parametros'][$key] = $val;
                 break;
         }
-    }    
+    }
     return (object) $arrayTratado;
 }
-
