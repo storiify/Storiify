@@ -85,7 +85,9 @@ class Controlador{
         return $this->sessao->getSessao();
     }
     
-    public function getDicas(){return $this->dicas;}
+    public function getDicas(){
+        return $this->dicas;
+    }
     
     private function controladorCategoria($cat){
         $tempControlador = "Controlador".ucfirst(strtolower($cat));
