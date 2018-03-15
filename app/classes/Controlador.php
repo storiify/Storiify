@@ -88,17 +88,6 @@ class Controlador {
     public function getSessao() {
         return $this->sessao->getSessao();
     }
-<<<<<<< HEAD
-    
-    public function getDicas(){
-        return $this->dicas;
-    }
-    
-    private function controladorCategoria($cat){
-        $tempControlador = "Controlador".ucfirst(strtolower($cat));
-        if(!class_exists($tempControlador)){
-            die('Categoria "'.$cat.'" não encontrada no sistema!');
-=======
 
     public function getDicas() {
         return $this->dicas;
@@ -108,7 +97,6 @@ class Controlador {
         $tempControlador = "Controlador" . ucfirst(strtolower($cat));
         if (!class_exists($tempControlador)) {
             die('Categoria "' . $cat . '" não encontrada no sistema!');
->>>>>>> master
         }
         $controlador = new $tempControlador($cat);
         return $controlador;
