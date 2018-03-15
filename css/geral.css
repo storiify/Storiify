@@ -37,3 +37,7 @@ a.delForm {
 .input-group{
     margin-bottom:10px;
 }
+
+.select2{
+    width: 100% !important;
+}

@@ -125,7 +125,15 @@ InputIncluir = {
         if (btnOrigem.parent().parent().parent().hasClass("icl-bioma")) {
             nomeIncluir = "-bioma";
         }
-
+        if (btnOrigem.parent().parent().parent().hasClass("icl-religiao")) {
+            nomeIncluir = "-religiao";
+        }
+        if (btnOrigem.parent().parent().parent().hasClass("icl-lingua")) {
+            nomeIncluir = "-lingua";
+        }
+        if (btnOrigem.parent().parent().parent().hasClass("icl-mito")) {
+            nomeIncluir = "-mito";
+        }
         return nomeIncluir;
     }
 }

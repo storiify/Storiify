@@ -1,4 +1,3 @@
-
 <html>
     <head>
         <meta charset="utf-8" />
@@ -217,7 +216,16 @@
                         <!-- CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS -->
                         <div class="conteudo">
                             <?php
-                            consoleLog("chegeueeeisidi");
+                            
+                            //TESTE CONEXÃO BANCO DE DADOS
+                            $bd = ConexaoBd::getInstance();
+                            $req = $bd->query('SELECT * FROM usuarios');
+
+                            foreach ($req->fetchAll() as $usuario) {
+                                consoleLog($usuario['nome']);
+                                echo 'Id: '.$usuario['id']. ' / '. 'Nome: '.$usuario['nome'].' / Email: '.$usuario['email'] . '<br>';
+                            }
+                            //FIM DO TESTE
 
                             if (isset($file_dir) && $file_dir != 'none') {
                                 include_once $file_dir;
