@@ -19,6 +19,9 @@ function trazerMinMax(objeto) {
     else if ($(objeto).hasClass("mmCorpo")) {
         valores = ["Raquítico", "Magro", "Normal", "Gordo", "Obeso"];
     }
+    else if ($(objeto).hasClass("mmDesiSocial")) {
+        valores = ["Muito Desigual", "Pouco Desigual", "Sem Desigualdades"]; //Bugado na aba de Mundo->Economia
+    }
 
     //Cria o MinMax no objeto atual, não modificar
     $(objeto).ionRangeSlider({
