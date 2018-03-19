@@ -9,7 +9,7 @@ define("PATH_CLASS", PATH."app/classes/");
 define("PATH_CAT", PATH."app/categorias/");
 define("PATH_VISOES_PUBLICAS", PATH.'visoes_publicas/');
 
-define("VISAO_BASE","base.php");
+define("VISAO_BASE","layout.php");
 
 function consoleLog($msg) {
     if(DEBUG){
