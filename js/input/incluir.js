@@ -25,7 +25,7 @@ InputIncluir = {
         //Ativa o MinMax criado - dá pra melhorar
         trazerMinMax(document.getElementById('minMaxIncluir' + idASerAtribuido + nomeIncluir));
 
-        InputIncluir.Atualizar()
+        InputIncluir.Atualizar();
     },
 
     Remover: function (btnOrigem, metodo) {

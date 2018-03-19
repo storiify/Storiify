@@ -9,9 +9,13 @@
     public static function getInstance() {
       if (!isset(self::$instance)) {
         $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-        self::$instance = new PDO('mysql:host=localhost;dbname=storiify', 'root', '', $pdo_options);
+        self::$instance = new PDO('mysql:host=0.tcp.ngrok.io:17013;dbname=storiify', 'storiify', 'strfg1pi3senac', $pdo_options);
       }
       return self::$instance;
     }
   }
 
+//$servername  = "0.tcp.ngrok.io:17013";
+//       $dbname      = "storiify";
+//       $username    = "storiify";
+//       $password    = "strfg1pi3senac";

@@ -2,7 +2,7 @@
 
     //Tratamento de todos os inputs do tipo MinMax 
     $(".minMaxInput").each(function () {
-        trazerMinMax(this)
+        trazerMinMax(this);
     });
 });
 
@@ -21,6 +21,18 @@ function trazerMinMax(objeto) {
     }
     else if ($(objeto).hasClass("mmDesiSocial")) {
         valores = ["Muito Desigual", "Pouco Desigual", "Sem Desigualdades"]; //Bugado na aba de Mundo->Economia
+    }
+    else if ($(objeto).hasClass("mmSatfPop")) {
+        valores = ["Muito Insatisfeita","Insatisfeita", "Neutra", "Satisfeita", "Muito Satisfeita"];
+    }
+    else if ($(objeto).hasClass("mmNvlTec")) {
+        valores = ["Rudimentar","Inferior", "Mediana", "Desenvolvida", "Avançada"];
+    }
+    else if ($(objeto).hasClass("mmDpedTec")) {
+        valores = ["Totalmente Dependentes","Elevada", "Neutra", "Pouca", "Totalmente Independentes"];
+    }
+    else if ($(objeto).hasClass("mmAces")) {
+        valores = ["(Quase)Nenhum","Raro", "Neutro", "Comum", "Maioria dos Habitantes"];
     }
 
     //Cria o MinMax no objeto atual, não modificar
