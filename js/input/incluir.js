@@ -134,6 +134,27 @@ InputIncluir = {
         if (btnOrigem.parent().parent().parent().hasClass("icl-mito")) {
             nomeIncluir = "-mito";
         }
+      		else if (btnOrigem.parent().parent().parent().hasClass("icl-classe")) {
+            nomeIncluir = "-classe";
+        }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-profissao")) {
+                  nomeIncluir = "-profissao";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-habFisica")) {
+                  nomeIncluir = "-habFisica";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-habMagica")) {
+                  nomeIncluir = "-habMagica";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-objParalelos")) {
+                  nomeIncluir = "-objParalelos";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-lembBoa")) {
+                  nomeIncluir = "-lembBoa";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-lembRuim")) {
+                  nomeIncluir = "-lembRuim";
+              }
         return nomeIncluir;
     }
 }
