@@ -16,11 +16,14 @@ function trazerMinMax(objeto) {
     else if ($(objeto).hasClass("mmAltura")) {
         valores = ["Nanica", "Baixa", "Média", "Alta", "Gigante"];
     }
-    else if ($(objeto).hasClass("mmCorpo")) {
+    else if ($(objeto).hasClass("mmPeso")) {
         valores = ["Raquítico", "Magro", "Normal", "Gordo", "Obeso"];
     }
-    else if ($(objeto).hasClass("mmDesiSocial")) {
-        valores = ["Muito Desigual", "Pouco Desigual", "Sem Desigualdades"]; //Bugado na aba de Mundo->Economia
+	else if ($(objeto).hasClass("mmPorte")) {
+        valores = ["Fraco", "Médio", "Forte"];
+    }
+	else if ($(objeto).hasClass("mmAlinhamento")) {
+        valores = ["Ruim", "Neutro", "Bom"];
     }
 
     //Cria o MinMax no objeto atual, não modificar

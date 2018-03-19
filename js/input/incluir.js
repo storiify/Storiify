@@ -113,27 +113,40 @@ InputIncluir = {
         if (btnOrigem.parent().parent().parent().hasClass("icl-raca")) {
             nomeIncluir = "-raca";
         }
-        if (btnOrigem.parent().parent().parent().hasClass("icl-criatura")) {
+        else if (btnOrigem.parent().parent().parent().hasClass("icl-criatura")) {
             nomeIncluir = "-criatura";
         }
-        if (btnOrigem.parent().parent().parent().hasClass("icl-flora")) {
+        else if (btnOrigem.parent().parent().parent().hasClass("icl-flora")) {
             nomeIncluir = "-flora";
         }
-        if (btnOrigem.parent().parent().parent().hasClass("icl-recurso")) {
+        else if (btnOrigem.parent().parent().parent().hasClass("icl-recurso")) {
             nomeIncluir = "-recurso";
         }
-        if (btnOrigem.parent().parent().parent().hasClass("icl-bioma")) {
+        else if (btnOrigem.parent().parent().parent().hasClass("icl-bioma")) {
             nomeIncluir = "-bioma";
         }
-        if (btnOrigem.parent().parent().parent().hasClass("icl-religiao")) {
-            nomeIncluir = "-religiao";
+		else if (btnOrigem.parent().parent().parent().hasClass("icl-classe")) {
+            nomeIncluir = "-classe";
         }
-        if (btnOrigem.parent().parent().parent().hasClass("icl-lingua")) {
-            nomeIncluir = "-lingua";
+		else if (btnOrigem.parent().parent().parent().hasClass("icl-profissao")) {
+            nomeIncluir = "-profissao";
         }
-        if (btnOrigem.parent().parent().parent().hasClass("icl-mito")) {
-            nomeIncluir = "-mito";
+		else if (btnOrigem.parent().parent().parent().hasClass("icl-habFisica")) {
+            nomeIncluir = "-habFisica";
         }
+		else if (btnOrigem.parent().parent().parent().hasClass("icl-habMagica")) {
+            nomeIncluir = "-habMagica";
+        }
+		else if (btnOrigem.parent().parent().parent().hasClass("icl-objParalelos")) {
+            nomeIncluir = "-objParalelos";
+        }
+		else if (btnOrigem.parent().parent().parent().hasClass("icl-lembBoa")) {
+            nomeIncluir = "-lembBoa";
+        }
+		else if (btnOrigem.parent().parent().parent().hasClass("icl-lembRuim")) {
+            nomeIncluir = "-lembRuim";
+        }
+
         return nomeIncluir;
     }
 }
