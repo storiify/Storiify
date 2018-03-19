@@ -25,7 +25,7 @@ InputIncluir = {
         //Ativa o MinMax criado - dá pra melhorar
         trazerMinMax(document.getElementById('minMaxIncluir' + idASerAtribuido + nomeIncluir));
 
-        InputIncluir.Atualizar()
+        InputIncluir.Atualizar();
     },
 
     Remover: function (btnOrigem, metodo) {
@@ -113,40 +113,48 @@ InputIncluir = {
         if (btnOrigem.parent().parent().parent().hasClass("icl-raca")) {
             nomeIncluir = "-raca";
         }
-        else if (btnOrigem.parent().parent().parent().hasClass("icl-criatura")) {
+        if (btnOrigem.parent().parent().parent().hasClass("icl-criatura")) {
             nomeIncluir = "-criatura";
         }
-        else if (btnOrigem.parent().parent().parent().hasClass("icl-flora")) {
+        if (btnOrigem.parent().parent().parent().hasClass("icl-flora")) {
             nomeIncluir = "-flora";
         }
-        else if (btnOrigem.parent().parent().parent().hasClass("icl-recurso")) {
+        if (btnOrigem.parent().parent().parent().hasClass("icl-recurso")) {
             nomeIncluir = "-recurso";
         }
-        else if (btnOrigem.parent().parent().parent().hasClass("icl-bioma")) {
+        if (btnOrigem.parent().parent().parent().hasClass("icl-bioma")) {
             nomeIncluir = "-bioma";
         }
-		else if (btnOrigem.parent().parent().parent().hasClass("icl-classe")) {
+        if (btnOrigem.parent().parent().parent().hasClass("icl-religiao")) {
+            nomeIncluir = "-religiao";
+        }
+        if (btnOrigem.parent().parent().parent().hasClass("icl-lingua")) {
+            nomeIncluir = "-lingua";
+        }
+        if (btnOrigem.parent().parent().parent().hasClass("icl-mito")) {
+            nomeIncluir = "-mito";
+        }
+      		else if (btnOrigem.parent().parent().parent().hasClass("icl-classe")) {
             nomeIncluir = "-classe";
         }
-		else if (btnOrigem.parent().parent().parent().hasClass("icl-profissao")) {
-            nomeIncluir = "-profissao";
-        }
-		else if (btnOrigem.parent().parent().parent().hasClass("icl-habFisica")) {
-            nomeIncluir = "-habFisica";
-        }
-		else if (btnOrigem.parent().parent().parent().hasClass("icl-habMagica")) {
-            nomeIncluir = "-habMagica";
-        }
-		else if (btnOrigem.parent().parent().parent().hasClass("icl-objParalelos")) {
-            nomeIncluir = "-objParalelos";
-        }
-		else if (btnOrigem.parent().parent().parent().hasClass("icl-lembBoa")) {
-            nomeIncluir = "-lembBoa";
-        }
-		else if (btnOrigem.parent().parent().parent().hasClass("icl-lembRuim")) {
-            nomeIncluir = "-lembRuim";
-        }
-
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-profissao")) {
+                  nomeIncluir = "-profissao";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-habFisica")) {
+                  nomeIncluir = "-habFisica";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-habMagica")) {
+                  nomeIncluir = "-habMagica";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-objParalelos")) {
+                  nomeIncluir = "-objParalelos";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-lembBoa")) {
+                  nomeIncluir = "-lembBoa";
+              }
+		      else if (btnOrigem.parent().parent().parent().hasClass("icl-lembRuim")) {
+                  nomeIncluir = "-lembRuim";
+              }
         return nomeIncluir;
     }
 }

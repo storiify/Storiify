@@ -1,5 +1,22 @@
+<?php
+//TESTE CONEXÃO BANCO DE DADOS
+$bd = ConexaoBd::getInstance();
+
+//$bd->query("insert into tb_usuario values ('1', 'Victor', 'Miranda Fernandes', 'victorfernandes92@gmail.com', '123456', 'VicLindo', '1992-09-12', '0')");
+$req = $bd->query('SELECT * FROM tb_usuario');
+
+foreach ($req->fetchAll() as $usuario) {
+    consoleLog($usuario['nome']);
+    echo 'Id: ' . $usuario['idusuario'] . ' / ' . 'Nome: ' . $usuario['nome'] . ' ' . $usuario['sobrenome'] . ' / Email: '
+    . $usuario['email'] . '/ Senha: ' . $usuario['senha'] . '/ Apelido: ' . $usuario['apelido'] . '/Data de Nascimento: '
+    . $usuario['datadenascimento'] . '/Conta Verificada: ' . $usuario['contaverificada'] . '<br>';
+}
+//FIM DO TESTE
+?>
+
+<div class="input-incr incr-raca">asdf</div>
 <!--CORPO DE VERDADE-->
-<div class="page-content col-md-9">
+<div class="page-content">
     <div class="page-heading mb0">
         <div class="marquee"><?= $this->getDicas() ?></div>
         <h1>Mundos</h1>
@@ -228,7 +245,7 @@
                                         <label for="sel1" class="col-sm-2 control-label">Personagens</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <select class="form-control select2" multiple="multiple" id="sellPersonagens">
+                                                <select class="form-control select2" multiple="multiple" id="sellPersonagens1">
                                                     <option >Personagem1</option>
                                                     <option >Personagem2</option>
                                                     <option selected="selected">Personagem3</option>
@@ -762,6 +779,7 @@
                                                     <option >Democracia</option>
                                                     <option >Ditadura</option>
                                                     <option selected="selected">Monarquia Parlamentar</option>
+                                                    <option >Monarquia</option>
                                                 </select>
                                             </div>
                                             <!--Não tem detalhes-->
@@ -778,7 +796,7 @@
                                         <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="sellGovernante" class="col-sm-2 control-label">Governante</label>
@@ -805,9 +823,142 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Leis</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Punições</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">História de Governo</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Relações Exteriores</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="minMaxInput1" class="col-sm-2 control-label">Satisfação da População</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <div id="minMaxInput1" class="minMaxInput mmSatfPop"></div>
+                                            </div>
+                                            <!--Detalhes-->
+                                            <div class="col-sm-12">
+                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Organizações Antigoverno</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Gerras Passadas/Atuais/Futuras</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Classes/Casta</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -819,7 +970,119 @@
                         <div class="tab-pane active" id="bordered-rowEnredo">
                             <form class="form-horizontal row-border">
 
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="minMaxInput1" class="col-sm-2 control-label">Nível</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <div id="minMaxInput1" class="minMaxInput mmNvlTec"></div>
+                                            </div>
+                                            <!--Detalhes-->
+                                            <div class="col-sm-12">
+                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
 
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="minMaxInput1" class="col-sm-2 control-label">Dependência</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <div id="minMaxInput1" class="minMaxInput mmDpedTec"></div>
+                                            </div>
+                                            <!--Detalhes-->
+                                            <div class="col-sm-12">
+                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="minMaxInput1" class="col-sm-2 control-label">Acesso</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <div id="minMaxInput1" class="minMaxInput mmAces"></div>
+                                            </div>
+                                            <!--Detalhes-->
+                                            <div class="col-sm-12">
+                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Método de Comunicação</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Método de Transporte</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Ciência e Descobertas</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
 
                             </form>
                         </div>
@@ -835,7 +1098,129 @@
                         <div class="tab-pane active" id="bordered-rowEnredo">
                             <form class="form-horizontal row-border">
 
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label class="col-sm-2 control-label">Tipos</label>
+                                        <div class="col-sm-10">
+                                            <!--Parte que Importa-->
+                                            <div class="inputIncluir icl-raca">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirRemover" type="button">Remover</button>
+                                                    </span>
+                                                    <input value="0" class="form-control incluirStatus" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirAdicionar" type="button">Adicionar</button>
+                                                    </span>
+                                                </div>
+                                                <div class="incluirWrapper">
+                                                    <!--Aqui entrarão as instâncias-->
+                                                </div>
+                                            </div>
+                                            <!--/Parte que Importa-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
 
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="minMaxInput1" class="col-sm-2 control-label">Acesso</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <div id="minMaxInput1" class="minMaxInput mmAces"></div>
+                                            </div>
+                                            <!--Detalhes-->
+                                            <div class="col-sm-12">
+                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Efeitos no Mundo</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Efeitos na Sociedade</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Efeitos na Tecnologia</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="sel1" class="col-sm-2 control-label">Objetos</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <select class="form-control select2" multiple="multiple" id="sellPersonagens">
+                                                    <option >Objeto1</option>
+                                                    <option >Objeto2</option>
+                                                    <option selected="selected">Objeto3</option>
+                                                </select>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                            <div class="col-sm-12">
+                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
 
                             </form>
                         </div>
@@ -851,7 +1236,45 @@
                         <div class="tab-pane active" id="bordered-rowEnredo">
                             <form class="form-horizontal row-border">
 
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtArea" class="col-sm-2 control-label">Texto</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                            </div>
+                                            <!--Não tem detalhes-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
 
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <img src="imagens/no_photo.png" class="img-circle imgClicavel" style="display:block;margin: 0 auto; width:100px;" />
+                                                <a class="imgReset"><i class="fa fa-ban"></i></a>
+                                            </div>
+                                            <!--Detalhes-->
+                                            <div class="col-sm-12">
+                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
 
                             </form>
                         </div>
