@@ -33,10 +33,8 @@
         <!--CABEÇALHO ORIGINAL-->
         <nav class="navbar navbar-fixed-top clearfix navbar-inverse">
             <div class="container-fluid">
-                <div class="navbar-header">
-                                        <a class="menu-esquerdo-toggle" title="Abrir Menu Lateral">Link</a>
-
-                    <a class="navbar-brand" href="#">WebSiteName</a>
+                <div class="nav navbar-nav navbar-left">
+                    <li><a class="menu-esquerdo-toggle" title="Abrir Menu Lateral">Link</a></li>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class=""><a href="#">Home</a></li>
@@ -49,13 +47,14 @@
                 </ul>
             </div>
         </nav>
-        <div class="menu-esquerdo">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+        <div class="widget stay-on-collapse">
+            <div class="menu-esquerdo">
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+            </div>
         </div>
-
         <!--MENU LATERAL ESQUERDO/-->
         <!--CORPO DA PÁGINA-->
         <div class="static-content-wrapper">
