@@ -1078,40 +1078,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="tab-pane" id="abaInspiracoes">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="tab-pane active" id="bordered-rowInspiracoes">
-                            <form class="form-horizontal row-border">
-                                <div class="form-group">
-                                    <div class="col-sm-10 inputWrapper">
-                                        <label for="txtinsiracoes" class="col-sm-2 control-label">Inspirações</label>
-                                        <div class="inputCorpo col-sm-10">
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="txtinspiracoes" placeholder="Digite aqui quem/quais as inpirações para a criação do personagem" />
-                                            </div>
-                                            <!--Detalhes-->
-                                            <div class="col-sm-12">
-                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
-                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtAreainspiracoes" class="form-control" placeholder="Descreva aqui os detalhes de onde você se inspirou pra criar o personagem" title="Descreva aqui os detalhes de onde você se inspirou pra criar o personagem"></textarea>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
-                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
