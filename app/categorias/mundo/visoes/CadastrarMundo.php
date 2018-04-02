@@ -319,7 +319,7 @@
 
                                 <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
-                                        <label class="col-sm-2 control-label">Criaturas/ Animais</label>
+                                        <label class="col-sm-2 control-label">Criaturas / Animais</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
                                             <div class="inputIncluir icl-criatura">

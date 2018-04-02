@@ -17,80 +17,159 @@
             </li>
             <!--ABAS-->
             <li class="active"><a data-toggle="tab" href="#abaGeral">Geral</a></li>
-            <li><a data-toggle="tab" href="#aba1">Aba 1</a></li>
-            <li><a data-toggle="tab" href="#aba2">Aba 2</a></li>
+            <li><a data-toggle="tab" href="#abaBiologia">Biologia</a></li>
         </ul>
     </div>
 
     <div class="container-fluid">
         <div class="tab-content">
-            <!--ABA 1-->
-            <div class="tab-pane active" id="aba1">
+            <!--ABA GERAL-->
+            <div class="tab-pane active" id="abaGeral">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tab-pane active" id="bordered-rowGeral">
                             <form class="form-horizontal row-border">
-
+                                <!--CONTEÚDO DA ABA GERAL-->
+                                
                                 <div class="form-group">
-                                    <label for="focusedinput" class="col-sm-2 control-label">Imagem de Capa</label>
-                                    <div class="col-sm-8">
-                                        <div style="padding: 2% 50% 2% 50%;">
-                                            <img src="imagens/imagem_historia.png" class="img-circle" style="margin: 0 0 10px 0" />
-                                            <a href="#" class="btn btn-default">Upload Imagem</a>
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtNome" class="col-sm-2 control-label">Nome</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" id="txtNome" placeholder="Digite o nome da Localização aqui" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="txtTitulo" class="col-sm-2 control-label">Título</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtTitulo" placeholder="Digite seu Título aqui" />
                                     </div>
                                     <div class="col-sm-2">
-                                        <p class="help-block">Obrigatório!</p>
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="txtSubTitulo" class="col-sm-2 control-label">Subtítulo</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtSubTitulo" placeholder="Digite seu Subtítulo aqui" />
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtDescricao" class="col-sm-2 control-label">Descrição</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtDescricao" class="form-control" placeholder="Digite a descrição da Localização aqui"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <input type='file' id="imgUploader" style="display:none;" />
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <img src="imagens/no_photo.png" class="img-circle imgClicavel" style="display:block;margin: 0 auto; width:100px;" />
+                                                <a class="imgReset" style="display:block;margin: 0 auto; width:100px;"><i class="fa fa-ban"></i></a>
+                                            </div>
+                                            <!--Detalhes-->
+                                            <div class="col-sm-12">
+                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                    <textarea id="txtDetalheImagem" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="txtAutor" class="col-sm-2 control-label">Autor</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtAutor" placeholder="Digite seu Autor aqui" />
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtHistoria" class="col-sm-2 control-label">História</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtHistoria" class="form-control" placeholder="Digite a história da Localização aqui"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="txtIlustrador" class="col-sm-2 control-label">Ilustrador</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtIlustrador" placeholder="Digite seu Ilustrador aqui" />
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="relPersonagens" class="col-sm-2 control-label">Personagens mais conhecidos</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <select class="form-control select2" multiple id="relPersonagens">
+                                                    <option selected="selected">Exemplo Personagem</option>
+                                                    <option >Personagem 2</option>
+                                                    <option >Personagem 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
-
+                                
                                 <div class="form-group">
-                                    <label for="checkbox" class="col-sm-2 control-label">Quem pode visualizar essa instância?</label>
-                                    <div class="col-sm-8">
-                                        <div class="checkbox-inline">
-                                            <input type="checkbox" id="ckbTodos" />
-                                            <label for="ckbTodos">Todos</label>
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="txtMarcoGeo" class="col-sm-2 control-label">Marcos Geográficos</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <textarea id="txtMarcoGeo" class="form-control" placeholder="Digite os marcos geográficos da Localização aqui"></textarea>
+                                            </div>
                                         </div>
-                                        <div class="checkbox-inline">
-                                            <input type="checkbox" name="publicidade" id="ckbAmigos" class="cBoxClass" />
-                                            <label for="ckbAmigos">Amigos</label>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="relMundo" class="col-sm-2 control-label">Mundo</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <select class="form-control select2" id="relMundo">
+                                                    <option selected="selected">Exemplo Mundo</option>
+                                                    <option >Mundo 2</option>
+                                                    <option >Mundo 3</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="checkbox-inline">
-                                            <input type="checkbox" name="publicidade" id="ckbEquipes" class="cBoxClass" />
-                                            <label for="ckbEquipes">Equipe</label>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="relLocalizacoes" class="col-sm-2 control-label">Localizações</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <select class="form-control select2" multiple id="relLocalizacoes">
+                                                    <option selected="selected">Exemplo Localização</option>
+                                                    <option >Localização 2</option>
+                                                    <option >Localização 3</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="checkbox-inline">
-                                            <input type="checkbox" name="publicidade" id="ckbPublico" class="cBoxClass" />
-                                            <label for="ckbPublico">Público</label>
-                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
 
@@ -100,12 +179,168 @@
                     </div>
                 </div>
             </div>
+            <!--ABA GERAL/-->
 
-            <!--ABA 2-->
-            <div class="tab-pane" id="aba2">
+            <!--ABA BIOLOGIA-->
+            <div class="tab-pane" id="abaBiologia">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="tab-pane active" id="bordered-rowEnredo">
+                        <div class="tab-pane active" id="bordered-rowBiologia">
+                            <form class="form-horizontal row-border">
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label class="col-sm-2 control-label">Raças</label>
+                                        <div class="col-sm-10">
+                                            <!--Parte que Importa-->
+                                            <div class="inputIncluir icl-raca">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirRemover" type="button">Remover</button>
+                                                    </span>
+                                                    <input value="0" class="form-control incluirStatus" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirAdicionar" type="button">Adicionar</button>
+                                                    </span>
+                                                </div>
+                                                <div class="incluirWrapper">
+                                                    <!--Aqui entrarão as instâncias-->
+                                                </div>
+                                            </div>
+                                            <!--/Parte que Importa-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label class="col-sm-2 control-label">Criaturas / Animais</label>
+                                        <div class="col-sm-10">
+                                            <!--Parte que Importa-->
+                                            <div class="inputIncluir icl-criatura">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirRemover" type="button">Remover</button>
+                                                    </span>
+                                                    <input value="0" class="form-control incluirStatus" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirAdicionar" type="button">Adicionar</button>
+                                                    </span>
+                                                </div>
+                                                <div class="incluirWrapper">
+                                                    <!--Aqui entrarão as instâncias-->
+                                                </div>
+                                            </div>
+                                            <!--/Parte que Importa-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label class="col-sm-2 control-label">Flora</label>
+                                        <div class="col-sm-10">
+                                            <!--Parte que Importa-->
+                                            <div class="inputIncluir icl-flora">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirRemover" type="button">Remover</button>
+                                                    </span>
+                                                    <input value="0" class="form-control incluirStatus" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirAdicionar" type="button">Adicionar</button>
+                                                    </span>
+                                                </div>
+                                                <div class="incluirWrapper">
+                                                    <!--Aqui entrarão as instâncias-->
+                                                </div>
+                                            </div>
+                                            <!--/Parte que Importa-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label class="col-sm-2 control-label">Recursos Naturais</label>
+                                        <div class="col-sm-10">
+                                            <!--Parte que Importa-->
+                                            <div class="inputIncluir icl-recurso">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirRemover" type="button">Remover</button>
+                                                    </span>
+                                                    <input value="0" class="form-control incluirStatus" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirAdicionar" type="button">Adicionar</button>
+                                                    </span>
+                                                </div>
+                                                <div class="incluirWrapper">
+                                                    <!--Aqui entrarão as instâncias-->
+                                                </div>
+                                            </div>
+                                            <!--/Parte que Importa-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label class="col-sm-2 control-label">Biomas</label>
+                                        <div class="col-sm-10">
+                                            <!--Parte que Importa-->
+                                            <div class="inputIncluir icl-bioma">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirRemover" type="button">Remover</button>
+                                                    </span>
+                                                    <input value="0" class="form-control incluirStatus" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirAdicionar" type="button">Adicionar</button>
+                                                    </span>
+                                                </div>
+                                                <div class="incluirWrapper">
+                                                    <!--Aqui entrarão as instâncias-->
+                                                </div>
+                                            </div>
+                                            <!--/Parte que Importa-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--ABA BIOLOGIA/-->
+            
+            <!--ABA BIOLOGIA-->
+            <div class="tab-pane" id="abaBiologia2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tab-pane active" id="bordered-rowBiologia">
                             <form class="form-horizontal row-border">
 
                                 <div class="form-group">
@@ -142,65 +377,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="tab-pane" id="tab4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h2>Info</h2>
-                            </div>
-                            <div class="panel-body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--ABA BIOLOGIA/-->
         </div>
     </div>
 </div>
 <!-- CORPO DE VERDADE/ -->
-<!--DRAG AND DROP RIGHT MENU-->
-<div id="listaTudo" class="col-md-3">
-    <div class="panel panel-primary">
-        <div class="panel-heading" style="border-top-right-radius: 0px; border-top-left-radius: 0px;">
-            <h2>Suas Instâncias</h2>
-        </div>
-        <div class="panel-body" style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; margin: 0px -5px 0 -0px;">
-
-            <div class="dd" id="nestable_list_1">
-                <ol class="dd-list">
-                    <!--PERSONAGENS-->
-                    <li class="dd-item" data-id="1">
-                        <div class="dd-handle">Personagens</div>
-                        <ol class="dd-list" style="">
-                            <li class="dd-item" data-id="6">
-                                <div class="dd-handle">Personagem 1</div>
-                            </li>
-                            <li class="dd-item" data-id="7">
-                                <div class="dd-handle">Personagem 2</div>
-                            </li>
-                        </ol>
-                    </li>
-                    <!--MUNDOS-->
-                    <li class="dd-item" data-id="2">
-                        <div class="dd-handle">Mundos</div>
-                    </li>
-                    <!--LOCALIZAÇÕES-->
-                    <li class="dd-item" data-id="3">
-                        <div class="dd-handle">Localizações</div>
-                    </li>
-                    <!--CENAS-->
-                    <li class="dd-item" data-id="4">
-                        <div class="dd-handle">Cenas</div>
-                    </li>
-                    <!--OBJETOS-->
-                    <li class="dd-item" data-id="5">
-                        <div class="dd-handle">Objetos</div>
-                    </li>
-                </ol>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!--DRAG AND DROP RIGHT MENU/-->
