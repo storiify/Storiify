@@ -39,14 +39,14 @@
                                         <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <img src="imagens/no_photo.png" class="img-circle imgClicavel" style="display:block;margin: 0 auto; width:100px;" />
-                                                <a class="imgReset"><i class="fa fa-ban"></i></a>
+                                                <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" />
+                                                <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
                                             </div>
                                             <!--Detalhes-->
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
 
@@ -65,8 +65,8 @@
                                             <div class="col-sm-12">
                                                 <input type="text" class="form-control" id="txtAttObg" placeholder="Digite aqui o nome da sua Cena" />
                                             </div>
-										<!--Não tem detalhes-->
-										</div>
+                                            <!--Não tem detalhes-->
+                                        </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
@@ -80,9 +80,9 @@
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
                                                 <input type="text" class="form-control" id="txtAttObg" placeholder="Digite a data de quando essa cena ocorreu aqui" />
-											<!--Não tem detalhes-->
+                                                <!--Não tem detalhes-->
                                             </div>
-										</div>
+                                        </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
@@ -95,7 +95,7 @@
                                         <label for="txtArea" class="col-sm-2 control-label">Descrição</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite uma breve descrição aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Digite a descrição da Cena aqui" title="Digite uma breve descrição aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -105,7 +105,7 @@
                                         <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
-								<div class="form-group">
+                                <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="checkbox" class="col-sm-2 control-label">Visibilidade</label>
                                         <div class="inputCorpo col-sm-10">
@@ -130,8 +130,8 @@
                                         </div>
                                     </div>
                                 </div>
-								
-								
+
+
 
                             </form>
                         </div>
@@ -144,7 +144,7 @@
             <div class="tab-pane" id="abaLocalizacoes">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="tab-pane active" id="bordered-rowEnredo">
+                        <div class="tab-pane active" id="bordered-rowLocalizacoes">
                             <form class="form-horizontal row-border">
 
                                 <div class="form-group">
@@ -162,7 +162,7 @@
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -172,7 +172,7 @@
                                         <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
-                                
+
 
                             </form>
                         </div>
@@ -185,9 +185,9 @@
             <div class="tab-pane" id="abaPersonagensObjetos">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="tab-pane active" id="bordered-rowEnredo">
+                        <div class="tab-pane active" id="bordered-rowPersonagensObjetos">
                             <form class="form-horizontal row-border">
-								<div class="form-group">
+                                <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="sel1" class="col-sm-2 control-label">Personagens</label>
                                         <div class="inputCorpo col-sm-10">
@@ -202,7 +202,7 @@
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,7 +213,7 @@
                                     </div>
                                 </div>
 
-								<div class="form-group">
+                                <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="sel1" class="col-sm-2 control-label">Objetos</label>
                                         <div class="inputCorpo col-sm-10">
@@ -228,7 +228,7 @@
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -250,15 +250,15 @@
             <div class="tab-pane" id="abaDesenvolvimento">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="tab-pane active" id="bordered-rowEnredo">
+                        <div class="tab-pane active" id="bordered-rowDesenvolvimento">
                             <form class="form-horizontal row-border">
 
-								<div class="form-group">
+                                <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="txtArea" class="col-sm-2 control-label">Desenvolvimento</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite o desenvolvimento da cena aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Digite o desenvolvimento da cena aqui" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
