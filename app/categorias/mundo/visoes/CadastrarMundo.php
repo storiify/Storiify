@@ -1,20 +1,3 @@
-<?php
-//TESTE CONEXÃO BANCO DE DADOS
-$bd = ConexaoBd::getInstance();
-
-//$bd->query("insert into tb_usuario values ('1', 'Victor', 'Miranda Fernandes', 'victorfernandes92@gmail.com', '123456', 'VicLindo', '1992-09-12', '0')");
-$req = $bd->query('SELECT * FROM tb_usuario');
-
-foreach ($req->fetchAll() as $usuario) {
-    consoleLog($usuario['nome']);
-    echo 'Id: ' . $usuario['idusuario'] . ' / ' . 'Nome: ' . $usuario['nome'] . ' ' . $usuario['sobrenome'] . ' / Email: '
-    . $usuario['email'] . '/ Senha: ' . $usuario['senha'] . '/ Apelido: ' . $usuario['apelido'] . '/Data de Nascimento: '
-    . $usuario['datadenascimento'] . '/Conta Verificada: ' . $usuario['contaverificada'] . '<br>';
-}
-//FIM DO TESTE
-?>
-
-<div class="input-incr incr-raca">asdf</div>
 <!--CORPO DE VERDADE-->
 <div class="page-content">
     <div class="page-heading mb0">
@@ -40,7 +23,6 @@ foreach ($req->fetchAll() as $usuario) {
             <li><a data-toggle="tab" href="#abaPolitica">Política</a></li>
             <li><a data-toggle="tab" href="#abaTecnologia">Tecnologia</a></li>
             <li><a data-toggle="tab" href="#abaMagia">Magia</a></li>
-            <li><a data-toggle="tab" href="#abaInspiracoes">Inspirações</a></li>
         </ul>
     </div>
 
@@ -1228,61 +1210,10 @@ foreach ($req->fetchAll() as $usuario) {
                     </div>
                 </div>
             </div>
-
-            <!--ABA INSPIRAÇÕES-->
-            <div class="tab-pane" id="abaInspiracoes">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="tab-pane active" id="bordered-rowEnredo">
-                            <form class="form-horizontal row-border">
-
-                                <div class="form-group">
-                                    <div class="col-sm-10 inputWrapper">
-                                        <label for="txtArea" class="col-sm-2 control-label">Texto</label>
-                                        <div class="inputCorpo col-sm-10">
-                                            <div class="col-sm-12">
-                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
-                                            </div>
-                                            <!--Não tem detalhes-->
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
-                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-sm-10 inputWrapper">
-                                        <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
-                                        <div class="inputCorpo col-sm-10">
-                                            <div class="col-sm-12">
-                                                <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" />
-                                                <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
-                                            </div>
-                                            <!--Detalhes-->
-                                            <div class="col-sm-12">
-                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
-                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
-                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
+        </div>
+        <div class="col-sm-10">
+            <button class="btn btn-primary col-sm-12 col-sm-offset-1">Salvar</button>
+            <p>&nbsp;</p>
         </div>
     </div>
 </div>

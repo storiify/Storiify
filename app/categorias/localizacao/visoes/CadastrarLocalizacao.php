@@ -366,6 +366,10 @@
             </div>
             <!--ABA BIOLOGIA/-->
         </div>
+        <div class="col-sm-10">
+            <button class="btn btn-primary col-sm-12 col-sm-offset-1">Salvar</button>
+            <p>&nbsp;</p>
+        </div>
     </div>
 </div>
 <!-- CORPO DE VERDADE/ -->
