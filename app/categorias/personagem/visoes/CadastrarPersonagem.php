@@ -179,7 +179,7 @@
                                         <label class="col-sm-2 control-label">Classe</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-classe">
+                                            <div class="col-sm-12 inputIncluir icl-classe">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -207,7 +207,7 @@
                                         <label class="col-sm-2 control-label">Profissão</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-profissao">
+                                            <div class="col-sm-12 inputIncluir icl-profissao">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -554,7 +554,7 @@
                                         <label class="col-sm-2 control-label">Habilidades Físicas</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-habFisica">
+                                            <div class="col-sm-12 inputIncluir icl-habFisica">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -582,7 +582,7 @@
                                         <label class="col-sm-2 control-label">Habilidades Físicas</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-habMagica">
+                                            <div class="col-sm-12 inputIncluir icl-habMagica">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -714,7 +714,7 @@
                                         <label class="col-sm-2 control-label">Objetivo(s) Paralelo(s)</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-objParalelos">
+                                            <div class="col-sm-12 inputIncluir icl-objParalelos">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -1022,7 +1022,7 @@
                                         <label class="col-sm-2 control-label">Lembranças Boas</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-lembBoa">
+                                            <div class="col-sm-12 inputIncluir icl-lembBoa">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -1050,7 +1050,7 @@
                                         <label class="col-sm-2 control-label">Lembranças Ruins</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-lembRuim">
+                                            <div class="col-sm-12 inputIncluir icl-lembRuim">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>

@@ -193,7 +193,7 @@
                                         <label class="col-sm-2 control-label">Raças</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-raca">
+                                            <div class="col-sm-12 inputIncluir icl-raca">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -221,7 +221,7 @@
                                         <label class="col-sm-2 control-label">Criaturas / Animais</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-criatura">
+                                            <div class="col-sm-12 inputIncluir icl-criatura">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -249,7 +249,7 @@
                                         <label class="col-sm-2 control-label">Flora</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-flora">
+                                            <div class="col-sm-12 inputIncluir icl-flora">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -277,7 +277,7 @@
                                         <label class="col-sm-2 control-label">Recursos Naturais</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-recurso">
+                                            <div class="col-sm-12 inputIncluir icl-recurso">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -305,7 +305,7 @@
                                         <label class="col-sm-2 control-label">Biomas</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-bioma">
+                                            <div class="col-sm-12 inputIncluir icl-bioma">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
