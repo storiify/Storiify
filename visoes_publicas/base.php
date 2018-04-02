@@ -191,15 +191,15 @@
                                         <li>
                                             <a href="#"><i class="fa fa-bank"></i><span>Localizações</span><span class="badge badge-dark">5</span></a>
                                             <ul class="acc-menu">
-                                                <li><a href="#">Criar nova Localização &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
-                                                <li><a href="#">Listar Localizações<span class="badge badge-dark">5</span></a></li>
+                                                <li><a href="?categoria=localizacao&acao=cadastrar">Criar nova Localização &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                                <li><a href="?categoria=localizacao&acao=listar">Listar Localizações<span class="badge badge-dark">5</span></a></li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a href="#"><i class="fa fa-comments-o"></i><span>Cenas</span><span class="badge badge-dark">3</span></a>
                                             <ul class="acc-menu">
-                                                <li><a href="#">Criar nova Cena &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
-                                                <li><a href="#">Listar Cenas<span class="badge badge-dark">3</span></a></li>
+                                                <li><a href="?categoria=cena&acao=cadastrar">Criar nova Cena &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                                <li><a href="?categoria=cena&acao=listar">Listar Cenas<span class="badge badge-dark">3</span></a></li>
                                             </ul>
                                         </li>
                                     </ul>
