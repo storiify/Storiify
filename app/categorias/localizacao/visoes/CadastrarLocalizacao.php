@@ -335,49 +335,6 @@
                 </div>
             </div>
             <!--ABA BIOLOGIA/-->
-            
-            <!--ABA BIOLOGIA-->
-            <div class="tab-pane" id="abaBiologia2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="tab-pane active" id="bordered-rowBiologia">
-                            <form class="form-horizontal row-border">
-
-                                <div class="form-group">
-                                    <label for="txtDescSentenca" class="col-sm-2 control-label">Descrição de uma sentença</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtDescSentenca" placeholder="Digite sua Descrição de uma sentença aqui" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="txtSinopse" class="col-sm-2 control-label">Sinopse</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="txtSinopse" placeholder="Digite sua Sinopse aqui" title="Digite sua Sinopse aqui"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="txtResumo" class="col-sm-2 control-label">Resumo</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="txtResumo" placeholder="Digite seu Resumo aqui" title="Digite seu Resumo aqui"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="relMundosContidos" class="col-sm-2 control-label">Mundos Contidos</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="relMundosContidos" placeholder="" title="Relacione seus mundos aqui" />
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!--ABA BIOLOGIA/-->
         </div>
     </div>
 </div>
