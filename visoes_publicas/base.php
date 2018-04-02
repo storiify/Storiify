@@ -163,7 +163,7 @@
 
                             <div class="widget stay-on-collapse" id="widget-sidebar">
                                 <!--Título do Menu Lateral-->
-                                <span class="widget-heading">Explore seus Tipos!</span>
+                                <span class="widget-heading">Explore suas Categorias!</span>
                                 <nav role="navigation" class="widget-body">
                                     <ul class="acc-menu">
                                         <!--Link Simples-->
