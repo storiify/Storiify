@@ -41,8 +41,8 @@
                                         <label class="col-sm-2 control-label" for="Imagem">Imagem</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <img src="imagens/no_photo.png" class="img-circle imgClicavel" style="display:block;margin: 0 auto; width:100px;" />
-                                                <a class="imgReset"><i class="fa fa-ban"></i></a>
+                                                <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" />
+                                                <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
                                             </div>
                                             <!--Detalhes-->
                                             <div class="col-sm-12">

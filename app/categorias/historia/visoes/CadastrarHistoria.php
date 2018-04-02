@@ -33,9 +33,9 @@
 				    <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
 				    <div class="inputCorpo col-sm-10">
 					<div class="col-sm-12">
-					    <img src="imagens/no_photo.png" class="img-circle imgClicavel" data-inputFileId="imgPrincipal" style="display:block;margin: 0 auto; width:100px;" />
+					    <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" data-inputFileId="imgPrincipal" />
 					    <input type='file' id="imgPrincipal" name="imagem_capa" style="display:none;" />
-					    <a class="imgReset"><i class="fa fa-ban"></i></a>
+					    <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
 					</div>
 				    </div>
 				</div>
@@ -168,9 +168,9 @@
 				    <label class="col-sm-2 control-label" for="imgImagem">Imagem Inspiração</label>
 				    <div class="inputCorpo col-sm-10">
 					<div class="col-sm-12">
-					    <img src="imagens/no_photo.png" class="img-circle imgClicavel" data-inputFileId="imgPrincipal" style="display:block;margin: 0 auto; width:100px;" />
+					    <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" data-inputFileId="imgPrincipal"/>
 					    <input type='file' id="imgPrincipal" name="imagem_insp" style="display:none;" />
-					    <a class="imgReset"><i class="fa fa-ban"></i></a>
+					    <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
 					</div>
 				    </div>
 				</div>
