@@ -9,9 +9,7 @@ class ControladorHistoria extends Controlador{
     }
     
     public function cadastrar($parametros) {
-                
-        $this->setVisao('cadastrar');
-                
+        $this->setVisao('CadastrarHistoria');
     }
     
 }
