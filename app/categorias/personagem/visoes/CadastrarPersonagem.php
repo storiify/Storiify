@@ -48,7 +48,7 @@
 											<div class="col-sm-12">
 												<a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
 												<div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-													<textarea id="txtAreaImagem" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+													<textarea id="txtAreaImagem" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
 												</div>
 											</div>
 
@@ -285,7 +285,7 @@
 											<div class="col-sm-12">
 												<a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
 												<div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-													<textarea id="txtAreaAltura" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+													<textarea id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
 												</div>
 											</div>
 
@@ -308,7 +308,7 @@
 											<div class="col-sm-12">
 												<a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
 												<div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-													<textarea id="txtAreaPeso" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+													<textarea id="txtAreaPeso" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
 												</div>
 											</div>
 
@@ -331,7 +331,7 @@
 											<div class="col-sm-12">
 												<a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
 												<div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-													<textarea id="txtAreaPorte" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+													<textarea id="txtAreaPorte" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
 												</div>
 											</div>
 
@@ -523,7 +523,7 @@
 											<div class="col-sm-12">
 												<a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
 												<div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-													<textarea id="txtAreaAlinhamento" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+													<textarea id="txtAreaAlinhamento" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
 												</div>
 											</div>
 
@@ -1081,7 +1081,7 @@
 											<div class="col-sm-12">
 												<a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
 												<div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-													<textarea id="txtAreainspiracoes"  class="form-control" placeholder="Descreva aqui os detalhes de onde você se inspirou pra criar o personagem" title="Descreva aqui os detalhes de onde você se inspirou pra criar o personagem"></textarea>
+													<textarea id="txtAreainspiracoes" class="form-control" placeholder="Descreva aqui os detalhes de onde você se inspirou pra criar o personagem" title="Descreva aqui os detalhes de onde você se inspirou pra criar o personagem"></textarea>
 												</div>
 											</div>
 
