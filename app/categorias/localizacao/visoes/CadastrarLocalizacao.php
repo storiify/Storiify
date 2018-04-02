@@ -172,6 +172,36 @@
                                         <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
+                                
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label for="checkbox" class="col-sm-2 control-label">Visibilidade</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <div class="checkbox-inline">
+                                                    <input type="checkbox" id="ckbTodos" />
+                                                    <label for="ckbTodos">Todos</label>
+                                                </div>
+                                                <div class="checkbox-inline">
+                                                    <input type="checkbox" name="publicidade" id="ckbAmigos" class="cBoxClass" />
+                                                    <label for="ckbAmigos">Amigos</label>
+                                                </div>
+                                                <div class="checkbox-inline">
+                                                    <input type="checkbox" name="publicidade" id="ckbEquipes" class="cBoxClass" />
+                                                    <label for="ckbEquipes">Equipe</label>
+                                                </div>
+                                                <div class="checkbox-inline">
+                                                    <input type="checkbox" name="publicidade" id="ckbPublico" class="cBoxClass" />
+                                                    <label for="ckbPublico">Público</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
 
                             </form>
                         </div>
