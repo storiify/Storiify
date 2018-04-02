@@ -33,9 +33,9 @@
 				    <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
 				    <div class="inputCorpo col-sm-10">
 					<div class="col-sm-12">
-					    <img src="imagens/no_photo.png" class="img-circle imgClicavel" data-inputFileId="imgPrincipal" style="display:block;margin: 0 auto; width:100px;" />
+					    <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" data-inputFileId="imgPrincipal" />
 					    <input type='file' id="imgPrincipal" name="imagem_capa" style="display:none;" />
-					    <a class="imgReset"><i class="fa fa-ban"></i></a>
+					    <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
 					</div>
 				    </div>
 				</div>
@@ -85,7 +85,7 @@
 				    <label for="txtAttObg" class="col-sm-2 control-label">Publico Alvo</label>
 				    <div class="inputCorpo col-sm-10">
 					<div class="col-sm-12">
-					    <textarea name="publico_alvo" id="txtArea" placeholder="Digite aqui o publico alvo da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
+					    <textarea name="publico_alvo" id="txtArea" class="form-control" placeholder="Digite aqui o publico alvo da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
 					</div>
 				    </div>
 				</div>
@@ -116,7 +116,7 @@
 				    <label for="txtAttObg" class="col-sm-2 control-label">Sentença</label>
 				    <div class="inputCorpo col-sm-10">
 					<div class="col-sm-12">
-					    <textarea name="sentenca" id="txtArea" placeholder="Digite aqui a sentenca da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
+					    <textarea name="sentenca" id="txtArea" class="form-control" placeholder="Digite aqui a sentenca da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
 					</div>
 				    </div>
 				</div>
@@ -126,7 +126,7 @@
 				    <label for="txtAttObg" class="col-sm-2 control-label">Sinopse</label>
 				    <div class="inputCorpo col-sm-10">
 					<div class="col-sm-12">
-					    <textarea name="sinopse" id="txtArea" placeholder="Digite aqui a sinopse da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
+					    <textarea name="sinopse" id="txtArea" class="form-control" placeholder="Digite aqui a sinopse da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
 					</div>
 				    </div>
 				</div>
@@ -136,7 +136,7 @@
 				    <label for="txtAttObg" class="col-sm-2 control-label">Resumo</label>
 				    <div class="inputCorpo col-sm-10">
 					<div class="col-sm-12">
-					    <textarea name="resumo" id="txtArea" placeholder="Digite aqui o resumo da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
+					    <textarea name="resumo" id="txtArea" class="form-control" placeholder="Digite aqui o resumo da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
 					</div>
 				    </div>
 				</div>
@@ -158,7 +158,7 @@
 				    <label for="txtAttObg" class="col-sm-2 control-label">Inspirações</label>
 				    <div class="inputCorpo col-sm-10">
 					<div class="col-sm-12">
-					    <textarea name="insp_nomes" id="txtArea" placeholder="Digite aqui o resumo da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
+					    <textarea name="insp_nomes" id="txtArea" class="form-control" placeholder="Digite aqui o resumo da história" title="Campo de texto para descrever o publico alvo da história"></textarea>
 					</div>
 				    </div>
 				</div>
@@ -168,9 +168,9 @@
 				    <label class="col-sm-2 control-label" for="imgImagem">Imagem Inspiração</label>
 				    <div class="inputCorpo col-sm-10">
 					<div class="col-sm-12">
-					    <img src="imagens/no_photo.png" class="img-circle imgClicavel" data-inputFileId="imgPrincipal" style="display:block;margin: 0 auto; width:100px;" />
+					    <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" data-inputFileId="imgPrincipal"/>
 					    <input type='file' id="imgPrincipal" name="imagem_insp" style="display:none;" />
-					    <a class="imgReset"><i class="fa fa-ban"></i></a>
+					    <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
 					</div>
 				    </div>
 				</div>

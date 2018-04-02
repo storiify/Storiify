@@ -60,14 +60,14 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <img src="imagens/no_photo.png" class="img-circle imgClicavel" style="display:block;margin: 0 auto; width:100px;" />
-                                                <a class="imgReset"><i class="fa fa-ban"></i></a>
+                                                <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" />
+                                                <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
                                             </div>
                                             <!--Detalhes-->
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
 
@@ -90,7 +90,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Digite aqui o porquê/peculiaridades desse nome" title="Campo de texto para detalhes"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Digite aqui o porquê/peculiaridades desse nome" title="Campo de texto para detalhes"></textarea>
                                                 </div>
                                             </div>
 
@@ -107,7 +107,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Visão Geral</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -123,7 +123,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">História</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -139,7 +139,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Era</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -155,7 +155,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Arredores</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -177,7 +177,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -203,7 +203,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,7 +229,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -255,7 +255,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -311,7 +311,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label">Raças</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-raca">
+                                            <div class="col-sm-12 inputIncluir icl-raca">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -339,7 +339,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label">Criaturas / Animais</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-criatura">
+                                            <div class="col-sm-12 inputIncluir icl-criatura">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -367,7 +367,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label">Flora</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-flora">
+                                            <div class="col-sm-12 inputIncluir icl-flora">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -395,7 +395,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label">Recursos Naturais</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-recurso">
+                                            <div class="col-sm-12 inputIncluir icl-recurso">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -423,7 +423,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label">Biomas</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-bioma">
+                                            <div class="col-sm-12 inputIncluir icl-bioma">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -465,7 +465,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label">Religiões</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-religiao">
+                                            <div class="col-sm-12 inputIncluir icl-religiao">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -493,7 +493,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Ética/Valores</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -509,7 +509,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Arte/Entretenimento</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -525,7 +525,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label">Línguas</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-lingua">
+                                            <div class="col-sm-12 inputIncluir icl-lingua">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -553,7 +553,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label">Mitos</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-mito">
+                                            <div class="col-sm-12 inputIncluir icl-mito">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -581,7 +581,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Tabus</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -597,7 +597,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Rituais</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -613,7 +613,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Discriminações</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -643,7 +643,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Descrição</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -659,7 +659,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Moeda</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -675,7 +675,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Comércio</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -691,7 +691,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Relações Exteriores</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -707,7 +707,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Relações Interiores</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -723,7 +723,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Negócios/Indústria</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -745,7 +745,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -786,7 +786,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -812,7 +812,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -828,7 +828,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Leis</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -844,7 +844,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Punições</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -860,7 +860,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">História de Governo</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -876,7 +876,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Relações Exteriores</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -898,7 +898,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -914,7 +914,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Organizações Antigoverno</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -930,7 +930,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Gerras Passadas/Atuais/Futuras</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -946,7 +946,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Classes/Casta</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -981,7 +981,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1003,7 +1003,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1025,7 +1025,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1041,7 +1041,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Método de Comunicação</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -1057,7 +1057,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Método de Transporte</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -1073,7 +1073,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Ciência e Descobertas</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -1103,7 +1103,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label">Tipos</label>
                                         <div class="col-sm-10">
                                             <!--Parte que Importa-->
-                                            <div class="inputIncluir icl-raca">
+                                            <div class="col-sm-12 inputIncluir icl-raca">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default incluirRemover" type="button">Remover</button>
@@ -1137,7 +1137,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1153,7 +1153,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Efeitos no Mundo</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -1169,7 +1169,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Efeitos na Sociedade</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -1185,7 +1185,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Efeitos na Tecnologia</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -1211,7 +1211,7 @@ foreach ($req->fetchAll() as $usuario) {
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1241,7 +1241,7 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label for="txtArea" class="col-sm-2 control-label">Texto</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <textarea id="txtArea" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
+                                                <textarea id="txtArea" class="form-control" placeholder="Campo de texto autoexpansível" title="Digite seu texto aqui"></textarea>
                                             </div>
                                             <!--Não tem detalhes-->
                                         </div>
@@ -1257,14 +1257,14 @@ foreach ($req->fetchAll() as $usuario) {
                                         <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
                                         <div class="inputCorpo col-sm-10">
                                             <div class="col-sm-12">
-                                                <img src="imagens/no_photo.png" class="img-circle imgClicavel" style="display:block;margin: 0 auto; width:100px;" />
-                                                <a class="imgReset"><i class="fa fa-ban"></i></a>
+                                                <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" />
+                                                <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
                                             </div>
                                             <!--Detalhes-->
                                             <div class="col-sm-12">
                                                 <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
                                                 <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtArea" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                    <textarea id="txtArea" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
                                                 </div>
                                             </div>
 

@@ -84,7 +84,7 @@ InputIncluir = {
             "   <label for='txtAreaIncluir" + id + "' class='col-sm-2 control-label'>Descrição</label>",
             "   <div class='inputCorpo col-sm-10'>",
             "       <div class='col-sm-12'>",
-            "           <textarea id='txtAreaIncluir" + id + "' placeholder='Campo de texto autoexpansível' title='Digite seu texto aqui'></textarea>",
+            "           <textarea id='txtAreaIncluir" + id + "' class='form-control' placeholder='Digite seu texto aqui'></textarea>",
             "       </div>",
             "   </div>",
             "</div>"
