@@ -2,9 +2,6 @@
 // Carrega config antes de tudo para definir os parametros a serem usados
 require_once 'app/autoload/config.php';
 
-//CHAMANDO BANDO DE DADOS
-require_once 'app/classes/ConexaoBd.php';
-
 /**
  * Autoload - Carrega arquivos iniciais e essenciais para o funcionamento do sistema.
  */

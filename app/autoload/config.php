@@ -10,6 +10,11 @@ define("PATH_CAT", PATH."app/categorias/");
 define("PATH_VISOES_PUBLICAS", PATH.'visoes_publicas/');
 
 define("VISAO_BASE","base.php");
+define("VISAO_404","404.php");
+
+define("OBRIGAR_LOGIN",FALSE);
+define("CHAVE_LOGIN","logado");
+define("URL_LOGIN","?categoria=login&acao=logar");
 
 function consoleLog($msg) {
     if(DEBUG){
