@@ -89,7 +89,7 @@
                                         </div>
                                         <div class="inputCorpo col-sm-6">
                                             <label for="txtData" class="col-sm-4 control-label text-right">Data de Nascimento</label>
-                                            <div class="inputCorpo col-sm-6 pull-right">
+                                            <div class="inputCorpo col-sm-8 pull-right">
                                                 <input type="date" class="form-control" id="inputData" />
                                             </div>
                                         </div>
