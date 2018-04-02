@@ -4,6 +4,7 @@
     $(".minMaxInput").each(function () {
         trazerMinMax(this);
     });
+    $(".mmTeste").ionRangeSlider();
 });
 
 function trazerMinMax(objeto) {

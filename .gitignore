@@ -337,4 +337,4 @@ __pycache__/
 .svn/format
 *.svn-base
 *.db
-*.db-journal
+.svn/wc.db-journal

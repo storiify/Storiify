@@ -7,7 +7,6 @@
 
 function proccessRequest() {
     $arrayTratado = ['categoria' => 'login', 'acao' => 'logar', 'parametros' => []];
-    //$arrayTratado = ['categoria' => 'mundo', 'acao' => 'cadastrar', 'parametros' => []];
 
     foreach ($_GET as $key => $val) {
         switch ($key) {
@@ -23,4 +22,20 @@ function proccessRequest() {
         }
     }
     return (object) $arrayTratado;
+}
+
+function redirecionar($url) {
+    Redirecionar::url($url);
+}
+
+function sessao() {
+    $session = new Sessao();
+    return $session;
+}
+
+function notfount($msg=null) {
+    $sessao = sessao();
+    $sessao->setSessao('MSG_404', $msg);
+    require_once PATH_VISOES_PUBLICAS.VISAO_404;
+    die;
 }

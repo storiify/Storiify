@@ -14,6 +14,7 @@
         <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
         <!-- CSS Principal, com todos os estilos -->
         <link href="css/styles.css" type="text/css" rel="stylesheet" />
+        <link href="css/estiloHeroi.css" rel="stylesheet" />
         <!--CSS para editarmos-->
         <link href="css/geral.css" rel="stylesheet" />
         <!--ICheck-->
@@ -166,40 +167,39 @@
                                 <nav role="navigation" class="widget-body">
                                     <ul class="acc-menu">
                                         <!--Link Simples-->
-                                        <li><a href="cadastrarHistoria.html"><i class="fa fa-book"></i><span>História</span><span class="badge badge-dark">1</span></a></li>
                                         <li>
-                                            <a href="javascript:;"><i class="fa fa-users"></i><span>Personagens</span><span class="badge badge-dark">6</span></a>
+					    <a href="#"><i class="fa fa-book"></i><span>História</span></a>
                                             <ul class="acc-menu">
-                                                <li><a href="javascript:;">Criar novo Personagem &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
-                                                <li><a href="listarPersonagens.html">Listar Personagens<span class="badge badge-dark">6</span></a></li>
+                                                <li><a href="?categoria=historia&acao=cadastrar">Criar nova História &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                                <li><a href="?categoria=historia&acao=listar">Listar Histórias</a></li>
+                                            </ul>
+					</li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-users"></i><span>Personagens</span><span class="badge badge-dark">6</span></a>
+                                            <ul class="acc-menu">
+                                                <li><a href="?categoria=personagem&acao=cadastrar">Criar novo Personagem &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                                <li><a href="?categoria=personagem&acao=listar">Listar Personagens<span class="badge badge-dark">6</span></a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="javascript:;"><i class="fa fa-globe"></i><span>Mundos</span><span class="badge badge-dark">2</span></a>
+                                            <a href="#"><i class="fa fa-globe"></i><span>Mundos</span><span class="badge badge-dark">2</span></a>
                                             <ul class="acc-menu">
                                                 <li><a href='?categoria=mundo&acao=cadastrar'>Criar novo Mundo &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
-                                                <li><a href="javascript:;">Listar Mundos<span class="badge badge-dark">2</span></a></li>
+                                                <li><a href="?categoria=mundo&acao=listar">Listar Mundos<span class="badge badge-dark">2</span></a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="javascript:;"><i class="fa fa-bank"></i><span>Localizações</span><span class="badge badge-dark">5</span></a>
+                                            <a href="#"><i class="fa fa-bank"></i><span>Localizações</span><span class="badge badge-dark">5</span></a>
                                             <ul class="acc-menu">
-                                                <li><a href="javascript:;">Criar nova Localização &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
-                                                <li><a href="javascript:;">Listar Localizações<span class="badge badge-dark">5</span></a></li>
+                                                <li><a href="#">Criar nova Localização &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                                <li><a href="#">Listar Localizações<span class="badge badge-dark">5</span></a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="javascript:;"><i class="fa fa-comments-o"></i><span>Cenas</span><span class="badge badge-dark">3</span></a>
+                                            <a href="#"><i class="fa fa-comments-o"></i><span>Cenas</span><span class="badge badge-dark">3</span></a>
                                             <ul class="acc-menu">
-                                                <li><a href="javascript:;">Criar nova Cena &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
-                                                <li><a href="javascript:;">Listar Cenas<span class="badge badge-dark">3</span></a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;"><i class="fa fa-key"></i><span>Objetos</span><span class="badge badge-dark">4</span></a>
-                                            <ul class="acc-menu">
-                                                <li><a href="javascript:;">Criar novo Objeto &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
-                                                <li><a href="javascript:;">Listar Objetos<span class="badge badge-dark">4</span></a></li>
+                                                <li><a href="#">Criar nova Cena &nbsp&nbsp<span class="fa fa-plus"></span></a></li>
+                                                <li><a href="#">Listar Cenas<span class="badge badge-dark">3</span></a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -216,8 +216,6 @@
                         <!-- CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS -->
                         <div class="conteudo">
                             <?php
-                           
-
                             if (isset($file_dir) && $file_dir != 'none') {
                                 include_once $file_dir;
                             }
@@ -261,7 +259,6 @@
         <script src="js/input/imagem.js"></script>
         <!--Incluir-->
         <script src="js/input/incluir.js"></script>
-        <script src="js/input/incluirTeste.js"></script>
         <!--/Seção dos Inputs-->
         <!--Text Scroll Plugin-->
         <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>

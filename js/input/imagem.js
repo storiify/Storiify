@@ -5,6 +5,12 @@
 
     $('.imgClicavel').click(function () {
         imgAlvo = this;
+        var inp = $(this).attr("data-inputFileId");
+        console.log(inp);
+        if(inp){
+            imgUploader = $('#'+inp);
+        }
+        
         imgUploader.trigger('click');
     });
 
