@@ -1,5 +1,5 @@
 <!--CORPO DE VERDADE-->
-<div class="page-content col-md-9">
+<div class="page-content">
     <div class="page-heading mb0">
         <div class="marquee"><?= $this->getDicas() ?></div>
         <h1>Cena</h1>
