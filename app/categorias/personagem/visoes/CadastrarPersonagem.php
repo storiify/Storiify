@@ -449,18 +449,24 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
-                                        <label for="relacObjetos" class="col-sm-2 control-label">Objetos</label>
-                                        <div class="inputCorpo col-sm-10">
-                                            <div class="col-sm-12">
-                                                <select class="form-control select2" multiple="multiple" id="relacObjetos" style="width:  100%">
-                                                    <option selected="selected">Revolver</option>
-                                                    <option>Facão</option>
-                                                    <option>Chinelo</option>
-                                                    <option>Espiritualidade</option>
-                                                    <option selected="selected">Grampeador Mágico</option>
-                                                </select>
+                                        <label class="col-sm-2 control-label">Objetos</label>
+                                        <div class="col-sm-10">
+                                            <!--Parte que Importa-->
+                                            <div class="col-sm-12 inputIncluir icl-objetos">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirRemover" type="button">Remover</button>
+                                                    </span>
+                                                    <input value="0" class="form-control incluirStatus" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default incluirAdicionar" type="button">Adicionar</button>
+                                                    </span>
+                                                </div>
+                                                <div class="incluirWrapper">
+                                                    <!--Aqui entrarão as instâncias-->
+                                                </div>
                                             </div>
-                                            <!--Não tem detalhes-->
+                                            <!--/Parte que Importa-->
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
