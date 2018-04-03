@@ -1,5 +1,5 @@
 <!--CORPO DE VERDADE-->
-<div class="page-content col-md-9">
+<div class="page-content">
     <div class="page-heading mb0">
         <div class="marquee"><?=$this->getDicas()?></div>
         <h1>Localização</h1>
@@ -31,6 +31,31 @@
                             <form class="form-horizontal row-border">
                                 <!--CONTEÚDO DA ABA GERAL-->
                                 
+                                <input type='file' id="imgUploader" style="display:none;" />
+                                <div class="form-group">
+                                    <div class="col-sm-10 inputWrapper">
+                                        <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
+                                        <div class="inputCorpo col-sm-10">
+                                            <div class="col-sm-12">
+                                                <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" />
+                                                <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
+                                            </div>
+                                            <!--Detalhes-->
+                                            <div class="col-sm-12">
+                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
+                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
+                                                    <textarea id="txtDetalheImagem" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
+                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="txtNome" class="col-sm-2 control-label">Nome</label>
@@ -53,31 +78,6 @@
                                             <div class="col-sm-12">
                                                 <textarea id="txtDescricao" class="form-control" placeholder="Digite a descrição da Localização aqui"></textarea>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <span class="button-icon has-bg inputToggle"><i class="fa fa-minus"></i></span>
-                                        <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
-                                    </div>
-                                </div>
-                                
-                                <input type='file' id="imgUploader" style="display:none;" />
-                                <div class="form-group">
-                                    <div class="col-sm-10 inputWrapper">
-                                        <label class="col-sm-2 control-label" for="imgImagem">Imagem</label>
-                                        <div class="inputCorpo col-sm-10">
-                                            <div class="col-sm-12">
-                                                <img src="imagens/100no_photo.png" class="img-circle imgClicavel col-sm-offset-5" />
-                                                <a class="imgReset col-sm-offset-5"><i class="fa fa-ban"></i></a>
-                                            </div>
-                                            <!--Detalhes-->
-                                            <div class="col-sm-12">
-                                                <a class="col-md-offset-5 inputDetalhes">Adicionar Detalhes</a>
-                                                <div class="conteudoDetalhes col-sm-10 col-md-offset-1" style="display:none;">
-                                                    <textarea id="txtDetalheImagem" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"></textarea>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
