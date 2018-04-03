@@ -10,6 +10,17 @@
         </div>
     </div>
 
+    <div class="page-tabs">
+        <ul class="nav nav-tabs">
+            <li class="dropdown pull-right tabdrop hide">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu"></ul>
+            </li>
+            <!--ABAS-->
+            <li class="active"><a data-toggle="tab" href="#abaGeral">Geral</a></li>
+        </ul>
+    </div>
+
     <div class="container-fluid">
         <div class="tab-content">
             <!--ABA GERAL-->
@@ -92,7 +103,7 @@
                                         <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="sel1" class="col-sm-2 control-label">Localização</label>
@@ -118,7 +129,7 @@
                                         <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="sel1" class="col-sm-2 control-label">Personagens</label>
@@ -144,7 +155,7 @@
                                         <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>                               
-                                
+
                                 <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="txtArea" class="col-sm-2 control-label">Desenvolvimento</label>
@@ -160,7 +171,7 @@
                                         <span class="button-icon has-bg inputDelet"><i class="fa fa-times"></i></span>
                                     </div>
                                 </div>                                
-                                
+
                                 <div class="form-group">
                                     <div class="col-sm-10 inputWrapper">
                                         <label for="checkbox" class="col-sm-2 control-label">Visibilidade</label>
@@ -194,7 +205,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
