@@ -1,0 +1,43 @@
+.marquee {
+    margin: -20px -20px 0px;
+    padding: 4px 0px;
+    border-radius: 0px;
+    overflow: hidden;
+    border: 1px solid #e6eaed;
+    background: #e6ffed;
+}
+
+#listaTudo {
+    padding: 0;
+}
+
+textarea {
+    padding: 10px;
+    width: 100%;
+    resize: none;
+}
+
+a.delForm {
+    color: #5f7676;
+}
+
+.button-icon {
+    margin: 0px 8px 0px 8px;
+    cursor: pointer;
+}
+
+.imgClicavel {
+    cursor: pointer;
+}
+
+.incluirStatus {
+    text-align: center;
+}
+
+.input-group{
+    margin-bottom:10px;
+}
+
+.select2{
+    width: 100% !important;
+}

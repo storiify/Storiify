@@ -11,119 +11,89 @@
         <meta name="author" content="Grupo 3 PI" />
 
         <!-- BootStrap -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <!-- Font Awesome -->
         <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
-        <!-- Estilo dos Menus de Navegação -->
-        <link href="css/navegacao.css" rel="stylesheet" type="text/css"/>
-        <!-- CSS Principal, com todos os estilos -->
-        <link href="css/styles.css" type="text/css" rel="stylesheet" />
-        <!--CSS para editarmos-->
-        <link href="css/geral.css" rel="stylesheet" />
+        <!--Estilo geral-->
+        <link href="../css/geral.css" rel="stylesheet" type="text/css"/>
+        <!--Estilo da navegação-->
+        <link href="../css/navegacao.css" rel="stylesheet" type="text/css"/>
+        <!-- Estilo das Abas de Navegação -->
+        <link href="../css/navTabs.css" rel="stylesheet" type="text/css"/>
+        <!-- Estilo dos Formulários -->
+        <link href="../css/formularios.css" rel="stylesheet" type="text/css"/>
+
         <!--ICheck-->
-        <link href="plugins/icheck-1.x/skins/flat/_all.css" rel="stylesheet" />
+        <link href="plugins/icheck-1.x/skins/flat/blue.css" rel="stylesheet" />
         <!--IONRangeSlider-->
-        <link href="plugins/Ion.RangeSlider/css/ion.rangeSlider.css" rel="stylesheet" />
-        <link href="plugins/Ion.RangeSlider/css/ion.rangeSlider.skinNice.css" rel="stylesheet" />
+        <link href="../plugins/ion.rangeSlider-2.2.0/css/ion.rangeSlider.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css"/>
         <!--Select2-->
         <link href="plugins/select2/css/select2.css" rel="stylesheet" />
-
     </head>
     <body>
-        <!--CABEÇALHO ORIGINAL-->
-        <nav class="navbar navbar-fixed-top clearfix navbar-inverse">
-            <div class="container-fluid">
-                <div class="nav navbar-nav navbar-left">
-                    <li><a class="menu-esquerdo-toggle" title="Abrir Menu Lateral">Link</a></li>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="#">Home</a></li>
-                    <li><a href="#">Page 1</a></li>
-                    <li><a href="#">Page 2</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </nav>
-        <div class="widget stay-on-collapse">
-            <div class="menu-esquerdo">
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Clients</a>
-                <a href="#">Contact</a>
-            </div>
-        </div>
-        <!--MENU LATERAL ESQUERDO/-->
-        <!--CORPO DA PÁGINA-->
-        <div class="static-content-wrapper">
-            <div class="static-content">
+        <!--CABEÇALHO DA PÁGINA-->
+        <?php
+        require_once "visoes_publicas/navegacao/menuTopo.php";
+        require_once "visoes_publicas/navegacao/menuLateralEsquerdo.php";
+        ?>
+        <!-- FINAL - CABEÇALHO DA PÁGINA-->
+        <!-- CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS -->
 
-                <!-- CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS -->
-                <div class="conteudo">
-                    <?php
-                    if (isset($file_dir) && $file_dir != 'none') {
-                        include_once $file_dir;
-                    }
-                    ?>
-                </div>
-                <!-- CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS/ -->
+        <?php
+        if (isset($file_dir) && $file_dir != 'none') {
+            include_once $file_dir;
+        }
+        ?>
 
-            </div>
-            <!--RODAPÉ-->
-            <footer role="contentinfo">
-                <div class="clearfix">
-                    <ul class="list-unstyled list-inline pull-left">
-                        <li>
-                            <h6 style="margin: 0;">© 2018 Storiify</h6>
-                        </li>
-                    </ul>
-                    <button class="pull-right btn btn-link btn-xs hidden-print" id="back-to-top"><i class="fa fa-arrow-up"></i></button>
-                </div>
-            </footer>
-        </div>
-        <!--CORPO DA PÁGINA/-->
-    </div>
-</div>
+        <!-- FINAL - CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS -->
+        <!-- RODAPÉ DA PÁGINA-->
 
-<!-- Load site level scripts -->
-<!-- Load jQuery -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<!-- Load jQueryUI -->
-<script src="js/jqueryui-1.9.2.min.js"></script>
-<!-- Load Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
-<!--Controlador dos Menus de Navegação-->
-<script src="js/navegacao.js" type="text/javascript"></script>
-<!--Controlador da Rolagem de Texto-->
-<script src="js/marquee.js"></script>
+        <?php
+        require_once "visoes_publicas/navegacao/rodape.php";
+        ?>
+        <!-- FINAL - RODAPÉ DA PÁGINA-->
+        <!--FINAL - CORPO DA PÁGINA-->
 
-<!--Seção dos Inputs-->
-<!--MinMax - Tem que vir antes do incluir -->
-<script src="js/input/minMax.js"></script>
-<!--CheckBox-->
-<script src="js/input/checkBox.js"></script>
-<!--Imagem-->
-<script src="js/input/imagem.js"></script>
-<!--Incluir-->
-<script src="js/input/incluir.js"></script>
-<script src="js/input/incluirTeste.js"></script>
-<!--/Seção dos Inputs-->
-<!--Text Scroll Plugin-->
-<script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>
-<!--TextArea autosize-->
-<script src="plugins/autosize-TextArea/dist/autosize.js"></script>
-<!--IChek-->
-<script src="plugins/icheck-1.x/icheck.js"></script>
-<!--IonRangeSlider-->
-<script src="plugins/Ion.RangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
-<!--Verificar o que tem dentro (faz o toggle do menu lateral)-->
-<script src="js/application.js"></script>
-<!--Selector2-->
-<script src="plugins/select2/js/select2.js"></script>
-<!-- End loading site level scripts -->
-<!-- Load page level scripts-->
-<!-- End loading page level scripts-->
-</body>
+        <!-- Load site level scripts -->
+        <!-- Load jQuery -->
+        <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <!-- Load jQueryUI -->
+        <script src="js/jqueryui-1.9.2.min.js"></script>
+        <!-- Load Bootstrap -->
+        <script src="js/bootstrap.js"></script>
+        
+        <!--Controlador dos Menus de Navegação-->
+        <script src="js/navegacao.js" type="text/javascript"></script>
+        <!--Controlador da Rolagem de Texto-->
+        <script src="js/marquee.js"></script>
+        <!--NavTabs-->
+        <script src="../js/navTabs.js" type="text/javascript"></script>
+        <!--Formulários-->
+        <script src="../js/formularios.js" type="text/javascript"></script>
+        <!--Seção dos Inputs-->
+        <!--MinMax - Tem que vir antes do incluir -->
+        <script src="js/input/minMax.js"></script>
+        <!--CheckBox-->
+        <script src="js/input/checkBox.js"></script>
+        <!--Imagem-->
+        <script src="js/input/imagem.js"></script>
+        <!--Incluir-->
+        <script src="js/input/incluir.js"></script>
+        <script src="js/input/incluirTeste.js"></script>
+        <!--/Seção dos Inputs-->     
+        <!--Text Scroll Plugin-->
+        <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>
+        <!--TextArea autosize-->
+        <script src="plugins/autosize-TextArea/dist/autosize.js"></script>
+        <!--IChek-->
+        <script src="plugins/icheck-1.x/icheck.js"></script>
+        <!--IonRangeSlider-->
+        <script src="../plugins/ion.rangeSlider-2.2.0/js/ion-rangeSlider/ion.rangeSlider.js" type="text/javascript"></script>
+        <!--Selector2-->
+        <script src="plugins/select2/js/select2.js"></script>
+        <!-- End loading site level scripts -->
+        <!-- Load page level scripts-->
+        <!-- End loading page level scripts-->
+    </body>
 </html>

@@ -1,45 +1,22 @@
 ﻿$(document).ready(function () {
 
     //Tratamento de todos os inputs do tipo MinMax 
-    $(".minMaxInput").each(function () {
+    $(".input-minmax").each(function () {
         trazerMinMax(this);
     });
 });
 
 function trazerMinMax(objeto) {
-
-    var valores;
-
-    if ($(objeto).hasClass("mmHosti")) {
-        valores = ["Inofensivos", "Pacíficos", "Neutros", "Ameaçadores", "Agressivos"];
-    }
-    else if ($(objeto).hasClass("mmAltura")) {
-        valores = ["Nanica", "Baixa", "Média", "Alta", "Gigante"];
-    }
-    else if ($(objeto).hasClass("mmCorpo")) {
-        valores = ["Raquítico", "Magro", "Normal", "Gordo", "Obeso"];
-    }
-    else if ($(objeto).hasClass("mmDesiSocial")) {
-        valores = ["Muito Desigual", "Pouco Desigual", "Sem Desigualdades"]; //Bugado na aba de Mundo->Economia
-    }
-    else if ($(objeto).hasClass("mmSatfPop")) {
-        valores = ["Muito Insatisfeita","Insatisfeita", "Neutra", "Satisfeita", "Muito Satisfeita"];
-    }
-    else if ($(objeto).hasClass("mmNvlTec")) {
-        valores = ["Rudimentar","Inferior", "Mediana", "Desenvolvida", "Avançada"];
-    }
-    else if ($(objeto).hasClass("mmDpedTec")) {
-        valores = ["Totalmente Dependentes","Elevada", "Neutra", "Pouca", "Totalmente Independentes"];
-    }
-    else if ($(objeto).hasClass("mmAces")) {
-        valores = ["(Quase)Nenhum","Raro", "Neutro", "Comum", "Maioria dos Habitantes"];
-    }
+    var valores = $(objeto).data("minmax-valores").split(",")
 
     //Cria o MinMax no objeto atual, não modificar
     $(objeto).ionRangeSlider({
-        from: 2,
-        values: valores,
         type: 'single',
+        min: 0,
+        max: 4,
+        from: 2,
+        step: 1,
+        values: valores,
         hasGrid: false
     });
 }

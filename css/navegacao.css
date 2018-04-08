@@ -1,45 +1,229 @@
-/*Menu Topo*/
-.navbar-inverse{
-    background: #ff7b00;
-    border-color: #30c5ff;
-}
-/*/Menu do Topo*/
+/*
+    Azul - #30c5ff
+    Azul-Escuro - #162338;
+    Laranja - #ff7b00
+    Preto - #162128
+    Verde - #deefb7
+    Cinza - #c8c8c8
+*/
 
-/*Menu Lateral Esquerdo*/
-.menu-esquerdo {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #ff7b00; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
-
-/* The navigation menu links */
-.menu-esquerdo a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
+/*MENU TOPO*/
+.navbar {
+    position:fixed;
+    width: 100%;
+    top:0px;
+    background: #162338;
+    height: 60px;
+    z-index: 5;
+    border-bottom: 1px solid #ff7b00;
+    -webkit-box-shadow: 0 8px 6px -8px black;
+    -moz-box-shadow: 0 8px 6px -8px black;
+    box-shadow: 0 8px 6px -8px black;
 }
 
-/* When you mouse over the navigation links, change their color */
-.menu-esquerdo a:hover {
-    color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.menu-esquerdo .closebtn {
+.logo-topo {
+    margin-top: 30px;
+    max-height: 90px;
     position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    top: -50px;
+    left: -30px;
+    z-index: 5;
 }
-/*/Menu Lateral Esquerdo*/
+
+.fundo-logo{
+    position: absolute;
+    background: #162338;
+    width: 110px;
+    height: 110px;
+    border-bottom: 1px solid #ff7b00;
+    border-radius: 50%;
+    top: -30px;
+    left: -40px;
+    z-index: 4;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+.logo-nome-topo{
+    position: absolute;
+    left:10%;
+    padding: 5px;
+    width: 10px;
+}
+.logo-nome-topo > img{
+    width: 120px;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar i {
+    color: white;
+}
+
+.avatar-usuario {
+    margin-right: 10px;
+    max-height: 40px;
+}
+
+.btn-azul {
+    background-color: #162338 !important;
+    color: white !important;
+    -webkit-transition-duration: 0.2s !important; /* Safari */
+    transition-duration: 0.2s !important;
+}
+
+.btn-azul:hover {
+    background-color: white !important;
+    color: #ff7b00 !important;
+}
+
+.btn-azul:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.25);
+}
+
+.dropdown-menu {
+    background-color: #162338;
+}
+
+.dropdown-item:hover {
+    color: #ff7b00 !important;
+    background-color: white !important;
+}
+
+.menu-esquerdo-toggle{
+    margin-left: 10px;
+    font-size: 25px;
+}
+.menu-esquerdo-toggle:hover i{
+    color:#ff7b00;
+}
+/*FINAL - MENU TOPO*/
+
+/*MENU LATERAL ESQUERDO*/
+.menu-esquerdo {
+    display:none;
+    height: 100%; /* 100% da altura */
+    width: 280px;
+    position: fixed; /* Fica no topo */
+    z-index: 10; /* Fica por cima */
+    top: 60px;
+    left: 0;
+    background: #162338;
+    overflow-x: hidden; /* Não pode dar scroll horizontal */
+    transition: 0.5s; /* 0.5 segundos de efeito lateral */
+    border-right: 1px solid #ff7b00;
+}
+
+.list-group {
+    overflow: visible;
+}
+
+.list-group-item {
+    background: #162338;
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    transition: 0.3s;
+    border-left: 0;
+    border-right: 0;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;        
+}
+
+.list-group-item > .list-group {
+    border: 1px solid #ff7b00;
+}
+.list-group-item:not(.lista-clicavel){
+    padding-left:10px;
+    text-align: left;
+}
+
+.list-group-item:hover {
+    color: #ff7b00;
+    background: white;
+    cursor: default;
+}
+
+.list-group-item.lista-clicavel:hover {
+    color: #ff7b00;
+    background: white;
+    cursor: pointer;
+}
+
+.list-group-item > .list-group {
+    display: none;
+    position: absolute;
+    right: -300px;
+    top: -2px;
+    width: 300px;
+    overflow: visible;
+}
+
+.list-group-item:hover > .list-group {
+    display: block;
+}
+.acao-categoria{
+    position: relative;
+}
+.insignia {
+    position: relative;
+    width: 15px;
+    height: 25px;
+    border-radius: 4px;
+    color: #162338;
+    background: white;
+    font-weight: bold;
+}
+.insignia > span{
+    position: relative;
+    left: -9px;
+    top:1px;   
+}
+
+.lista-clicavel:hover .insignia {
+    color: #ff7b00;
+    border: 1px solid #ff7b00 !important;
+}
+
+.cabecalho-menu-lateral{
+    text-align: left;
+    padding-top:20px;
+    padding-bottom:20px;
+    color:white;
+}
+
+.historia-avatar{
+    width:50px;
+}
+
+.nome-historia{
+    font-size: 16px;
+    color:white;
+    margin-left: 6px;
+    text-decoration:underline;
+}
+.nome-historia:hover{
+    color:white;
+    text-decoration: underline;
+}
+
+.bem-vindo-texto{
+    font-size: 14px;
+    color:#ccc;
+    margin-left: 4px;
+}
+
+.separador-menu-lateral{
+    height: 40px;
+    background:#4a566c;
+    color: #162338;
+    line-height: 40px;
+    text-align: center;
+}
+/*FINAL - MENU LATERAL ESQUERDO*/

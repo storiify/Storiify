@@ -12,10 +12,10 @@
 
         <!-- Font Awesome -->
         <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
-        <!-- CSS Principal, com todos os estilos -->
-        <link href="css/styles.css" type="text/css" rel="stylesheet" />
         <!--CSS para editarmos-->
         <link href="css/geral.css" rel="stylesheet" />
+        <!-- CSS Principal, com todos os estilos -->
+        <link href="css/styles.css" type="text/css" rel="stylesheet" />
         <!--ICheck-->
         <link href="plugins/icheck-1.x/skins/flat/_all.css" rel="stylesheet" />
         <!--IONRangeSlider-->
@@ -216,8 +216,6 @@
                         <!-- CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS -->
                         <div class="conteudo">
                             <?php
-                           
-
                             if (isset($file_dir) && $file_dir != 'none') {
                                 include_once $file_dir;
                             }
