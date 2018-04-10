@@ -15,6 +15,11 @@ footer{
     max-width: 80%;
     background-color: white;
 }
+@media screen and (max-width: 1300px){
+    footer{
+        max-width: 90%;
+    }
+}
 #scroll-top{
     display: none;
     position: fixed;
@@ -41,7 +46,11 @@ footer{
     background-color: white;
     border-radius: 5px;
 }
-
+@media screen and (max-width: 1300px){
+    .conteudo{
+        max-width: 90%;
+    }
+}
 /*Botões Sociais*/
 .btn-facebook {
     color: #fff;

@@ -19,9 +19,17 @@
 }
 
 .input-label{
-    text-align: right;
+    text-align: left;
     font-weight: bold;
     color: #74777b;
+}
+@media screen and (max-width: 767px){
+    .input-label{
+        left:10%;
+    }
+}
+.input-corpo{
+    padding-top: 2%;
 }
 .input-detalhes{
     padding-top: 1%;
@@ -52,13 +60,25 @@ textarea, input[type="text"]{
 .btn-input-controle{
     background-color: #162338;
     color:white;
-    width: 180%;  /*Otimizar responsividade*/
+    width: 180%;
     text-align: left;
     position:absolute;
     left:-90%;
     border-radius: 30px 80px 80px 30px;
 }
 
+@media screen and (max-width: 1300px){
+    .btn-input-controle{
+        width: 120%;
+        left:-50%;
+    }
+}
+@media screen and (max-width: 767px){
+    .btn-input-controle{
+        width: 15%;
+        left:-5%;
+    }
+}
 .btn-input-controle:hover{
     background-color: white;
     color:#ff7b00;
@@ -119,7 +139,7 @@ textarea, input[type="text"]{
     background-color: #30c5ff !important;
     font-size: 1rem !important;
     position: absolute !important;
-    width: 60px;
+    z-index: 2;
     top: -7px !important;
     border:1px solid #10a4de !important;
 }
@@ -135,7 +155,6 @@ textarea, input[type="text"]{
     background-position: center center;
     cursor: pointer;
 }
-/* For Tablets */
 .input-imagem-reset{
     cursor: pointer;
     position: relative;
@@ -143,7 +162,7 @@ textarea, input[type="text"]{
     top: -120px;
 }
 .input-imagem-reset i{
-    color: #162338;
+    color: #999;
 }
 @media screen and (max-width: 1300px){
     .input-imagem-reset{
@@ -155,5 +174,63 @@ textarea, input[type="text"]{
         left:60%;
     }
 }
+@media screen and (max-width: 767px){
+    .input-imagem-reset{
+        left:70%;
+    }
+}
 
 /*FINAL - INPUT IMAGEM*/
+/*INPUT INCLUIR*/
+.incluir-btn-remover{
+    border-top-right-radius: 0px; 
+    border-bottom-right-radius: 0px;
+}
+.incluir-btn-adicionar{
+    border-top-left-radius: 0px; 
+    border-bottom-left-radius: 0px;
+}
+
+.incluir-status{
+    text-align: center;
+    background-color: white !important;
+}
+/*filhos*/
+.btn-icl-controle{
+    background-color: #162338;
+    color:white;
+    position:relative;
+    right:0;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+@media screen and (max-width: 767px){
+    .btn-icl-controle{
+        position:absolute;
+        height: 150px;
+        top:58px;
+        right:-30px;
+        width:30px;
+    }
+    .btn-icl-controle i{
+        position:absolute;
+        top:67px;
+        right:8px;
+    }
+}
+.btn-icl-controle:hover{
+    background-color: white;
+    color:#ff7b00;
+    border:1px solid #ff7b00;
+}
+.incluir-filho{
+    margin-top: 10px;
+    font-weight:bold;
+    color:#74777b;
+}
+.incluir-filho-corpo{
+    background-color: white;
+    border-radius: 0.25rem 0 0 0.25rem;
+    margin-right: 0 !important;
+    padding: 5px 20px;
+}
+/*FINAL - INPUT INCLUIR*/

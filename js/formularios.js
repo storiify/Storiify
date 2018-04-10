@@ -1,5 +1,6 @@
+//minimizar input
 $(".btn-input-controle.minimizar").on("click", function () {
-    $(this).parent().siblings(".input-corpo").toggle();
+    $(this).parent().siblings(".input-corpo").slideToggle("fast");
     if ($(this).children().hasClass("fa-minus")) {
         $(this).children().addClass("fa-plus").removeClass("fa-minus");
     } else if ($(this).children().hasClass("fa-plus")){
@@ -8,6 +9,7 @@ $(".btn-input-controle.minimizar").on("click", function () {
 
 });
 
+//adicionar/remover detalhes
 $(".detalhes-link").on("click", function () {
     if ($(this).html() !== "Remover Detalhes") {
         $(this).after('<div class="detalhes-conteudo">' +
