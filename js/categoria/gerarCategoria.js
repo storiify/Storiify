@@ -7,16 +7,38 @@
     });
 
 function geraCategoria() {
+
+    var cat = new Categoria('Localização');
     
-    var content = geraTopLevel({catName:'Localização', catAbas:['Geral', 'Biologia']});
-    var aba = new Aba("nomeAba");
-    aba.campos = [{nomeCampo, tipo, placeholder, temDetalhe, temToggle}];
+    var aba1 = new Aba('Geral');
+    var cImagem = new Campo("Imagem", "img", " ", true, true);
+    aba1.addCampo(cImagem);
     
+    cat.addAba(aba1);
+    
+    var aba2 = new Aba('Biologia');
+    var cImagem = new Campo("Imagem", "img", " ", true, true);
+    aba2.addCampo(cImagem);
+    
+    cat.addAba(aba2);
+    
+    var content = cat.print();
+    
+    //fazer download do arquivo para testes
     uriContent = "data:application/octet-stream," + encodeURIComponent(content);
-    saveAs(uriContent, "Cadastrar"+context.catName+".php");
+    saveAs(uriContent, "Cadastrar"+cat.catName+".php");
 }
 
-function geraTopLevel(context) {
+function Categoria(nome, abas) {
+    this.nome = nome;
+    this.abas = abas;
+}
+
+Categoria.prototype.addAba = function(aba) {
+    this.abas.push(aba);
+};
+
+Categoria.prototype.print = function() {
     var content = "";
     
     //cabeçalho
@@ -25,7 +47,7 @@ function geraTopLevel(context) {
         "<div class='page-content'>",
         "<div class='page-heading mb0'>",
             "<div class='marquee'><?=$this->getDicas()?></div>",
-            "<h1>"+context.catName+"</h1>",
+            "<h1>"+this.catName+"</h1>",
             "<div class='options'>",
                 "<div class='btn-toolbar'>",
                     "<a href='#' class='btn btn-default'><i class='fa fa-fw fa-cog'></i></a>",
@@ -43,7 +65,7 @@ function geraTopLevel(context) {
                     "<ul class='dropdown-menu'></ul>",
                 "</li>",
                 "<!--ABAS-->",
-                geraListaAbas(context.catAbas),
+                geraListaAbas(this.abas),
             "</ul>",
         "</div>\n"
     ].join("\n");
@@ -53,17 +75,17 @@ function geraTopLevel(context) {
     content += "<!-- CORPO DE VERDADE/ -->";
     
     return content;
-}
+};
 
-function geraListaAbas(catAbas) {
+function geraListaAbas(abas) {
     var content = "";
     
-    for(var i=0, len = catAbas.length; i < len; i++) {
+    for(var i=0, len = abas.length; i < len; i++) {
         if (i === 0)
             content += "<li class='active'>";
         else
             content += "<li>";
-        content += "<a data-toggle='tab' href='#aba"+catAbas[i]+"'>"+catAbas[i]+"</a></li>";
+        content += "<a data-toggle='tab' href='#aba"+abas[i].nome+"'>"+abas[i].nome+"</a></li>";
         if (i !== len - 1)
             content += "\n";
     }
@@ -71,22 +93,7 @@ function geraListaAbas(catAbas) {
     return content;
 }
 
-function geraAba(aba) {
-    
-}
-
-function geraAbas(catAbas) {
-    var content = "";
-    
-    for(var i=0, len = catAbas.length; i < len; i++) {
-        content += geraAba(catAbas[i]);
-        if (i !== len - 1)
-            content += "\n";
-    }
-    
-    return content;
-}
-
+/*Protótipo de Aba*/
 function Aba(nome, campos) {
     this.nome = nome;
     this.campos = campos;
@@ -96,8 +103,13 @@ Aba.prototype.print = function() {
     var content = "";
     
     content += "";
-}
+};
 
+Aba.prototype.addCampo = function(campo) {
+    this.campos.push(campo);
+};
+
+/*Protótipo de Campo*/
 function Campo(nome, tipo, placeholder, temDetalhe, temToggle) {
     this.nome = nome;
     this.tipo = tipo;
@@ -133,6 +145,7 @@ Campo.prototype.print = function() {
     return content;
 };
 
+/*Função para download do arquivo*/
 function saveAs(uri, filename) {
   var link = document.createElement('a');
   if (typeof link.download === 'string') {
@@ -152,7 +165,7 @@ function saveAs(uri, filename) {
   }
 }
 
-function geraTopLevel1(context) {
+/*function geraTopLevel1(context) {
     var div1 = document.createElement('div');
     div1.class = 'page-content';
     
@@ -189,4 +202,4 @@ function geraTopLevel1(context) {
     var content = div1.innerHTML;
     uriContent = "data:application/octet-stream," + encodeURIComponent(content);
     newWindow = window.open(uriContent, 'neuesDokument');
-}
+}*/
