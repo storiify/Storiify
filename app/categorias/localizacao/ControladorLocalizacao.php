@@ -15,4 +15,9 @@ class ControladorLocalizacao extends Controlador{
         $this->setVisao('CadastrarLocalizacao');
     }
     
+    
+    public function listar() {
+        $this->setVisao('ListarLocalizacao');
+    }
+    
 }
