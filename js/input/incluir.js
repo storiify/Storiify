@@ -60,8 +60,8 @@ InputIncluir = {
         var idDeFilho = idDoPai + "-filho-" + id;
         //Abrindo instância
         var moldeInputIncluirAbertura = [
-            "<div class='incluir-filho row'>",
-            "<div class='col-md-11 mx-auto incluir-filho-corpo' id='" + idDeFilho + "'>"
+            "<div class='incluir-filho row' id='" + idDeFilho + "'>",
+            "<div class='col-md-11 mx-auto incluir-filho-corpo'>"
         ].join("\n");
         //Molde Texto
         var moldeTx = [
@@ -90,7 +90,6 @@ InputIncluir = {
         var inputFilhoRetorno = moldeInputIncluirAbertura;
 
         for (var i = 0; i < dataIncluir.length; i++) {
-
             var funcao = dataIncluir[i].substring(0, dataIncluir[i].indexOf("["));
             var nome = dataIncluir[i].substring(dataIncluir[i].indexOf("[") + 1, dataIncluir[i].indexOf("]"));
             var parametros = dataIncluir[i].substring(dataIncluir[i].indexOf("(") + 1, dataIncluir[i].indexOf(")")).split(",");

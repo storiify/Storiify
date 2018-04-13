@@ -145,6 +145,9 @@ textarea, input[type="text"]{
 }
 /*FINAL - INPUT MINMAX*/
 /*INPUT IMAGEM*/
+#imgUploader{
+    display:none;
+}
 .input-imagem{
     background-image: url(../imagens/sem-foto.png);
     width: 120px;
