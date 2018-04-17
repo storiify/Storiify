@@ -32,29 +32,29 @@
         <link href="plugins/select2/css/select2.css" rel="stylesheet" />
     </head>
     <body>
+
         <!--CABEÇALHO DA PÁGINA-->
         <?php
         require_once "visoes_publicas/navegacao/menuTopo.php";
         require_once "visoes_publicas/navegacao/menuLateralEsquerdo.php";
         ?>
         <!-- FINAL - CABEÇALHO DA PÁGINA-->
-        <!-- CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS -->
-
+        
+        <!-- CONTEÚDO COM DICAS, PÁGINA DA CATEGORIA E INSTÂNCIAS -->
         <?php
         if (isset($file_dir) && $file_dir != 'none') {
             include_once $file_dir;
         }
         ?>
-
-        <!-- FINAL - CONTEUDO COM DICAS,PAGINA DA CATEGORIA E INSTANCIAS -->
+        <!-- FINAL - CONTEÚDO COM DICAS, PÁGINA DA CATEGORIA E INSTÂNCIAS -->
+        
         <!-- RODAPÉ DA PÁGINA-->
-
         <?php
         require_once "visoes_publicas/navegacao/rodape.php";
         ?>
         <!-- FINAL - RODAPÉ DA PÁGINA-->
         <!--FINAL - CORPO DA PÁGINA-->
-
+        
         <!-- Load site level scripts -->
         <!-- Load jQuery -->
         <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
@@ -62,7 +62,7 @@
         <script src="js/jqueryui-1.9.2.min.js"></script>
         <!-- Load Bootstrap -->
         <script src="js/bootstrap.js"></script>
-        
+
         <!--Controlador dos Menus de Navegação-->
         <script src="js/navegacao.js" type="text/javascript"></script>
         <!--Controlador da Rolagem de Texto-->
@@ -80,7 +80,6 @@
         <script src="js/input/imagem.js"></script>
         <!--Incluir-->
         <script src="js/input/incluir.js"></script>
-        <script src="js/input/incluirTeste.js"></script>
         <!--/Seção dos Inputs-->     
         <!--Text Scroll Plugin-->
         <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>

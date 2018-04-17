@@ -81,7 +81,7 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input type="text" class="form-control" placeholder="Placeholder para Nome" id="input-tx-Nome"/>
+                            <input value="<?= $this->getModelo() ?>" type="text" class="form-control" placeholder="Placeholder para Nome" id="input-tx-Nome"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
@@ -1511,12 +1511,9 @@
         <!-- FINAL - ABA MAGIA -->
     </div>
     <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
-</div>
     <div class="col-md-12 form-controle">
-        <button type="button" class="btn btn-primary">
-            Salvar
+        <button type="button" id="btn-salvar-form" class="btn btn-azul btn-block">
+            Salvar Mundo
         </button>
-        <button type="button" class="btn btn-primary">
-            Resetar
-        </button> 
     </div>
+</div>

@@ -17,7 +17,10 @@
     padding-top: 2%;
     padding-bottom: 2%;
 }
-
+#btn-salvar-form{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 .input-label{
     text-align: left;
     font-weight: bold;
