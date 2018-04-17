@@ -1,9 +1,3 @@
-<?php
-//    if(SESSION['idUsuarioLogado'] == 0){
-//        Mostrar barra superior perguntando se ele já é registrado
-//        com link para logar ou registrar
-//    }
-?>
 <nav class="navbar navbar-expand-lg">
 
     <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
@@ -17,7 +11,7 @@
     </div>
     
     <div class="mx-auto my-2 order-0 order-md-1 position-relative">
-        <a class="mx-auto" href="">
+        <a class="mx-auto" href="?categoria=historia&acao=listar">
             <div class="fundo-logo"></div>
             <img src="../../imagens/logo/540logoFundo.png" class="rounded-circle logo-topo" alt="Logo Storify" title="Logo Storify"/>
         </a>

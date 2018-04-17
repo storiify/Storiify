@@ -9,14 +9,14 @@ class Mundo {
 
     public static function SelecionarUm($id) {
         $db = ConexaoBd::getInstance();
-        // we make sure $id is an integer
+        //Garantindo que a $id é um int
         $id = intval($id);
         $req = $db->prepare('SELECT * FROM tb_mundo WHERE pk_mnd = :pk_mnd');
-        // the query was prepared, now we replace :id with our actual $id value
+        //A query foi preparada, agora trocamos :pk_mnd por $id
         $req->execute(array('pk_mnd' => $id));
         $mundo = $req->fetch();
-        
-        return new Mundo($mundo['pk_mnd'], $mundo['nm_ppl']);
+        return $mundo;
+        //return new Mundo($mundo['pk_mnd'], $mundo['nm_ppl']);
     }
 
     public $pk_mnd;
