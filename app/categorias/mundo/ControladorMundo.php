@@ -1,17 +1,15 @@
 <?php
 
 class ControladorMundo extends Controlador{
-    
+      
     public function __construct($categoria) {
         parent::__construct();
         $this->setCategoria($categoria);
     }
     
     public function cadastrar($parametros) {
-        consoleLog('Chegou ao cadastro de Mundo!');
-        
-        $this->setVisao('CadastrarMundo');
-       
+        $mundo = Mundo::SelecionarUm($parametros);
+        $this->setVisao('CadastrarMundo'); 
+        $this->setModelo($mundo);
     }
-    
 }

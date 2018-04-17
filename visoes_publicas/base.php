@@ -12,11 +12,15 @@
 
         <!-- Font Awesome -->
         <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
         <!-- CSS Principal, com todos os estilos -->
         <link href="css/styles.css" type="text/css" rel="stylesheet" />
         <link href="css/estiloHeroi.css" rel="stylesheet" />
+
         <!--CSS para editarmos-->
         <link href="css/geral.css" rel="stylesheet" />
+        <!-- CSS Principal, com todos os estilos -->
+        <link href="css/styles.css" type="text/css" rel="stylesheet" />
         <!--ICheck-->
         <link href="plugins/icheck-1.x/skins/flat/_all.css" rel="stylesheet" />
         <!--IONRangeSlider-->

@@ -1,5 +1,7 @@
 <?php
-  class ConexaoBd {
+
+class ConexaoBd {
+
     private static $instance = NULL;
     
     private function __construct() {}
@@ -12,8 +14,10 @@
         self::$instance = new PDO('mysql:host=0.tcp.ngrok.io:18751;dbname=storiify', 'storiify', 'strfg1pi3senac', $pdo_options);
       }
       return self::$instance;
+
     }
-  }
+
+}
 
 //$servername  = "0.tcp.ngrok.io:18751";
 //       $dbname      = "storiify";
