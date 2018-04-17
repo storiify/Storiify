@@ -6,11 +6,16 @@
  */
 
 class Sessao {
+    
+    private static $instance = NULL;
         
     public function __construct() {
-        session_name('Storiify_Session');
-        @session_start();
-    }
+	if (!isset(self::$instance)) {
+	    session_name('Storiify_Session');
+	    session_start();
+	    self::$instance = $this;
+	}
+    }   
     
     public function setSessao($chave, $valor) {        
         $_SESSION[$chave] = $valor;
@@ -18,6 +23,10 @@ class Sessao {
     
     public function getSessao() {
         return $_SESSION;
+    }
+    
+    public function getChave($chave) {
+        return $_SESSION[$chave];
     }
     
 }

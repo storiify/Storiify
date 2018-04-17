@@ -30,7 +30,6 @@
     <div class="tab-content">
         <!--ABA GERAL-->
         <div id="abaGeral" class="container tab-pane active">
-
             <!--INPUT IMAGEM-->
             <!--Só precisa de um input desse na página, por isso, deixarei o ID controlando-->
             <input type='file' id="imgUploader" />
@@ -523,6 +522,7 @@
                                 </div>
                                 <div class="incluir-filhos-area">
                                     <!--Aqui entrarão as instâncias-->
+
                                 </div>
                             </div>
                         </div>
@@ -1507,6 +1507,7 @@
                 </div>
             </div>
             <!--FINAL - INPUT TEXTOAREA-->
+
         </div>
         <!-- FINAL - ABA MAGIA -->
     </div>
