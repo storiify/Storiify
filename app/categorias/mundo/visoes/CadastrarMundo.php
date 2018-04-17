@@ -1,3 +1,6 @@
+<?php
+?>
+
 <div style="margin-top:60px;">
     <div class="marquee"><?= $this->getDicas() ?></div>
 </div>
@@ -10,7 +13,6 @@
 </div>
 
 <div class="conteudo">
-
     <!-- ABAS DE NAVEGAÇÃO -->
     <div class="tabs tabs-style-linemove">
         <nav>
@@ -63,7 +65,7 @@
                     <!--FINAL - INPUT CORPO-->
                 </div>
             </div>
-            <!--FINAL - INPUT IMAGEM-->           
+            <!--FINAL - INPUT IMAGEM-->
             <!--INPUT TEXTO-->
             <div class="form-group">
                 <div class="row">
@@ -80,7 +82,7 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="<?= $this->getModelo() ?>" type="text" class="form-control" placeholder="Placeholder para Nome" id="input-tx-Nome"/>
+                            <input value="<?= $this->parametros; ?>" type="text" class="form-control" placeholder="Placeholder para Nome" id="input-tx-Nome"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">

@@ -16,7 +16,7 @@ class Controlador{
     private $visaoUnica;
     private $sessao;
     private $dicas;
-    
+      
     public function __construct() {
         //Em Breve chamar sessão aqui
         $this->sessao = new Sessao();

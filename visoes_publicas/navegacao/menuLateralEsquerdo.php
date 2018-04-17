@@ -4,11 +4,11 @@
 
         <li class="nav-item cabecalho-menu-lateral">
             <div class="col-md-2">
-                <img src="../../imagens/imagem_historia.png" class="rounded-circle historia-avatar pull-left" alt="Imagem da história <?php // nome da historia        ?>"/>
+                <img src="../../imagens/imagem_historia.png" class="rounded-circle historia-avatar pull-left" alt="Imagem da história <?php // nome da historia?>"/>
             </div>
             <div class="col-md-10">
                 <span class="bem-vindo-texto">Bem-vindo à </span><br>
-                <a href="#" class="nome-historia">Título da História</a>
+                <a href="?categoria=historia&acao=cadastrar" class="nome-historia">Título da História</a>
             </div>
         </li>
 
@@ -21,7 +21,7 @@
             <span class="col-md-10">Personagem</span>
             <ul class="navbar-nav mr-auto text-center list-group">
                 <li>
-                    <a href="" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=personagem&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Criar Personagem</div>
@@ -69,7 +69,7 @@
             <span class="col-md-10">Localização</span>
             <ul class="navbar-nav mr-auto text-center list-group">
                 <li>
-                    <a href="" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=localizacao&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Criar Localização</div>
@@ -81,7 +81,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Listar Localizações</div>
-                            <div class="col-md-1"><span class="insignia">&nbsp;8&nbsp;</span></div>                        
+                            <div class="col-md-1"><span class="insignia">&nbsp;08&nbsp;</span></div>                        
                         </div>
                     </a>
                 </li>
@@ -93,7 +93,7 @@
             <span class="col-md-10">Cena</span>
             <ul class="navbar-nav mr-auto text-center list-group">
                 <li>
-                    <a href="" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Criar Cena</div>
