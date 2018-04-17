@@ -6,7 +6,12 @@ class Mundo {
         $this->pk_mnd = $id;
         $this->nm_ppl = $nome;
     }
-
+    public static function Inserir($mundo) {
+        $db = ConexaoBd::getInstance();
+        $sql =("INSERT INTO tb_mundo (nm_ppl)
+                            VALUES ('".$mundo->nm_ppl."');");
+        $db->exec($sql);
+    }
     public static function SelecionarUm($id) {
         $db = ConexaoBd::getInstance();
         //Garantindo que a $id é um int
@@ -16,7 +21,10 @@ class Mundo {
         $req->execute(array('pk_mnd' => $id));
         $mundo = $req->fetch();
         return $mundo;
-        //return new Mundo($mundo['pk_mnd'], $mundo['nm_ppl']);
+    }
+    public static function Alterar($mundo){
+        $db = ConexaoBd::getInstance();
+        
     }
 
     public $pk_mnd;

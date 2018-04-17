@@ -4,7 +4,7 @@ class ControladorMundo extends Controlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Mundo");
+        parent::setDicas("Dicas Mundo");       
         $this->setCategoria($categoria);
     }
 
@@ -13,9 +13,15 @@ class ControladorMundo extends Controlador {
             $this->setVisao('CadastrarMundo');
         } else {
             $mundo = Mundo::SelecionarUm($parametros);
-            $this->setVisao('CadastrarMundo');
             $this->setParametros($mundo);
+            $this->setVisao('CadastrarMundo');
         }
+    }
+    
+    public function salvar(){
+        $mundo = new Mundo($_POST['view_pk_mnd'], $_POST['view_nm_ppl']);
+        Mundo::Inserir($mundo);
+        $this->setVisao('ListarMundo');
     }
 
 }
