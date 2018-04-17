@@ -332,7 +332,7 @@
             </div>
             <!--FINAL - INPUT CHECKBOX-->
         </div>
-        <!-- ABA BIOLOGIA -->
+        <!-- ABA APARÊNCIA -->
         <div id="abaAparencia" class="container tab-pane fade"><br>
             <!--INPUT TEXTOAREA-->
             <div class="form-group">
@@ -593,6 +593,8 @@
             </div>
             <!--FINAL - INPUT INCLUIR-->
         </div>
+        <!-- FINAL - ABA APARÊNCIA -->
+        <!-- ABA HABILIDADES -->
         <div id="abaHabilidades" class="container tab-pane fade"><br>
             <!--INPUT TEXTO-->
             <div class="form-group">
@@ -717,6 +719,8 @@
             </div>
             <!--FINAL - INPUT INCLUIR-->
         </div>
+        <!-- FINAL - ABA HABILIDADES -->
+        <!-- ABA HISTÓRIA -->
         <div id="abaHistoria" class="container tab-pane fade"><br>
             <!--INPUT TEXTO-->
             <div class="form-group">
@@ -903,6 +907,8 @@
             </div>
             <!--FINAL - INPUT TEXTOAREA-->
         </div>
+        <!-- FINAL - ABA HISTÓRIA -->
+        <!-- ABA RELAÇÕES -->
         <div id="abaRelacoes" class="container tab-pane fade"><br>
             <!--INPUT TEXTOSELECT-->
             <div class="form-group">
@@ -1045,7 +1051,9 @@
             </div>
             <!--FINAL - INPUT TEXTOSELECT-->
         </div>
-        <div id="abaRelacoes" class="container tab-pane fade"><br>
+        <!-- FINAL - ABA RELAÇÕES -->
+        <!-- ABA PASSADO -->
+        <div id="abaPassado" class="container tab-pane fade"><br>
             <!--INPUT TEXTO-->
             <div class="form-group">
                 <div class="row">
@@ -1189,6 +1197,7 @@
             </div>
             <!--FINAL - INPUT INCLUIR-->
         </div>
+        <!-- FINAL - ABA PASSADO -->
             </div>
     <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
     <div class="col-md-12 form-controle">
