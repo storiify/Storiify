@@ -8,9 +8,7 @@ class ControladorLogin extends Controlador{
     }
     
     public function logar($param) {
-        
-        $this->setVisao('logar', TRUE);
-        
+        $this->setVisao('logar', TRUE);       
     }
     
     public function registrar($param) {

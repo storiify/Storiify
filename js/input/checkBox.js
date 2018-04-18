@@ -1,26 +1,25 @@
 ﻿$(document).ready(function () {
     //IChek - Aqui que muda a cor
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_flat-red',
-        radioClass: 'iradio_flat-red'
+    $("input").iCheck({
+        checkboxClass: "icheckbox_flat-blue",
+        radioClass: "iradio_flat-blue"
     });
 
     //Master CheckBox
     var mudadoPeloFilho = false;
 
-    $('#ckbTodos').on('ifChecked', function () {
-        $(".cBoxClass").iCheck('check');
+    $(".ckbox-mestre input").on("ifChecked", function () {
+        $(this).parent().parent().parent().children(".ckbox-servo").find("input").iCheck("check");
         mudadoPeloFilho = false;
     });
-    $('#ckbTodos').on('ifUnchecked', function () {
+    $(".ckbox-mestre input").on("ifUnchecked", function () {
         if (!mudadoPeloFilho) {
-            $(".cBoxClass").iCheck('uncheck');
+            $(this).parent().parent().parent().children(".ckbox-servo").find("input").iCheck("uncheck");
             mudadoPeloFilho = false;
         }
     });
-    $('.cBoxClass').on('ifUnchecked', function () {
+    $(".ckbox-servo input").on("ifUnchecked", function () {
         mudadoPeloFilho = true;
-        $("#ckbTodos").iCheck('uncheck');
+        $(this).parent().parent().parent().children(".ckbox-mestre").find("input").iCheck("uncheck");
     });
-
 });

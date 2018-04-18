@@ -2,7 +2,7 @@
  * @author Ricardo Fernandes
  */
 
-﻿$(document).ready(function () {
+$(document).ready(function () {
     geraCategoria();
     });
 
@@ -29,9 +29,9 @@ function geraCategoria() {
     saveAs(uriContent, "Cadastrar"+cat.catName+".php");
 }
 
-function Categoria(nome, abas) {
+function Categoria(nome) {
     this.nome = nome;
-    this.abas = abas;
+    this.abas = [];
 }
 
 Categoria.prototype.addAba = function(aba) {
@@ -47,7 +47,7 @@ Categoria.prototype.print = function() {
         "<div class='page-content'>",
         "<div class='page-heading mb0'>",
             "<div class='marquee'><?=$this->getDicas()?></div>",
-            "<h1>"+this.catName+"</h1>",
+            "<h1>"+this.nome+"</h1>",
             "<div class='options'>",
                 "<div class='btn-toolbar'>",
                     "<a href='#' class='btn btn-default'><i class='fa fa-fw fa-cog'></i></a>",
@@ -69,6 +69,10 @@ Categoria.prototype.print = function() {
             "</ul>",
         "</div>\n"
     ].join("\n");
+    
+    for(var i=0, len = this.abas.length; i < len; i++) {
+        content += this.abas[i].print();
+    }
     
     //fechar divs faltantes
     content += "</div>\n"; //fecha page-content
@@ -94,15 +98,17 @@ function geraListaAbas(abas) {
 }
 
 /*Protótipo de Aba*/
-function Aba(nome, campos) {
+function Aba(nome) {
     this.nome = nome;
-    this.campos = campos;
+    this.campos = [];
 }
 
 Aba.prototype.print = function() {
     var content = "";
     
-    content += "";
+    content += "This is aba "+this.nome+" com "+this.campos.toString()+'\n';
+    
+    return content;
 };
 
 Aba.prototype.addCampo = function(campo) {
@@ -164,42 +170,3 @@ function saveAs(uri, filename) {
     window.open(uri);
   }
 }
-
-/*function geraTopLevel1(context) {
-    var div1 = document.createElement('div');
-    div1.class = 'page-content';
-    
-    var div2 = document.createElement('div');
-    div2.class = 'page-heading mb0';
-    div1.appendChild(div2);
-    
-    var div3 = document.createElement('div');
-    div3.class = 'marquee';
-    div3.innerHTML = '<?=$this->getDicas()?>';
-    div2.appendChild(div3);
-    
-    var h1 = document.createElement('h1');
-    h1.innerHTML = context.catName;
-    div2.appendChild(h1);
-    
-    var div4 = document.createElement('div');
-    div4.class = 'options';
-    div2.appendChild(div4);
-    
-    var div5 = document.createElement('div');
-    div5.class = 'btn-toolbar';
-    div4.appendChild(div5);
-    
-    var a1 = document.createElement('a');
-    a1.href = '#';
-    a1.class = 'btn btn-default';
-    
-    var i1 = document.createElement('i');
-    i1.class = 'fa fa-fw fa-cog';
-    a1.appendChild(i1);
-    div5.appendChild(a1);
-    
-    var content = div1.innerHTML;
-    uriContent = "data:application/octet-stream," + encodeURIComponent(content);
-    newWindow = window.open(uriContent, 'neuesDokument');
-}*/

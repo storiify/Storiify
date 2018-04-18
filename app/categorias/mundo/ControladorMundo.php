@@ -1,17 +1,21 @@
 <?php
 
-class ControladorMundo extends Controlador{
-    
+class ControladorMundo extends Controlador {
+
     public function __construct($categoria) {
         parent::__construct();
+        parent::setDicas("Dicas Mundo");
         $this->setCategoria($categoria);
     }
-    
+
     public function cadastrar($parametros) {
-        consoleLog('Chegou ao cadastro de Mundo!');
-        
-        $this->setVisao('CadastrarMundo');
-       
+        if ($parametros == null) {
+            $this->setVisao('CadastrarMundo');
+        } else {
+            $mundo = Mundo::SelecionarUm($parametros);
+            $this->setVisao('CadastrarMundo');
+            $this->setParametros($mundo);
+        }
     }
-    
+
 }
