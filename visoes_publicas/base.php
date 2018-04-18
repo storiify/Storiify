@@ -80,13 +80,7 @@
         <script src="js/input/imagem.js"></script>
         <!--Incluir-->
         <script src="js/input/incluir.js"></script>
-<<<<<<< HEAD
-        <!--Categoria-->
-        <script src="js/categoria/gerarCategoria.js"></script>
-        <!--/Seção dos Inputs-->
-=======
         <!--/Seção dos Inputs-->     
->>>>>>> master
         <!--Text Scroll Plugin-->
         <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>
         <!--TextArea autosize-->
