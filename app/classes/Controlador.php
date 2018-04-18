@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Controlador base de todas as categorias do sistema, TODOS os controladores deverão se extender a esse.
+ * Controlador base de todas as categorias do sistema, TODOS os controladores deverão se estender a esse.
  *
  * @author Yan P. Gabriel
  */
@@ -16,7 +16,7 @@ class Controlador{
     private $visaoUnica;
     private $sessao;
     private $dicas;
-    
+      
     public function __construct() {
         //Em Breve chamar sessão aqui
         $this->sessao = new Sessao();
