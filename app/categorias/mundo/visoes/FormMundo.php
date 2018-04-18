@@ -1,4 +1,4 @@
-<?php $modelo = $controlador->getParametros(); ?>
+<?php $modelo = $controlador->getParametros();?>
 
 <div style="margin-top:60px;">
     <div class="marquee"><?= $this->getDicas() ?></div>
@@ -586,12 +586,12 @@
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txarea-EticaValores">Ética/Valores</label>
+                        <label class="col-md-11 input-label" for="input-txarea-EticaeValores">Ética e Valores</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <textarea placeholder="Placeholder para Arredores" title="Arredores" id="input-txarea-EticaValores"></textarea>
+                                <textarea placeholder="Placeholder para Ética e Valores" title="Ética e Valores" id="input-txarea-EticaeValores"></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1002,7 +1002,9 @@
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-Governantes">
-
+                                    <option>Personagem1</option>
+                                    <option>Personagem2</option>
+                                    <option>Personagem3</option>
                                 </select>
                             </div>
                             <!--NÃO TEM DETALHES-->
@@ -1515,7 +1517,7 @@
         </div>
         <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="col-md-12 form-controle">
-            <input type="hidden" name="view_pk_mnd" value="<?php echo (isset($modelo->pk_mnd)) ? $modelo->nm_ppl : 0; ?>">
+            <input type="hidden" name="view_pk_mnd" value="<?php echo (isset($modelo->pk_mnd)) ? $modelo->pk_mnd : 0; ?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
                 Salvar Mundo
             </button>

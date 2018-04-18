@@ -3,13 +3,15 @@
     <ul class="navbar-nav mr-auto text-center list-group menu-esquerdo">
 
         <li class="nav-item cabecalho-menu-lateral">
-            <div class="col-md-2">
-                <img src="../../imagens/imagem_historia.png" class="rounded-circle historia-avatar pull-left" alt="Imagem da história <?php // nome da historia?>"/>
-            </div>
-            <div class="col-md-10">
-                <span class="bem-vindo-texto">Bem-vindo à </span><br>
-                <a href="?categoria=historia&acao=cadastrar" class="nome-historia">Título da História</a>
-            </div>
+            <a href="?categoria=historia&acao=criar">
+                <div class="col-md-2">
+                    <img src="../../imagens/imagem_historia.png" class="rounded-circle historia-avatar pull-left" alt="Imagem da história <?php // nome da historia   ?>"/>
+                </div>
+                <div class="col-md-10">
+                    <span class="bem-vindo-texto">Bem-vindo à </span><br>
+                    <span class="nome-historia">Título da História</span>
+                </div>
+            </a>
         </li>
 
         <li class="nav-item separador-menu-lateral">
@@ -45,7 +47,7 @@
             <span class="col-md-10">Mundo</span>
             <ul class="navbar-nav mr-auto text-center list-group">
                 <li>
-                    <a href="?categoria=mundo&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=mundo&acao=criar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Criar Mundo</div>
@@ -53,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=mundo&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Listar Mundo</div>

@@ -1,0 +1,46 @@
+/*
+    Azul - #30c5ff
+    Azul-Escuro - #162338;
+    Laranja - #ff7b00
+    Preto - #162128
+    Verde - #deefb7
+    Cinza - #c8c8c8
+*/
+.entidade-card{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+}
+.entidade-cabecalho{
+    background-color: #162338;
+    font-size: 20px;
+    font-weight: bold;
+    border-top: 1px solid #ff7b00;
+    border-right: 1px solid #ff7b00;
+    border-left: 1px solid #ff7b00;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    line-height: 50px;
+}
+.entidade-nome{
+    color: white !important;
+    display: inline-block;
+    margin-left: 2rem;
+}
+.entidade-controle{
+    display: inline-block;
+    position: relative;
+    top: 12px;
+    right: 12px;
+}
+.entidade-corpo{
+    background-color: white;
+    border-right: 1px solid #cacaca;
+    border-bottom: 1px solid #cacaca;
+    border-left: 1px solid #cacaca;
+    height: 300px;
+}
+.entidade-img{
+
+}

@@ -22,6 +22,8 @@
         <link href="../css/navTabs.css" rel="stylesheet" type="text/css"/>
         <!-- Estilo dos Formulários -->
         <link href="../css/formularios.css" rel="stylesheet" type="text/css"/>
+        <!-- Estilo das Listagens -->
+        <link href="../css/listagens.css" rel="stylesheet" type="text/css"/>
 
         <!--ICheck-->
         <link href="plugins/icheck-1.x/skins/flat/blue.css" rel="stylesheet" />
@@ -39,7 +41,7 @@
         require_once "visoes_publicas/navegacao/menuLateralEsquerdo.php";
         ?>
         <!-- FINAL - CABEÇALHO DA PÁGINA-->
-        
+
         <!-- CONTEÚDO COM DICAS, PÁGINA DA CATEGORIA E INSTÂNCIAS -->
         <?php
         if (isset($file_dir) && $file_dir != 'none') {
@@ -47,14 +49,14 @@
         }
         ?>
         <!-- FINAL - CONTEÚDO COM DICAS, PÁGINA DA CATEGORIA E INSTÂNCIAS -->
-        
+
         <!-- RODAPÉ DA PÁGINA-->
         <?php
         require_once "visoes_publicas/navegacao/rodape.php";
         ?>
         <!-- FINAL - RODAPÉ DA PÁGINA-->
         <!--FINAL - CORPO DA PÁGINA-->
-        
+
         <!-- Load site level scripts -->
         <!-- Load jQuery -->
         <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
@@ -71,6 +73,8 @@
         <script src="../js/navTabs.js" type="text/javascript"></script>
         <!--Formulários-->
         <script src="../js/formularios.js" type="text/javascript"></script>
+        <!--Listagens-->
+        <script src="../js/listagens.js" type="text/javascript"></script>
         <!--Seção dos Inputs-->
         <!--MinMax - Tem que vir antes do incluir -->
         <script src="js/input/minMax.js"></script>

@@ -6,31 +6,82 @@ class Mundo {
         $this->pk_mnd = $id;
         $this->nm_ppl = $nome;
     }
+
     public static function Inserir($mundo) {
-        $db = ConexaoBd::getInstance();
-        $sql =("INSERT INTO tb_mundo (nm_ppl)
-                            VALUES ('".$mundo->nm_ppl."');");
-        $db->exec($sql);
+        $bd = ConexaoBd::getInstance();
+        $sql = ("INSERT INTO tb_mundo (nm_ppl)
+                VALUES ('" . $mundo->nm_ppl . "');");
+        $bd->exec($sql);
     }
+
     public static function SelecionarUm($id) {
-        $db = ConexaoBd::getInstance();
+        $bd = ConexaoBd::getInstance();
         //Garantindo que a $id é um int
         $id = intval($id);
-        $req = $db->prepare('SELECT * FROM tb_mundo WHERE pk_mnd = :pk_mnd');
+        $req = $bd->prepare('SELECT * FROM tb_mundo WHERE pk_mnd = :pk_mnd');
         //A query foi preparada, agora trocamos :pk_mnd por $id
         $req->execute(array('pk_mnd' => $id));
         $mundo = $req->fetch();
         return $mundo;
     }
-    public static function Alterar($mundo){
-        $db = ConexaoBd::getInstance();
+
+    public static function SelecionarTodos() {
+        $bd = ConexaoBd::getInstance();
+
+        $req = $bd->prepare("SELECT pk_mnd, nm_ppl FROM tb_mundo"); 
+        $req->execute();
         
+        $mundos = [];
+        while ($mundo = $req->fetch()){
+            $mundos[] = (object) $mundo;
+        }
+        
+        return $mundos;
+    }
+    public static function SelecionarTodosSimplificado() {
+        $bd = ConexaoBd::getInstance();
+
+        $req = $bd->prepare("SELECT pk_mnd, nm_ppl, vis_grl, etca_vls, dcr_ecn, satc_pop, nvl_tecn FROM tb_mundo"); 
+        $req->execute();
+        
+        $mundos = [];
+        while ($mundo = $req->fetch()){
+            $mundos[] = (object) $mundo;
+        }
+        
+        return $mundos;
+    }
+
+    public static function Alterar($mundo) {
+        $bd = ConexaoBd::getInstance();
+
+        $sql = "UPDATE tb_mundo SET nm_ppl=:nm_ppl WHERE pk_mnd=:pk_mnd";
+
+        $query = $bd->prepare($sql);
+        $query->bindparam(':pk_mnd', $mundo->pk_mnd);
+        $query->bindparam(':nm_ppl', $mundo->nm_ppl);
+
+        $query->execute();
+    }
+
+    public static function Deletar($id) {
+        $bd = ConexaoBd::getInstance();
+
+        $sql = "DELETE FROM tb_mundo WHERE pk_mnd=:pk_mnd";
+
+        $query = $bd->prepare($sql);
+        $query->bindparam(':pk_mnd', $id);
+
+        $query->execute();
+
+        return $query;
     }
 
     public $pk_mnd;
 //    public $im_ppl;
 //    public $dets_im_ppl;
     public $nm_ppl;
+
 //    public $dets_nm_ppl;
 //    public $vis_grl;
 //    public $hist_grl;
@@ -72,5 +123,4 @@ class Mundo {
 //    public $efe_magi_mnd;
 //    public $efe_magi_scdd;
 //    public $efe_magi_tecn;
-
 }

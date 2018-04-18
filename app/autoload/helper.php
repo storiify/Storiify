@@ -39,3 +39,7 @@ function notfount($msg=null) {
     require_once PATH_VISOES_PUBLICAS.VISAO_404;
     die;
 }
+
+function truncar($stringEntrada, $tamanhoMaximo, $dots = "...") {
+    return (strlen($stringEntrada) > $tamanhoMaximo) ? substr($stringEntrada, 0, $tamanhoMaximo - strlen($dots)) . $dots : $stringEntrada;
+}

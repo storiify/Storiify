@@ -198,6 +198,20 @@
     padding-bottom:20px;
     color:white;
 }
+.cabecalho-menu-lateral:hover{
+    background-color: white;
+    cursor: pointer;
+}
+.cabecalho-menu-lateral:hover .nome-historia{
+    color: #ff7b00 !important;
+    font-weight: bold;
+}
+.cabecalho-menu-lateral:hover .historia-avatar{
+    border: 1px solid #ff7b00;
+}
+a:hover{
+    text-decoration: none;
+}
 
 .historia-avatar{
     width:50px;
@@ -207,11 +221,6 @@
     font-size: 16px;
     color:white;
     margin-left: 6px;
-    text-decoration:underline;
-}
-.nome-historia:hover{
-    color:white;
-    text-decoration: underline;
 }
 
 .bem-vindo-texto{
