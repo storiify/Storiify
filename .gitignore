@@ -338,3 +338,6 @@ __pycache__/
 *.svn-base
 *.db
 .svn/wc.db-journal
+
+# Pasta dos usuários
+usuarios/

@@ -19,10 +19,11 @@ $modelos = (array) $parametros;
     <br><br><br><br><br>
     <?php
     foreach ($modelos as $modelo) {
+        $imagemPrincipal = (isset($modelo->im_ppl)) ? $modelo->im_ppl : "../imagens/sem-foto.png";
         echo
         "<div class='entidade-card'>"
         . "    <div class='entidade-cabecalho'>"
-        . "        <a href='?categoria=$categoria&acao=editar&parametros=$modelo->pk_hist' class='entidade-nome'>" . $modelo->tit_hist." ". truncar($modelo->stit_hist, 40) . "</a>"
+        . "        <a href='?categoria=$categoria&acao=editar&parametros=$modelo->pk_hist' class='entidade-nome'>" . $modelo->tit_hist." : ". truncar($modelo->stit_hist, 40) . "</a>"
         . "        <div class='entidade-controle pull-right'>"
         . "            <a href='?categoria=$categoria&acao=deletar&parametros=$modelo->pk_hist' class='btn btn-azul deletar-entidade'>"
         . "                <i class='fa fa-times'></i>"
@@ -30,7 +31,7 @@ $modelos = (array) $parametros;
         . "        </div>"
         . "    </div>"
         . "    <div class='entidade-corpo'>"
-        . "        <img class='entidade-img col-md-3' src='../../../../imagens/Zelda_Avatar.png' alt='Imagem Mundo'>"
+        . "        <img class='entidade-img col-md-3' src='$imagemPrincipal' alt='Imagem Mundo'>"
         . "        <div class='entidade-dados col-md-9 pull-right'>"
         . "            <table class='table'>"
         . "                <tbody>"

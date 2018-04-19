@@ -42,7 +42,9 @@
 .detalhes-link{
     cursor:pointer;
 }
-
+.detalhes-conteudo{
+    display: none;
+}
 textarea, input[type="text"]{
     display: block;
     width: 100%;

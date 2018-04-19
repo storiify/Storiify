@@ -22,14 +22,14 @@
         </nav>
     </div>
     <!-- FINAL - ABAS DE NAVEGAÇÃO -->
-    <form action="?categoria=historia&acao=salvar&parametros=$" method="post">
+    <form action="?categoria=historia&acao=salvar" method="post" enctype="multipart/form-data">
         <!-- CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="tab-content">
             <!--ABA GERAL-->
             <div id="abaGeral" class="container tab-pane active">
                 <!--INPUT IMAGEM-->
                 <!--Só precisa de um input desse na página, por isso, deixarei o ID controlando-->
-                <input type='file' id="imgUploader" />
+                <input name="fileToUpload" value="<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : null; ?>" type='file' id="imgUploader" />
 
                 <div class="form-group">
                     <div class="row">
@@ -47,7 +47,6 @@
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <div class="input-imagem" style="background-image:url(<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : "../imagens/sem-foto.png"; ?>)"></div>
-                                <input type="hidden" name="view_im_ppl" value="<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : null; ?>">
                                 <a class="input-imagem-reset" title="Clique para resetar a imagem" alt="Clique para resetar a imagem" id="input-im-Imagem">
                                     <i class="fa fa-ban"></i>
                                 </a>
@@ -55,6 +54,10 @@
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
+                                <div class="detalhes-conteudo">
+                                    <textarea name="view_dets_im_ppl" placeholder="Detalhe o Nome do Input" 
+                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_im_ppl)) ? $modelo->dets_im_ppl : ""; ?></textarea>
+                                </div>
                             </div>
                             <!--FINAL - DETALHES-->
                         </div>
@@ -83,6 +86,10 @@
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
+                                <div class="detalhes-conteudo">
+                                    <textarea name="view_dets_tit" placeholder="Detalhe o Nome do Input" 
+                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_tit)) ? $modelo->dets_tit : ""; ?></textarea>
+                                </div>
                             </div>
                             <!--FINAL - DETALHES-->
                         </div>
@@ -111,6 +118,10 @@
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
+                                <div class="detalhes-conteudo">
+                                    <textarea name="view_dets_stit" placeholder="Detalhe o Nome do Input" 
+                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_stit)) ? $modelo->dets_stit : ""; ?></textarea>
+                                </div>
                             </div>
                             <!--FINAL - DETALHES-->
                         </div>
@@ -139,6 +150,10 @@
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
+                                <div class="detalhes-conteudo">
+                                    <textarea name="view_dets_aur" placeholder="Detalhe o Nome do Input" 
+                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_aur)) ? $modelo->dets_aur : ""; ?></textarea>
+                                </div>
                             </div>
                             <!--FINAL - DETALHES-->
                         </div>
@@ -167,6 +182,10 @@
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
+                                <div class="detalhes-conteudo">
+                                    <textarea name="view_dets_iltd" placeholder="Detalhe o Nome do Input" 
+                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_iltd)) ? $modelo->dets_iltd : ""; ?></textarea>
+                                </div>
                             </div>
                             <!--FINAL - DETALHES-->
                         </div>
