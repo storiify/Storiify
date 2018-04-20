@@ -3,7 +3,7 @@
     <ul class="navbar-nav mr-auto text-center list-group menu-esquerdo">
 
         <li class="nav-item cabecalho-menu-lateral">
-            <a href="?categoria=historia&acao=criar">
+            <a href="?categoria=historia&acao=listar">
                 <div class="col-md-2">
                     <img src="../../imagens/imagem_historia.png" class="rounded-circle historia-avatar pull-left" alt="Imagem da história <?php // nome da historia   ?>"/>
                 </div>

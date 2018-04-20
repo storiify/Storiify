@@ -21,3 +21,11 @@ $(".detalhes-link").on("click", function () {
         $(this).html("Adicionar Detalhes");
     }
 });
+
+$(".detalhes-conteudo").each(function(){
+    if ($(this).children().val()!=="" && $(this).children().css("visibility", "hidden")) {
+        $(this).toggle();
+        $(this).children().css('visibility', 'visible');
+        $(this).siblings().html("Remover Detalhes");
+    }
+});

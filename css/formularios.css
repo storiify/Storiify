@@ -150,7 +150,7 @@ textarea, input[type="text"]{
 }
 /*FINAL - INPUT MINMAX*/
 /*INPUT IMAGEM*/
-#imgUploader{
+.imgUploader{
     display:none;
 }
 .input-imagem{

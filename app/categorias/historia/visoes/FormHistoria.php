@@ -1,4 +1,14 @@
-<?php $modelo = $controlador->getParametros(); ?>
+<?php $modelo = $controlador->getParametros();
+
+ if (isset($modelo->tit_hist)) {
+    $nome = ($modelo->tit_hist == "" || ctype_space($modelo->tit_hist)) ?
+                "" : $modelo->tit_hist;
+        $nome .= ($modelo->stit_hist == "" || ctype_space($modelo->stit_hist) ? "" :
+                ($nome == "" ? $modelo->stit_hist : ": " . $modelo->stit_hist));
+} else{
+    $nome = "";
+}
+?>
 
 <div style="margin-top:60px;">
     <div class="marquee"><?= $this->getDicas() ?></div>
@@ -7,7 +17,7 @@
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1>História</h1>
+        <h1><?php echo ($nome == "" || ctype_space($nome)? "História" : $nome) ?></h1>
     </div>
 </div>
 
@@ -28,9 +38,6 @@
             <!--ABA GERAL-->
             <div id="abaGeral" class="container tab-pane active">
                 <!--INPUT IMAGEM-->
-                <!--Só precisa de um input desse na página, por isso, deixarei o ID controlando-->
-                <input name="fileToUpload" value="<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : null; ?>" type='file' id="imgUploader" />
-
                 <div class="form-group">
                     <div class="row">
                         <!--INPUT CONTROLE-->
@@ -46,17 +53,24 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
+                                
                                 <div class="input-imagem" style="background-image:url(<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : "../imagens/sem-foto.png"; ?>)"></div>
+                                
+                                <input value="<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : null; ?>" 
+                                       accept='.png' type='file' class="imgUploader" name="view_im_ppl"/>
+                                
                                 <a class="input-imagem-reset" title="Clique para resetar a imagem" alt="Clique para resetar a imagem" id="input-im-Imagem">
                                     <i class="fa fa-ban"></i>
                                 </a>
+                                
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="view_dets_im_ppl" placeholder="Detalhe o Nome do Input" 
-                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_im_ppl)) ? $modelo->dets_im_ppl : ""; ?></textarea>
+                                              title="Detalhes do Nome do Input"
+                                              maxlength="1000"><?php echo (isset($modelo->dets_im_ppl)) ? $modelo->dets_im_ppl : ""; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -81,14 +95,16 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="view_tit_hist" value="<?php echo (isset($modelo->tit_hist)) ? $modelo->tit_hist : ""; ?>" type="text" class="form-control" placeholder="Placeholder para Título" id="input-tx-Titulo"/>
+                                <input name="view_tit_hist" value="<?php echo (isset($modelo->tit_hist)) ? $modelo->tit_hist : ""; ?>" 
+                                       maxlength="60" type="text" class="form-control" placeholder="Placeholder para Título" id="input-tx-Titulo"/>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="view_dets_tit" placeholder="Detalhe o Nome do Input" 
-                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_tit)) ? $modelo->dets_tit : ""; ?></textarea>
+                                              title="Detalhes do Nome do Input"
+                                              maxlength="1000"><?php echo (isset($modelo->dets_tit)) ? $modelo->dets_tit : ""; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -113,14 +129,16 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="view_stit_hist" value="<?php echo (isset($modelo->stit_hist)) ? $modelo->stit_hist : ""; ?>" type="text" class="form-control" placeholder="Placeholder para Subtítulo" id="input-tx-Subtitulo"/>
+                                <input name="view_stit_hist" value="<?php echo (isset($modelo->stit_hist)) ? $modelo->stit_hist : ""; ?>" 
+                                       maxlength="80" type="text" class="form-control" placeholder="Placeholder para Subtítulo" id="input-tx-Subtitulo"/>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="view_dets_stit" placeholder="Detalhe o Nome do Input" 
-                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_stit)) ? $modelo->dets_stit : ""; ?></textarea>
+                                              title="Detalhes do Nome do Input"
+                                              maxlength="1000"><?php echo (isset($modelo->dets_stit)) ? $modelo->dets_stit : ""; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -145,14 +163,16 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="view_aur_hist" value="<?php echo (isset($modelo->aur_hist)) ? $modelo->aur_hist : ""; ?>" type="text" class="form-control" placeholder="Placeholder para Autor" id="input-tx-Autor"/>
+                                <input name="view_aur_hist" value="<?php echo (isset($modelo->aur_hist)) ? $modelo->aur_hist : ""; ?>" 
+                                       maxlength="70" type="text" class="form-control" placeholder="Placeholder para Autor" id="input-tx-Autor"/>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="view_dets_aur" placeholder="Detalhe o Nome do Input" 
-                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_aur)) ? $modelo->dets_aur : ""; ?></textarea>
+                                              title="Detalhes do Nome do Input"
+                                              maxlength="1000"><?php echo (isset($modelo->dets_aur)) ? $modelo->dets_aur : ""; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -177,14 +197,16 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="view_iltd_hist" value="<?php echo (isset($modelo->iltd_hist)) ? $modelo->iltd_hist : ""; ?>" type="text" class="form-control" placeholder="Placeholder para Ilustrador" id="input-tx-Ilustrador"/>
+                                <input name="view_iltd_hist" value="<?php echo (isset($modelo->iltd_hist)) ? $modelo->iltd_hist : ""; ?>" 
+                                       maxlength="70" type="text" class="form-control" placeholder="Placeholder para Ilustrador" id="input-tx-Ilustrador"/>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="view_dets_iltd" placeholder="Detalhe o Nome do Input" 
-                                              title="Detalhes do Nome do Input"><?php echo (isset($modelo->dets_iltd)) ? $modelo->dets_iltd : ""; ?></textarea>
+                                              title="Detalhes do Nome do Input"
+                                              maxlength="1000"><?php echo (isset($modelo->dets_iltd)) ? $modelo->dets_iltd : ""; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -210,7 +232,8 @@
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <textarea name="view_pbco_alvo" placeholder="Placeholder para Público Alvo" title="Público Alvo" 
-                                          id="input-txarea-PublicoAlvo"><?php echo (isset($modelo->pbco_alvo)) ? $modelo->pbco_alvo : ""; ?></textarea>
+                                          id="input-txarea-PublicoAlvo"
+                                          maxlength="1000"><?php echo (isset($modelo->pbco_alvo)) ? $modelo->pbco_alvo : ""; ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -235,19 +258,19 @@
                             <div class="input-checkbox" id="input-ckbx-Visibilidade">
                                 <div class="form-check-inline ckbox-mestre">
                                     <input type="checkbox" id ="ckbx-Visibilidade-mestre"/>
-                                    <label for="ckbx-0-mestre">Todos</label>
+                                    <label for="ckbx-Visibilidade-mestre">Todos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input type="checkbox" name="ckbox-nomedoinput" id ="ckbx-Visibilidade-opt1"/>
-                                    <label for="ckbx-0-opt1">Amigos</label>
+                                    <input value="1" name="view_vsi_hist[]" id ="ckbx-Visibilidade-opt2" type="checkbox"/>
+                                    <label for="ckbx-Visibilidade-opt1">Equipe</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input type="checkbox" name="ckbox-nomedoinput" id ="ckbx-Visibilidade-opt2"/>
-                                    <label for="ckbx-0-opt2">Equipe</label>
+                                    <input value="2" name="view_vsi_hist[]" id ="ckbx-Visibilidade-opt1" type="checkbox"/>
+                                    <label for="ckbx-Visibilidade-opt2">Amigos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input type="checkbox" name="ckbox-nomedoinput" id ="ckbx-Visibilidade-opt3"/>
-                                    <label for="ckbx-0-opt3">Público</label>
+                                    <input value="4" name="view_vsi_hist[]" id ="ckbx-Visibilidade-opt3" type="checkbox"/>
+                                    <label for="ckbx-Visibilidade-opt3">Público</label>
                                 </div>
                             </div>
                             <!--NÃO TEM DETALHES-->
@@ -275,7 +298,8 @@
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <textarea name="view_dcr_em_uma_sntn" placeholder="Placeholder para Descrição em uma Sentença" title="Descrição em uma Sentença" 
-                                          id="input-txarea-DescricaoemumaSentença"><?php echo (isset($modelo->dcr_em_uma_sntn)) ? $modelo->dcr_em_uma_sntn : ""; ?></textarea>
+                                          id="input-txarea-DescricaoemumaSentença"
+                                          maxlength="200"><?php echo (isset($modelo->dcr_em_uma_sntn)) ? $modelo->dcr_em_uma_sntn : ""; ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -300,7 +324,8 @@
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <textarea name="view_snp_hist" placeholder="Placeholder para Sinopse" title="Sinopse" 
-                                          id="input-txarea-Sinopse"><?php echo (isset($modelo->snp_hist)) ? $modelo->snp_hist : ""; ?></textarea>
+                                          id="input-txarea-Sinopse"
+                                          maxlength="1000"><?php echo (isset($modelo->snp_hist)) ? $modelo->snp_hist : ""; ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -325,7 +350,8 @@
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <textarea name="view_rsm_hist" placeholder="Placeholder para Resumo" title="Resumo" 
-                                          id="input-txarea-Resumo"><?php echo (isset($modelo->rsm_hist)) ? $modelo->rsm_hist : ""; ?></textarea>
+                                          id="input-txarea-Resumo"
+                                          maxlength="10000"><?php echo (isset($modelo->rsm_hist)) ? $modelo->rsm_hist : ""; ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>

@@ -2,15 +2,29 @@
 
 class Historia {
 
-    public function __construct($id, $nome) {
+    public function __construct($id) {
         $this->pk_hist = $id;
-        $this->tit_hist = $nome;
+    }
+
+    public static function ProximoId() {
+        $bd = ConexaoBd::getInstance();
+
+        $sql = "SHOW TABLE STATUS LIKE 'tb_historia'";
+        
+        $query = $bd->prepare($sql);
+        $query->execute();
+        $proximoId = $query->fetch()['Auto_increment'];
+        
+        consoleLog($proximoId);
+        
+        return $proximoId;
     }
 
     public static function Inserir($historia) {
         $bd = ConexaoBd::getInstance();
-
+        date_default_timezone_set('America/Sao_Paulo');
         $horarioAtual = date("Y-m-d H:i:s");
+
         $sql = "INSERT INTO tb_historia
                 VALUES (:pk_hist,:im_ppl,:dets_im_ppl,"
                 . ":tit_hist,:dets_tit,:stit_hist,:dets_stit,"
@@ -72,7 +86,7 @@ class Historia {
     public static function SelecionarTodosSimplificado() {
         $bd = ConexaoBd::getInstance();
 
-        $req = $bd->prepare("SELECT pk_hist, im_ppl, tit_hist, stit_hist, aur_hist, pbco_alvo, snp_hist FROM tb_historia");
+        $req = $bd->prepare("SELECT pk_hist, im_ppl, tit_hist, stit_hist, aur_hist, pbco_alvo, snp_hist, dt_alt FROM tb_historia");
         $req->execute();
 
         $historias = [];
@@ -86,6 +100,9 @@ class Historia {
     public static function Alterar($historia) {
         try {
             $bd = ConexaoBd::getInstance();
+
+            date_default_timezone_set('America/Sao_Paulo');
+            $horarioAtual = date("Y-m-d H:i:s");
 
             $sql = "UPDATE tb_historia SET 
                 im_ppl=(:im_ppl), 
@@ -124,7 +141,7 @@ class Historia {
             $query->bindparam(':dcr_em_uma_sntn', $historia->dcr_em_uma_sntn);
             $query->bindparam(':snp_hist', $historia->snp_hist);
             $query->bindparam(':rsm_hist', $historia->rsm_hist);
-            $query->bindparam(':dt_alt', $historia->dt_alt);
+            $query->bindparam(':dt_alt', $horarioAtual);
 
             $query->execute();
         } catch (PDOException $e) {
@@ -163,4 +180,5 @@ class Historia {
     public $rsm_hist;
     public $dt_cric;
     public $dt_alt;
+
 }

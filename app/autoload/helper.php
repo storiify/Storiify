@@ -69,7 +69,7 @@ function uploadImagem($idUsuario, $nmCategoria, $idInstancia, $file) {
         $uploadOk = 0;
     }
 // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    if ($file["size"] > 5000000) {
         //echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }

@@ -84,6 +84,8 @@
         <script src="js/input/imagem.js"></script>
         <!--Incluir-->
         <script src="js/input/incluir.js"></script>
+        <!--TextoArea-->
+        <script src="../js/input/textoArea.js" type="text/javascript"></script>
         <!--/Seção dos Inputs-->     
         <!--Text Scroll Plugin-->
         <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>
