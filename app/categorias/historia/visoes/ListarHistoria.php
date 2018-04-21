@@ -60,7 +60,7 @@ $modelos = (array) $parametros;
         . "                </table>"
         . "            </div>"
         . "            <div class='instancia-ultima-alteracao hidden-xl-down'>"
-        . "                <span>Data da última edição: $dataInLocal</span>"
+        . "                <span>Última edição: $dataInLocal</span>"
         . "            </div>"
         . "        </div>"
         . "    </div>"
