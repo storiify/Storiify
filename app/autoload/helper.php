@@ -98,9 +98,23 @@ function deleteImagem($idUsuario, $nmCategoria, $idInstancia) {
 
     $diretorioAlvo = "usuarios/$idUsuario/$nmCategoria/$idInstancia/";
     $arquivoAlvo = $diretorioAlvo . "im_ppl.png";
-    
+
     if (file_exists($arquivoAlvo)) {
         unlink($arquivoAlvo);
         rmdir($diretorioAlvo);
     }
+}
+
+function parseCheckbox($valor) {
+    $opcoes = [1, 2, 4];
+    $opcoesRetorno = [];
+
+    while ($valor != 0) {
+        if ($valor >= max($opcoes)) {
+            $opcoesRetorno[] = max($opcoes);
+            $valor -= max($opcoes);
+        }
+        array_pop($opcoes);
+    }
+    return $opcoesRetorno;
 }

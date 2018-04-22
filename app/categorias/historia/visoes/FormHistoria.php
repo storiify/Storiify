@@ -317,7 +317,8 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <textarea name="view_dcr_em_uma_sntn" placeholder="Placeholder para Descrição em uma Sentença" title="Descrição em uma Sentença" 
+                                <textarea name="view_dcr_em_uma_sntn" placeholder="Digite aqui a Descrição em uma Sentença da história" 
+                                          title="Campo para a Descrição em uma Sentença da hisória" 
                                           id="input-txarea-DescricaoemumaSentença"
                                           maxlength="200"><?php echo (isset($modelo->dcr_em_uma_sntn)) ? $modelo->dcr_em_uma_sntn : ""; ?></textarea>
                             </div>
@@ -338,12 +339,13 @@
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txarea-Sinopse">Sinopse</label>
+                        <label class="col-md-11 input-label" for="input-txarea-Sinopse">Sinopse da História</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <textarea name="view_snp_hist" placeholder="Placeholder para Sinopse" title="Sinopse" 
+                                <textarea name="view_snp_hist" placeholder="Digite aqui a Sinopse da História" 
+                                          title="Campo para a Sinopse da História" 
                                           id="input-txarea-Sinopse"
                                           maxlength="1000"><?php echo (isset($modelo->snp_hist)) ? $modelo->snp_hist : ""; ?></textarea>
                             </div>
@@ -364,12 +366,13 @@
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txarea-Resumo">Resumo</label>
+                        <label class="col-md-11 input-label" for="input-txarea-Resumo">Resumo da História</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <textarea name="view_rsm_hist" placeholder="Placeholder para Resumo" title="Resumo" 
+                                <textarea name="view_rsm_hist" placeholder="Digite aqui o Resumo da História" 
+                                          title="Campo para Resumo da História" 
                                           id="input-txarea-Resumo"
                                           maxlength="10000"><?php echo (isset($modelo->rsm_hist)) ? $modelo->rsm_hist : ""; ?></textarea>
                             </div>
