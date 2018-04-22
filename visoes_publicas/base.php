@@ -1,3 +1,7 @@
+<?php
+//Aqui indica qual história o usuário está editando no momento arranjar um lugar melhor depois
+$historiaSelecionada = (object) Historia::SelecionarUm(2);
+?>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -14,6 +18,7 @@
         <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <!-- Font Awesome -->
         <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
         <!--Estilo geral-->
         <link href="../css/geral.css" rel="stylesheet" type="text/css"/>
         <!--Estilo da navegação-->
@@ -32,6 +37,7 @@
         <link href="../plugins/ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css"/>
         <!--Select2-->
         <link href="plugins/select2/css/select2.css" rel="stylesheet" />
+
     </head>
     <body>
 
@@ -58,6 +64,7 @@
         <!--FINAL - CORPO DA PÁGINA-->
 
         <!-- Load site level scripts -->
+
         <!-- Load jQuery -->
         <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
         <!-- Load jQueryUI -->
@@ -66,7 +73,7 @@
         <script src="js/bootstrap.js"></script>
 
         <!--Controlador dos Menus de Navegação-->
-        <script src="js/navegacao.js" type="text/javascript"></script>
+        <script src="/js/navegacao.js" type="text/javascript"></script>
         <!--Controlador da Rolagem de Texto-->
         <script src="js/marquee.js"></script>
         <!--NavTabs-->

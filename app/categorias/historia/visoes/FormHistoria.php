@@ -254,6 +254,7 @@
                     </div>
                 </div>
                 <!--VISIBILIDADE DA HISTÓRIA - INPUT CHECKBOX-->
+                <?php $opcoes =(isset($modelo->vsi_hist)? parseCheckbox($modelo->vsi_hist) : [0]) ?>
                 <div class="form-group">
                     <div class="row">
                         <!--INPUT CONTROLE-->
@@ -275,19 +276,22 @@
                                     <label for="ckbx-Visibilidade-mestre">Todos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input name="view_vsi_hist[]" value="1"
+                                    <input name="view_vsi_hist[]" value="1" 
+                                           <?php echo(in_array(1, $opcoes)? "checked": "") ?>
                                            title="Permite que sua equipe possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt1"/>
                                     <label for="ckbx-Visibilidade-opt1">Equipe</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="view_vsi_hist[]" value="2"
+                                           <?php echo(in_array(2, $opcoes)? "checked": "") ?>
                                            title="Permite que todos os seus amigos possam visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt2"/>
                                     <label for="ckbx-Visibilidade-opt2">Amigos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input name="view_vsi_hist[]" value="4" 
+                                    <input name="view_vsi_hist[]" value="4"
+                                           <?php echo(in_array(4, $opcoes)? "checked": "") ?>
                                            title="Permite que o público possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt3"/>
                                     <label for="ckbx-Visibilidade-opt3">Público</label>

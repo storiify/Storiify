@@ -6,6 +6,14 @@ class Historia {
         $this->pk_hist = $id;
     }
 
+    public static function GerarNome($historia){
+        $nome = ($historia->tit_hist == "" || ctype_space($historia->tit_hist)) ?
+                "" : $historia->tit_hist;
+        $nome .= ($historia->stit_hist == "" || ctype_space($historia->stit_hist) ? "" :
+                ($historia == "" ? $historia->stit_hist : ": " . $historia->stit_hist));
+        return $nome;
+    }
+    
     public static function ProximoId() {
         $bd = ConexaoBd::getInstance();
 
@@ -82,8 +90,23 @@ class Historia {
 
         return $historias;
     }
+    public static function SelecionarTodosCustomizado($atributos) {
+        $bd = ConexaoBd::getInstance();
+        
+        $sql = "SELECT ".join(',', $atributos)." FROM tb_historia";
 
-    public static function SelecionarTodosSimplificado() {
+        consoleLog($sql);
+        $req = $bd->prepare($sql);
+        $req->execute();
+
+        $historias = [];
+        while ($historia = $req->fetch()) {
+            $historias[] = (object) $historia;
+        }
+
+        return $historias;
+    }
+    public static function SelecionarTodosListagem() {
         $bd = ConexaoBd::getInstance();
 
         $req = $bd->prepare("SELECT pk_hist, im_ppl, tit_hist, stit_hist, aur_hist, pbco_alvo, snp_hist, dt_alt FROM tb_historia");

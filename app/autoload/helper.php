@@ -118,3 +118,21 @@ function parseCheckbox($valor) {
     }
     return $opcoesRetorno;
 }
+
+
+function nomeFormal($nome, $plural = "singular"){
+    if($plural == "plural"){
+        return ($nome == "historia"?
+                "Histórias":($nome == "mundo"?
+                "Mundos" : ($nome=="localizacao"?
+                "Localizações" : ($nome == "cena"?
+                "Cenas" : ($nome == "personagem"?
+                "Personagens" : "Categoria não encontrada")))));
+    }
+    return ($nome == "historia"?
+                "História":($nome == "mundo"?
+                "Mundo" : ($nome=="localizacao"?
+                "Localização" : ($nome == "cena"?
+                "Cena" : ($nome == "personagem"?
+                "Personagem" : "Categoria não encontrada")))));
+}

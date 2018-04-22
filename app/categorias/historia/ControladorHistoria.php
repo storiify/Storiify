@@ -14,7 +14,7 @@ class ControladorHistoria extends Controlador {
     }
 
     public function listar() {
-        $historias = Historia::SelecionarTodosSimplificado();
+        $historias = Historia::SelecionarTodosListagem();
         $this->setParametros($historias);
         $this->setVisao('ListarHistoria');
     }
