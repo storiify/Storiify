@@ -14,7 +14,7 @@ class ControladorHistoria extends Controlador {
     }
 
     public function listar() {
-        $historias = Historia::SelecionarTodosListagem();
+        $historias = Historia::SelecionarTodosCustomizado(array("pk_hist", "im_ppl", "tit_hist", "stit_hist", "aur_hist", "pbco_alvo", "snp_hist", "dt_alt"));
         $this->setParametros($historias);
         $this->setVisao('ListarHistoria');
     }

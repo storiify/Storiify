@@ -1,7 +1,7 @@
 <?php
 $categoria = "historia";
 $parametros = $controlador->getParametros();
-$modelos = (array)$parametros;
+$modelos = (array) $parametros;
 ?>
 
 <div style="margin-top:60px;">
@@ -11,28 +11,36 @@ $modelos = (array)$parametros;
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?php echo nomeFormal($categoria, "plural")?></h1>
+        <h1><?php echo nomeFormal($categoria, "plural") ?></h1>
     </div>
 </div>
 
 <div class="conteudo">
-    <br><br><br><br><br>
-
+    
+    <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
-        <a href='?categoria=<?php$categoria?>&acao=criar' 
+        <a href='?categoria=<?php echo $categoria ?>&acao=criar' 
            title='Clique para criar uma nova <?php echo nomeFormal($categoria) ?>'
-           class='btn btn-azul'>
+           class='btn btn-azul criar-nova-instancia'>
             <i class="fa fa-plus"></i>
             &nbsp&nbspCriar nova <?php echo nomeFormal($categoria) ?>
         </a>
     </div>
 
-    <hr>
+    <!--CASO NÃO HAJA INSTÂNCIAS-->
+    <?php
+    if (empty($modelos)) {
+        echo"<div class='sem-instancia'>"
+        . "     <span>".sprintf(Constantes::$instanciaIndefinidaMsg, nomeFormal($categoria, "plural"))."</span>"
+        . "     <img src='" . Constantes::$instanciaIndefinida . "' alt=''/>"
+        . "</div>";
+    }
+    ?>
 
     <?php
     foreach ($modelos as $modelo) {
         $imagemPrincipal = (isset($modelo->im_ppl)) ? $modelo->im_ppl : Constantes::$imIndefinida;
-        $nome = Historia::GerarNome($modelo);       
+        $nome = Historia::GerarNome($modelo);
         $dataInLocal = $modelo->dt_alt;
 
         echo
@@ -48,15 +56,15 @@ $modelos = (array)$parametros;
         . "                <table class='table'>"
         . "                    <tr>"
         . "                        <th scope='row'>Autor</th>"
-        . "                        <td>".$modelo->aur_hist."</td>"
+        . "                        <td>" . $modelo->aur_hist . "</td>"
         . "                    </tr>"
         . "                    <tr>"
         . "                        <th scope='row'>Publico Alvo</th>"
-        . "                        <td>".truncar($modelo->pbco_alvo,600)."</td>"
+        . "                        <td>" . truncar($modelo->pbco_alvo, 600) . "</td>"
         . "                    </tr>"
         . "                    <tr>"
         . "                        <th scope='row'>Sinopse</th>"
-        . "                        <td>".truncar($modelo->snp_hist,600)."</td>"
+        . "                        <td>" . truncar($modelo->snp_hist, 600) . "</td>"
         . "                    </tr>"
         . "                </table>"
         . "            </div>"
@@ -75,7 +83,7 @@ $modelos = (array)$parametros;
         . "            <i class='fa fa-minus'></i>"
         . "        </button>"
         . "        <button class='btn btn-azul btn-pdf-instancia' "
-        .            "title='" . ($nome == "" ? " Clique para gerar PDF" : "Clique para gerar PDF de " . $nome) . " '>"
+        . "title='" . ($nome == "" ? " Clique para gerar PDF" : "Clique para gerar PDF de " . $nome) . " '>"
         . "            <i class='fa fa-file-pdf-o'></i>"
         . "        </button>"
         . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"

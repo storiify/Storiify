@@ -23,8 +23,6 @@ class Historia {
         $query->execute();
         $proximoId = $query->fetch()['Auto_increment'];
         
-        consoleLog($proximoId);
-        
         return $proximoId;
     }
 
@@ -97,19 +95,6 @@ class Historia {
 
         consoleLog($sql);
         $req = $bd->prepare($sql);
-        $req->execute();
-
-        $historias = [];
-        while ($historia = $req->fetch()) {
-            $historias[] = (object) $historia;
-        }
-
-        return $historias;
-    }
-    public static function SelecionarTodosListagem() {
-        $bd = ConexaoBd::getInstance();
-
-        $req = $bd->prepare("SELECT pk_hist, im_ppl, tit_hist, stit_hist, aur_hist, pbco_alvo, snp_hist, dt_alt FROM tb_historia");
         $req->execute();
 
         $historias = [];

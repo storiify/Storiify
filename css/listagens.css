@@ -12,9 +12,28 @@ th{
 }
 
 .pos-cabecalho{
-    width: 80%
+    padding-top: 120px;
+    margin-bottom: 30px;
+    padding-bottom: 1rem;
+    background-color: white;
+    border-bottom: 1px solid #c8c8c8;
 }
-
+.criar-nova-instancia{
+    margin-left: 14%;
+}
+.sem-instancia{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.sem-instancia span{
+    color: #cacaca;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
 .instancia-card{
     width: 80%;
     margin-bottom: 2%;
@@ -26,7 +45,7 @@ th{
 .instancia-corpo{
     background-color: white;
     padding:0;
-    border: 1px solid #162338;
+    border: 3px solid #162338;
     border-bottom-left-radius:0.3rem;
     border-top-left-radius:0.3rem;
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
