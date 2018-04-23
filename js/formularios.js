@@ -12,15 +12,20 @@ $(".btn-input-controle.minimizar").on("click", function () {
 //adicionar/remover detalhes
 $(".detalhes-link").on("click", function () {
     if ($(this).html() !== "Remover Detalhes") {
-        $(this).after('<div class="detalhes-conteudo">' +
-                '           <textarea placeholder="Detalhe o Nome do Input" title="Detalhes do Nome do Input"></textarea>' +
-                '     </div>');
+        $(this).siblings().toggle();
         $(this).siblings().children().focus();
         $(this).html("Remover Detalhes");
-        //TextArea autosize
-        autosize(document.querySelectorAll('textarea'));  //Otimizar essa chamada do Texto Auto-expansível
     } else {
-        $(this).siblings().remove();
+        $(this).siblings().toggle();
+        $(this).siblings().children().val("");
         $(this).html("Adicionar Detalhes");
+    }
+});
+
+$(".detalhes-conteudo").each(function(){
+    if ($(this).children().val()!=="" && $(this).children().css("visibility", "hidden")) {
+        $(this).toggle();
+        $(this).children().css('visibility', 'visible');
+        $(this).siblings().html("Remover Detalhes");
     }
 });

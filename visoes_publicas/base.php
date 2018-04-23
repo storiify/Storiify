@@ -1,3 +1,7 @@
+<?php
+//Aqui indica qual história o usuário está editando no momento arranjar um lugar melhor depois
+$historiaSelecionada = (object) Historia::SelecionarUm(2);
+?>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -14,6 +18,7 @@
         <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <!-- Font Awesome -->
         <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
         <!--Estilo geral-->
         <link href="../css/geral.css" rel="stylesheet" type="text/css"/>
         <!--Estilo da navegação-->
@@ -22,6 +27,8 @@
         <link href="../css/navTabs.css" rel="stylesheet" type="text/css"/>
         <!-- Estilo dos Formulários -->
         <link href="../css/formularios.css" rel="stylesheet" type="text/css"/>
+        <!-- Estilo das Listagens -->
+        <link href="../css/listagens.css" rel="stylesheet" type="text/css"/>
 
         <!--ICheck-->
         <link href="plugins/icheck-1.x/skins/flat/blue.css" rel="stylesheet" />
@@ -30,6 +37,7 @@
         <link href="../plugins/ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css"/>
         <!--Select2-->
         <link href="plugins/select2/css/select2.css" rel="stylesheet" />
+
     </head>
     <body>
 
@@ -39,7 +47,7 @@
         require_once "visoes_publicas/navegacao/menuLateralEsquerdo.php";
         ?>
         <!-- FINAL - CABEÇALHO DA PÁGINA-->
-        
+
         <!-- CONTEÚDO COM DICAS, PÁGINA DA CATEGORIA E INSTÂNCIAS -->
         <?php
         if (isset($file_dir) && $file_dir != 'none') {
@@ -47,15 +55,16 @@
         }
         ?>
         <!-- FINAL - CONTEÚDO COM DICAS, PÁGINA DA CATEGORIA E INSTÂNCIAS -->
-        
+
         <!-- RODAPÉ DA PÁGINA-->
         <?php
         require_once "visoes_publicas/navegacao/rodape.php";
         ?>
         <!-- FINAL - RODAPÉ DA PÁGINA-->
         <!--FINAL - CORPO DA PÁGINA-->
-        
+
         <!-- Load site level scripts -->
+
         <!-- Load jQuery -->
         <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
         <!-- Load jQueryUI -->
@@ -64,13 +73,15 @@
         <script src="js/bootstrap.js"></script>
 
         <!--Controlador dos Menus de Navegação-->
-        <script src="js/navegacao.js" type="text/javascript"></script>
+        <script src="/js/navegacao.js" type="text/javascript"></script>
         <!--Controlador da Rolagem de Texto-->
         <script src="js/marquee.js"></script>
         <!--NavTabs-->
         <script src="../js/navTabs.js" type="text/javascript"></script>
         <!--Formulários-->
         <script src="../js/formularios.js" type="text/javascript"></script>
+        <!--Listagens-->
+        <script src="../js/listagens.js" type="text/javascript"></script>
         <!--Seção dos Inputs-->
         <!--MinMax - Tem que vir antes do incluir -->
         <script src="js/input/minMax.js"></script>
@@ -80,6 +91,8 @@
         <script src="js/input/imagem.js"></script>
         <!--Incluir-->
         <script src="js/input/incluir.js"></script>
+        <!--TextoArea-->
+        <script src="../js/input/textoArea.js" type="text/javascript"></script>
         <!--/Seção dos Inputs-->     
         <!--Text Scroll Plugin-->
         <script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>

@@ -6,36 +6,8 @@
     Cinza - #c8c8c8
 verde ricardo : #418056;
 */
-/*Título*/
-#titulo-bg{
-    position:relative;
-    top:0px;
-    z-index: 1;
-    border-top: 100px solid #162338;
-    border-left: 25px solid transparent;
-    border-right: 15px solid transparent;
-    height: 0;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    -webkit-box-shadow: 0 -8px 6px -8px black;
-    -moz-box-shadow: 0 -8px 6px -8px black;
-    box-shadow: 0 -8px 6px -8px black;
-}
-#categoria-titulo{
-    position:relative;
-    top:-80px;
-    color:white;
-    padding-left: 12%;
-}
 
-#categoria-configuracoes{
-    position: relative;
-    color:white;
-    font-size: 2em;
-    padding-top: 13px;
-    right: 0px;
-}
+
 /*Conteudo*/
 .conteudo{
     position:relative;
