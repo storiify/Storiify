@@ -1,21 +1,15 @@
 ﻿$(document).ready(function () {
     var imgAlvo;
-    var imgUploader = $("#imgUploader");
-    var imgAntiga;
 
     $('.input-imagem').click(function () {
         imgAlvo = this;
-        var inp = $(this).attr("data-inputFileId");
-        console.log(inp);
-        if(inp){
-            imgUploader = $('#'+inp);
-        }
+        var imgUploader = $(this).siblings();
         
         imgUploader.trigger('click');
     });
 
-    imgUploader.change(function () {
-        if (imgUploader.val.length) {
+    $(".imgUploader").change(function () {
+        if ($(this).val.length) {
             var tempImg = URL.createObjectURL(event.target.files[0]);
             $(imgAlvo).fadeIn("fast").attr("style","background-image:url("+tempImg+")");
         }

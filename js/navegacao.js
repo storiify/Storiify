@@ -7,7 +7,7 @@ $(".menu-esquerdo-toggle").click(function () {
 MostrarScroll();
 
 window.onscroll = function () {
-        MostrarScroll();
+    MostrarScroll();
 };
 
 function MostrarScroll() {
@@ -22,3 +22,7 @@ $("#scroll-top").click(function () {
     $("body").scrollTop(0);
 });
 
+//Muda a história selecionada
+$('#selecao-nome-historia').on('change', function () {
+    alert(this.value);
+});

@@ -200,18 +200,27 @@
 }
 
 .historia-avatar{
-    width:50px;
+    width: 50px;
+    height: 50px;
+    margin-left: .3rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
 }
 
 .nome-historia{
     font-size: 16px;
     color:white;
     margin-left: 6px;
-    text-decoration:underline;
+    background-color: #162338;
+    border:0;
 }
 .nome-historia:hover{
-    color:white;
-    text-decoration: underline;
+    cursor:pointer;
+}
+.nome-historia:focus{
+    outline: 0;
 }
 
 .bem-vindo-texto{
