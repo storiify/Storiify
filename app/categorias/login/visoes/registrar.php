@@ -13,20 +13,22 @@
 	<meta name="author" content="Grupo 3 PI" />
 
 	<!-- Font Awesome -->
-	<link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+	<link href="./font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+	<!--bootstrap-->
+	<link href="./css/bootstrap.min.css" rel="stylesheet" />
 	<!-- CSS Principal, com todos os estilos -->
-	<link href="css/styles.css" type="text/css" rel="stylesheet" />
-	<!--CSS para editarmos-->
-	<link href="css/geral.css" rel="stylesheet" />
+	<link href="./css/styles.css" type="text/css" rel="stylesheet" />
 	<!--Nestable Lists-->
-	<link href="plugins/form-nestable/jquery.nestable.css" type="text/css" rel="stylesheet" />
+	<link href="./plugins/form-nestable/jquery.nestable.css" type="text/css" rel="stylesheet" />
 	<!--ICheck-->
-	<link href="plugins/icheck-1.x/skins/flat/_all.css" rel="stylesheet" />
+	<link href="./plugins/icheck-1.x/skins/flat/_all.css" rel="stylesheet" />
+	<!--CSS para editarmos-->
+	<link href="./css/geral.css" rel="stylesheet" />
     </head>
     <body class="focused-form">
 	<div class="container" id="registration-form">
 	    <a href="?categoria=login&acao=registrar" class="login-logo" style="margin: 0px;">
-		<img src="imagens/logo/90logoNome.png" />
+		<img src="./imagens/logo/90logoNome.png" />
 	    </a>
 	    <div class="row">
 		<div class="col-md-4 col-md-offset-4">
@@ -83,19 +85,19 @@
 	</div>
 	<!-- Load site level scripts -->
 	<!-- Load jQuery -->
-	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="./js/jquery-1.10.2.min.js"></script>
 	<!--IChek-->
-	<script src="plugins/icheck-1.x/icheck.js"></script>
+	<script src="./plugins/icheck-1.x/icheck.js"></script>
 	<!--Javascript para editarmos-->
-	<script src="js/marquee.js"></script>
+	<script src="./js/marquee.js"></script>
 	<!--Verificar o que tem dentro (faz o toggle do menu lateral)-->
-	<script src="js/application.js"></script>
+	<script src="./js/application.js"></script>
 	<!--Text Scroll Plugin-->
-	<script src="plugins/textScrollingMarquee/jquery.marquee.js"></script>
+	<script src="./plugins/textScrollingMarquee/jquery.marquee.js"></script>
 	<!--TextArea autosize-->
-	<script src="plugins/autosize-TextArea/dist/autosize.js"></script>
+	<script src="./plugins/autosize-TextArea/dist/autosize.js"></script>
 	<!--IonRangeSlider-->
-	<script src="plugins/Ion.RangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+	<script src="./plugins/Ion.RangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
 	<!-- End loading site level scripts -->
 
 	<!-- Load page level scripts-->

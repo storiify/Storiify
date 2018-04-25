@@ -6,7 +6,7 @@
  * @author Yan P. Gabriel
  */
 
-class Controlador{
+class Controlador {
     
     private $categoria;
     private $controlador;
@@ -16,7 +16,9 @@ class Controlador{
     private $visaoUnica;
     private $sessao;
     private $dicas;
-      
+    private $userData;
+
+
     public function __construct() {
         //Em Breve chamar sessão aqui
         $this->sessao = new Sessao();
@@ -32,11 +34,16 @@ class Controlador{
 		$login->check();              
             }
         }
+	
         $this->controlador = $this->controladorCategoria($categoria);
         $this->resultados = $this->executeAcao($acao,$parametros);
                 
         $controlador = $this->controlador;
-        
+        $ud = sessao()->getChave('user_data');
+	if($ud!=null){
+	    $controlador->userData = $ud;
+	}
+	
         $file_base = PATH_VISOES_PUBLICAS.VISAO_BASE;
         $file_nf = VISAO_404;
         $file_dir = $this->controlador->getVisao();  
@@ -46,18 +53,21 @@ class Controlador{
 		require_once $file_dir;
 	    }else{
 		require_once $file_nf;
+		$this->sessao->setChave('MSG_404', "Visão unica não encontrada!");
 	    }
 	}else if(file_exists($file_base)){
 	    if(file_exists($file_dir) || $file_dir=="none"){
 		require_once $file_base;
 	    }else{
 		$file_dir = $file_nf;
+		$this->sessao->setChave('MSG_404', "Visão não encontrada!");
 		require_once $file_base;
 	    }
 	} else{
 	    $file_dir = $file_nf;
+	    $this->sessao->setChave('MSG_404', "A visão dessa categoria não encontrada!");
 	    require_once $file_base;
-        }               
+        }
     }
     
     /*
@@ -78,7 +88,7 @@ class Controlador{
      * Retorna o arquivo de visão (Somente usado no controlador principal)
      */
     public function getVisao() {
-        if($this->visao=="none.php"){
+        if($this->visao=="none.php" or !isset($this->visao)){
             return "none";
         }
         return PATH_CAT.$this->categoria.'/visoes/'.$this->visao;
@@ -132,11 +142,20 @@ class Controlador{
     
     private function controladorCategoria($cat){
         $tempControlador = "Controlador".ucfirst(strtolower($cat));
+	try{
+	    class_exists($tempControlador);
+	} catch (Exception $e){
+	    die('arroz');
+	    echo $e->getMessage();
+	}
         if(!class_exists($tempControlador)){
 	    notfount('Categoria "'.$cat.'" não encontrada no sistema!');
             //die('Categoria "'.$cat.'" não encontrada no sistema!');
         }
-        $controlador = new $tempControlador($cat);
+	$controlador = new $tempControlador($cat);
+	if(!($controlador instanceof InterfaceControlador)) {
+	    notfount('<span style="font-size: 50px !important;">Categoria "'.$cat.'" não implementa a "InterfaceControlador"!</span>');
+	}
         return $controlador;
     }
     

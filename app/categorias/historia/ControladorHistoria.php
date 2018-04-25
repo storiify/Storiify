@@ -1,20 +1,21 @@
 <?php
 
-class ControladorHistoria extends Controlador {
+class ControladorHistoria extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas História");
+	parent::setDicas("Dicas Historia");
         $this->setCategoria($categoria);
     }
-
-    public function criar() {
+    
+    public function cadastrar($parametros) {
         //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
-        $this->setVisao('FormHistoria');
+        $this->setVisao('formHistoria');
     }
 
-    public function listar() {
-        $historias = Historia::SelecionarTodosCustomizado(array("pk_hist", "im_ppl", "tit_hist", "stit_hist", "aur_hist", "pbco_alvo", "snp_hist", "dt_alt"));
+    public function listar($parametros) {
+        $historias = Historia::SelecionarTodosCustomizado(
+		array("pk_hist", "im_ppl", "tit_hist", "stit_hist", "aur_hist", "pbco_alvo", "snp_hist", "dt_alt"));
         $this->setParametros($historias);
         $this->setVisao('ListarHistoria');
     }
@@ -30,7 +31,7 @@ class ControladorHistoria extends Controlador {
         $this->setVisao('FormHistoria');
     }
 
-    public function salvar() { //dá pra receber $historia ?             
+    public function salvar($parametros) { //dá pra receber $historia ?             
         $historia = new Historia($_POST['view_pk_hist']);
         $historia->tit_hist = (isset($_POST['view_tit_hist']) ? $_POST['view_tit_hist'] : NULL);
         $historia->dets_im_ppl = (isset($_POST['view_dets_im_ppl']) ? $_POST['view_dets_im_ppl'] : NULL);
@@ -73,7 +74,7 @@ class ControladorHistoria extends Controlador {
         }
     }
 
-    public function deletar($parametros) {
+    public function excluir($parametros) {
         $id = $parametros['parametros'];
         if (Historia::Deletar($id)) {
             deleteImagem(1, "historia", $id);

@@ -1,4 +1,5 @@
-<?php $modelo = $controlador->getParametros();
+<?php 
+$modelo = $controlador->getParametros();
 
  if (isset($modelo->tit_hist)) {
     $nome = ($modelo->tit_hist == "" || ctype_space($modelo->tit_hist)) ?
@@ -10,7 +11,7 @@
 }
 ?>
 
-<div style="margin-top:60px;">
+<div class="pular-menu">
     <div class="marquee"><?= $this->getDicas() ?></div>
 </div>
 

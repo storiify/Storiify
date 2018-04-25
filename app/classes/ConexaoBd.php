@@ -4,9 +4,7 @@ class ConexaoBd {
 
     private static $instance = NULL;
     
-    private function __construct() {}
-    
-    private function __clone() {}
+    public function __construct() {}
     
     public static function getInstance() {
       if (!isset(self::$instance)) {
@@ -17,6 +15,28 @@ class ConexaoBd {
       }
       return self::$instance;
 
+    }
+    
+    public function listar($colunas,$tabela,$where=null,$ordenar=null) {
+	
+	$sql = "SELECT $colunas FROM $tabela ";
+	
+	if($where!=null){
+	    $sql.= ' '.$where;
+	}
+	if($ordenar!=null){
+	    $sql.= ' '.$where;
+	}
+	
+	$res = array();
+	foreach (self::getInstance()->query($sql) as $row) {
+	    $res[] = $row;
+	}
+	return $res;
+    }
+    
+    public function salvar($parametros) {
+	
     }
 
 }

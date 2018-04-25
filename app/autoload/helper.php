@@ -21,6 +21,19 @@ function proccessRequest() {
                 break;
         }
     }
+    foreach ($_POST as $key => $val) {
+        switch ($key) {
+            case 'categoria':
+                $arrayTratado['categoria'] = $val;
+                break;
+            case 'acao':
+                $arrayTratado['acao'] = $val;
+                break;
+            default:
+                $arrayTratado['parametros'][$key] = $val;
+                break;
+        }
+    }
     return (object) $arrayTratado;
 }
 
@@ -35,7 +48,7 @@ function sessao() {
 
 function notfount($msg = null) {
     $sessao = sessao();
-    $sessao->setSessao('MSG_404', $msg);
+    $sessao->setChave('MSG_404', $msg);
     require_once PATH_VISOES_PUBLICAS . VISAO_404;
     die;
 }

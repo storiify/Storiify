@@ -7,13 +7,13 @@
     </div>
     
     <div class="navbar-collapse collapse logo-nome-topo dual-collapse2 order-1 order-md-0">
-        <img src="../../imagens/logo/180nomeInvertido.png" alt="Logo Storiify" title="Logo Storiify"/>
+        <img src="./imagens/logo/180nomeInvertido.png" alt="Logo Storiify" title="Logo Storiify"/>
     </div>
     
     <div class="mx-auto my-2 order-0 order-md-1 position-relative">
         <a class="mx-auto" href="?categoria=historia&acao=listar">
             <div class="fundo-logo"></div>
-            <img src="../../imagens/logo/540logoFundo.png" class="rounded-circle logo-topo" alt="Logo Storiify" title="Logo Storiify"/>
+            <img src="./imagens/logo/540logoFundo.png" class="rounded-circle logo-topo" alt="Logo Storiify" title="Logo Storiify"/>
         </a>
     </div>
 
@@ -24,8 +24,8 @@
                     <!--Botão de Usuário-->
                     <div class="dropdown">
                         <button type="button" class="btn btn-azul dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../imagens/avatares/avatar_07.png" class="rounded-circle avatar-usuario" />
-                            Nome do Usuário
+                            <img src="./imagens/sem-foto.png" class="rounded-circle avatar-usuario" />
+                            <?= $controlador->userData['nome'] ?>
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Editar Perfil</a>
@@ -42,4 +42,3 @@
     </div>
 
 </nav>
-

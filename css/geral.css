@@ -88,3 +88,11 @@ footer{
     font-size: 20px;
     border-bottom: 2px solid #162338;
 }
+.hero{
+    height: calc(100vh - 60px) !important;
+    padding-top: 0px!important;
+    margin-top: 60px!important;
+}
+.pular-menu{
+    margin-top: 60px !important;
+}

@@ -1,5 +1,5 @@
 <?php
-$historias = Historia::SelecionarTodosCustomizado(array("pk_hist", "im_ppl", "tit_hist", "stit_hist"))
+//$historias = Historia::SelecionarTodosCustomizado(array("pk_hist", "im_ppl", "tit_hist", "stit_hist"))
 ?>
 
 <div class='container'>
@@ -8,22 +8,23 @@ $historias = Historia::SelecionarTodosCustomizado(array("pk_hist", "im_ppl", "ti
 
         <li class='nav-item cabecalho-menu-lateral row' title='Clique aqui para escolher qual história deseja editar'>
 
-            <?php echo ($historiaSelecionada->im_ppl!=NULL?
+            <?php /*echo ($historiaSelecionada->im_ppl!=NULL?
                     "<div class='col-md-2'>
                         <div class='historia-avatar' style='background-image:url($historiaSelecionada->im_ppl'></div>
-                    </div>" : "<div class='col-md-1'>&nbsp</div>" )?>
+                    </div>" : "<div class='col-md-1'>&nbsp</div>" )*/?>
 
             <div class='col-md-10'>
                 <span class='bem-vindo-texto'>Bem-vindo à </span>
                 <select class='nome-historia' id='selecao-nome-historia'>
                     <?php
+		    /*
                     foreach ($historias as $historia){
                         $nome = Historia::GerarNome($historia);
                         $selected = ($historia->pk_hist == $historiaSelecionada->pk_hist) ? "selected" : "";
 
                         echo "<option value='$historia->pk_hist'"
                         . "$selected>" . truncar($nome, 25, "...") . "</option>";
-                    }
+                    }*/
                     ?>
                 </select>
             </div>
@@ -37,8 +38,16 @@ $historias = Historia::SelecionarTodosCustomizado(array("pk_hist", "im_ppl", "ti
             <i class='fa fa-book col-md-2'></i>
             <span class='col-md-10'>História</span>
             <ul class='navbar-nav mr-auto text-center list-group'>
+		<li>
+                    <a href="?categoria=historia&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Criar</div>
+                        </div>
+                    </a>
+                </li>
                 <li>
-                    <a href="<?php echo "?categoria=historia&acao=editar&parametros=$historiaSelecionada->pk_hist";?>" 
+                    <a href="<?php //echo "?categoria=historia&acao=editar&parametros=$historiaSelecionada->pk_hist";?>" 
                        class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>

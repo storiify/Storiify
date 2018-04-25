@@ -1,6 +1,6 @@
 <?php
 
-class Historia {
+class Historia extends ConexaoBd{
 
     public function __construct($id) {
         $this->pk_hist = $id;
@@ -15,7 +15,7 @@ class Historia {
     }
     
     public static function ProximoId() {
-        $bd = ConexaoBd::getInstance();
+        $bd = $this->getInstance();
 
         $sql = "SHOW TABLE STATUS LIKE 'tb_historia'";
         
