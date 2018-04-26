@@ -1,10 +1,8 @@
 <?php
-$categoria = "historia";
-$parametros = $controlador->getParametros();
-$modelos = (array) $parametros;
+$resultados = $controlador->getResultados();
 ?>
 
-<div style="margin-top:60px;">
+<div class="pular-menu">
     <div class="marquee"><?= $this->getDicas() ?></div>
 </div>
 
@@ -12,10 +10,10 @@ $modelos = (array) $parametros;
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
         <h1><?php echo nomeFormal($categoria, "plural") ?></h1>
-    </div>
+    </div>    
 </div>
 
-<div class="conteudo">
+<div class="conteudo" style="margin-top: 100px;">
     
     <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
@@ -29,23 +27,27 @@ $modelos = (array) $parametros;
 
     <!--CASO NÃO HAJA INSTÂNCIAS-->
     <?php
-    if (empty($modelos)) {
-        echo"<div class='sem-instancia'>"
-        . "     <span>".sprintf(Constantes::$instanciaIndefinidaMsg, nomeFormal($categoria, "plural"))."</span>"
-        . "     <img src='" . Constantes::$instanciaIndefinida . "' alt=''/>"
+    if (empty($resultados)) {
+        echo"<div align='center' class='sem-instancia' style='margin-bottom: 0.5%'>"
+	. "	<div align='left' style='padding-left: 0.5%'>"
+        . "	    <span>".sprintf(const_Indefinida_Msg, nomeFormal($categoria, "plural"))."</span>"
+	. "	</div>"
+        . "     <img src='" . const_Indefinida . "' alt='' style='max-width: 99%;'/>"
         . "</div>";
     }
     ?>
 
     <?php
-    foreach ($modelos as $modelo) {
-        $imagemPrincipal = (isset($modelo->im_ppl)) ? $modelo->im_ppl : Constantes::$imIndefinida;
-        $nome = Historia::GerarNome($modelo);
+    if(isset($resultados)){
+    foreach ($resultados as $historia) {
+	$modelo = (object) $historia;
+        $imagemPrincipal = (isset($modelo->im_ppl)) ? $modelo->im_ppl : const_Indefinida_IM;
+        $nome = $modelo->tit_hist.($modelo->stit_hist!=''?' - '.$modelo->stit_hist:'');
         $dataInLocal = $modelo->dt_alt;
 
         echo
         "<div title='Clique para editar $nome'"
-        . "class='instancia-card mx-auto row' data-id='$modelo->pk_hist' data-nome='$nome'>"
+        . "class='instancia-card mx-auto row clicavel' data-id='$modelo->pk_hist' data-nome='$nome'>"
         . "    <div class='instancia-corpo col-md-11 row'>"
         . "        <div class='instancia-imagem' style='background-image:url($imagemPrincipal)'></div>"
         . "        <div class='instancia-conteudo col'>"
@@ -73,7 +75,7 @@ $modelos = (array) $parametros;
         . "            </div>"
         . "        </div>"
         . "    </div>"
-        . "    <a href='?categoria=$categoria&acao=editar&parametros=$modelo->pk_hist'></a>"
+        . "    <a href='?categoria=$categoria&acao=editar&id=$modelo->pk_hist'></a>"
         . "    <div class='instancia-controle col-md-1'>"
         . "        <button class='btn btn-azul btn-deletar-instancia' title='Clique para deletar $nome'>"
         . "            <i class='fa fa-times'></i>"
@@ -86,7 +88,7 @@ $modelos = (array) $parametros;
         . "title='" . ($nome == "" ? " Clique para gerar PDF" : "Clique para gerar PDF de " . $nome) . " '>"
         . "            <i class='fa fa-file-pdf-o'></i>"
         . "        </button>"
-        . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
+        . "        <!--button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
         . "            <i class='fa fa-warning'></i>"
         . "        </button>"
         . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
@@ -94,9 +96,10 @@ $modelos = (array) $parametros;
         . "        </button>"
         . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
         . "            <i class='fa fa-warning'></i>"
-        . "        </button>"
+        . "        </button-->"
         . "    </div>"
         . "</div>";
+    }
     }
     ?>
 </div>

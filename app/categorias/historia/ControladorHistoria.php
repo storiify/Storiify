@@ -14,71 +14,62 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
     }
 
     public function listar($parametros) {
-        $historias = Historia::SelecionarTodosCustomizado(
-		array("pk_hist", "im_ppl", "tit_hist", "stit_hist", "aur_hist", "pbco_alvo", "snp_hist", "dt_alt"));
-        $this->setParametros($historias);
-        $this->setVisao('ListarHistoria');
+	
+	$modelo = new ModeloHistoria();
+	$res = $modelo->listar($parametros);
+	
+	sessao()->setHistoriasData($res);
+        $this->setVisao('listarHistoria');
+	$this->setResultados($res);
     }
+    
+    public function listarAoLogar($parametros) {
+	$modelo = new ModeloHistoria();
+	$res = $modelo->listar($parametros);	
+	sessao()->setHistoriasData($res);
+    }
+    
 
     public function editar($parametros) {
-        $id = $parametros['parametros'];
-
-        $historia = Historia::SelecionarUm($id);
-        if ($historia == null) {
-            consoleLog("Não há instância com esse Id");
-        }
-        $this->setParametros($historia);
-        $this->setVisao('FormHistoria');
+	
+        $modelo = new ModeloHistoria();
+	$res = $modelo->listar($parametros);
+	
+	if($res[0] != false){
+	    $this->setResultados($res[0]);
+	    $this->setVisao('formHistoria');
+	}else{
+	    redirecionar("?categoria=historia&acao=listar");
+	}
     }
 
-    public function salvar($parametros) { //dá pra receber $historia ?             
-        $historia = new Historia($_POST['view_pk_hist']);
-        $historia->tit_hist = (isset($_POST['view_tit_hist']) ? $_POST['view_tit_hist'] : NULL);
-        $historia->dets_im_ppl = (isset($_POST['view_dets_im_ppl']) ? $_POST['view_dets_im_ppl'] : NULL);
-        $historia->dets_tit = (isset($_POST['view_dets_tit']) ? $_POST['view_dets_tit'] : NULL);
-        $historia->stit_hist = (isset($_POST['view_stit_hist']) ? $_POST['view_stit_hist'] : NULL);
-        $historia->dets_stit = (isset($_POST['view_dets_stit']) ? $_POST['view_dets_stit'] : NULL);
-        $historia->aur_hist = (isset($_POST['view_aur_hist']) ? $_POST['view_aur_hist'] : NULL);
-        $historia->dets_aur = (isset($_POST['view_dets_aur']) ? $_POST['view_dets_aur'] : NULL);
-        $historia->iltd_hist = (isset($_POST['view_iltd_hist']) ? $_POST['view_iltd_hist'] : NULL);
-        $historia->dets_iltd = (isset($_POST['view_dets_iltd']) ? $_POST['view_dets_iltd'] : NULL);
-        $historia->pbco_alvo = (isset($_POST['view_pbco_alvo']) ? $_POST['view_pbco_alvo'] : NULL);       
-        if (isset($_POST['view_vsi_hist'])) {
-            foreach ($_POST['view_vsi_hist'] as $valor) {
-            $historia->vsi_hist += $valor;
-            }
-        }else{
-            $historia->vsi_hist = NULL;
-        }             
-        $historia->dcr_em_uma_sntn = (isset($_POST['view_dcr_em_uma_sntn']) ? $_POST['view_dcr_em_uma_sntn'] : NULL);
-        $historia->snp_hist = (isset($_POST['view_snp_hist']) ? $_POST['view_snp_hist'] : NULL);
-        $historia->rsm_hist = (isset($_POST['view_rsm_hist']) ? $_POST['view_rsm_hist'] : NULL);      
-        
-        if ($historia->pk_hist == 0) {
-            if ($_FILES['view_im_ppl']['name'] != "") {
-                $idAlterado = Historia::ProximoId();
-                $historia->im_ppl = uploadImagem(1, "historia", $idAlterado, $_FILES['view_im_ppl']);
-            }
-            Historia::Inserir($historia);
-        } else {
-            if ($_FILES['view_im_ppl']['name'] != "") {
-                $historia->im_ppl = uploadImagem(1, "historia", $historia->pk_hist, $_FILES['view_im_ppl']);
-            }
-            Historia::Alterar($historia);
-        }
-
-        if (true) { //usuário estiver logado
-            $this->listar();
-        } else {
-            $this->setVisao('ALGUMA PÁGINA INICIAL');
-        }
+    public function salvar($parametros) {
+	
+	$modelo = new ModeloHistoria();
+	$idUsuario = sessao()->getUserData()->id;
+	if(isset($_FILES) && $_FILES['im_ppl']['size']!=0){	    
+	    $idHistoria = $modelo->proximoID();
+	    $parametros['im_ppl'] = uploadImagem($idUsuario, "historia", $idHistoria, $_FILES['im_ppl']);
+	}
+	if(isset($parametros['vsi_hist']) && is_array($parametros['vsi_hist'])){
+	    $tempStr = 0;
+	    foreach ($parametros['vsi_hist'] as $value) {
+		$tempStr = $tempStr+$value;
+	    }
+	    $parametros['vsi_hist'] = $tempStr;
+	}
+	$parametros['fk_usu'] = $idUsuario;
+	$res = $modelo->salvar($parametros);
+	
+	if($res != false){
+	    redirecionar("?categoria=historia&acao=listar");
+	}else{
+	    redirecionar("?categoria=historia&acao=cadastrar");
+	}
     }
 
     public function excluir($parametros) {
-        $id = $parametros['parametros'];
-        if (Historia::Deletar($id)) {
-            deleteImagem(1, "historia", $id);
-            $this->listar();
-        }
+	
     }
+
 }

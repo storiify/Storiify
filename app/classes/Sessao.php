@@ -27,4 +27,14 @@ class Sessao {
         return $_SESSION[$chave];
     }
     
+    public function getUserData() {
+	return (object) $this->getChave('user_data');
+    }
+    public function setHistoriasData(array $listaHistorias) {
+	return (object) $this->setChave('hist_data', $listaHistorias);
+    }
+    public function getHistoriasData() {
+	return (object) $this->getChave('hist_data');
+    }
+    
 }

@@ -16,9 +16,9 @@ define("OBRIGAR_LOGIN",TRUE);
 define("CHAVE_LOGIN","logado");
 define("URL_LOGIN","?categoria=login&acao=logar");
 
-$imIndefinida = "./imagens/sem-foto.png";
-$instanciaIndefinida = "./imagens/sem-instancia.png";
-$instanciaIndefinidaMsg = "Suas %s aparecerão aqui";
+define("const_Indefinida_IM", "./imagens/sem-foto.png");
+define("const_Indefinida", "./imagens/sem-instancia.png");
+define("const_Indefinida_Msg", "Suas %s aparecerão aqui");
 
 function consoleLog($msg) {
     if(DEBUG){

@@ -29,7 +29,8 @@
     position:relative;
     top:-80px;
     color:white;
-    padding-left: 12%;
+    padding-left: 4%;
+    text-align: center;
 }
 /*Final - Título*/
 .tab-content{

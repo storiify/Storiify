@@ -96,3 +96,10 @@ footer{
 .pular-menu{
     margin-top: 60px !important;
 }
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+a, .clicavel{
+    cursor: pointer;
+}

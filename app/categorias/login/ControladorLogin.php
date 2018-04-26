@@ -8,6 +8,9 @@ class ControladorLogin extends Controlador implements InterfaceControlador{
     }
     
     public function logar($param) {
+	//Pega a lista de historias e ja salva na SESSAO ao logar
+	$cHit = new ControladorHistoria('historia');
+	$cHit->listar($param);
         $this->setVisao('logar', TRUE);       
     }
     

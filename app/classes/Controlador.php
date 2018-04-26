@@ -17,11 +17,13 @@ class Controlador {
     private $sessao;
     private $dicas;
     private $userData;
+    private $historiaData;
 
 
     public function __construct() {
         //Em Breve chamar sessão aqui
         $this->sessao = new Sessao();
+	$this->resultados = array();
         $this->dicas = "As dicas ficarão rodando aqui!";
     }
     
@@ -43,7 +45,9 @@ class Controlador {
 	if($ud!=null){
 	    $controlador->userData = $ud;
 	}
-	
+	if($this->resultados!=null){
+	    $controlador->resultados = $this->resultados;
+	}
         $file_base = PATH_VISOES_PUBLICAS.VISAO_BASE;
         $file_nf = VISAO_404;
         $file_dir = $this->controlador->getVisao();  
@@ -109,6 +113,22 @@ class Controlador {
      */
     public function getParametros(){
         return (object)$this->parametros;  
+    }
+    /*
+     * Seta os Resultados de querys por exemplo
+     * 
+     * @var $resultados Manda uma array para ser salva
+     */
+    public function setResultados(array $resultados) {
+        $this->resultados = $resultados;  
+    }
+    /*
+     * Resgata os Resultados
+     * 
+     * @return array()
+     */
+    public function getResultados(){
+        return (object)$this->resultados;  
     }
     
     /*
