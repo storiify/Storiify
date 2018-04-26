@@ -32,6 +32,7 @@ class ControladorHistoria extends Controlador {
 
     public function salvar() { //dá pra receber $historia ?             
         $historia = new Historia($_POST['view_pk_hist']);
+        $historia->im_ppl = (isset($_POST['view_im_ppl']) ? $_POST['view_im_ppl'] : NULL);
         $historia->tit_hist = (isset($_POST['view_tit_hist']) ? $_POST['view_tit_hist'] : NULL);
         $historia->dets_im_ppl = (isset($_POST['view_dets_im_ppl']) ? $_POST['view_dets_im_ppl'] : NULL);
         $historia->dets_tit = (isset($_POST['view_dets_tit']) ? $_POST['view_dets_tit'] : NULL);
@@ -51,17 +52,21 @@ class ControladorHistoria extends Controlador {
         }             
         $historia->dcr_em_uma_sntn = (isset($_POST['view_dcr_em_uma_sntn']) ? $_POST['view_dcr_em_uma_sntn'] : NULL);
         $historia->snp_hist = (isset($_POST['view_snp_hist']) ? $_POST['view_snp_hist'] : NULL);
-        $historia->rsm_hist = (isset($_POST['view_rsm_hist']) ? $_POST['view_rsm_hist'] : NULL);      
+        $historia->rsm_hist = (isset($_POST['view_rsm_hist']) ? $_POST['view_rsm_hist'] : NULL);
         
         if ($historia->pk_hist == 0) {
-            if ($_FILES['view_im_ppl']['name'] != "") {
+            if ($_FILES['view_file_im_ppl']['name'] != "") {
                 $idAlterado = Historia::ProximoId();
-                $historia->im_ppl = uploadImagem(1, "historia", $idAlterado, $_FILES['view_im_ppl']);
+                $historia->im_ppl = uploadImagem(1, "historia", $idAlterado, $_FILES['view_file_im_ppl']);
             }
             Historia::Inserir($historia);
         } else {
-            if ($_FILES['view_im_ppl']['name'] != "") {
-                $historia->im_ppl = uploadImagem(1, "historia", $historia->pk_hist, $_FILES['view_im_ppl']);
+            if ($historia->im_ppl == null) {
+                deleteImagem(1, "historia", $historia->pk_hist);
+            }
+            
+            if ($_FILES['view_file_im_ppl']['name'] != "") {
+                $historia->im_ppl = uploadImagem(1, "historia", $historia->pk_hist, $_FILES['view_file_im_ppl']);
             }
             Historia::Alterar($historia);
         }

@@ -58,7 +58,9 @@
                                      style="background-image:url(<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : "../imagens/sem-foto.png"; ?>)"></div>
                                 
                                 <input value="<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : null; ?>" 
-                                       accept='.png' type='file' class="imgUploader" name="view_im_ppl"/>
+                                       accept='.png' type='file' class="imgUploader" name="view_file_im_ppl"/>
+                                
+                                <input name="view_im_ppl" type="hidden" value="<?php echo (isset($modelo->im_ppl) ? $modelo->im_ppl: "")?>" class="im_ppl_hidden">
                                 
                                 <a class="input-imagem-reset" title="Clique para resetar a Imagem da História" alt="Clique para resetar a Imagem da História">
                                     <i class="fa fa-ban"></i>

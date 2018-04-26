@@ -18,5 +18,7 @@
     //Resetando ao apertar no botão de resetar imagem
     $(".input-imagem-reset").on("click",function () {
         $(this).siblings(".input-imagem").attr("style", "background-image:url(../imagens/sem-foto.png)");
+        $(this).siblings(".im_ppl_hidden").val(null);
+        alert($(".im_ppl_hidden").val());
     });
 });

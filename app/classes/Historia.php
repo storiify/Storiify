@@ -93,7 +93,6 @@ class Historia {
         
         $sql = "SELECT ".join(',', $atributos)." FROM tb_historia";
 
-        consoleLog($sql);
         $req = $bd->prepare($sql);
         $req->execute();
 
