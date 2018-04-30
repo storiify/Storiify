@@ -7,10 +7,13 @@ class ControladorCena extends Controlador{
         $this->setCategoria($categoria);
     }
     
-    public function cadastrar($parametros) {
-        
-        $this->setVisao('CadastrarCena');
-       
+    public function cadastrar($parametros){
+        consoleLog('Cadastro de Cenas');
+        $this -> setVisao('CadastrarCena');
     }
     
+    public function listar($parametros){
+        consoleLog('Listagem de cenas');
+        $this -> setVisao('ListarCenas');
+    }
 }
