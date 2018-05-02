@@ -10,7 +10,7 @@ class ConexaoBd {
       if (!isset(self::$instance)) {
         $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
         $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
-        self::$instance = new PDO('mysql:host=0.tcp.ngrok.io:10217;dbname=bd_storiify', 'storiify', 'strfg1pi3senac', $pdo_options);
+        self::$instance = new PDO('mysql:host=0.tcp.ngrok.io:19438;dbname=bd_storiify', 'storiify', 'strfg1pi3senac', $pdo_options);
         //self::$instance = new PDO('mysql:host=localhost;dbname=bd_storiify', 'root', '', $pdo_options);
       }
       return self::$instance;
@@ -62,8 +62,8 @@ class ConexaoBd {
 	$valores = substr($valores, 0, -1);
 		
 	$sql = "INSERT INTO $tabela ($colunas) VALUES ($valores)";
-	
 	$res = self::getInstance()->query($sql);
+	
 	if($res->rowCount()>0){
 	    return true;
 	}else{

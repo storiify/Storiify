@@ -21,13 +21,16 @@ class ModeloHistoria extends ConexaoBd{
         $parametros['dt_alt'] = $horarioAtual;
 	$res = false;	
 	
-	if(isset($parametros['pk_hist']) && array_key_exists("pk_hist", $parametros)){
+	if(isset($parametros['pk_hist']) && $parametros['pk_hist']!=''){
 	    $condicao=" pk_hist='{$parametros['pk_hist']}'";
 	    $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
 	}else{
+	    unset($parametros['pk_hist']);
 	    $parametros['dt_cric'] = $horarioAtual;
 	    $res = $modeloBase->inserirBase($parametros, $this->tabela);
+	    
 	}
+	
 	return $res;
     }
     
