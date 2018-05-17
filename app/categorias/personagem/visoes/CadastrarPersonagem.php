@@ -1,5 +1,62 @@
+<?php $resultado = $controlador->getResultados();
+
+if(empty((array)$resultado)){
+    $nm_psna = '';
+    // PK
+    $pk_psna = '';
+    // Aba 1
+    $im_psna = './imagens/sem-foto.png';
+	$nsc_psna = '';
+	$dcr_bsca_psna = '';
+	$h_psna = '';
+	$h_dcr_psna = '';
+	$peso_psna = '';
+	$peso_dcr_pnsa = '';
+	$prte_psna = '';
+	$prte_dcr_psna = '';
+	$pele_psna = '';
+	$pele_dcr_psna = '';
+	$cblo_psna = '';
+	$cblo_dcr_psna = '';
+	$vstm_psna = '';
+	$vstm_dcr_psna = '';
+	$acsr_psna = '';
+	$acsr_dcr_psna = '';
+	$cptc_pst_psna = '';
+	$cptc_pst_dcr = '';
+	$cptc_ngt_psna = '';
+	$cptc_ngt_dcr = '';
+	$almt_psna = '';
+	$almt_dcr_psna = ''; 
+	$papl_psna = '';
+	$papl_dcr_psna = '';
+	$envl_psna = '';
+	$mmt_psna = '';
+	$objt_psna = '';
+	$objt_dcr_psna = '';
+	$objt_prlel_psna = '';
+	$objt_prlel_dcr_psna = '';
+	$mtvc_psna = '';
+	$evt_psna = '';
+	$evt_dcr_psna = '';
+	$pda_psna = '';
+	$pda_dcr_psna = '';
+	$medo_psna = '';
+	$segd_psna = '';
+}else{
+    $personagem = (array)$resultado;
+    foreach ($personagem as $key => $value) {
+	$$key = $value;
+    }
+}
+    // $nome = (isset($tit_hist)? substr($tit_hist, 0,25).'...':"História sem nome!");
+    // $vsi_hist = parseCheckbox($vsi_hist);
+
+?>
+
 <div style="margin-top:60px;">
-    <div class="marquee"><?= $this->getDicas() ?></div>
+    <div class="marquee"><?= $this->getDicas(); var_dump($resultado);
+	?></div>
 </div>
 
 
@@ -25,12 +82,12 @@
     </div>
     <!-- FINAL - ABAS DE NAVEGAÇÃO -->
     <!-- CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
+	<form action="?categoria=personagem&acao=salvar" method="post" enctype="multipart/form-data">
     <div class="tab-content">
         <!--ABA GERAL-->
         <div id="abaGeral" class="container tab-pane active">
             <!--INPUT IMAGEM-->
             <!--Só precisa de um input desse na página, por isso, deixarei o ID controlando-->
-            <input type='file' id="imgUploader" />
 
             <div class="form-group">
                 <div class="row">
@@ -45,19 +102,19 @@
                     <label class="col-md-11 input-label" for="input-im-Imagem">Imagem</label>
                     <!--FINAL - INPUT LABEL-->
                     <!--INPUT CORPO-->
-                    <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <div class="input-imagem"></div>
-                            <a class="input-imagem-reset" title="Clique para resetar a imagem" alt="Clique para resetar a imagem" id="input-im-Imagem">
-                                <i class="fa fa-ban"></i>
-                            </a>
-                        </div>
-                        <!--DETALHES-->
-                        <div class="col-md-12 input-detalhes">
-                            <a class="detalhes-link">Adicionar Detalhes</a>
-                        </div>
-                        <!--FINAL - DETALHES-->
-                    </div>
+                   <div class="col-md-12 input-conteudo">
+                                
+                                <div class="input-imagem" title="Campo para Imagem da Personagem" id="input-im-ImagemdoPersonagem"
+                                     style="background-image:url(<?php echo $im_psna; ?>)"></div>
+                                
+                                <input value="<?php echo $im_psna; ?>" 
+                                       accept='.png,.jpg' type='file' class="imgUploader" name="im_psna"/>
+                                
+                                <a class="input-imagem-reset" title="Clique para resetar a Imagem da História" alt="Clique para resetar a Imagem do Personagem">
+                                    <i class="fa fa-ban"></i>
+                                </a>
+                                
+                            </div>
                     <!--FINAL - INPUT CORPO-->
                 </div>
             </div>
@@ -78,13 +135,8 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Nome" id="input-tx-Nome"/>
-                        </div>
-                        <!--DETALHES-->
-                        <div class="col-md-12 input-detalhes">
-                            <a class="detalhes-link">Adicionar Detalhes</a>
-                        </div>
-                        <!--FINAL - DETALHES-->
+                            <input name="nm_psna" value="<?php echo $nm_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Nome" id="input-tx-Nome"/>
+                        </div>                     
                     </div>
                     <!--FINAL - INPUT CORPO-->
                 </div>
@@ -106,13 +158,8 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="date" class="form-control" placeholder="Placeholder para Data de Nascimento" id="input-tx-DatadeNascimento"/>
+                            <input name="nsc_psna" value="<?php echo $nsc_psna; ?>" type="date" class="form-control" placeholder="Placeholder para Data de Nascimento" id="input-tx-DatadeNascimento"/>
                         </div>
-                        <!--DETALHES-->
-                        <div class="col-md-12 input-detalhes">
-                            <a class="detalhes-link">Adicionar Detalhes</a>
-                        </div>
-                        <!--FINAL - DETALHES-->
                     </div>
                     <!--FINAL - INPUT CORPO-->
                 </div>
@@ -270,10 +317,10 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
+						<input type="hidden" value="<?php echo $nm_psna; ?>" id="teste"></input>
                             <div class="input-incluir" 
                                  data-inputs-internos="tx[Nome]&txarea[Descrição]&minmax[Quantidade](Quase Inexistente, Baixa, Média, Alta, Abundante)&minmax[Reputação](Odiado, Desvalorizado, Neutro, Respeitado, Venerado)" 
-                                 id="input-incr-Profissao">
-                                <div class="input-group">
+                                 id="pfs" value="<?php echo $nm_psna; ?>">                           <div class="input-group">
                                     <span class="input-group-btn incluir-remover">
                                         <button class="btn btn-azul incluir-btn-remover" type="button">Remover</button>
                                     </span>
@@ -349,8 +396,8 @@
                     <!--FINAL - INPUT LABEL-->
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <textarea placeholder="Placeholder para Descrição Básica" title="Descrição Básica" id="input-txarea-DescricaoBasica"></textarea>
+                        <div class="col-md-12 input-conteudo"> 
+                            <textarea name="dcr_bsca_psna" value="" placeholder="Placeholder para Descrição Básica" title="Descrição Básica" id="input-txarea-DescricaoBasica"><?php echo $dcr_bsca_psna; ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -374,11 +421,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <div data-minmax-valores="Anão, Baixo, Normal, Alto, Gigante" class="input-minmax" id="input-minmax-Altura"></div>
-                        </div>
+                           <input type="text" name="h_psna" data-minmax-valores="Anão, Baixo, Normal, Alto, Gigante" class="input-minmax" value="<?php echo $h_psna; ?>" id="input-minmax-Altura"></input>
+						</div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="h_dcr_psna" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $h_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -401,12 +451,16 @@
                     <!--FINAL - INPUT LABEL-->
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <div data-minmax-valores="Raquítico, Magro, Normal, Gordo, Obeso" class="input-minmax" id="input-minmax-Peso"></div>
-                        </div>
+                        <div class="col-md-12 input-conteudo">					
+                            <input type="text" name="peso_psna" data-minmax-valores="Raquítico, Magro, Normal, Gordo, Obeso"  class="input-minmax" value="<?php echo $peso_psna; ?>" id="input-minmax-Peso" ></input>							
+						</div>
+						
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="peso_dcr_pnsa" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $peso_dcr_pnsa; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -430,11 +484,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <div data-minmax-valores="Frangote, Fraco, Normal, Atlético, Musculoso" class="input-minmax" id="input-minmax-PorteFisico"></div>
+                            <input type="text" name="prte_psna" data-minmax-valores="Frangote, Fraco, Normal, Atlético, Musculoso" class="input-minmax" value="<?php echo $prte_psna; ?>" id="input-minmax-PorteFisico"></input>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="prte_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $prte_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -458,11 +515,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Tipo de Pele" id="input-tx-TipodePele"/>
+                            <input name="pele_psna" value="<?php echo $pele_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Tipo de Pele" id="input-tx-TipodePele"/>
                         </div>
-                        <!--DETALHES-->
+                        <!--DETALHES--> 
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="pele_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $pele_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -486,11 +546,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Cabelo" id="input-tx-TipodePele"/>
+                            <input name="cblo_psna" value="<?php echo $cblo_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Cabelo" id="input-tx-TipodePele"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="cblo_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $cblo_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -514,11 +577,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Vestimentas" id="input-tx-Vestimentas"/>
+                            <input name="vstm_psna" value="<?php echo $vstm_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Vestimentas" id="input-tx-Vestimentas"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="vstm_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $vstm_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -542,11 +608,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Acessórios" id="input-tx-Acessorios"/>
+                            <input name="acsr_psna" value="<?php echo $acsr_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Acessórios" id="input-tx-Acessorios"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="acsr_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $acsr_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -612,11 +681,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Competências Positivas" id="input-tx-CompetenciasPositivas"/>
+                            <input name="cptc_pst_psna" value="<?php echo $cptc_pst_psna ?>" type="text" class="form-control" placeholder="Placeholder para Competências Positivas" id="input-tx-CompetenciasPositivas"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="cptc_pst_dcr" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $cptc_pst_dcr; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -640,11 +712,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Competências Negativas" id="input-tx-CompetenciasNegativas"/>
+                            <input name="cptc_ngt_psna" value="<?php echo $cptc_ngt_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Competências Negativas" id="input-tx-CompetenciasNegativas"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="cptc_ngt_dcr" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $cptc_ngt_dcr; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -668,11 +743,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <div data-minmax-valores="Maléfico, Perverso, Neutro, Bondoso, Imaculado" class="input-minmax" id="input-minmax-Alinhamento"></div>
+                            <input type="text" name="almt_psna" data-minmax-valores="Maléfico, Perverso, Neutro, Bondoso, Santo" class="input-minmax" value="<?php echo $almt_psna; ?>" id="input-minmax-Alinhamento"></input>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="almt_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $almt_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -738,11 +816,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Papel na História" id="input-tx-PapelnaHistoria"/>
+                            <input name="papl_psna" value="<?php echo $papl_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Papel na História" id="input-tx-PapelnaHistoria"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="papl_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $papl_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -766,7 +847,7 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea placeholder="Placeholder para Envolvimento na História" title="Envolvimento na História" id="input-txarea-EnvolvimentonaHistoria"></textarea>
+                            <textarea name="envl_psna" value="" placeholder="Placeholder para Envolvimento na História" title="Envolvimento na História" id="input-txarea-EnvolvimentonaHistoria"><?php echo $envl_psna; ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -790,7 +871,7 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea placeholder="Placeholder para Momento Marcante" title="Momento Marcante" id="input-txarea-MomentoMarcante"></textarea>
+                            <textarea name="mmt_psna" value="" placeholder="Placeholder para Momento Marcante" title="Momento Marcante" id="input-txarea-MomentoMarcante"><?php echo $mmt_psna; ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -814,11 +895,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Objetivo Principal" id="input-tx-ObjetivoPrincipal"/>
+                            <input name="objt_psna" value="<?php echo $objt_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Objetivo Principal" id="input-tx-ObjetivoPrincipal"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="objt_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $objt_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -842,11 +926,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Objetivo Paralelo" id="input-tx-ObjetivoParalelo"/>
+                            <input name="objt_prlel_psna" value="<?php echo $objt_prlel_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Objetivo Paralelo" id="input-tx-ObjetivoParalelo"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="objt_prlel_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $objt_prlel_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -898,7 +985,7 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea placeholder="Placeholder para Motivações" title="Motivações" id="input-txarea-Motivacoes"></textarea>
+                            <textarea name="mtvc_psna" value="" placeholder="Placeholder para Motivações" title="Motivações" id="input-txarea-Motivacoes"><?php echo $mtvc_psna; ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -1070,11 +1157,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Evento Marcante" id="input-tx-EventoMarcante"/>
+                            <input name="evt_psna" value="<?php echo $evt_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Evento Marcante" id="input-tx-EventoMarcante"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="evt_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $evt_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -1098,11 +1188,14 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input value="" type="text" class="form-control" placeholder="Placeholder para Perda Marcante" id="input-tx-PerdaMarcante"/>
+                            <input name="pda_psna" value="<?php echo $pda_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Perda Marcante" id="input-tx-PerdaMarcante"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
+							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
+                                <textarea name="pda_dcr_psna" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui"><?php echo $pda_dcr_psna; ?></textarea>
+                            </div>
                         </div>
                         <!--FINAL - DETALHES-->
                     </div>
@@ -1126,7 +1219,7 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea placeholder="Placeholder para Medos" title="Medos" id="input-txarea-Medos"></textarea>
+                            <textarea name="medo_psna" value="" placeholder="Placeholder para Medos" title="Medos" id="input-txarea-Medos"><?php echo $medo_psna; ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -1150,7 +1243,7 @@
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea placeholder="Placeholder para Segredos" title="Segredos" id="input-txarea-Segredos"></textarea>
+                            <textarea name="segd_psna" value="" placeholder="Placeholder para Segredos" title="Segredos" id="input-txarea-Segredos"><?php echo $segd_psna; ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -1201,8 +1294,10 @@
             </div>
     <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
     <div class="col-md-12 form-controle">
-        <button type="button" id="btn-salvar-form" class="btn btn-azul btn-block">
-            Salvar Mundo
-        </button>
+	<input type="hidden" name="pk_psna" value="<?php echo $pk_psna; ?>">
+    <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
+            Salvar Personagem
+    </button>
     </div>
+	</form>
 </div>

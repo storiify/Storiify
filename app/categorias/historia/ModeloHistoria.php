@@ -3,8 +3,8 @@
 class ModeloHistoria extends ConexaoBd{
     
     private $tabela;
-    private $campos = 'pk_hist,fk_usu,im_ppl,dets_im_ppl,tit_hist,dets_tit,stit_hist,dets_stit,aur_hist,dets_aur,'
-	    . 'iltd_hist,dets_iltd,pbco_alvo,vsi_hist,dcr_em_uma_sntn,snp_hist,rsm_hist,dt_cric,dt_alt';
+    private $campos = 'pk_hist,fk_usu,im_hist,im_hist_dets,tit_hist,tit_hist_dets,stit_hist,stit_hist_dets,aur_hist,
+	aur_hist_dets,iltd_hist,iltd_hist_dets,pbco_alvo,vsi_hist,fk_psna_ppl,dcr_em_uma_sntn,snp_hist,rsm_hist,dt_cric,dt_alt';
     
     public function __construct() {
 	parent::__construct();

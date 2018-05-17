@@ -20,6 +20,9 @@ class Login {
 	}
 	$this->sessao->setChave("user_data", $userData);
 	
+	$cHit = new ControladorHistoria('historia');
+	$cHit->listar($param);
+	
         return $this->sessao->setChave(CHAVE_LOGIN, TRUE);
     }
     public function check() {

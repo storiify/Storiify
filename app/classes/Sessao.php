@@ -24,6 +24,9 @@ class Sessao {
     }
     
     public function getChave($chave) {
+	if(!isset($_SESSION[$chave])){
+	    return null;
+	}
         return $_SESSION[$chave];
     }
     
