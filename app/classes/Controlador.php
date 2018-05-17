@@ -34,9 +34,7 @@ class Controlador {
             if(($categoria!="login") || (!in_array($acao, $acoesPermitidas))){
 		$login = new Login();
 		$login->check();              
-            }else{
-		redirecionar('?categoria=principal&acao=home');
-	    }
+            }
         }
 	
         $this->controlador = $this->controladorCategoria($categoria);

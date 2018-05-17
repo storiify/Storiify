@@ -6,7 +6,7 @@
  */
 
 function proccessRequest() {
-    $arrayTratado = ['categoria' => 'login', 'acao' => 'logar', 'parametros' => []];
+    $arrayTratado = ['categoria' => 'principal', 'acao' => 'home', 'parametros' => []];
 
     foreach ($_GET as $key => $val) {
         switch ($key) {

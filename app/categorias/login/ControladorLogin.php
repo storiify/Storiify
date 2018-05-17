@@ -23,7 +23,7 @@ class ControladorLogin extends Controlador implements InterfaceControlador{
 	redirecionar("?categoria=principal&acao=home");
     }
     
-    public function delogar($param) {	
+    public function deslogar($param) {	
 	$login = new Login();
 	$login->logout();
 	redirecionar("?categoria=principal&acao=home");
