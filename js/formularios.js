@@ -29,3 +29,7 @@ $(".detalhes-conteudo").each(function(){
         $(this).siblings().html("Remover Detalhes");
     }
 });
+
+$(document).on("keypress", ":input:not(textarea)", function(event) {
+    return event.keyCode != 13;
+});
