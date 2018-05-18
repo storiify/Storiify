@@ -76,7 +76,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=personagem&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Listar Personagens</div>
