@@ -10,7 +10,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
     
     public function cadastrar($parametros) {
         //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
-        $this->setVisao('formHistoria');
+        $this->setVisao('FormHistoria');
     }
 
     public function listar($parametros) {
@@ -19,7 +19,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
 	$res = $modelo->listar($parametros);
 	
 	sessao()->setHistoriasData($res);
-        $this->setVisao('listarHistoria');
+        $this->setVisao('ListarHistoria');
 	$this->setResultados($res);
     }
     
@@ -37,7 +37,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
 	
 	if($res[0] != false){
 	    $this->setResultados($res[0]);
-	    $this->setVisao('formHistoria');
+	    $this->setVisao('FormHistoria');
 	}else{
 	    redirecionar("?categoria=historia&acao=listar");
 	}
