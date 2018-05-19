@@ -20,11 +20,7 @@ function trazerMinMax(objeto) {
         hasGrid: false
     });
 	
-	$(objeto).on("change", function () {
-    var $this = $(this),
-        value = $this.prop("value");
-	
-   $(objeto).attr('Value' + value);
-});
-	
+    $(objeto).on("change", function () {
+        $(this).attr('value' + value);
+    });	
 }
