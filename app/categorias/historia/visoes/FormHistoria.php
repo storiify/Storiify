@@ -7,8 +7,8 @@ if(empty((array)$resultado)){
     // PK
     $pk_hist = '';
     // Aba 1
-    $im_ppl = './imagens/sem-foto.png';
-    $dets_im_ppl = '';
+    $im_hist = './imagens/sem-foto.png';
+    $im_hist_dets = '';
     $tit_hist = '';
     $dets_tit = '';
     $dets_stit = '';
@@ -79,7 +79,7 @@ if(empty((array)$resultado)){
                             <div class="col-md-12 input-conteudo">
                                 
                                 <div class="input-imagem" title="Campo para Imagem da história" id="input-im-ImagemdaHistoria"
-                                     style="background-image:url(<?php echo $im_ppl; ?>)"></div>
+                                     style="background-image:url(<?php echo $im_hist; ?>)"></div>
                                 
                                 <input value="" accept="image/*" type='file' class="imgUploader" name="im_hist"/>
                                 
@@ -94,7 +94,7 @@ if(empty((array)$resultado)){
                                 <div class="detalhes-conteudo">
                                     <textarea name="im_hist_dets" placeholder="Digite aqui os detalhes para Imagem Principal" 
                                               title="Detalhes para Imagem Principal"
-                                              maxlength="1000"><?php echo $dets_im_ppl; ?></textarea>
+                                              maxlength="1000"><?php echo $im_hist_dets; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
