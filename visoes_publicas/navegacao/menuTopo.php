@@ -27,7 +27,7 @@
                             <img src="./imagens/sem-foto.png" class="rounded-circle avatar-usuario" />
                             <?= $controlador->userData['nome'] ?>
                         </button>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" style="left: calc(100% - 187px);">
                             <a class="dropdown-item" href="#">Editar Perfil</a>
                             <a class="dropdown-item" href="#">Configurações da Conta</a>
                             <a class="dropdown-item" href="#">Ajuda</a>

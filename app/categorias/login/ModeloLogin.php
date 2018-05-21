@@ -20,11 +20,11 @@ class ModeloLogin extends ConexaoBd{
 	}
 	
 	$temp = array(0=>array());
-	$temp[0]['id'] = $res[0]['PK_USU'];
-	$temp[0]['nome'] = $res[0]['NM_USU'];
-	$temp[0]['sobrenome'] = $res[0]['SNM_USU'];
-	$temp[0]['email'] = $res[0]['MAIL_USU'];
-	$temp[0]['apelido'] = $res[0]['APDO_USU'];
+	$temp[0]['id'] = $res[0]['pk_usu'];
+	$temp[0]['nome'] = $res[0]['nm_usu'];
+	$temp[0]['sobrenome'] = $res[0]['snm_usu'];
+	$temp[0]['email'] = $res[0]['mail_usu'];
+	$temp[0]['apelido'] = $res[0]['apdo_usu'];
 	
 	return $temp;
     }
