@@ -7,15 +7,15 @@ if(empty((array)$resultado)){
     // PK
     $pk_hist = '';
     // Aba 1
-    $im_ppl = './imagens/sem-foto.png';
-    $dets_im_ppl = '';
+    $im_hist = './imagens/sem-foto.png';
+    $im_hist_dets = '';
     $tit_hist = '';
-    $dets_tit = '';
-    $dets_stit = '';
+    $tit_hist_dets = '';
+    $stit_hist_dets = '';
     $stit_hist = '';
     $aur_hist = '';
-    $dets_aur = '';
-    $iltd_hist = '';
+    $aur_hist_dets = '';
+    $iltd_hist_dets = '';
     $dets_iltd = '';
     $pbco_alvo = '';
     $vsi_hist = array();
@@ -79,7 +79,7 @@ if(empty((array)$resultado)){
                             <div class="col-md-12 input-conteudo">
                                 
                                 <div class="input-imagem" title="Campo para Imagem da história" id="input-im-ImagemdaHistoria"
-                                     style="background-image:url(<?php echo $im_ppl; ?>)"></div>
+                                     style="background-image:url(<?php echo $im_hist; ?>)"></div>
                                 
                                 <input value="" accept="image/*" type='file' class="imgUploader" name="im_hist"/>
                                 
@@ -94,7 +94,7 @@ if(empty((array)$resultado)){
                                 <div class="detalhes-conteudo">
                                     <textarea name="im_hist_dets" placeholder="Digite aqui os detalhes para Imagem Principal" 
                                               title="Detalhes para Imagem Principal"
-                                              maxlength="1000"><?php echo $dets_im_ppl; ?></textarea>
+                                              maxlength="1000"><?php echo $im_hist_dets; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -131,7 +131,7 @@ if(empty((array)$resultado)){
                                 <div class="detalhes-conteudo">
                                     <textarea name="tit_hist_dets" placeholder="Digite aqui os detalhes do Título da História" 
                                               title="Campo para detalhes do Título da História"
-                                              maxlength="1000"><?php echo $dets_tit; ?></textarea>
+                                              maxlength="1000"><?php echo $tit_hist_dets; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -167,7 +167,7 @@ if(empty((array)$resultado)){
                                 <div class="detalhes-conteudo">
                                     <textarea name="stit_hist_dets" placeholder="Digite aqui detlhes para o Subtítulo da História" 
                                               title="Detalhes do Nome do Input"
-                                              maxlength="1000"><?php echo $dets_stit; ?></textarea>
+                                              maxlength="1000"><?php echo $stit_hist_dets; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -204,7 +204,7 @@ if(empty((array)$resultado)){
                                 <div class="detalhes-conteudo">
                                     <textarea name="aur_hist_dets" placeholder="Digite aqui os detalhes do(a) Autor(a) da História" 
                                               title="Campo para detalhes do(a) Autor(a) da História"
-                                              maxlength="1000"><?php echo $dets_aur; ?></textarea>
+                                              maxlength="1000"><?php echo $aur_hist_dets; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -229,7 +229,7 @@ if(empty((array)$resultado)){
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="iltd_hist" value="<?php echo $iltd_hist; ?>" 
+                                <input name="iltd_hist_dets" value="<?php echo $iltd_hist_dets; ?>" 
                                        placeholder="Digite aqui o nome do(a) Ilustrador(a) da Históri"
                                        title="Campo para Ilustrador(a) da História"
                                        maxlength="70" type="text" 
@@ -241,7 +241,7 @@ if(empty((array)$resultado)){
                                 <div class="detalhes-conteudo">
                                     <textarea name="iltd_hist_dets" placeholder="Digite aqui detalhes do(a) Ilustrador(a) da História" 
                                               title="Campo para detalhes do(a) Ilustrador(a) da História"
-                                              maxlength="1000"><?php echo $dets_iltd; ?></textarea>
+                                              maxlength="1000"><?php echo $iltd_hist_dets; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -375,7 +375,7 @@ if(empty((array)$resultado)){
                                 <textarea name="snp_hist" placeholder="Digite aqui a Sinopse da História" 
                                           title="Campo para a Sinopse da História" 
                                           id="input-txarea-Sinopse"
-                                          maxlength="1000"><?php $snp_hist; ?></textarea>
+                                          maxlength="1000"><?php echo $snp_hist; ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>

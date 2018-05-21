@@ -1,6 +1,18 @@
-//Cuida do menu lateral esquerdo
-$(".menu-esquerdo-toggle").click(function () {
-    $(".menu-esquerdo").toggle();
+//Cuida do menu lateral esquerdo - (antigog)
+//$(".menu-esquerdo-toggle").click(function () {
+//    $(".menu-esquerdo").toggle();
+//});
+
+//chama o menu e esconde ele quando clica em outro lugar que não seja ele mesmo
+$(document).ready(function(){
+	$(".menu-esquerdo-toggle").click(function(e){
+	    var e=window.event||e;
+        $(".menu-esquerdo").toggle();
+	    e.stopPropagation();      
+	  });
+	$(document).click(function(e){
+		if (!$(e.target).closest('.menu-esquerdo').length)$(".menu-esquerdo").hide();
+	});
 });
 
 //Do botão de voltar para o topo

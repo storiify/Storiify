@@ -72,7 +72,7 @@ class ConexaoBd {
     }
     
     /* da delete */
-    public function deleteBase($tabela,$where) {
+    public function excluirBase($tabela,$where) {
 	$sql = "DELETE FROM $tabela WHERE $where";
 	$res = self::getInstance()->query($sql);
 	if($res->rowCount()>0){

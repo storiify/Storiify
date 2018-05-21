@@ -17,7 +17,7 @@ $resultados = $controlador->getResultados();
     
     <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
-        <a href='?categoria=<?php echo $categoria ?>&acao=criar' 
+        <a href='?categoria=<?php echo $categoria ?>&acao=cadastrar' 
            title='Clique para criar uma nova <?php echo nomeFormal($categoria) ?>'
            class='btn btn-azul criar-nova-instancia'>
             <i class="fa fa-plus"></i>
@@ -41,7 +41,7 @@ $resultados = $controlador->getResultados();
     if(isset($resultados)){
     foreach ($resultados as $historia) {
 	$modelo = (object) $historia;
-        $imagemPrincipal = (isset($modelo->im_ppl)) ? $modelo->im_ppl : const_Indefinida_IM;
+        $imagemPrincipal = (isset($modelo->im_hist)) ? $modelo->im_hist : const_Indefinida_IM;
         $nome = $modelo->tit_hist.($modelo->stit_hist!=''?' - '.$modelo->stit_hist:'');
         $dataInLocal = $modelo->dt_alt;
 
