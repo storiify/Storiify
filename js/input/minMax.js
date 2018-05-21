@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+$(document).ready(function () {
     //Tratamento de todos os inputs do tipo MinMax 
     $(".input-minmax").each(function () {
         trazerMinMax(this);
@@ -14,13 +14,16 @@ function trazerMinMax(objeto) {
         type: 'single',
         min: 0,
         max: vlMaximo,
-        from: $(objeto).prop('Value'),
+        from: $(objeto).prop("Value"),
         step: 1,
         values: valores,
         hasGrid: false
     });
+    
+	$(objeto).on("change", function () {
+    var value = $(this).prop("value");
 	
-    $(objeto).on("change", function () {
-        $(this).attr('value' + value);
-    });	
+	$(objeto).attr('Value' + value);
+	});
+	
 }
