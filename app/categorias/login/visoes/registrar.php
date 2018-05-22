@@ -37,7 +37,7 @@
 			    <h2 style="height: auto;">Registre-se</h2>
 			</div>
 			<div class="panel-body">
-			    <form action="" class="form-horizontal">
+			    <form action="?categoria=login&acao=salvar" class="form-horizontal">
 				<div class="form-group">
 				    <label for="txtNomeCompleto" class="col-xs-4 control-label">Nome</label>
 				    <div class="col-xs-8">
@@ -70,14 +70,13 @@
 					</label>
 				    </div>
 				</div>
-
-			    </form>
 			    <div class="panel-footer">
 				<div class="clearfix">
 				    <a href="?categoria=login&acao=logar" class="btn btn-default pull-left">Já é registrado? Login</a>
-				    <a href="?categoria=login&acao=salvar" class="btn btn-primary pull-right">Registre-se</a>
+				    <button type="submit" class="btn btn-primary pull-right">Registre-se</button>
 				</div>
 			    </div>
+			</form>
 			</div>
 		    </div>
 		</div>
