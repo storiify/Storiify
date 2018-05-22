@@ -17,8 +17,9 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
 	
 	$modelo = new ModeloPersonagem();
 	$res = $modelo->listar($parametros);
+	
 	//sessao()->setPersonagemData($res);
-	$this->setVisao('ListarPersonagens');
+    $this->setVisao('ListarPersonagens');
 	$this->setResultados($res);
     }    
 
@@ -61,7 +62,17 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
     }
 
     public function excluir($parametros) {
+        
+    $modelo = new ModeloPersonagem();
+	$idUsuario = sessao()->getUserData()->id;
+	$parametros['fk_usu'] = $idUsuario;
+	$res = $modelo->excluir($parametros);
 	
-    }
+	if($res != false){
+	    redirecionar("?categoria=personagem&acao=listar");
+	}else {
+	    redirecionar("?categoria=personagem&acao=listar"); //mudar pra uma pagina de erro (Personagem não encontrado ou não faz parte de seus persongens cadastrados) :D
+	}
+	}
 
 }
