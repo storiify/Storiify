@@ -55,6 +55,27 @@ class ModeloHistoria extends ConexaoBd{
 	return $res;
 	
     }
+	
+    public function excluir($parametros) {
+	
+	$modeloBase = new ConexaoBd();
+	
+	$res = false;	
+	$id = $parametros['parametros'];
+	$idusuario = sessao()->getUserData()->id;
+	$condicao = "pk_hist='$id'";
+	$condicao.=" AND fk_usu='$idusuario'";
+	
+	$res = $modeloBase->excluirBase($this->tabela, $condicao);
+	
+	
+	return $res;
+    }
+    
+    public function proximoID() {
+	$modeloBase = new ConexaoBd();
+	return $modeloBase->getNextID($this->tabela);
+    }
     
     public function proximoID() {
 	$modeloBase = new ConexaoBd();
