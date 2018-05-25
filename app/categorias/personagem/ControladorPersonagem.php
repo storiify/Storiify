@@ -17,8 +17,8 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
 	
 	$modelo = new ModeloPersonagem();
 	$res = $modelo->listar($parametros);
-	//sessao()->setPersonagemData($res);
-	$this->setVisao('ListarPersonagens');
+	
+    $this->setVisao('ListarPersonagens');
 	$this->setResultados($res);
     }    
 
@@ -41,7 +41,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
 	$idUsuario = sessao()->getUserData()->id;
 	if(isset($_FILES) && $_FILES['im_psna']['size']!=0){	    
 	    $idPersonagem = $modelo->proximoID();
-	    $parametros['im_psna'] = uploadImagem($idPersonagem, "personagem", $idPersonagem, $_FILES['im_psna']);
+	    $parametros['im_psna'] = uploadImagem($idUsuario, "personagem", $idPersonagem, $_FILES['im_psna']);
 	}
 	// if(isset($parametros['vsi_hist']) && is_array($parametros['vsi_hist'])){
 	    // $tempStr = 0;
@@ -61,7 +61,17 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
     }
 
     public function excluir($parametros) {
+        
+    $modelo = new ModeloPersonagem();
+	$idUsuario = sessao()->getUserData()->id;
+	$parametros['fk_usu'] = $idUsuario;
+	$res = $modelo->excluir($parametros);
 	
-    }
+	if($res != false){
+	    redirecionar("?categoria=personagem&acao=listar");
+	}else {
+	    redirecionar("?categoria=personagem&acao=listar"); //mudar pra uma pagina de erro (Personagem não encontrado ou não faz parte de seus persongens cadastrados) :D
+	}
+	}
 
 }

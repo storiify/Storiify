@@ -25,8 +25,8 @@ $resultados = $controlador->getResultados();
     <?php
     if (empty($resultados)) {
         echo"<div class='sem-instancia'>"
-        . "     <span>".sprintf(instanciaIndefinidaMsg, nomeFormal($categoria, "plural"))."</span>"
-        . "     <img src='" . instanciaIndefinida . "' alt=''/>"
+        . "     <span>".sprintf($instanciaIndefinidaMsg, nomeFormal($categoria, "plural"))."</span>"
+        . "     <img src='" . $instanciaIndefinida . "' alt=''/>"
         . "</div>";
     }
     ?>
@@ -35,7 +35,7 @@ $resultados = $controlador->getResultados();
     foreach ($resultados as $personagem) {
 		$modelo = (object) $personagem;
 		$nome = $modelo->nm_psna;
-		$imagemPrincipal = (isset($modelo->im_psna)) ? $modelo->im_psna : imIndefinida;
+		$imagemPrincipal = (isset($modelo->im_psna)) ? $modelo->im_psna : $imIndefinida;
         echo
        "<div title='Clique para editar $nome'"
         . "class='instancia-card mx-auto row' data-id='$modelo->pk_psna' data-nome='$nome'>"
@@ -52,11 +52,11 @@ $resultados = $controlador->getResultados();
         . "                        <td>" . $modelo->nm_psna . "</td>"
         . "                    </tr>"
         . "                    <tr>"
-        . "                        <th scope='row'>Publico Alvo</th>"
+        . "                        <th scope='row'>Descrição Básica</th>"
         . "                        <td>" . $modelo->dcr_bsca_psna . "</td>"
         . "                    </tr>"
         . "                    <tr>"
-        . "                        <th scope='row'>Sinopse</th>"
+        . "                        <th scope='row'>Data de Nascimento</th>"
 	. "                        <td>" . $modelo->nsc_psna . "</td>"
         . "                    </tr>"
         . "                </table>"
@@ -78,15 +78,6 @@ $resultados = $controlador->getResultados();
         . "        <button class='btn btn-azul btn-pdf-instancia' "
         . "title='" . ($nome == "" ? " Clique para gerar PDF" : "Clique para gerar PDF de " . $nome) . " '>"
         . "            <i class='fa fa-file-pdf-o'></i>"
-        . "        </button>"
-        . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
-        . "            <i class='fa fa-warning'></i>"
-        . "        </button>"
-        . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
-        . "            <i class='fa fa-warning'></i>"
-        . "        </button>"
-        . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
-        . "            <i class='fa fa-warning'></i>"
         . "        </button>"
         . "    </div>"
         . "</div>";
