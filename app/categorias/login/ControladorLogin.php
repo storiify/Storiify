@@ -34,8 +34,32 @@ class ControladorLogin extends Controlador implements InterfaceControlador{
         $this->setVisao('registrar', TRUE);
         
     }
+	
+	public function email($param) {
+        
+        $this->setVisao('verifica', TRUE);
+        
+    }
 
-    public function cadastrar($parametros) {}
+    public function salvar($parametros) {
+		
+	$modelo = new ModeloLogin();
+	
+	$res = $modelo->salvar($parametros);	
+		
+	}
+	
+	public function verificar($parametros) {
+		
+	$modelo = new ModeloLogin();
+	
+	$res = $modelo->verificar($parametros);	
+	
+	if($res == true){ //se a consulta no banco de dados for verdadeira (se o registro constar no bd), ele "escreve" na resposta do ajax "email ja existe"
+		echo "email ja existe";
+	}else {die;} //se o registro não constar no banco de dados ele "retorna nada" para para o ajax 
+		
+	}
 
     public function editar($parametros) {}
 
@@ -43,6 +67,7 @@ class ControladorLogin extends Controlador implements InterfaceControlador{
 
     public function listar($parametros) {}
 
-    public function salvar($parametros) {}
+    public function cadastrar($parametros) {}
+    
 
 }

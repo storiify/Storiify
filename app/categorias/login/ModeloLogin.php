@@ -8,7 +8,7 @@ class ModeloLogin extends ConexaoBd{
     public function check($param) {
 	
 	$email = $param['email'];
-	$senha = $param['senha'];
+	$senha = sha1($param['senha']);
 	
 	$condicao = "WHERE MAIL_USU='$email' AND SNH_USU='$senha'";
 	
@@ -28,5 +28,43 @@ class ModeloLogin extends ConexaoBd{
 	
 	return $temp;
     }
+	
+	public function salvar($parametros) {
+	
+	$modeloBase = new ConexaoBd();
+	
+	$parametros['nm_usu'] = $parametros['input1'];
+	$parametros['mail_usu'] = $parametros['input2'];
+	$parametros['snh_usu'] = $parametros['input3'];
+	
+	unset($parametros['input1'],$parametros['input2'],$parametros['input3']);
+	
+	$tabela = "tb_usuario";
+	
+	$parametros['snh_usu'] = sha1($parametros['snh_usu']);
+	
+	$res = $modeloBase->inserirBase($parametros, $tabela);
+	
+	return $res;
+	
+	}
+	
+	public function verificar($parametros) {
+	
+	$modeloBase = new ConexaoBd();
+	
+	$email = $parametros['txtEmail'];
+	
+	unset($parametros['txtEmail']);
+	
+	$condicao = "WHERE MAIL_USU='$email'";
+	
+	$tabela = "tb_usuario";
+	
+	$res = $modeloBase->listarBase("*", "tb_usuario", $condicao);
+	
+	return $res;
+	
+	}
     
 }

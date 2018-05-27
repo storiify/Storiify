@@ -24,6 +24,7 @@
 	<link href="./plugins/icheck-1.x/skins/flat/_all.css" rel="stylesheet" />
 	<!--CSS para editarmos-->
 	<link href="./css/geral.css" rel="stylesheet" />
+	<link href="./css/bootstrap.css" rel="stylesheet" />
     </head>
     <body class="focused-form" style="">
 
@@ -77,13 +78,16 @@
 
 				<div class="panel-footer">
 				    <div class="clearfix">
-					<a href="?categoria=login&acao=registrar" class="btn btn-default pull-left">Registrar-se</a>
+					<button type="button" class="btn btn-default pull-left" data-toggle="modal" data-target="#teste1">
+					Registrar</button>
+					
 					<button type="submit" class="btn btn-primary pull-right">Login</button>
 				    </div>
 				</div>
 
 			    </form>
 			</div>
+			
 		    </div>
 
 		    <div class="text-center">
@@ -93,9 +97,65 @@
 		</div>
 	    </div>
 	</div>
+	
+	<div class="modal fade" id="teste1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<form action="?categoria=login&acao=check" id="formLoko" class="form-horizontal">
+				<div class="form-group">
+				    <label for="txtNomeCompleto" class="col-xs-4 control-label">Nome</label>
+				    <div class="col-xs-8">
+					<input type="text" class="form-control" name="nm_usu" id="txtNomeCompleto" placeholder="Nome Completo" required="" autofocus />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="txtEmail" class="col-xs-4 control-label">Email</label>
+				    <div class="col-xs-8">
+					<input type="text" class="form-control" name="mail_usu" id="txtEmail" placeholder="Email" required="" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="txtSenha" class="col-xs-4 control-label">Senha</label>
+				    <div class="col-xs-8">
+					<input type="password" class="form-control" name="snh_usu" id="txtSenha" placeholder="Senha" required="" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="txtConfirmeSenha" class="col-xs-4 control-label">Confirme sua Senha</label>
+				    <div class="col-xs-8">
+					<input type="password" class="form-control" name="ConfirmeSenha" id="txtConfirmeSenha" placeholder="Confirme sua senha" required="" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <div class="col-xs-12">
+					<input type="checkbox" />
+					<label>
+					    Li e aceito os <a href="#">termos de uso</a>
+					</label>
+				    </div>
+				</div>
+		
+		  </div>
+		  <div class="modal-footer">
+			<button type="submit" id="btnForm" class="btn btn-primary pull-right">Registrar</button>
+			</form>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
 	<!-- Load site level scripts -->
 	<!-- Load jQuery -->
-	<script src="./js/jquery-1.10.2.min.js"></script>
+	<script src="./js/jquery-3.3.1.min.js"></script>
+	<script src="./js/login.js"></script>
+	<script src="./js/bootstrap.js"></script>
 	<!--IChek-->
 	<script src="./plugins/icheck-1.x/icheck.js"></script>
 	<!--Javascript para editarmos-->
