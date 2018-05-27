@@ -160,11 +160,11 @@ $historias = sessao()->getHistoriasData();
         </li>
         
         <li class="nav-item list-group-item">
-            <i class="fa fa-comments-o col-md-2"></i>
+            <i class="fa fa-archive col-md-2"></i>
             <span class="col-md-10">SubCategorias</span>
             <ul class="navbar-nav mr-auto text-center list-group">
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=raca&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Raça</div>
@@ -172,7 +172,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=fauna&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Fauna</div>
@@ -180,7 +180,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=flora&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Flora</div>
@@ -188,7 +188,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=recursonatural&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Recurso Natural</div>
@@ -196,7 +196,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=bioma&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Bioma</div>
@@ -204,7 +204,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=religiao&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Religião</div>
@@ -212,7 +212,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=lingua&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Língua</div>
@@ -220,7 +220,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=mito&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Mito</div>
@@ -228,7 +228,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=magia&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Magia</div>
@@ -236,7 +236,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=classe&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Classe</div>
@@ -244,7 +244,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=profissao&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Profissão</div>
@@ -252,7 +252,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=habilidadefisica&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Habilidade Física</div>
@@ -260,7 +260,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=habilidademagica&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Habilidade Mágica</div>
@@ -268,7 +268,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=lembraca&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Lembrança</div>
@@ -276,7 +276,7 @@ $historias = sessao()->getHistoriasData();
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=objeto&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Objeto</div>
