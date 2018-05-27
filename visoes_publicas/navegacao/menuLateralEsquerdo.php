@@ -4,14 +4,14 @@ $historias = sessao()->getHistoriasData();
 
 <div class='container'>
     <ul class='navbar-nav mr-auto text-center list-group menu-esquerdo'>
-        <li class='nav-item cabecalho-menu-lateral row' title='Clique aqui para escolher qual história deseja editar'>
+        <li class='nav-item cabecalho-menu-lateral row'>
 	    <div class="row">
 		<div class='col-md-2'>
 		    <div class='historia-avatar' style=""></div>
 		</div>
 		<div class='col-md-10'>
 		    <span class='bem-vindo-texto'>Bem-vindo </span><br/>
-		    <select class='nome-historia' id='selecao-nome-historia'>
+		    <select class='nome-historia' id='selecao-nome-historia' title='Clique aqui para escolher qual história deseja editar'>
 			<option value="">Suas Histórias</option>
 			<?php
 			foreach ($historias as $historia){
