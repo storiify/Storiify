@@ -33,6 +33,10 @@ class ModeloLogin extends ConexaoBd{
 	
 	$modeloBase = new ConexaoBd();
 	
+	date_default_timezone_set('America/Sao_Paulo');
+    $horarioAtual = date("Y-m-d H:i:s");
+	$parametros['dt_cric'] = $horarioAtual;
+	
 	$parametros['nm_usu'] = $parametros['input1'];
 	$parametros['mail_usu'] = $parametros['input2'];
 	$parametros['snh_usu'] = $parametros['input3'];
