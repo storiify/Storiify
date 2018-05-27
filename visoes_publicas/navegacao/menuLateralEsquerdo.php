@@ -158,6 +158,133 @@ $historias = sessao()->getHistoriasData();
                 </li>
             </ul>
         </li>
+        
+        <li class="nav-item list-group-item">
+            <i class="fa fa-comments-o col-md-2"></i>
+            <span class="col-md-10">SubCategorias</span>
+            <ul class="navbar-nav mr-auto text-center list-group">
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Raça</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Fauna</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Flora</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Recurso Natural</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Bioma</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Religião</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Língua</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Mito</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Magia</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Classe</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Profissão</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Habilidade Física</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Habilidade Mágica</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Lembrança</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Objeto</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         <li class="nav-item separador-menu-lateral">
             <strong><span>Conheça outras Histórias!</span></strong>
