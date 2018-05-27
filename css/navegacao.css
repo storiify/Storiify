@@ -163,7 +163,9 @@
     right: -300px;
     top: -2px;
     width: 300px;
-    overflow: visible;
+/*    overflow: visible;*/
+    max-height: 200px;
+    overflow-y:scroll;
 }
 
 .list-group-item:hover > .list-group {
