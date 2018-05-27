@@ -20,6 +20,10 @@ $(document).ready(function() {
 		$.post('?categoria=login&acao=salvar', { input1 : input1, input2 : input2, input3 : input3}, function(response) { //faz o POST por ajax
 			//console.log(response);
 			alert ("Usuário " + input1 + " cadastrado com sucesso!")
+			$("#txtNomeCompleto").val("");
+			$("#txtEmail").val("");
+			$("#txtSenha").val("");
+			$("#txtConfirmeSenha").val("");
 			$('#teste1').modal('hide') //fecha o modal de registro
 		});
 		}
