@@ -76,10 +76,5 @@ class ModeloHistoria extends ConexaoBd{
 	$modeloBase = new ConexaoBd();
 	return $modeloBase->getNextID($this->tabela);
     }
-    
-    public function proximoID() {
-	$modeloBase = new ConexaoBd();
-	return $modeloBase->getNextID($this->tabela);
-    }
         
 }
