@@ -230,7 +230,7 @@ if(empty((array)$resultado)){
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="iltd_hist_dets" value="<?php echo $iltd_hist; ?>" 
+                                <input name="iltd_hist" value="<?php echo $iltd_hist; ?>" 
                                        placeholder="Digite aqui o nome do(a) Ilustrador(a) da História"
                                        title="Campo para Ilustrador(a) da História"
                                        maxlength="70" type="text" 
