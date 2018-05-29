@@ -11,6 +11,14 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
     public function cadastrar($parametros) {
         //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
         $this->setVisao('CadastrarPersonagem');
+		$modeloPnsa = new ModeloPersonagem();
+		$resPsna = $modeloPnsa->listar('*');
+		$modeloLczc = new ModeloLocalizacao();
+		$resLczc = $modeloLczc->listar('*');
+		$res = array(
+		"psna" => $resPsna,
+		"lczc" => $resLczc);
+		$this -> setResultados($res);
     }
 
     public function listar($parametros) {
@@ -28,7 +36,15 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
 	$res = $modelo->listar($parametros);
 	
 	if($res[0] != false){
-	    $this->setResultados($res[0]);
+		$modeloPnsa = new ModeloPersonagem();
+		$resPsna = $modeloPnsa->listar('*');
+		$modeloLczc = new ModeloLocalizacao();
+		$resLczc = $modeloLczc->listar('*');
+		$res1 = array(
+		"editar" => $res [0],
+		"psna" => $resPsna,
+		"lczc" => $resLczc);
+	    $this->setResultados($res1);
 	    $this->setVisao('CadastrarPersonagem');
 	}else{
 	    redirecionar("?categoria=personagem&acao=listar");
@@ -43,13 +59,13 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
 	    $idPersonagem = $modelo->proximoID();
 	    $parametros['im_psna'] = uploadImagem($idUsuario, "personagem", $idPersonagem, $_FILES['im_psna']);
 	}
-	// if(isset($parametros['vsi_hist']) && is_array($parametros['vsi_hist'])){
-	    // $tempStr = 0;
-	    // foreach ($parametros['vsi_hist'] as $value) {
-		// $tempStr = $tempStr+$value;
-	    // }
-	    // $parametros['vsi_hist'] = $tempStr;
-	// }
+	if(isset($parametros['vsi_psna']) && is_array($parametros['vsi_psna'])){
+	    $tempStr = 0;
+	    foreach ($parametros['vsi_psna'] as $value) {
+		$tempStr = $tempStr+$value;
+	    }
+	    $parametros['vsi_psna'] = $tempStr;
+	}
 	$parametros['fk_usu'] = $idUsuario;
 	$res = $modelo->salvar($parametros);
 	
