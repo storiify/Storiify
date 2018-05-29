@@ -5,6 +5,7 @@ $teste = sessao()->getUserData()->id;
 
 if (empty((array) $resultado)) {
     $pk_lczc = '';
+    $fk_hist = '';
     //Geral
     $im_lczc = './imagens/sem-foto.png';
     $im_lczc_dets = '';
@@ -57,14 +58,18 @@ if (empty((array) $resultado)) {
     $cls_cast = '';
     //Tecnologia
     $nvl_tecn = '';
+    $nvl_tecn_dets = '';
     $depe_tecn = '';
+    $depe_tecn_dets = '';
     $acss_tecn = '';
+    $acss_tecn_dets = '';
     $mtd_cmco = '';
     $mtd_trnt = '';
-    $citc_dcob = '';
+    $ciec_dcob = '';
     //Magia
     //--Tipos de Magia
     $acss_magi = '';
+    $acss_magi_dets = '';
     $efe_magi_lczc = '';
     $efe_magi_scdd = '';
     $efe_magi_tecn = '';
@@ -1379,7 +1384,7 @@ if (empty((array) $resultado)) {
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="efe_magi_tecn" value="" placeholder="Digite aqui sobre os Efeitos da Magia na Tecnologia" 
-                                          title="Campo para Efeitos da Magia na Tecnologia" id="input-txarea-EfeitosdaMagianaTecnologia"><?php echo $cefe_magi_tecn; ?></textarea>
+                                          title="Campo para Efeitos da Magia na Tecnologia" id="input-txarea-EfeitosdaMagianaTecnologia"><?php echo $efe_magi_tecn; ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1394,7 +1399,7 @@ if (empty((array) $resultado)) {
         <div class="col-md-12 form-controle">
             <input type="hidden" name="pk_lczc" value="<?php echo $pk_lczc; ?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
-                Salvar <?php nomeFormal("localizacao") ?>
+                Salvar <?php echo nomeFormal("localizacao") ?>
             </button>
         </div>
     </form>
