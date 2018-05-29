@@ -4,74 +4,74 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
 
     public function __construct($categoria) {
         parent::__construct();
-	parent::setDicas("Dicas Localização");
+        parent::setDicas("Dicas Localização");
         $this->setCategoria($categoria);
     }
-    
+
     public function cadastrar($parametros) {
         //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
-        $this->setVisao('CadastrarPersonagem');
+        $this->setVisao('CadastrarLocalizacao');
     }
 
     public function listar($parametros) {
-	
-	$modelo = new ModeloPersonagem();
-	$res = $modelo->listar($parametros);
-	
-    $this->setVisao('ListarPersonagens');
-	$this->setResultados($res);
-    }    
+
+        $modelo = new ModeloLocalizacao();
+        $res = $modelo->listar($parametros);
+
+        $this->setVisao('ListarLocalizacao');
+        $this->setResultados($res);
+    }
 
     public function editar($parametros) {
-	
-    $modelo = new ModeloPersonagem();
-	$res = $modelo->listar($parametros);
-	
-	if($res[0] != false){
-	    $this->setResultados($res[0]);
-	    $this->setVisao('CadastrarPersonagem');
-	}else{
-	    redirecionar("?categoria=personagem&acao=listar");
-	}
+
+        $modelo = new ModeloLocalizacao();
+        $res = $modelo->listar($parametros);
+
+        if ($res[0] != false) {
+            $this->setResultados($res[0]);
+            $this->setVisao('CadastrarLocalizacao');
+        } else {
+            redirecionar("?categoria=localizacao&acao=listar");
+        }
     }
 
     public function salvar($parametros) {
-	
-	$modelo = new ModeloPersonagem();
-	$idUsuario = sessao()->getUserData()->id;
-	if(isset($_FILES) && $_FILES['im_psna']['size']!=0){	    
-	    $idPersonagem = $modelo->proximoID();
-	    $parametros['im_psna'] = uploadImagem($idUsuario, "personagem", $idPersonagem, $_FILES['im_psna']);
-	}
-	// if(isset($parametros['vsi_hist']) && is_array($parametros['vsi_hist'])){
-	    // $tempStr = 0;
-	    // foreach ($parametros['vsi_hist'] as $value) {
-		// $tempStr = $tempStr+$value;
-	    // }
-	    // $parametros['vsi_hist'] = $tempStr;
-	// }
-	$parametros['fk_usu'] = $idUsuario;
-	$res = $modelo->salvar($parametros);
-	
-	if($res != false){
-	    redirecionar("?categoria=personagem&acao=listar");
-	}else{
-	    redirecionar("?categoria=personagem&acao=cadastrar");
-	}
+
+        $modelo = new ModeloLocalizacao();
+        $idUsuario = sessao()->getUserData()->id;
+        if (isset($_FILES) && $_FILES['im_lczc']['size'] != 0) {
+            $idLocalizacao = $modelo->proximoID();
+            $parametros['im_lczc'] = uploadImagem($idUsuario, "localizacao", $idLocalizacao, $_FILES['im_lczc']);
+        }
+        // if(isset($parametros['vsi_hist']) && is_array($parametros['vsi_hist'])){
+        // $tempStr = 0;
+        // foreach ($parametros['vsi_hist'] as $value) {
+        // $tempStr = $tempStr+$value;
+        // }
+        // $parametros['vsi_hist'] = $tempStr;
+        // }
+        $parametros['fk_usu'] = $idUsuario;
+        $res = $modelo->salvar($parametros);
+
+        if ($res != false) {
+            redirecionar("?categoria=localizacao&acao=listar");
+        } else {
+            redirecionar("?categoria=localizacao&acao=cadastrar");
+        }
     }
 
     public function excluir($parametros) {
-        
-    $modelo = new ModeloPersonagem();
-	$idUsuario = sessao()->getUserData()->id;
-	$parametros['fk_usu'] = $idUsuario;
-	$res = $modelo->excluir($parametros);
-	
-	if($res != false){
-	    redirecionar("?categoria=personagem&acao=listar");
-	}else {
-	    redirecionar("?categoria=personagem&acao=listar"); //mudar pra uma pagina de erro (Personagem não encontrado ou não faz parte de seus persongens cadastrados) :D
-	}
-	}
+
+        $modelo = new ModeloLocalizacao();
+        $idUsuario = sessao()->getUserData()->id;
+        $parametros['fk_usu'] = $idUsuario;
+        $res = $modelo->excluir($parametros);
+
+        if ($res != false) {
+            redirecionar("?categoria=localizacao&acao=listar");
+        } else {
+            redirecionar("?categoria=localizacao&acao=listar"); //mudar pra uma pagina de erro (Localização não encontrada ou não faz parte de suas localizações cadastradas) :D
+        }
+    }
 
 }
