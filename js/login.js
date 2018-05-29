@@ -20,7 +20,7 @@ $(document).ready(function() {
 		$.post('?categoria=login&acao=salvar', { input1 : input1, input2 : input2, input3 : input3}, function(response) { //faz o POST por ajax
 			//console.log(response);
 				if(response.match(/erro/)){ //se conter a palavra "existe" na resposta do POST, um alerta é emitido e a variavel vrfc se torna true
-					  alert('Erro ao registrar o usuário! Porfavor tente novamente mais tarde');
+					  alert('Erro ao registrar o usuário! Por favor tente novamente mais tarde');
 					  $("#txtNomeCompleto").val("");
 					  $("#txtEmail").val("");
 					  $("#txtSenha").val("");
