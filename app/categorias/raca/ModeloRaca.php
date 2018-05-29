@@ -3,34 +3,26 @@
 class ModeloHistoria extends ConexaoBd{
     
     private $tabela;
-    private $campos = 'pk_hist,fk_usu,im_hist,im_hist_dets,tit_hist,tit_hist_dets,stit_hist,stit_hist_dets,aur_hist,
-	aur_hist_dets,iltd_hist,iltd_hist_dets,pbco_alvo,vsi_hist,fk_psna_ppl,dcr_em_uma_sntn,snp_hist,rsm_hist,dt_cric,dt_alt';
+    private $campos = 'pk_raca,fk_hist,nm_raca, dcr_raca, pvmt_raca, rptc_raca';
     
     public function __construct() {
 	parent::__construct();
-	$this->tabela = "tb_historia";
+	$this->tabela = "tb_raca";
     }
     
     public function salvar($parametros) {
 	
-	date_default_timezone_set('America/Sao_Paulo');
-        $horarioAtual = date("Y-m-d H:i:s");
-	
 	$modeloBase = new ConexaoBd();
 	
-        $parametros['dt_alt'] = $horarioAtual;
 	$res = false;	
 	
-	if(isset($parametros['pk_hist']) && $parametros['pk_hist']!=''){
-	    $condicao=" pk_hist='{$parametros['pk_hist']}'";
+	if(isset($parametros['pk_raca']) && $parametros['pk_raca']!=''){
+	    $condicao=" pk_raca='{$parametros['pk_raca']}'";
 	    $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
 	}else{
-	    unset($parametros['pk_hist']);
-	    $parametros['dt_cric'] = $horarioAtual;
+	    unset($parametros['pk_raca']);
 	    $res = $modeloBase->inserirBase($parametros, $this->tabela);
-	    
 	}
-	
 	return $res;
     }
     
