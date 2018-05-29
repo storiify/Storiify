@@ -1,14 +1,13 @@
 <?php
 
-class ModeloHistoria extends ConexaoBd{
+class ModeloLocalizacao extends ConexaoBd{
     
     private $tabela;
-    private $campos = 'pk_hist,fk_usu,im_hist,im_hist_dets,tit_hist,tit_hist_dets,stit_hist,stit_hist_dets,aur_hist,
-	aur_hist_dets,iltd_hist,iltd_hist_dets,pbco_alvo,vsi_hist,fk_psna_ppl,dcr_em_uma_sntn,snp_hist,rsm_hist,dt_cric,dt_alt';
+    private $campos = '*';
     
     public function __construct() {
 	parent::__construct();
-	$this->tabela = "tb_historia";
+	$this->tabela = "tb_localizacao";
     }
     
     public function salvar($parametros) {
@@ -18,17 +17,16 @@ class ModeloHistoria extends ConexaoBd{
 	
 	$modeloBase = new ConexaoBd();
 	
-        $parametros['dt_alt'] = $horarioAtual;
-	$res = false;	
+    //$parametros['dt_alt'] = $horarioAtual;
+	$res = false;
 	
-	if(isset($parametros['pk_hist']) && $parametros['pk_hist']!=''){
-	    $condicao=" pk_hist='{$parametros['pk_hist']}'";
+	if(isset($parametros['pk_psna']) && $parametros['pk_psna']!=''){
+	    $condicao=" pk_psna='{$parametros['pk_psna']}'";
 	    $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
 	}else{
-	    unset($parametros['pk_hist']);
-	    $parametros['dt_cric'] = $horarioAtual;
+	    unset($parametros['pk_psna']);
+	    // $parametros['dt_cric'] = $horarioAtual;
 	    $res = $modeloBase->inserirBase($parametros, $this->tabela);
-	    
 	}
 	
 	return $res;
@@ -37,16 +35,16 @@ class ModeloHistoria extends ConexaoBd{
     public function listar($parametros) {
 	
 	$modeloBase = new ConexaoBd();
-	
 	$idusuario = sessao()->getUserData()->id;
 	$condicao = "WHERE fk_usu='$idusuario'";
 	
-	if(isset($parametros['id']) && array_key_exists("id", $parametros)){
-	    $id = $parametros['id'];
-	    $condicao.=" AND pk_hist='$id'";
-	}
+	if(isset($parametros['parametros']) && array_key_exists("parametros", $parametros)){
+	    $id = $parametros['parametros'];
+	    $condicao.=" AND pk_psna='$id'";
+	}	
 	
 	$res = $modeloBase->listarBase($this->campos, $this->tabela, $condicao);
+	
 	
 	if(!isset($res) or $res==null){
 	    return array();
@@ -56,14 +54,14 @@ class ModeloHistoria extends ConexaoBd{
 	
     }
 	
-    public function excluir($parametros) {
+	public function excluir($parametros) {
 	
 	$modeloBase = new ConexaoBd();
 	
 	$res = false;	
 	$id = $parametros['parametros'];
 	$idusuario = sessao()->getUserData()->id;
-	$condicao = "pk_hist='$id'";
+	$condicao = "pk_psna='$id'";
 	$condicao.=" AND fk_usu='$idusuario'";
 	
 	$res = $modeloBase->excluirBase($this->tabela, $condicao);
@@ -76,9 +74,5 @@ class ModeloHistoria extends ConexaoBd{
 	$modeloBase = new ConexaoBd();
 	return $modeloBase->getNextID($this->tabela);
     }
-<<<<<<< HEAD
         
-=======
-    
->>>>>>> 52099d22e862ff6b37d7cc41700b96355e803d1f
 }

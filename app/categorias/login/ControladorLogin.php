@@ -1,6 +1,6 @@
 <?php
 
-class ControladorLogin extends Controlador implements InterfaceControlador{
+class ControladorLogin extends Controlador implements InterfaceControlador {
     
     public function __construct($categoria) {
         parent::__construct();
@@ -34,18 +34,15 @@ class ControladorLogin extends Controlador implements InterfaceControlador{
         $this->setVisao('registrar', TRUE);
         
     }
-	
-	public function email($param) {
-        
-        $this->setVisao('verifica', TRUE);
-        
-    }
 
     public function salvar($parametros) {
 		
 	$modelo = new ModeloLogin();
 	
-	$res = $modelo->salvar($parametros);	
+	$res = $modelo->salvar($parametros);
+	if($res != true){
+		echo "erro ao registrar o usuario!";
+	}	
 		
 	}
 	

@@ -1,3 +1,84 @@
+<?php
+$resultado = $controlador->getResultados();
+
+$teste = sessao()->getUserData()->id;
+
+if (empty((array) $resultado)) {
+    $pk_lczc = '';
+    //Geral
+    $im_lczc = './imagens/sem-foto.png';
+    $im_lczc_dets = '';
+    $nm_lczc = '';
+    $nm_lczc_dets = '';
+    $vis_grl = '';
+    //$personagensMaisConhecidos
+    $marc_geo = '';
+    $fk_ppl_lcld = '';
+    $arrd_lczc = '';
+    $hotl_lczc = '';
+    $hotl_lczc_dets = '';
+    $vsi_lczc = '';
+    //Passado
+    $dcr_pasd = '';
+    $fk_fdd_decb = '';
+    $dt_fdc_decb = '';
+    $dt_fdc_decb_dets = '';
+    $envl_grrs = '';
+    $hist_gov = '';
+    $actm_mor_oglh = '';
+    $manc_hist = '';
+    //Biologia
+    //Cultura
+    //--Religiões
+    $rtus_lczc = '';
+    //--Mitos
+    $etca_vls = '';
+    //--Línguas
+    $art_ettm = '';
+    $tbus_lczc = '';
+    $dics_lczc = '';
+    //Economia
+    $dcr_ecn = '';
+    $moe_lczc = '';
+    $cmc_lczc = '';
+    $rlcs_extr_ecn = '';
+    $rlcs_itna_ecn = '';
+    $negs_ind = '';
+    $degd_scl = '';
+    $degd_scl_dets = '';
+    //Politica
+    $fma_gov = '';
+    $leis_lczc = '';
+    $punc_lczc = '';
+    $rlcs_extr_pol = '';
+    $satc_pop = '';
+    $satc_pop_dets = '';
+    $orgz_anti_gov = '';
+    $cls_cast = '';
+    //Tecnologia
+    $nvl_tecn = '';
+    $depe_tecn = '';
+    $acss_tecn = '';
+    $mtd_cmco = '';
+    $mtd_trnt = '';
+    $citc_dcob = '';
+    //Magia
+    //--Tipos de Magia
+    $acss_magi = '';
+    $efe_magi_lczc = '';
+    $efe_magi_scdd = '';
+    $efe_magi_tecn = '';
+
+} else {
+    $personagem = (array) $resultado;
+    foreach ($personagem as $key => $value) {
+        $$key = $value;
+    }
+}
+// $nome = (isset($tit_hist)? substr($tit_hist, 0,25).'...':"História sem nome!");
+// $vsi_hist = parseCheckbox($vsi_hist);
+?>
+
 <div style="margin-top:60px;">
     <div class="marquee"><?= $this->getDicas() ?></div>
 </div>

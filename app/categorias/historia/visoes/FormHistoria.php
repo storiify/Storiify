@@ -15,6 +15,7 @@ if(empty((array)$resultado)){
     $stit_hist = '';
     $aur_hist = '';
     $aur_hist_dets = '';
+    $iltd_hist = '';
     $iltd_hist_dets = '';
     $dets_iltd = '';
     $pbco_alvo = '';
@@ -229,8 +230,8 @@ if(empty((array)$resultado)){
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="iltd_hist_dets" value="<?php echo $iltd_hist_dets; ?>" 
-                                       placeholder="Digite aqui o nome do(a) Ilustrador(a) da Históri"
+                                <input name="iltd_hist" value="<?php echo $iltd_hist; ?>" 
+                                       placeholder="Digite aqui o nome do(a) Ilustrador(a) da História"
                                        title="Campo para Ilustrador(a) da História"
                                        maxlength="70" type="text" 
                                        class="form-control" id="input-tx-Ilustrador"/>
