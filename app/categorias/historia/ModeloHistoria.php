@@ -76,9 +76,4 @@ class ModeloHistoria extends ConexaoBd{
 	$modeloBase = new ConexaoBd();
 	return $modeloBase->getNextID($this->tabela);
     }
-<<<<<<< HEAD
-        
-=======
-    
->>>>>>> 52099d22e862ff6b37d7cc41700b96355e803d1f
 }

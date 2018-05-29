@@ -12,12 +12,8 @@ class ConexaoBd {
       if (!isset(self::$instance)) {
         $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
         $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
-<<<<<<< HEAD
-        self::$instance = new PDO('mysql:host=localhost;dbname=bd_storiify', 'root', '', $pdo_options);
-=======
+       
         self::$instance = new PDO('mysql:host='.passwordBD::$servername.';dbname='.passwordBD::$dbname, passwordBD::$username, passwordBD::$password, $pdo_options);
->>>>>>> 52099d22e862ff6b37d7cc41700b96355e803d1f
-        //self::$instance = new PDO('mysql:host=localhost;dbname=bd_storiify', 'root', '', $pdo_options);
       }
       return self::$instance;
 
