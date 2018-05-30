@@ -3,7 +3,7 @@ $resultados = $controlador->getResultados();
 ?>
 
 <div style="margin-top:60px;">
-    <div class="marquee"><?= $this->getDicas();?></div>
+    <div class="marquee"><?= $this->getDicas();var_dump($controlador);?></div>
 </div>
 
 
@@ -35,7 +35,7 @@ $resultados = $controlador->getResultados();
     foreach ($resultados as $personagem) {
 		$modelo = (object) $personagem;
 		$nome = $modelo->nm_psna;
-		$imagemPrincipal = (isset($modelo->im_psna)) ? $modelo->im_psna : $imIndefinida;
+		$imagemPrincipal = (isset($modelo->im_psna)) ? $modelo->im_psna : const_Indefinida_IM;
         echo
        "<div title='Clique para editar $nome'"
         . "class='instancia-card mx-auto row' data-id='$modelo->pk_psna' data-nome='$nome'>"
@@ -53,16 +53,16 @@ $resultados = $controlador->getResultados();
         . "                    </tr>"
         . "                    <tr>"
         . "                        <th scope='row'>Descrição Básica</th>"
-        . "                        <td>" . $modelo->dcr_bsca_psna . "</td>"
+        . "                        <td>" . $modelo->dets_bsca . "</td>"
         . "                    </tr>"
         . "                    <tr>"
         . "                        <th scope='row'>Data de Nascimento</th>"
-	. "                        <td>" . $modelo->nsc_psna . "</td>"
+	. "                        <td>" . $modelo->dt_nsc . "</td>"
         . "                    </tr>"
         . "                </table>"
         . "            </div>"
         . "            <div class='instancia-ultima-alteracao hidden-xl-down'>"
-        . "                <span>Última edição: $dataInLocal</span>"
+        . "                <span>Última edição: $modelo->dt_alt </span>"
         . "            </div>"
         . "        </div>"
         . "    </div>"

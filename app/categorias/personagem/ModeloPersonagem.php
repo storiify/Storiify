@@ -11,21 +11,33 @@ class ModeloPersonagem extends ConexaoBd{
     }
     
     public function salvar($parametros) {
+		
+	$idPsna = $this -> proximoID();
 	
 	date_default_timezone_set('America/Sao_Paulo');
         $horarioAtual = date("Y-m-d H:i:s");
 	
 	$modeloBase = new ConexaoBd();
 	
-    //$parametros['dt_alt'] = $horarioAtual;
+    $parametros['dt_alt'] = $horarioAtual;
 	$res = false;
 	
 	if(isset($parametros['pk_psna']) && $parametros['pk_psna']!=''){
-	    $condicao=" pk_psna='{$parametros['pk_psna']}'";
+		$condicao=" pk_psna='{$parametros['pk_psna']}'";
 	    $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
-	}else{
+	}else{		
+		
+		if(isset ($parametros['lclz_natl'])){
+			foreach ($parametros['lclz_natl'] as $value) {
+			$tblczc = "tb_localizacao_rel_personagem";
+			$rel['fk_psna'] = $idPsna;
+			$rel['fk_lczc'] = $value;
+			$res = $modeloBase->inserirBase($rel, $tblczc);
+			}			
+		}
+		unset($parametros['lclz_natl']);
 	    unset($parametros['pk_psna']);
-	    // $parametros['dt_cric'] = $horarioAtual;
+	    $parametros['dt_cric'] = $horarioAtual;		
 	    $res = $modeloBase->inserirBase($parametros, $this->tabela);
 	}
 	
