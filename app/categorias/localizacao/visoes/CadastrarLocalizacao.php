@@ -1,25 +1,23 @@
 <?php
 $resultado = $controlador->getResultados();
 
-$teste = sessao()->getUserData()->id;
-
 if (empty((array) $resultado)) {
     $pk_lczc = '';
     $fk_hist = '';
-    //Geral
+//Geral
     $im_lczc = './imagens/sem-foto.png';
     $im_lczc_dets = '';
     $nm_lczc = '';
     $nm_lczc_dets = '';
     $vis_grl = '';
-    //$personagensMaisConhecidos
+    //--$personagensMaisConhecidos
     $marc_geo = '';
     $fk_ppl_lcld = '';
     $arrd_lczc = '';
     $hotl_lczc = '';
     $hotl_lczc_dets = '';
     $vsi_lczc = '';
-    //Passado
+//Passado
     $dcr_pasd = '';
     $fk_fdd_decb = '';
     $dt_fdc_decb = '';
@@ -28,8 +26,8 @@ if (empty((array) $resultado)) {
     $hist_gov = '';
     $actm_mor_oglh = '';
     $manc_hist = '';
-    //Biologia
-    //Cultura
+//Biologia
+//Cultura
     //--Religiões
     $rtus_lczc = '';
     //--Mitos
@@ -38,7 +36,7 @@ if (empty((array) $resultado)) {
     $art_ettm = '';
     $tbus_lczc = '';
     $dics_lczc = '';
-    //Economia
+//Economia
     $dcr_ecn = '';
     $moe_lczc = '';
     $cmc_lczc = '';
@@ -47,7 +45,7 @@ if (empty((array) $resultado)) {
     $negs_ind = '';
     $degd_scl = '';
     $degd_scl_dets = '';
-    //Politica
+//Politica
     $fma_gov = '';
     $leis_lczc = '';
     $punc_lczc = '';
@@ -56,7 +54,7 @@ if (empty((array) $resultado)) {
     $satc_pop_dets = '';
     $orgz_anti_gov = '';
     $cls_cast = '';
-    //Tecnologia
+//Tecnologia
     $nvl_tecn = '';
     $nvl_tecn_dets = '';
     $depe_tecn = '';
@@ -66,7 +64,7 @@ if (empty((array) $resultado)) {
     $mtd_cmco = '';
     $mtd_trnt = '';
     $ciec_dcob = '';
-    //Magia
+//Magia
     //--Tipos de Magia
     $acss_magi = '';
     $acss_magi_dets = '';
@@ -74,8 +72,8 @@ if (empty((array) $resultado)) {
     $efe_magi_scdd = '';
     $efe_magi_tecn = '';
 } else {
-    $personagem = (array) $resultado;
-    foreach ($personagem as $key => $value) {
+    $localizacao = (array) $resultado;
+    foreach ($localizacao as $key => $value) {
         $$key = $value;
     }
 }

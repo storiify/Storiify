@@ -50,7 +50,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         // }
         // $parametros['vsi_hist'] = $tempStr;
         // }
-        $parametros['fk_usu'] = $idUsuario;
+        //$parametros['fk_usu'] = $idUsuario;
         $res = $modelo->salvar($parametros);
 
         if ($res != false) {
