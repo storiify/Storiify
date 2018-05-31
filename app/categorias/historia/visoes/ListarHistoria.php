@@ -3,7 +3,7 @@ $resultados = $controlador->getResultados();
 ?>
 
 <div class="pular-menu">
-    <div class="marquee"><?= $this->getDicas(); var_dump($resultados); ?></div>
+    <div class="marquee"><?= $this->getDicas(); ?></div>
 </div>
 
 
@@ -14,7 +14,7 @@ $resultados = $controlador->getResultados();
 </div>
 
 <div class="conteudo" style="margin-top: 100px;">
-    
+
     <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
         <a href='?categoria=<?php echo $categoria ?>&acao=cadastrar' 
@@ -23,13 +23,13 @@ $resultados = $controlador->getResultados();
             <i class="fa fa-plus"></i>
             &nbsp&nbspCriar nova <?php echo nomeFormal($categoria) ?>
         </a>
-	</div>
+    </div>
 
     <?php
     foreach ($resultados as $historia) {
-	$modelo = (object) $historia;
+        $modelo = (object) $historia;
         $imagemPrincipal = (isset($modelo->im_hist)) ? $modelo->im_hist : const_Indefinida_IM;
-        $nome = $modelo->tit_hist.($modelo->stit_hist!=''?' - '.$modelo->stit_hist:'');
+        $nome = $modelo->tit_hist . ($modelo->stit_hist != '' ? ' - ' . $modelo->stit_hist : '');
         $dataInLocal = $modelo->dt_alt;
 
         echo
@@ -87,12 +87,12 @@ $resultados = $controlador->getResultados();
         . "    </div>"
         . "</div>";
     }
-	
-	if (!isset($modelo)) {
+
+    if (!isset($modelo)) {
         echo"<div align='center' class='sem-instancia' style='margin-bottom: 0.5%'>"
-	. "	<div align='left' style='padding-left: 0.5%'>"
-        . "	    <span>".sprintf(const_Indefinida_Msg, nomeFormal($categoria, "plural"))."</span>"
-	. "	</div>"
+        . "	<div align='left' style='padding-left: 0.5%'>"
+        . "	    <span>" . sprintf(const_Indefinida_Msg, nomeFormal($categoria, "plural")) . "</span>"
+        . "	</div>"
         . "     <img src='" . const_Indefinida . "' alt='' style='max-width: 99%;'/>"
         . "</div>";
     }
