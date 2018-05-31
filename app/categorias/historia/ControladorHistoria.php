@@ -72,7 +72,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         $modelo = new ModeloHistoria();
         $idUsuario = sessao()->getUserData()->id;
         $parametros['fk_usu'] = $idUsuario;
-        
+
         $res = $modelo->excluir($parametros);
 
         if ($res != false) {
@@ -81,10 +81,15 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
             redirecionar("?categoria=historia&acao=listar"); //mudar pra uma pagina de erro (Personagem não encontrado ou não faz parte de seus persongens cadastrados) :D
         }
     }
-    
-    public function listarCategorias($parametros){
+
+    public function listarCategorias($parametros) {
         
-        sessao()->setHistoriaData($parametros);
+        $modelo = new ModeloHistoria();
+        $res = $modelo->listar($parametros);
+        
+        sessao()->setHistoriaSelecionada($res);
+        
         $this->setVisao('CategoriasHistoria');
+        $this->setResultados($res);
     }
 }

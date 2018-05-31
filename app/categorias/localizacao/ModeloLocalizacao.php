@@ -33,14 +33,14 @@ class ModeloLocalizacao extends ConexaoBd {
     }
 
     public function listar($parametros) {
-
         $modeloBase = new ConexaoBd();
-        $idusuario = sessao()->getUserData()->id;
-        $condicao = "WHERE fk_usu='$idusuario'";
+        
+        $idHistoria= sessao()->getHistoriaSelecionada()[0]['pk_hist'];
+        $condicao = "WHERE fk_hist='$idHistoria'";
 
         if (isset($parametros['parametros']) && array_key_exists("parametros", $parametros)) {
             $id = $parametros['parametros'];
-            $condicao .= " AND pk_psna='$id'";
+            $condicao .= " AND pk_lczc='$id'";
         }
 
         $res = $modeloBase->listarBase($this->campos, $this->tabela, $condicao);
@@ -59,13 +59,10 @@ class ModeloLocalizacao extends ConexaoBd {
 
         $res = false;
         $id = $parametros['parametros'];
-        $idusuario = sessao()->getUserData()->id;
-        $condicao = "pk_psna='$id'";
-        $condicao .= " AND fk_usu='$idusuario'";
+        $condicao = "pk_lczc='$id'";
 
         $res = $modeloBase->excluirBase($this->tabela, $condicao);
-
-
+        
         return $res;
     }
 
@@ -73,5 +70,4 @@ class ModeloLocalizacao extends ConexaoBd {
         $modeloBase = new ConexaoBd();
         return $modeloBase->getNextID($this->tabela);
     }
-
 }
