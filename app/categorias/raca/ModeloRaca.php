@@ -60,13 +60,11 @@ class ModeloHistoria extends ConexaoBd{
 	
 	$res = $modeloBase->excluirBase($this->tabela, $condicao);
 	
-	
 	return $res;
     }
     
     public function proximoID() {
 	$modeloBase = new ConexaoBd();
 	return $modeloBase->getNextID($this->tabela);
-    }
-        
+    } 
 }

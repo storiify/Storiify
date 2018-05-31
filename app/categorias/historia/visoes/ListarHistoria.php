@@ -13,7 +13,7 @@ $resultados = $controlador->getResultados();
     </div>    
 </div>
 
-<div class="conteudo" style="margin-top: 100px;">
+<div class="conteudo">
 
     <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
