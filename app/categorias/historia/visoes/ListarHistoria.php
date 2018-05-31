@@ -62,7 +62,7 @@ $resultados = $controlador->getResultados();
         . "            </div>"
         . "        </div>"
         . "    </div>"
-        . "    <a href='?categoria=$categoria&acao=editar&id=$modelo->pk_hist'></a>"
+        . "    <a href='?categoria=$categoria&acao=listarCategorias&parametros=$modelo->pk_hist'></a>"
         . "    <div class='instancia-controle col-md-1' style='padding-left: 0px;'>"
         . "        <button class='btn btn-azul btn-deletar-instancia' title='Clique para deletar $nome'>"
         . "            <i class='fa fa-times'></i>"

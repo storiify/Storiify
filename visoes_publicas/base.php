@@ -30,7 +30,7 @@
         <!-- Estilo das Listagens -->
         <link href="./css/listagens.css" rel="stylesheet" type="text/css"/>
         <!-- Estilo da Seleção de Categoria -->
-        <link href="../css/SelecionarCategoria.css" rel="stylesheet" type="text/css"/>
+        <link href="./css/selecionarCategoria.css" rel="stylesheet" type="text/css"/>
         
         <!--ICheck-->
         <link href="./plugins/icheck-1.x/skins/flat/blue.css" rel="stylesheet" />

@@ -9,10 +9,16 @@
 </div>
 
 <div class="conteudo">
-    <div class="row lista-categorias">
-        <a class="btn btn-azul"><i class='fa fa-book col-md-2'></i><br>História</a>
-        <a class="btn btn-azul"><i class='fa fa-users col-md-2'></i><br>Personagens</a>
-        <a class="btn btn-azul"><i class="fa fa-globe col-md-2"></i><br>Localizações</a>
-        <a class="btn btn-azul"><i class="fa fa-comments-o col-md-2"></i><br>Cenas</a>
+    
+        <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
+    <div class='pos-cabecalho'>
+        <p class="texto-lista-categorias">Escolha qual Categoria da sua História você quer editar</p>
+    </div>
+    
+    <div class="lista-categorias">
+        <a class="btn btn-azul btn-categoria"><i class='fa fa-book col-md-2'></i><br><span>História</span></a>
+        <a class="btn btn-azul btn-categoria"><i class='fa fa-users col-md-2'></i><br><span>Personagens</span></a>
+        <a class="btn btn-azul btn-categoria"><i class="fa fa-globe col-md-2"></i><br><span>Localizações</span></a>
+        <a class="btn btn-azul btn-categoria"><i class="fa fa-comments-o col-md-2"></i><br><span>Cenas</span></a>
     </div>
 </div>

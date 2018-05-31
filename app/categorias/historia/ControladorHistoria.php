@@ -72,6 +72,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         $modelo = new ModeloHistoria();
         $idUsuario = sessao()->getUserData()->id;
         $parametros['fk_usu'] = $idUsuario;
+        
         $res = $modelo->excluir($parametros);
 
         if ($res != false) {
@@ -81,7 +82,9 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         }
     }
     
-    public function listarCategorias(){
+    public function listarCategorias($parametros){
+        
+        sessao()->setHistoriaData($parametros);
         $this->setVisao('CategoriasHistoria');
     }
 }
