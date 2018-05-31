@@ -80,4 +80,8 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
             redirecionar("?categoria=historia&acao=listar"); //mudar pra uma pagina de erro (Personagem não encontrado ou não faz parte de seus persongens cadastrados) :D
         }
     }
+    
+    public function listarCategorias(){
+        $this->setVisao('CategoriasHistoria');
+    }
 }
