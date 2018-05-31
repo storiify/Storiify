@@ -16,16 +16,16 @@ class ModeloLocalizacao extends ConexaoBd {
         $horarioAtual = date("Y-m-d H:i:s");
 
         $modeloBase = new ConexaoBd();
-
-        //$parametros['dt_alt'] = $horarioAtual;
+        
         $res = false;
+        $parametros['dt_alt'] = $horarioAtual;
 
         if (isset($parametros['pk_lczc']) && $parametros['pk_lczc'] != '') {
             $condicao = " pk_lczc='{$parametros['pk_lczc']}'";
             $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
         } else {
             unset($parametros['pk_lczc']);
-            // $parametros['dt_cric'] = $horarioAtual;
+            $parametros['dt_cric'] = $horarioAtual;
             $res = $modeloBase->inserirBase($parametros, $this->tabela);
         }
 
