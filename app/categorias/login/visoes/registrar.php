@@ -10,7 +10,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-touch-fullscreen" content="yes" />
 	<meta name="description" content="Aplicativo web que permite ao usuário armazenar suas histórias de maneira estruturada" />
-	<meta name="author" content="Grupo 3 PI" />
+	<meta name="author" content="Grupo 1 PI III" />
 
 	<!-- BootStrap -->
         <link href="./css/bootstrap.css" rel="stylesheet" type="text/css"/>
