@@ -44,6 +44,6 @@ class Sessao {
 	return (object) $this->setChave('hist_selecionada', $historia);
     }
     public function getHistoriaSelecionada() {
-	return (array) $this->getChave('hist_selecionada');
+	return (object) $this->getChave('hist_selecionada');
     }
 }

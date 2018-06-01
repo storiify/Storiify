@@ -38,7 +38,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
     public function salvar($parametros) {
 
         $modelo = new ModeloLocalizacao();
-        $idHistoria = sessao()->getHistoriaSelecionada()[0]['pk_hist'];
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
         $idUsuario = sessao()->getUserData()->id;
         if (isset($_FILES) && $_FILES['im_lczc']['size'] != 0) {
             $idLocalizacao = $modelo->proximoID();

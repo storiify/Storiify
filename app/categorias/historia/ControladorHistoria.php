@@ -86,8 +86,8 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         
         $modelo = new ModeloHistoria();
         $res = $modelo->listar($parametros);
-        
-        sessao()->setHistoriaSelecionada($res);
+	
+        sessao()->setHistoriaSelecionada($res[0]);
         
         $this->setVisao('CategoriasHistoria');
         $this->setResultados($res);

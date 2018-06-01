@@ -35,7 +35,7 @@ class ModeloLocalizacao extends ConexaoBd {
     public function listar($parametros) {
         $modeloBase = new ConexaoBd();
         
-        $idHistoria= sessao()->getHistoriaSelecionada()[0]['pk_hist'];
+        $idHistoria= sessao()->getHistoriaSelecionada()->pk_hist;
         $condicao = "WHERE fk_hist='$idHistoria'";
 
         if (isset($parametros['parametros']) && array_key_exists("parametros", $parametros)) {
