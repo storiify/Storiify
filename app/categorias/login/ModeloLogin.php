@@ -3,21 +3,31 @@
 class ModeloLogin extends ConexaoBd {
 
     private $campos = '';
+    private $cryptAlgo;
+
+    public function __construct() {
+        parent::__construct();
+        if (phpversion() < 7.2) {
+            $this->cryptAlgo = PASSWORD_BCRYPT;
+        } else {
+            $this->cryptAlgo = PASSWORD_ARGON2I;
+        }
+    }
 
     public function check($param) {
 
         $email = $param['email'];
-        $senha = sha1($param['senha']);
-
-        $condicao = "WHERE MAIL_USU='$email' AND SNH_USU='$senha'";
+        $senha = $param['senha'];
+        
+        $condicao = "WHERE MAIL_USU='$email'";
 
         $modeloBase = new ConexaoBd();
         $res = $modeloBase->listarBase("*", "tb_usuario", $condicao);
 
-        if (!isset($res[0]) || $res[0] == null || password_verify($senha, $res[0]['snh_usu'])) {
+        if (!isset($res[0]) || $res[0] == null || !password_verify($senha, $res[0]['snh_usu'])) {
             return false;
         }
-
+        
         $temp = array(0 => array());
         $temp[0]['id'] = $res[0]['pk_usu'];
         $temp[0]['nome'] = $res[0]['nm_usu'];
@@ -45,7 +55,7 @@ class ModeloLogin extends ConexaoBd {
 
         $tabela = "tb_usuario";
 
-        $parametros['snh_usu'] = sha1($parametros['snh_usu']);
+        $parametros['snh_usu'] = password_hash($parametros['snh_usu'], $this->cryptAlgo);
 
         $res = $modeloBase->inserirBase($parametros, $tabela);
 
