@@ -86,7 +86,7 @@ if (empty((array) $resultado)) {
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1>Localização</h1>
+        <h1><?= nomeFormal($categoria)?></h1>
     </div>
 </div>
 
@@ -1397,7 +1397,7 @@ if (empty((array) $resultado)) {
         <div class="col-md-12 form-controle">
             <input type="hidden" name="pk_lczc" value="<?php echo $pk_lczc; ?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
-                Salvar <?php echo nomeFormal("localizacao") ?>
+                Salvar <?php echo nomeFormal($categoria) ?>
             </button>
         </div>
     </form>

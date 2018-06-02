@@ -44,18 +44,11 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $idLocalizacao = $modelo->proximoID();
             $parametros['im_lczc'] = uploadImagem($idUsuario, "localizacao", $idLocalizacao, $_FILES['im_lczc']);
         }
-        // if(isset($parametros['vsi_hist']) && is_array($parametros['vsi_hist'])){
-        // $tempStr = 0;
-        // foreach ($parametros['vsi_hist'] as $value) {
-        // $tempStr = $tempStr+$value;
-        // }
-        // $parametros['vsi_hist'] = $tempStr;
-        // }
-        //$parametros['fk_usu'] = $idUsuario;
+        
         $parametros['fk_hist'] = $idHistoria;
         $res = $modelo->salvar($parametros);
 
-        if ($res != false) {
+        if ($res) {
             redirecionar("?categoria=localizacao&acao=listar");
         } else {
             redirecionar("?categoria=localizacao&acao=cadastrar");
@@ -69,7 +62,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         $parametros['fk_usu'] = $idUsuario;
         $res = $modelo->excluir($parametros);
 
-        if ($res != false) {
+        if ($res) {
             redirecionar("?categoria=localizacao&acao=listar");
         } else {
             redirecionar("?categoria=localizacao&acao=listar"); //mudar pra uma pagina de erro (Localização não encontrada ou não faz parte de suas localizações cadastradas) :D
