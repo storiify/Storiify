@@ -38,13 +38,12 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
             <strong><span>Explore suas Categorias!</span></strong>
         </li>
 
-<<<<<<< HEAD
         <li class="item-sem-filhos">
             <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
                 <i class='fa fa-book col-md-2'></i>
                 <span class='col-md-10'>História</span>
             </a>
-=======
+            
         <li class='nav-item list-group-item'>
             <i class='fa fa-book col-md-2'></i>
             <span class='col-md-10'>História</span>
@@ -74,7 +73,7 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
                     </a>
                 </li>
             </ul>
->>>>>>> 20b4aa2baf990472264b86db2d530aa96a5ba82c
+            
         </li>
 
         <li class='nav-item list-group-item'>
