@@ -171,6 +171,9 @@
 .list-group-item:hover > .list-group {
     display: block;
 }
+.item-sem-filhos{
+    text-align:left;
+}
 .acao-categoria{
     position: relative;
 }
