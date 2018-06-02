@@ -14,6 +14,9 @@ footer{
     margin-left: auto;
     max-width: 80%;
     background-color: white;
+    border-right: 1px solid #dadfe3;
+    border-bottom: 1px solid #dadfe3;
+    border-left: 1px solid #dadfe3;
 }
 @media screen and (max-width: 1300px){
     footer{
