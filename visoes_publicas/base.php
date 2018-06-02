@@ -1,12 +1,11 @@
 <?php
-//Aqui indica qual história o usuário está editando no momento arranjar um lugar melhor depois
-//$historiaSelecionada = (object) Historia::SelecionarUm(2);
+$tituloPagina = "Torne suas histórias reais";
 ?>
 <html>
     <head>
         <meta charset="utf-8" />
 
-        <title>Storiify - Torne suas histórias reais</title>
+        <title><?=$tituloPagina?> - Storiify</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
