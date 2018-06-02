@@ -43,38 +43,6 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
                 <i class='fa fa-book col-md-2'></i>
                 <span class='col-md-10'>História</span>
             </a>
-            
-        <li class='nav-item list-group-item'>
-            <i class='fa fa-book col-md-2'></i>
-            <span class='col-md-10'>História</span>
-            <ul class='navbar-nav mr-auto text-center list-group' style="overflow: hidden;">
-		<li>
-                    <a href="?categoria=historia&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Criar</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Listagem</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="nav-item list-group-item lista-clicavel">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Configurações</div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-            
-        </li>
 
         <li class='nav-item list-group-item'>
             <i class='fa fa-users col-md-2'></i>

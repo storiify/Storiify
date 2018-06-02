@@ -17,7 +17,7 @@ $historiaSelecionada = (array)sessao()->getHistoriaSelecionada();
     <div class="mx-auto my-2 order-0 order-md-1 position-relative">
         <a class="mx-auto" href="?categoria=historia&acao=listar">
             <div class="fundo-logo"></div>
-            <img src="./imagens/logo/540logoFundo.png" class="rounded-circle logo-topo" alt="Logo Storiify" title="Logo Storiify"/>
+            <img src="./imagens/logo/540logoFundo.png" class="rounded-circle logo-topo" alt="Logo Storiify" title="Clique aqui para listar todas as suas Histórias"/>
         </a>
     </div>
 
