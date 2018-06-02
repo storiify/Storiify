@@ -14,7 +14,7 @@
 	<!-- Font Awesome -->
 	<link href="./font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 	<!-- bootstrap -->
-	<link href="./css/bootstrap4.min.css" type="text/css" rel="stylesheet" />
+	<link href="./css/bootstrap.css" type="text/css" rel="stylesheet" />
 	<!-- CSS Principal, com todos os estilos -->
 	<!-- <link href="./css/bootstrap.css" rel="stylesheet" /> -->
     </head>
