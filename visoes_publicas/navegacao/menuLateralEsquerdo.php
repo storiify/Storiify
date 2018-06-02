@@ -35,7 +35,7 @@ $historias = sessao()->getHistoriasData();
         <li class='nav-item list-group-item'>
             <i class='fa fa-book col-md-2'></i>
             <span class='col-md-10'>História</span>
-            <ul class='navbar-nav mr-auto text-center list-group'>
+            <ul class='navbar-nav mr-auto text-center list-group' style="overflow: hidden;">
 		<li>
                     <a href="?categoria=historia&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
@@ -66,7 +66,7 @@ $historias = sessao()->getHistoriasData();
         <li class='nav-item list-group-item'>
             <i class='fa fa-users col-md-2'></i>
             <span class='col-md-10'>Personagem</span>
-            <ul class='navbar-nav mr-auto text-center list-group'>
+            <ul class='navbar-nav mr-auto text-center list-group' style="overflow: hidden;">
                 <li>
                     <a href="?categoria=personagem&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
@@ -90,7 +90,7 @@ $historias = sessao()->getHistoriasData();
         <li class="nav-item list-group-item">
             <i class="fa fa-globe col-md-2"></i>
             <span class="col-md-10">Localização</span>
-            <ul class="navbar-nav mr-auto text-center list-group">
+            <ul class="navbar-nav mr-auto text-center list-group" style="overflow: hidden;">
                 <li>
                     <a href="?categoria=localizacao&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
@@ -114,7 +114,7 @@ $historias = sessao()->getHistoriasData();
         <li class="nav-item list-group-item">
             <i class="fa fa-comments-o col-md-2"></i>
             <span class="col-md-10">Cena</span>
-            <ul class="navbar-nav mr-auto text-center list-group">
+            <ul class="navbar-nav mr-auto text-center list-group" style="overflow: hidden;">
                 <li>
                     <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
