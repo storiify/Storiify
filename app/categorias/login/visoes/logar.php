@@ -13,8 +13,8 @@
 	<meta name="author" content="Grupo 3 PI" />
 	<!-- Font Awesome -->
 	<link href="./font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
-	<!-- bootstrap -->
-	<link href="./css/bootstrap.css" type="text/css" rel="stylesheet" />
+	<!-- Bootstrap -->
+	<link href="./css/bootstrap.css" type="text/css" rel="stylesheet" /> <!-- bootstrap V4.0.0 -->
 	<!-- CSS Principal, com todos os estilos -->
 	<!-- <link href="./css/bootstrap.css" rel="stylesheet" /> -->
     </head>
@@ -134,12 +134,10 @@
 	<!-- Load jQuery -->
 	<script src="./js/jquery-3.3.1.min.js"></script>
 	<script src="./js/login.js"></script>
-	<script src="./js/bootstrap.js"></script> <!-- bootstrap V4 -->
+	<script src="./js/bootstrap.js"></script> <!-- bootstrap V4.0.0 -->
 	<!--IChek-->
 	<script src="./plugins/icheck-1.x/icheck.js"></script>
 	<!--Javascript para editarmos-->
-	<!--Verificar o que tem dentro (faz o toggle do menu lateral)-->
-	<script src="./js/application.js"></script>
 	<!-- End loading site level scripts -->
 	<!-- Load page level scripts-->
 	<!-- End loading page level scripts-->
