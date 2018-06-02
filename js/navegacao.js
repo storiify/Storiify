@@ -15,6 +15,12 @@ $(document).ready(function(){
 	});
 });
 
+$(document).keyup(function(e) {
+     if (e.keyCode == 27) { // escape key maps to keycode `27`
+        $(".menu-esquerdo").hide();
+    }
+});
+
 //Do botão de voltar para o topo
 MostrarScroll();
 

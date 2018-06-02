@@ -38,17 +38,49 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
             <strong><span>Explore suas Categorias!</span></strong>
         </li>
 
+<<<<<<< HEAD
         <li class="item-sem-filhos">
             <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
                 <i class='fa fa-book col-md-2'></i>
                 <span class='col-md-10'>História</span>
             </a>
+=======
+        <li class='nav-item list-group-item'>
+            <i class='fa fa-book col-md-2'></i>
+            <span class='col-md-10'>História</span>
+            <ul class='navbar-nav mr-auto text-center list-group' style="overflow: hidden;">
+		<li>
+                    <a href="?categoria=historia&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Criar</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Listagem</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Configurações</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+>>>>>>> 20b4aa2baf990472264b86db2d530aa96a5ba82c
         </li>
 
         <li class='nav-item list-group-item'>
             <i class='fa fa-users col-md-2'></i>
             <span class='col-md-10'>Personagem</span>
-            <ul class='navbar-nav mr-auto text-center list-group'>
+            <ul class='navbar-nav mr-auto text-center list-group' style="overflow: hidden;">
                 <li>
                     <a href="?categoria=personagem&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
@@ -72,7 +104,7 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
         <li class="nav-item list-group-item">
             <i class="fa fa-globe col-md-2"></i>
             <span class="col-md-10">Localização</span>
-            <ul class="navbar-nav mr-auto text-center list-group">
+            <ul class="navbar-nav mr-auto text-center list-group" style="overflow: hidden;">
                 <li>
                     <a href="?categoria=localizacao&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
@@ -96,7 +128,7 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
         <li class="nav-item list-group-item">
             <i class="fa fa-comments-o col-md-2"></i>
             <span class="col-md-10">Cena</span>
-            <ul class="navbar-nav mr-auto text-center list-group">
+            <ul class="navbar-nav mr-auto text-center list-group" style="overflow: hidden;">
                 <li>
                     <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">

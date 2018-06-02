@@ -11,98 +11,79 @@
 	<meta name="apple-touch-fullscreen" content="yes" />
 	<meta name="description" content="Aplicativo web que permite ao usuário armazenar suas histórias de maneira estruturada" />
 	<meta name="author" content="Grupo 3 PI" />
-
 	<!-- Font Awesome -->
 	<link href="./font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 	<!-- bootstrap -->
-	<link href="./css/bootstrap.min.css" rel="stylesheet" />
+	<link href="./css/bootstrap4.min.css" type="text/css" rel="stylesheet" />
 	<!-- CSS Principal, com todos os estilos -->
-	<link href="./css/styles.css" type="text/css" rel="stylesheet" />	
-	<!--Nestable Lists-->
-	<link href="./plugins/form-nestable/jquery.nestable.css" type="text/css" rel="stylesheet" />
-	<!--ICheck-->
-	<link href="./plugins/icheck-1.x/skins/flat/_all.css" rel="stylesheet" />
-	<!--CSS para editarmos-->
-	<link href="./css/geral.css" rel="stylesheet" />
-	<link href="./css/bootstrap.css" rel="stylesheet" />
+	<!-- <link href="./css/bootstrap.css" rel="stylesheet" /> -->
     </head>
     <body class="focused-form" style="">
 
 
-	<div class="container" id="login-form">
+	<div class="container">
 	    <a href="?categoria=login&acao=logar" class="login-logo" style="margin: 0px;">
-		<img src="./imagens/logo/90logoNome.png" />
+	    <div class="text-center">
+		<img class="rounded mx-auto d-block" src="./imagens/logo/90logoNome.png" />
+    	</div>
 	    </a>
 	    <div class="row">
-		<div class="col-md-4 col-md-offset-4">
+		<div class="col-md-4 offset-md-4 offset-xs-1">
 		    <div class="panel panel-default">
 			<div class="panel-heading">
-			    <h2 style="height: auto;">Login Form</h2>
+			  <h2 style="height: auto;">Login</h2> <hr>
 			</div>
 			<div class="panel-body">
-
 			    <form action="?categoria=login&acao=check" method="POST" class="form-horizontal" id="validate-form">
 				<div class="form-group">
 				    <div class="col-xs-12">
 					<div class="input-group">
-					    <span class="input-group-addon">
-						<i class="fa fa-user"></i>
+					    <span class="input-group-text" >
+						<i class="fa fa-user" style="width:16px;height:16px;"></i>
 					    </span>
 					    <input name="email" type="text" class="form-control" placeholder="Endereço de E-mail" data-parsley-minlength="6" required="" />
 					</div>
 				    </div>
 				</div>
-
 				<div class="form-group">
 				    <div class="col-xs-12">
 					<div class="input-group">
-					    <span class="input-group-addon">
+					    <span class="input-group-text">
 						<i class="fa fa-key"></i>
 					    </span>
 					    <input name="senha" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" />
 					</div>
 				    </div>
 				</div>
-
-				<div class="form-group">
-				    <div class="col-xs-12">
-					<a href="esqueceuSenha.html" class="pull-left">Esqueceu sua Senha?</a>
-					<div class="checkbox-inline icheck pull-right pt0">
-                                            <input type="checkbox">
+				<div class="form-group">								
+					<div class="form-check mb-2 mr-sm-2 mb-sm-0">						
+						<a href="esqueceuSenha.html" class="float-right">Esqueceu sua Senha?</a>						
+                        <input  class="form-check-input" type="checkbox">
 						<label for="">
 						    Lembre-me
 						</label>
-					</div>
+					</div>				    
+				</div>
+				<hr>
+				<div class="panel panel-default">
+				    <div class="clearfix">				
+					<button type="button" class="btn btn-default float-left" data-toggle="modal" data-target="#registrar">
+					Registre-se</button>					
+					<button type="submit" class="btn btn-success float-right">Login</button>					
 				    </div>
 				</div>
-
-				<div class="panel-footer">
-				    <div class="clearfix">
-					<button type="button" class="btn btn-default pull-left" data-toggle="modal" data-target="#teste1">
-					Registrar</button>
-					
-					<button type="submit" class="btn btn-primary pull-right">Login</button>
-				    </div>
-				</div>
-
 			    </form>
-			</div>
-			
-		    </div>
-
-		    <div class="text-center">
-			<a href="#" class="btn btn-label btn-social btn-googleplus mb20"><i class="fa fa-fw fa-google"></i>Conecte-se com Google</a>
-			<a href="#" class="btn btn-label btn-social btn-facebook mb20"><i class="fa fa-fw fa-facebook"></i>Conecte-se com Facebook</a>
-		    </div>
+			</div>			
+		    </div>			
 		</div>
 	    </div>
 	</div>
 	
-	<div class="modal fade" id="teste1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-		<div class="modal-content">
+	<div class="modal fade" id="registrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document" >
+		<div class="modal-content" >
 		  <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+			<h5 class="modal-title" id="exampleModalLabel">Registre-se</h5>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			  <span aria-hidden="true">&times;</span>
 			</button>
@@ -110,27 +91,27 @@
 		  <div class="modal-body">
 			<form action="?categoria=login&acao=check" id="formLoko" class="form-horizontal">
 				<div class="form-group">
-				    <label for="txtNomeCompleto" class="col-xs-4 control-label">Nome</label>
-				    <div class="col-xs-8">
-					<input type="text" class="form-control" name="nm_usu" id="txtNomeCompleto" placeholder="Nome Completo" required="" autofocus />
+					<label for="txtNomeCompleto" class="col-sm-2 col-form-label">Nome</label>
+				    <div class="col-sm-12">
+					<input type="text" class="form-control" name="nm_usu" id="txtNomeCompleto" placeholder="Digite aqui seu nome" required="" maxlength="20" />
 				    </div>
 				</div>
 				<div class="form-group">
-				    <label for="txtEmail" class="col-xs-4 control-label">Email</label>
-				    <div class="col-xs-8">
-					<input type="text" class="form-control" name="mail_usu" id="txtEmail" placeholder="Email" required="" />
+				    <label for="txtEmail" class="col-sm-2 col-form-label">Email</label>
+				    <div class="col-sm-12">
+					<input type="email" class="form-control" name="mail_usu" id="txtEmail" placeholder="Digite aqui seu endereço de E-mail" required="" maxlength="100" />
 				    </div>
 				</div>
 				<div class="form-group">
-				    <label for="txtSenha" class="col-xs-4 control-label">Senha</label>
-				    <div class="col-xs-8">
-					<input type="password" class="form-control" name="snh_usu" id="txtSenha" placeholder="Senha" required="" />
+				    <label for="txtSenha" class="col-sm-2 col-form-label">Senha</label>
+				    <div class="col-sm-12">
+					<input type="password" class="form-control" name="snh_usu" id="txtSenha" placeholder="Digite aqui sua senha" required="" maxlength="100" />
 				    </div>
 				</div>
 				<div class="form-group">
-				    <label for="txtConfirmeSenha" class="col-xs-4 control-label">Confirme sua Senha</label>
-				    <div class="col-xs-8">
-					<input type="password" class="form-control" name="ConfirmeSenha" id="txtConfirmeSenha" placeholder="Confirme sua senha" required="" />
+				    <label for="txtConfirmeSenha" class="col-sm-5 col-form-label">Confirme a Senha</label>
+				    <div class="col-sm-12">
+					<input type="password" class="form-control" name="ConfirmeSenha" id="txtConfirmeSenha" placeholder="Confirme sua senha" required="" maxlength="100" />
 				    </div>
 				</div>
 				<div class="form-group">
@@ -140,13 +121,11 @@
 					    Li e aceito os <a href="#">termos de uso</a>
 					</label>
 				    </div>
-				</div>
-		
-		  </div>
-		  <div class="modal-footer">
-			<button type="submit" id="btnForm" class="btn btn-primary pull-right">Registrar</button>
-			</form>
-		  </div>
+				</div>				
+			  <div class="modal-footer">
+				<button type="submit" id="btnForm" class="btn btn-primary pull-right">Registrar</button>
+			  </div>
+		 </form>
 		</div>
 	  </div>
 	</div>
@@ -155,19 +134,12 @@
 	<!-- Load jQuery -->
 	<script src="./js/jquery-3.3.1.min.js"></script>
 	<script src="./js/login.js"></script>
-	<script src="./js/bootstrap.js"></script>
+	<script src="./js/bootstrap.js"></script> <!-- bootstrap V4 -->
 	<!--IChek-->
 	<script src="./plugins/icheck-1.x/icheck.js"></script>
 	<!--Javascript para editarmos-->
-	<script src="./js/marquee.js"></script>
 	<!--Verificar o que tem dentro (faz o toggle do menu lateral)-->
 	<script src="./js/application.js"></script>
-	<!--Text Scroll Plugin-->
-	<script src="./plugins/textScrollingMarquee/jquery.marquee.js"></script>
-	<!--TextArea autosize-->
-	<script src="./plugins/autosize-TextArea/dist/autosize.js"></script>
-	<!--IonRangeSlider-->
-	<script src="./plugins/Ion.RangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
 	<!-- End loading site level scripts -->
 	<!-- Load page level scripts-->
 	<!-- End loading page level scripts-->

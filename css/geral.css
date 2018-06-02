@@ -107,3 +107,14 @@ footer{
 a, .clicavel{
     cursor: pointer;
 }
+
+::-webkit-scrollbar
+{
+	width: 7px;
+	background: #162338;
+}
+::-webkit-scrollbar-thumb 
+{
+	background: #ff7b00;
+	border-radius: 8px;
+}
