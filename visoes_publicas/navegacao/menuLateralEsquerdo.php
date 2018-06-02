@@ -1,68 +1,50 @@
 <?php
 $historias = sessao()->getHistoriasData();
+$historiaSelecionada = sessao()->getHistoriaSelecionada();
 ?>
 
 <div class='container'>
     <ul class='navbar-nav mr-auto text-center list-group menu-esquerdo'>
         <li class='nav-item cabecalho-menu-lateral row'>
-	    <div class="row">
-		<div class='col-md-2'>
-		    <div class='historia-avatar' style=""></div>
-		</div>
-		<div class='col-md-10'>
-		    <span class='bem-vindo-texto'>Bem-vindo </span><br/>
-		    <select class='nome-historia' id='selecao-nome-historia' title='Clique aqui para escolher qual história deseja editar'>
-			<option value="">Suas Histórias</option>
-			<?php
-			foreach ($historias as $historia){
-			    $historia = (object) $historia;
-			    $nome = $historia->tit_hist;
-			    $selected = ($historia->pk_hist == $historiaSelecionada->pk_hist) ? "selected" : "";
+            <div class="row">
+                <div class='col-md-2'>
+                    <div class='historia-avatar' style=""></div>
+                </div>
+                <div class='col-md-10'>
+                    <span class='bem-vindo-texto'>Bem-vindo à</span><br/>
+                    <select class='nome-historia' id='selecao-nome-historia' title='Clique aqui para escolher qual história deseja editar'>
+                        <?php
+                        foreach ($historias as $historia) {
+                            $historia = (object) $historia;
+                            $nome = $historia->tit_hist;
+                            $selected = ($historia->pk_hist == $historiaSelecionada->pk_hist) ? "selected" : "";
 
-			    echo "<option value='$historia->pk_hist'"
-			    . "$selected>" . truncar($nome, 25, "...") . "</option>";
-			}
-			?>
-		    </select>
-		</div>
-	    </div>
+                            echo "<option value='$historia->pk_hist'"
+                            . "$selected>" . truncar($nome, 25, "...") . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <li class="item-sem-filhos">
+            <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
+                <i class='fa fa-tasks col-md-2'></i>
+                <span class='col-md-10'>Listar Histórias</span>
+            </a>
         </li>
 
         <li class='nav-item separador-menu-lateral'>
             <strong><span>Explore suas Categorias!</span></strong>
         </li>
 
-        <li class='nav-item list-group-item'>
-            <i class='fa fa-book col-md-2'></i>
-            <span class='col-md-10'>História</span>
-            <ul class='navbar-nav mr-auto text-center list-group'>
-		<li>
-                    <a href="?categoria=historia&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Criar</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Listagem</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="nav-item list-group-item lista-clicavel">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Configurações</div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+        <li class="item-sem-filhos">
+            <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
+                <i class='fa fa-book col-md-2'></i>
+                <span class='col-md-10'>História</span>
+            </a>
         </li>
-        
+
         <li class='nav-item list-group-item'>
             <i class='fa fa-users col-md-2'></i>
             <span class='col-md-10'>Personagem</span>
@@ -134,7 +116,7 @@ $historias = sessao()->getHistoriasData();
                 </li>
             </ul>
         </li>
-        
+
         <li class="nav-item list-group-item">
             <i class="fa fa-archive col-md-2"></i>
             <span class="col-md-10">SubCategorias</span>

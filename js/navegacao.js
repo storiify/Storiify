@@ -36,5 +36,5 @@ $("#scroll-top").click(function () {
 
 //Muda a história selecionada
 $('#selecao-nome-historia').on('change', function () {
-    alert(this.value);
+    document.location = "?categoria=historia&acao=listarCategorias&id=" + this.value;
 });
