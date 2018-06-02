@@ -17,11 +17,11 @@ $resultados = $controlador->getResultados();
     
     <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
-        <a href='?categoria=<?php echo $categoria ?>&acao=cadastrar' 
-           title='Clique para criar uma nova <?php echo nomeFormal($categoria) ?>'
+        <a href='?categoria=<?= $categoria ?>&acao=cadastrar' 
+           title='Clique para criar uma nova <?= nomeFormal($categoria) ?>'
            class='btn btn-azul criar-nova-instancia'>
             <i class="fa fa-plus"></i>
-            &nbsp&nbspCriar nova <?php echo nomeFormal($categoria) ?>
+            &nbsp&nbspCriar nova <?= nomeFormal($categoria) ?>
         </a>
     </div>
 

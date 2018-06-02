@@ -1,6 +1,6 @@
 <?php
 
-class ModeloHistoria extends ConexaoBd{
+class Modeloraca extends ConexaoBd{
     
     private $tabela;
     private $campos = 'pk_raca,fk_hist,nm_raca, dcr_raca, pvmt_raca, rptc_raca';
@@ -30,12 +30,12 @@ class ModeloHistoria extends ConexaoBd{
 	
 	$modeloBase = new ConexaoBd();
 	
-	$idusuario = sessao()->getUserData()->id;
-	$condicao = "WHERE fk_usu='$idusuario'";
+	$idHistoriaSelecionada = sessao()->getHistoriaSelecionada()->pk_hist;
+	$condicao = "WHERE fk_hist='$idHistoriaSelecionada'";
 	
-	if(isset($parametros['id']) && array_key_exists("id", $parametros)){
-	    $id = $parametros['id'];
-	    $condicao.=" AND pk_hist='$id'";
+	if(isset($parametros['pk_raca']) && array_key_exists("pk_raca", $parametros)){
+	    $id = $parametros['pk_raca'];
+	    $condicao.=" AND pk_raca='$id'";
 	}
 	
 	$res = $modeloBase->listarBase($this->campos, $this->tabela, $condicao);

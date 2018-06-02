@@ -58,8 +58,8 @@ function truncar($stringEntrada, $tamanhoMaximo, $dots = "...") {
 }
 
 function uploadImagem($idUsuario, $nmCategoria, $idInstancia, $file) {
-    if($file["size"]==0){
-	return null;
+    if ($file["size"] == 0) {
+        return null;
     }
     $nomeSaida = "im_ppl";
     $diretorioAlvo = "usuarios/$idUsuario/$nmCategoria/$idInstancia/";
@@ -97,7 +97,7 @@ function uploadImagem($idUsuario, $nmCategoria, $idInstancia, $file) {
     if ($uploadOk == 0) {
         //echo "Sorry, your file was not uploaded.";
         return NULL;
-    // if everything is ok, try to upload file
+        // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($file["tmp_name"], $target_file)) {
             //echo "The file " . basename($file["name"]) . " has been uploaded.";
@@ -134,20 +134,21 @@ function parseCheckbox($valor) {
     return $opcoesRetorno;
 }
 
-
-function nomeFormal($nome, $plural = "singular"){
-    if($plural == "plural"){
-        return ($nome == "historia"?
-                "Histórias":($nome == "mundo"?
-                "Mundos" : ($nome=="localizacao"?
-                "Localizações" : ($nome == "cena"?
-                "Cenas" : ($nome == "personagem"?
-                "Personagens" : "Categoria não encontrada")))));
+function nomeFormal($nome, $plural = "singular") {
+    if ($plural == "plural") {
+        return ($nome == "historia" ? "Histórias" :
+                ($nome == "mundo" ? "Mundos" :
+                ($nome == "localizacao" ? "Localizações" :
+                ($nome == "cena" ? "Cenas" :
+                ($nome == "personagem" ? "Personagens" :
+                ($nome == "raca" ? "Raças" :
+                "Categoria não encontrada"))))));
     }
-    return ($nome == "historia"?
-                "História":($nome == "mundo"?
-                "Mundo" : ($nome=="localizacao"?
-                "Localização" : ($nome == "cena"?
-                "Cena" : ($nome == "personagem"?
-                "Personagem" : "Categoria não encontrada")))));
+    return ($nome == "historia" ? "História" : 
+            ($nome == "mundo" ? "Mundo" : 
+            ($nome == "localizacao" ? "Localização" : 
+            ($nome == "cena" ? "Cena" : 
+            ($nome == "personagem" ?  "Personagem" :
+            ($nome == "raca" ?  "Raça" : 
+            "Categoria não encontrada"))))));
 }

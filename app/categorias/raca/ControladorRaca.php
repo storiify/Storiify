@@ -1,6 +1,6 @@
 <?php
 
-class ControladorRaca extends Controlador {
+class ControladorRaca extends Controlador  implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
