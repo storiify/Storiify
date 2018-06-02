@@ -1,7 +1,11 @@
+<?php
+$historiaSelecionada = (array)sessao()->getHistoriaSelecionada();
+?>
 <nav class="navbar navbar-expand-lg">
 
     <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
-        <button type="button" class="btn btn-azul menu-esquerdo-toggle">
+        <button type="button" class="btn btn-azul menu-esquerdo-toggle"
+                <?= empty($historiaSelecionada)? "disabled" : ""?>>
             <i class="fa fa-reorder"></i>
         </button>
     </div>
