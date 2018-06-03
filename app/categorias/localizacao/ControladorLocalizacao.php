@@ -10,7 +10,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
 
     public function cadastrar($parametros) {
         //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
-        $this->setVisao('CadastrarLocalizacao');
+        $this->setVisao('FormLocalizacao');
+        $this->setTituloPagina("Cadastrar ".nomeFormal($this->getCategoria(), "singular"));
     }
 
     public function listar($parametros) {
@@ -19,6 +20,10 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         $res = $modelo->listar($parametros);
 
         $this->setVisao('ListarLocalizacao');
+        $nomeHistoria = sessao()->getHistoriaSelecionada()->tit_hist;
+        $titulo = nomeFormal($this->getCategoria(),"plural") . (empty($nomeHistoria)? "" : " de ".$nomeHistoria);
+        $this->setTituloPagina($titulo);
+        
         $this->setResultados($res);
     }
 
@@ -29,7 +34,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
 
         if ($res[0] != false) {
             $this->setResultados($res[0]);
-            $this->setVisao('CadastrarLocalizacao');
+            $this->setVisao('FormLocalizacao');
+            $this->setTituloPagina($res[0]["nm_lczc"]);
         } else {
             redirecionar("?categoria=localizacao&acao=listar");
         }

@@ -86,7 +86,7 @@ if (empty((array) $resultado)) {
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= nomeFormal($categoria)?></h1>
+        <h1><?= (empty($nm_lczc)? nomeFormal($categoria) : truncar("$nm_lczc", 30))?></h1>
     </div>
 </div>
 

@@ -1,9 +1,7 @@
-<?php 
-
+<?php
 $resultado = $controlador->getResultados();
 
-if(empty((array)$resultado)){
-    $nome = "História";
+if (empty((array) $resultado)) {
     // PK
     $pk_hist = '';
     // Aba 1
@@ -24,15 +22,14 @@ if(empty((array)$resultado)){
     $dcr_em_uma_sntn = '';
     $snp_hist = '';
     $rsm_hist = '';
-}else{
-    $historia = (array)$resultado;
-    foreach ($historia as $key => $value) {
-	$$key = $value;
+} else {
+    $raca = (array) $resultado;
+    foreach ($raca as $key => $value) {
+        $$key = $value;
     }
-    $nome = (isset($tit_hist)? substr($tit_hist, 0,25).'...':"História sem nome!");
     $vsi_hist = parseCheckbox($vsi_hist);
 }
-
+$nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
 ?>
 
 <div class="pular-menu">
@@ -78,16 +75,16 @@ if(empty((array)$resultado)){
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                
+
                                 <div class="input-imagem" title="Campo para Imagem da história" id="input-im-ImagemdaHistoria"
                                      style="background-image:url(<?php echo $im_hist; ?>)"></div>
-                                
+
                                 <input value="" accept="image/*" type='file' class="imgUploader" name="im_hist"/>
-                                
+
                                 <a class="input-imagem-reset" title="Clique para resetar a Imagem da História" alt="Clique para resetar a Imagem da História">
                                     <i class="fa fa-ban"></i>
                                 </a>
-                                
+
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
@@ -120,7 +117,7 @@ if(empty((array)$resultado)){
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="tit_hist" value="<?php echo $tit_hist?>" 
+                                <input name="tit_hist" value="<?php echo $tit_hist ?>" 
                                        placeholder="Digite aqui o Título da História"
                                        title="Campo para Título da História"
                                        maxlength="60" type="text"
@@ -277,7 +274,7 @@ if(empty((array)$resultado)){
                         <!--FINAL - INPUT CORPO-->
                     </div>
                 </div>
-		<!--FINAL - INPUT TEXTOAREA-->
+                <!--FINAL - INPUT TEXTOAREA-->
                 <!--VISIBILIDADE DA HISTÓRIA - INPUT CHECKBOX-->
                 <div class="form-group">
                     <div class="row">
@@ -296,27 +293,27 @@ if(empty((array)$resultado)){
                             <div class="input-checkbox" id="input-ckbx-Visibilidade">
                                 <div class="form-check-inline ckbox-mestre">
                                     <input title="Seleciona todas as opções"
-					   <?php echo(count($vsi_hist)==3? "checked": "") ?>
+<?php echo(count($vsi_hist) == 3 ? "checked" : "") ?>
                                            type="checkbox" id ="ckbx-Visibilidade-mestre"/>
                                     <label for="ckbx-Visibilidade-mestre">Todos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="vsi_hist[]" value="1" 
-                                           <?php echo(in_array(1, $vsi_hist)? "checked": "") ?>
+<?php echo(in_array(1, $vsi_hist) ? "checked" : "") ?>
                                            title="Permite que sua equipe possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt1"/>
                                     <label for="ckbx-Visibilidade-opt1">Equipe</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="vsi_hist[]" value="2"
-                                           <?php echo(in_array(2, $vsi_hist)? "checked": "") ?>
+<?php echo(in_array(2, $vsi_hist) ? "checked" : "") ?>
                                            title="Permite que todos os seus amigos possam visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt2"/>
                                     <label for="ckbx-Visibilidade-opt2">Amigos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="vsi_hist[]" value="4"
-                                           <?php echo(in_array(4, $vsi_hist)? "checked": "") ?>
+<?php echo(in_array(4, $vsi_hist) ? "checked" : "") ?>
                                            title="Permite que o público possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt3"/>
                                     <label for="ckbx-Visibilidade-opt3">Público</label>

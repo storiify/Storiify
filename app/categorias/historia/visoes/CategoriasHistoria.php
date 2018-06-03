@@ -1,11 +1,11 @@
 <?php
 $resultado = $controlador->getResultados();
-$historia = (array) $resultado;
+$raca = (array) $resultado;
 
-foreach ($historia[0] as $key => $value) {
+foreach ($raca[0] as $key => $value) {
     $$key = $value;
 }
-$nome = (isset($tit_hist) ? substr($tit_hist, 0, 25) . '...' : "História sem nome!");
+$nome = truncar($tit_hist, 30);
 ?>
 
 <div class="pular-menu">
@@ -14,7 +14,7 @@ $nome = (isset($tit_hist) ? substr($tit_hist, 0, 25) . '...' : "História sem no
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?php echo $nome ?></h1>
+        <h1><?= $nome ?></h1>
     </div>    
 </div>
 
