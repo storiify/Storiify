@@ -72,13 +72,13 @@ $resultados = $controlador->getResultados();
         . "            <i class='fa fa-times'></i>"
         . "        </button>"
         . "        <a href='?categoria=$categoria&acao=excluir&parametros=$modelo->pk_psna' class='deletar-instancia-escondido'></a>"
-        . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar $nome'>"
+        . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar'>"
         . "            <i class='fa fa-minus'></i>"
         . "        </button>"
-        . "        <button class='btn btn-azul btn-pdf-instancia' "
+        . "        <!--button class='btn btn-azul btn-pdf-instancia' "
         . "title='" . ($nome == "" ? " Clique para gerar PDF" : "Clique para gerar PDF de " . $nome) . " '>"
         . "            <i class='fa fa-file-pdf-o'></i>"
-        . "        </button>"
+        . "        </button-->"
         . "    </div>"
         . "</div>";
     }

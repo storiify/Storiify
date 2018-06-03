@@ -9,7 +9,7 @@ $resultados = $controlador->getResultados();
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><? nomeFormal($categoria, "plural") ?></h1>
+        <h1><?= nomeFormal($categoria, "plural") ?></h1>
     </div>    
 </div>
 
@@ -55,14 +55,14 @@ $resultados = $controlador->getResultados();
             . "            <i class='fa fa-times'></i>"
             . "        </button>"
             . "        <a href='?categoria=$categoria&acao=excluir&parametros=$modelo->pk_raca' class='deletar-instancia-escondido'></a>"
-            . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar $nome'>"
+            . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar'>"
             . "            <i class='fa fa-minus'></i>"
             . "        </button>"
-            . "        <button class='btn btn-azul btn-pdf-instancia' "
+            . "        <!--button class='btn btn-azul btn-pdf-instancia' "
             . "title='" . ($nome == "" ? " Clique para gerar PDF" : "Clique para gerar PDF de " . $nome) . " '>"
             . "            <i class='fa fa-file-pdf-o'></i>"
             . "        </button>"
-            . "        <!--button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
+            . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
             . "            <i class='fa fa-warning'></i>"
             . "        </button>"
             . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
