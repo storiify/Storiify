@@ -39,11 +39,11 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
 		$modeloPnsa = new ModeloPersonagem();
 		$resPsna = $modeloPnsa->listar('*');
 		$modeloLczc = new ModeloLocalizacao();
-		$resLczc = $modeloLczc->listar('*');
+		$resLczcRelPsna = $modeloPnsa->listarRelPsna($parametros);
 		$res1 = array(
 		"editar" => $res [0],
 		"psna" => $resPsna,
-		"lczc" => $resLczc);
+		"relLczc" => $resLczcRelPsna);
 	    $this->setResultados($res1);
 	    $this->setVisao('CadastrarPersonagem');
 	}else{
