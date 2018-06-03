@@ -267,7 +267,7 @@ if (empty((array) $resultado)) {
                     </div>
                 </div>
                 <!--FINAL - INPUT TEXTOAREA-->
-                <!--INPUT TEXTOSELECT-->
+                <!--INPUT TEXTOSELECT SINGLE-->
                 <div class="form-group">
                     <div class="row">
                         <!--INPUT CONTROLE-->

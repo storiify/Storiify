@@ -153,6 +153,9 @@ textarea, input[type="text"]{
     font-weight: bold;
     margin-right: 10px !important;
 }
+.select2-selection--single{
+    padding: 0 !important;
+}
 /*FINAL - INPUT TEXTOSELECT*/
 /*INPUT CHECKBOX*/
 .form-check-inline>label{
