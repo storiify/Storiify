@@ -1,7 +1,3 @@
-//Cuida do menu lateral esquerdo - (antigog)
-//$(".menu-esquerdo-toggle").click(function () {
-//    $(".menu-esquerdo").toggle();
-//});
 
 //chama o menu e esconde ele quando clica em outro lugar que não seja ele mesmo
 $(document).ready(function(){
