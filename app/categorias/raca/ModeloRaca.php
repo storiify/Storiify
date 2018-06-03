@@ -11,16 +11,20 @@ class Modeloraca extends ConexaoBd{
     }
     
     public function salvar($parametros) {
-	
 	$modeloBase = new ConexaoBd();
-	
 	$res = false;	
 	
-	if(isset($parametros['pk_raca']) && $parametros['pk_raca']!=''){
-	    $condicao=" pk_raca='{$parametros['pk_raca']}'";
+        //Tirar
+        $parametros['pvmt_raca'] = 1;
+        $parametros['rptc_raca'] = 2;
+        
+	if(isset($parametros['pk_raca']) && $parametros['pk_raca']!=''){ //Ao editar
+	    $condicao = " pk_raca='{$parametros['pk_raca']}'";
 	    $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
-	}else{
+	}else{ //Ao criar
 	    unset($parametros['pk_raca']);
+            $historiaSelecionada = sessao()->getHistoriaSelecionada()->pk_hist;
+            $parametros['fk_hist'] = $historiaSelecionada;
 	    $res = $modeloBase->inserirBase($parametros, $this->tabela);
 	}
 	return $res;
