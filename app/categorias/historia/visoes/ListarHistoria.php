@@ -68,7 +68,7 @@ $resultados = $controlador->getResultados();
         . "            <i class='fa fa-times'></i>"
         . "        </button>"
         . "        <a href='?categoria=$categoria&acao=excluir&parametros=$modelo->pk_hist' class='deletar-instancia-escondido'></a>"
-        . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar $nome'>"
+        . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar'>"
         . "            <i class='fa fa-minus'></i>"
         . "        </button>"
         . "        <!--button class='btn btn-azul btn-pdf-instancia'"

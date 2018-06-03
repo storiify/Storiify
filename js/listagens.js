@@ -9,10 +9,11 @@ $(".btn-deletar-instancia").on("click", function () {
 $(".instancia-corpo").on("click", function () {
     document.location = $(this).siblings().attr("href");
 });
-
+//Minimizar
 $(".btn-minimizar-instancia").on("click", function () {
     if ($(this).children().hasClass("fa-minus")) {
         $(this).children().attr("class", "fa fa-plus");
+        $(this).prop("title","Clique para maximizar");
         $(this)
                 .parent()
                 .siblings(".instancia-corpo")
@@ -25,6 +26,7 @@ $(".btn-minimizar-instancia").on("click", function () {
     }
     else{
         $(this).children().attr("class", "fa fa-minus");
+        $(this).prop("title","Clique para minimizar");
         $(this)
                 .parent()
                 .siblings(".instancia-corpo")
