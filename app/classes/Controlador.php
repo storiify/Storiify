@@ -17,14 +17,14 @@ class Controlador {
     private $sessao;
     private $dicas;
     private $userData;
-    private $historiaData;
-
+    private $tituloPagina;
 
     public function __construct() {
         //Em Breve chamar sessão aqui
         $this->sessao = new Sessao();
 	$this->resultados = array();
         $this->dicas = "As dicas ficarão rodando aqui!";
+        $this->tituloPagina = "Torne suas Histórias reais!";
     }
     
     public function exe($categoria, $acao, $parametros) {
@@ -190,5 +190,11 @@ class Controlador {
         return $res;
     }
 
+    public function setTituloPagina($titulo){
+        $this->tituloPagina = $titulo;
+    }
+    public function getTituloPagina(){
+        return $this->tituloPagina;
+    }
 }
 

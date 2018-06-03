@@ -10,6 +10,7 @@ class ControladorRaca extends Controlador  implements InterfaceControlador {
 
     public function cadastrar($parametros) {
         $this->setVisao('FormRaca');
+        $this->setTituloPagina("Cadastrar ".nomeFormal($this->getCategoria(), "singular"));
     }
 
     public function listar($parametros) {
@@ -18,6 +19,10 @@ class ControladorRaca extends Controlador  implements InterfaceControlador {
         $res = $modelo->listar($parametros);
 
         $this->setVisao('ListarRaca');
+        $nomeHistoria = sessao()->getHistoriaSelecionada()->tit_hist;
+        $titulo = nomeFormal($this->getCategoria(),"plural") . (empty($nomeHistoria)? "" : " de ".$nomeHistoria);
+        $this->setTituloPagina($titulo);
+        
         $this->setResultados($res);
     }
 
@@ -28,6 +33,7 @@ class ControladorRaca extends Controlador  implements InterfaceControlador {
         if ($res[0] != false) {
             $this->setResultados($res[0]);
             $this->setVisao('FormRaca');
+            $this->setTituloPagina($res[0]["nm_raca"]);
         } else {
             redirecionar("?categoria=raca&acao=listar");
         }
