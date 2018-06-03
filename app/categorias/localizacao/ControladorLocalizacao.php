@@ -11,7 +11,16 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
     public function cadastrar($parametros) {
         //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
         $this->setVisao('FormLocalizacao');
-        $this->setTituloPagina("Cadastrar ".nomeFormal($this->getCategoria(), "singular"));
+        $this->setTituloPagina("Cadastrar " . nomeFormal($this->getCategoria()));
+
+        $modeloPnsa = new ModeloPersonagem();
+        $resPsna = $modeloPnsa->listar("");
+        $modeloLczc = new ModeloLocalizacao();
+        $resLczc = $modeloLczc->listar("");
+        $res = array(
+            "psna" => $resPsna,
+            "lczc" => $resLczc);
+        $this->setResultadosSelect($res);
     }
 
     public function listar($parametros) {
@@ -21,9 +30,9 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
 
         $this->setVisao('ListarLocalizacao');
         $nomeHistoria = sessao()->getHistoriaSelecionada()->tit_hist;
-        $titulo = nomeFormal($this->getCategoria(),"plural") . (empty($nomeHistoria)? "" : " de ".$nomeHistoria);
+        $titulo = nomeFormal($this->getCategoria(), "plural") . (empty($nomeHistoria) ? "" : " de " . $nomeHistoria);
         $this->setTituloPagina($titulo);
-        
+
         $this->setResultados($res);
     }
 
@@ -36,6 +45,19 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $this->setResultados($res[0]);
             $this->setVisao('FormLocalizacao');
             $this->setTituloPagina($res[0]["nm_lczc"]);
+            
+            //Lista todos os personagens e localizações
+            $modeloPnsa = new ModeloPersonagem();
+            $resPsna = $modeloPnsa->listar("");
+            $modeloLczc = new ModeloLocalizacao();
+            $resLczc = $modeloLczc->listar("");
+            //Get personagens registrados como mais conhecidos
+            $idsPsnaCnhd = $modeloLczc->listarPsnaCnhd($res[0]["pk_lczc"]);
+            $res = array(
+                "psna" => $resPsna,
+                "lczc" => $resLczc,
+                "idsPsnaLczc" => $idsPsnaCnhd);
+            $this->setResultadosSelect($res);
         } else {
             redirecionar("?categoria=localizacao&acao=listar");
         }
@@ -50,10 +72,10 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $idLocalizacao = $modelo->proximoID();
             $parametros['im_lczc'] = uploadImagem($idUsuario, "localizacao", $idLocalizacao, $_FILES['im_lczc']);
         }
-        
+
         $parametros['fk_hist'] = $idHistoria;
         $res = $modelo->salvar($parametros);
-
+        
         if ($res) {
             redirecionar("?categoria=localizacao&acao=listar");
         } else {

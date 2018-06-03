@@ -47,8 +47,8 @@ class ModeloPersonagem extends ConexaoBd{
     public function listar($parametros) {
 	
 	$modeloBase = new ConexaoBd();
-	$idusuario = sessao()->getUserData()->id;
-	$condicao = "WHERE fk_usu='$idusuario'";
+	$idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+	$condicao = "WHERE fk_hist='$idHistoria'";
 	
 	if(isset($parametros['parametros']) && array_key_exists("parametros", $parametros)){
 	    $id = $parametros['parametros'];

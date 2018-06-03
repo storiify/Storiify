@@ -1,6 +1,8 @@
 <?php
-$resultado = $controlador->getResultados();
+$historiaSelecionada = sessao()->getHistoriaSelecionada();
+$resultadoSelect = $controlador->getResultadosSelect();
 
+$resultado = $controlador->getResultados();
 if (empty((array) $resultado)) {
     $pk_lczc = '';
     $fk_hist = '';
@@ -86,7 +88,7 @@ if (empty((array) $resultado)) {
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= (empty($nm_lczc)? nomeFormal($categoria) : truncar("$nm_lczc", 30))?></h1>
+        <h1><?= (empty($nm_lczc) ? nomeFormal($categoria) : truncar("$nm_lczc", 30)) ?></h1>
     </div>
 </div>
 
@@ -130,9 +132,9 @@ if (empty((array) $resultado)) {
                             <div class="col-md-12 input-conteudo">
 
                                 <div class="input-imagem" title="Campo para Imagem da Localização" id="input-im-ImagemdaLocalizacao"
-                                     style="background-image:url(<?php echo $im_lczc; ?>)"></div>
+                                     style="background-image:url(<?= $im_lczc; ?>)"></div>
 
-                                <input value="<?php echo $im_lczc; ?>" 
+                                <input value="<?= $im_lczc; ?>" 
                                        accept='.png,.jpg' type='file' class="imgUploader" name="im_lczc"/>
 
                                 <a class="input-imagem-reset" title="Clique para resetar a Imagem da Localização" alt="Clique para resetar a Imagem da Localização">
@@ -144,7 +146,7 @@ if (empty((array) $resultado)) {
                                     <div class="detalhes-conteudo">
                                         <textarea name="im_lczc_dets" 
                                                   placeholder="Digite aqui os Detalhes da Imagem" 
-                                                  title="Campo para Detalhes da Imagem"><?php echo $im_lczc_dets; ?></textarea>
+                                                  title="Campo para Detalhes da Imagem"><?= $im_lczc_dets; ?></textarea>
                                     </div>
                                 </div>
 
@@ -228,12 +230,22 @@ if (empty((array) $resultado)) {
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-Personagensmaisconhecidos">
-                                    <option selected="selected">Mafaldo</option>
-                                    <option>Heleno</option>
-                                    <option>Chagas</option>
-                                    <option>Merlinda Bob</option>
-                                    <option selected="selected">Curcumela</option>
+                                <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                        name="fk_psna_cnhd[]" id="input-txselr-Personagensmaisconhecidos">
+                                            <?php
+                                            foreach ($resultadoSelect->psna as $personagemSelect) {
+                                                $id = $personagemSelect["pk_psna"];
+                                                $nome = $personagemSelect["nm_psna"];
+                                                $isSelected = "";
+                                                foreach ($resultadoSelect->idsPsnaLczc as $idPsnaCadastrado) {
+                                                    if ($id == $idPsnaCadastrado["fk_psna"]) {
+                                                        $isSelected = "selected";
+                                                        break;
+                                                    }
+                                                }
+                                                echo "<option value='$id' $isSelected>$nome</option>";
+                                            }
+                                            ?>
                                 </select>
                             </div>
                             <!--NÃO TEM DETALHES-->
@@ -283,11 +295,20 @@ if (empty((array) $resultado)) {
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <select class="form-control select2 input-textoselect" id="input-txselr-PrincipalLocalidade">
-                                    <option selected="selected">Ceilândia</option>
-                                    <option>Sobradinho</option>
-                                    <option>Cidade Ocidental</option>
-                                    <option>Planaltina</option>
+                                <select class="form-control select2 input-textoselect" 
+                                        name="fk_ppl_lcld" id="input-txselr-PrincipalLocalidade">
+                                    <option value="0" selected>-- Localidades de <?= $historiaSelecionada->tit_hist ?> --</option>
+                                    <?php
+                                    foreach ($resultadoSelect->lczc as $localizacaoSelect) {
+                                        $id = $localizacaoSelect["pk_lczc"];
+                                        $nome = $localizacaoSelect["nm_lczc"];
+                                        $isSelected = ($fk_ppl_lcld == $id ? "selected" : "");
+
+                                        if ($id != $pk_lczc) {
+                                            echo "<option value='$id' $isSelected>$nome</option>";
+                                        }
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <!--NÃO TEM DETALHES-->
