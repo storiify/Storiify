@@ -23,6 +23,20 @@ class ModeloPersonagem extends ConexaoBd{
 	$res = false;
 	
 	if(isset($parametros['pk_psna']) && $parametros['pk_psna']!=''){
+		if(isset ($parametros['lclz_natl'])){
+	
+			$tblczc = "tb_localizacao_rel_personagem";
+			$idpsna2 = $parametros['pk_psna'];
+			$condicao2 = "fk_psna = '$idpsna2'";
+			$res = $modeloBase->excluirBase($tblczc, $condicao2);
+			
+			foreach ($parametros['lclz_natl'] as $value) {			
+			$rel['fk_psna'] = $parametros['pk_psna'];
+			$rel['fk_lczc'] = $value;
+			$res = $modeloBase->inserirBase($rel, $tblczc);
+			}
+		}
+		unset($parametros['lclz_natl']);
 		$condicao=" pk_psna='{$parametros['pk_psna']}'";
 	    $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
 	}else{		
@@ -56,6 +70,26 @@ class ModeloPersonagem extends ConexaoBd{
 	}	
 	
 	$res = $modeloBase->listarBase($this->campos, $this->tabela, $condicao);
+	
+	
+	if(!isset($res) or $res==null){
+	    return array();
+	}
+		
+	return $res;
+	
+    }
+	
+	public function listarRelPsna($parametros) {
+	
+	$modeloBase = new ConexaoBd();
+	$id = $parametros['parametros'];
+	$idusuario = sessao()->getUserData()->id;
+	$condicao =" INNER JOIN tb_localizacao WHERE fk_psna = $id";
+	
+	$tabRelPsna = "tb_localizacao_rel_personagem";
+	
+	$res = $modeloBase->listarBase($this->campos, $tabRelPsna, $condicao);
 	
 	
 	if(!isset($res) or $res==null){
