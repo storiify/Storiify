@@ -504,16 +504,16 @@ if (empty((array) $resultado)) {
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="dt_fdc_decb" value="<?php echo $dt_fdc_decb; ?>" type="text" class="form-control" 
+                                <input name="dt_fdc_decb" value="<?= $dt_fdc_decb ?>" type="text" class="form-control" 
                                        placeholder="Digite aqui a Data de Fundação/Descobrimento" id="input-tx-DatadeFundacaoDescobrimento"/>
                             </div>
 
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
-                                    <textarea name="nm_lczc_dets" 
+                                    <textarea name="dt_fdc_decb_dets" 
                                               placeholder="Digite aqui os detalhes da Data de Fundação/Descobrimento" 
-                                              title="Campo para Data de Fundação/Descobrimento"><?php echo $dt_fdc_decb_dets; ?></textarea>
+                                              title="Campo para Data de Fundação/Descobrimento"><?= $dt_fdc_decb_dets ?></textarea>
                                 </div>
                             </div>
 
