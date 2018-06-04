@@ -67,7 +67,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         $res = $modelo->salvar($parametros);
 
         if ($res != false) {
-            redirecionar("?categoria=historia&acao=listar");
+            redirecionar("?categoria=historia&acao=listarCategorias");
         } else {
             redirecionar("?categoria=historia&acao=cadastrar");
         }
