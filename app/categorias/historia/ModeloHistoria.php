@@ -76,4 +76,32 @@ class ModeloHistoria extends ConexaoBd{
 	$modeloBase = new ConexaoBd();
 	return $modeloBase->getNextID($this->tabela);
     }
+    
+    public static function getQtdPsna($parametros){
+        $modeloBase = new ConexaoBd();
+        
+        $tbPsna = "tb_personagem";
+        $colunas = "COUNT(pk_psna)";
+        $where = "WHERE fk_hist = ".$parametros;
+        
+        return $modeloBase->listarBase($colunas, $tbPsna, $where)[0][0];
+    }
+    public static function getQtdLczc($parametros){
+        $modeloBase = new ConexaoBd();
+        
+        $tbLczc = "tb_localizacao";
+        $colunas = "COUNT(pk_lczc)";
+        $where = "WHERE fk_hist = ".$parametros;
+        
+        return $modeloBase->listarBase($colunas, $tbLczc, $where)[0][0];
+    }
+    public static function getQtdCena($parametros){
+        $modeloBase = new ConexaoBd();
+        
+        $tbCena = "tb_cena";
+        $colunas = "COUNT(pk_cena)";
+        $where = "WHERE fk_hist = ".$parametros;
+        
+        return $modeloBase->listarBase($colunas, $tbCena, $where)[0][0];
+    }
 }

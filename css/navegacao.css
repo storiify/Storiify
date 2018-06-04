@@ -241,4 +241,10 @@
     line-height: 40px;
     text-align: center;
 }
+
+.insignia-container{
+    position:absolute;
+    top:.5rem;
+    right: 1.5rem;
+}
 /*FINAL - MENU LATERAL ESQUERDO*/

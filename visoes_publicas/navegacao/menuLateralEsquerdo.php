@@ -1,6 +1,13 @@
 <?php
 $historias = sessao()->getHistoriasData();
 $historiaSelecionada = sessao()->getHistoriaSelecionada();
+
+if (property_exists($historiaSelecionada, "pk_hist")) {
+    $qtdHist = count((array)$historias);
+    $qtdPsna = ModeloHistoria::getQtdPsna($historiaSelecionada->pk_hist);
+    $qtdLczc = ModeloHistoria::getQtdLczc($historiaSelecionada->pk_hist);
+    $qtdCena = ModeloHistoria::getQtdCena($historiaSelecionada->pk_hist);
+}
 ?>
 
 <div class='container'>
@@ -31,6 +38,9 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
             <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
                 <i class='fa fa-tasks col-md-2'></i>
                 <span class='col-md-10'>Listar Histórias</span>
+                <div class="insignia-container">
+                    <span class="insignia"><?= ($qtdHist > 9) ? $qtdHist : "&nbsp;$qtdHist&nbsp;" ?></span>
+                </div> 
             </a>
         </li>
 
@@ -44,9 +54,12 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
                 <span class='col-md-10'>História</span>
             </a>
 
-        <li class='nav-item list-group-item'>
+        <li class='nav-item list-group-item row'>
             <i class='fa fa-users col-md-2'></i>
-            <span class='col-md-10'>Personagem</span>
+            <span class='col-md-2'>Personagem</span>
+            <div class="insignia-container">
+                <span class="insignia"><?= ($qtdPsna > 9) ? $qtdPsna : "&nbsp;$qtdPsna&nbsp;" ?></span>
+            </div>  
             <ul class='navbar-nav mr-auto text-center list-group' style="overflow: hidden;">
                 <li>
                     <a href="?categoria=personagem&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
@@ -61,7 +74,6 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Listar Personagens</div>
-                            <div class="col-md-1"><span class="insignia">&nbsp;11&nbsp;</span></div>                        
                         </div>
                     </a>
                 </li>
@@ -71,6 +83,9 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
         <li class="nav-item list-group-item">
             <i class="fa fa-globe col-md-2"></i>
             <span class="col-md-10">Localização</span>
+            <div class="insignia-container">
+                <span class="insignia"><?= ($qtdLczc > 9) ? $qtdLczc : "&nbsp;$qtdLczc&nbsp;" ?></span>
+            </div>   
             <ul class="navbar-nav mr-auto text-center list-group" style="overflow: hidden;">
                 <li>
                     <a href="?categoria=localizacao&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
@@ -84,8 +99,7 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
                     <a href="?categoria=localizacao&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Listar Localizações</div>
-                            <div class="col-md-1"><span class="insignia">&nbsp;08&nbsp;</span></div>                        
+                            <div class="col-md-8 acao-categoria">Listar Localizações</div>             
                         </div>
                     </a>
                 </li>
@@ -95,6 +109,9 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
         <li class="nav-item list-group-item">
             <i class="fa fa-comments-o col-md-2"></i>
             <span class="col-md-10">Cena</span>
+            <div class="insignia-container">
+                <span class="insignia"><?= ($qtdCena > 9) ? $qtdCena : "&nbsp;$qtdCena&nbsp;" ?></span>
+            </div>  
             <ul class="navbar-nav mr-auto text-center list-group" style="overflow: hidden;">
                 <li>
                     <a href="?categoria=cena&acao=cadastrar" class="nav-item list-group-item lista-clicavel">
@@ -108,8 +125,7 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
                     <a href="" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Listar Cenas</div>
-                            <div class="col-md-1"><span class="insignia">&nbsp;22&nbsp;</span></div>                        
+                            <div class="col-md-8 acao-categoria">Listar Cenas</div>      
                         </div>
                     </a>
                 </li>
