@@ -54,7 +54,7 @@ if (property_exists($historiaSelecionada, "pk_hist")) {
                 <span class='col-md-10'>História</span>
             </a>
 
-        <li class='nav-item list-group-item row'>
+        <li class='nav-item list-group-item'>
             <i class='fa fa-users col-md-2'></i>
             <span class='col-md-2'>Personagem</span>
             <div class="insignia-container">

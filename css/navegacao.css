@@ -192,7 +192,7 @@
     top:1px;   
 }
 
-.lista-clicavel:hover .insignia {
+.list-group-item:hover .insignia{
     color: #ff7b00;
     border: 1px solid #ff7b00 !important;
 }
