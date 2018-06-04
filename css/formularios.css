@@ -41,6 +41,13 @@
     padding-top: 2%;
     padding-bottom: 2%;
 }
+
+.form-controle{
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 2rem;
+    align-self: flex-end;
+}
 #btn-salvar-form{
     margin-top: 3rem;
 }
