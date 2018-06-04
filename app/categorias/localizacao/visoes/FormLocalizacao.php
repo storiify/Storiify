@@ -468,11 +468,18 @@ if (empty((array) $resultado)) {
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <select class="form-control select2 input-textoselect" id="input-txselr-FundadorDescobridor">
-                                    <option selected="selected">Cabral</option>
-                                    <option>Senhor Fundador</option>
-                                    <option>Mary Poppins</option>
-                                    <option>Joana</option>
+                                <select class="form-control select2 input-textoselect" 
+                                        name="fk_fdd_decb" id="input-txselr-FundadorDescobridor">
+                                    <option value="0" selected>-- Personagens de <?= $historiaSelecionada->tit_hist ?> --</option>
+                                    <?php
+                                    foreach ($resultadoSelect->psna as $personagemSelect) {
+                                        $id = $personagemSelect["pk_psna"];
+                                        $nome = $personagemSelect["nm_psna"];
+                                        $isSelected = ($fk_fdd_decb == $id ? "selected" : "");
+
+                                        echo "<option value='$id' $isSelected>$nome</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <!--NÃO TEM DETALHES-->

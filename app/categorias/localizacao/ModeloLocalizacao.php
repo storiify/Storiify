@@ -44,20 +44,6 @@ class ModeloLocalizacao extends ConexaoBd {
         return $res;
     }
 
-    public function listarPsnaCnhd($parametros) {
-        $res = false;
-        $tabela = "tb_localizacao_rel_personagem";
-        $idLocalizacao = $parametros;
-        $condicao = "WHERE fk_lczc='$idLocalizacao'";
-
-        $res = $this->listarBase('fk_psna', $tabela, $condicao);
-
-        if (!isset($res) or $res == null) {
-            return array();
-        }
-        return $res;
-    }
-
     public function listar($parametros) {
         $modeloBase = new ConexaoBd();
 
@@ -97,6 +83,20 @@ class ModeloLocalizacao extends ConexaoBd {
             $rel['fk_lczc'] = $this->proximoID() - 1;
             $rel['fk_psna'] = $psna;
             $res = $this->inserirBase($rel, $tb_psna_cnhd);
+        }
+        return $res;
+    }
+
+    public function listarPsnaCnhd($parametros) {
+        $res = false;
+        $tabela = "tb_localizacao_rel_personagem";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_psna', $tabela, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
         }
         return $res;
     }
