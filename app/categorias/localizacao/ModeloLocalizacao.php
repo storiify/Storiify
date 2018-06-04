@@ -11,19 +11,17 @@ class ModeloLocalizacao extends ConexaoBd {
     }
 
     public function salvar($parametros) {
-
+        $modeloBase = new ConexaoBd();
+        $res = false;
+        //Gerencia as colunas de hora
         date_default_timezone_set('America/Sao_Paulo');
         $horarioAtual = date("Y-m-d H:i:s");
-
-        $modeloBase = new ConexaoBd();
-
-        $res = false;
         $parametros['dt_alt'] = $horarioAtual;
-
+        //Gerencia a coluna de personagens mais conhecidos
         $idsPsnaCnhd = $parametros['fk_psna_cnhd'];
         unset($parametros['fk_psna_cnhd']);
-
-        if (isset($parametros['pk_lczc']) && $parametros['pk_lczc'] != '') { //Editando
+        //Editando
+        if (isset($parametros['pk_lczc']) && $parametros['pk_lczc'] != '') {
             $condicao = " pk_lczc='{$parametros['pk_lczc']}'";
             $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
 
@@ -31,8 +29,8 @@ class ModeloLocalizacao extends ConexaoBd {
             if ($res) {
                 $this->excluirPsnaCnhd($parametros['pk_lczc']);
             }
-        } else { //Criando
-            //Cria localização
+        //Criando
+        } else {
             $parametros['dt_cric'] = $horarioAtual;
             $res = $modeloBase->inserirBase($parametros, $this->tabela);
         }

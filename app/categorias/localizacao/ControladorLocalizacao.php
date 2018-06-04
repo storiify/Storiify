@@ -66,7 +66,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
     public function salvar($parametros) {
 
         $modelo = new ModeloLocalizacao();
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        
         //Cuida da parte de imagem
         $idUsuario = sessao()->getUserData()->id;
         if (isset($_FILES) && $_FILES['im_lczc']['size'] != 0) {
@@ -82,6 +82,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $parametros['vsi_lczc'] = $tempStr;
         }
         //Gerencia a qual história essa localização pertence
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
         $parametros['fk_hist'] = $idHistoria;
         
         $res = $modelo->salvar($parametros);
