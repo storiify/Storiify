@@ -30,7 +30,7 @@ class Controlador {
     public function exe($categoria, $acao, $parametros) {
 
         if (OBRIGAR_LOGIN === TRUE) {
-            $acoesPermitidas = ['logar', 'check', 'registrar', 'salvar'];
+            $acoesPermitidas = ['logar', 'check', 'registrar', 'salvar', 'verificar'];
             if (($categoria != "login") || (!in_array($acao, $acoesPermitidas))) {
                 $login = new Login();
                 $login->check();
