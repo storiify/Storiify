@@ -18,7 +18,7 @@ if (empty((array) $resultado)) {
     $arrd_lczc = '';
     $hotl_lczc = '';
     $hotl_lczc_dets = '';
-    $vsi_lczc = '';
+    $vsi_lczc = array();
 //Passado
     $dcr_pasd = '';
     $fk_fdd_decb = '';
@@ -78,6 +78,7 @@ if (empty((array) $resultado)) {
     foreach ($localizacao as $key => $value) {
         $$key = $value;
     }
+    $vsi_lczc = parseCheckbox($vsi_lczc);
 }
 ?>
 
@@ -360,14 +361,14 @@ if (empty((array) $resultado)) {
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="hotl_lczc" 
                                        data-minmax-valores="Inofensiva, Pacífica, Neutra, Ameaçadora, Hostil" class="input-minmax" 
-                                       value="<?php echo $hotl_lczc; ?>" id="input-minmax-Hostilidade"></input>
+                                       value="<?= $hotl_lczc; ?>" id="input-minmax-Hostilidade"></input>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="hotl_lczc_dets" placeholder="Digite aqui os detalhes para Hostilidade" 
-                                              title="Campo para Hostilidade"><?php echo $hotl_lczc_dets; ?></textarea>
+                                              title="Campo para Hostilidade"><?= $hotl_lczc_dets; ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -393,19 +394,26 @@ if (empty((array) $resultado)) {
                         <div class="col-md-12 input-corpo">
                             <div class="input-checkbox" id="input-ckbx-Visibilidade">
                                 <div class="form-check-inline ckbox-mestre">
-                                    <input type="checkbox" id ="ckbx-Visibilidade-mestre"/>
+                                    <input title="Seleciona todas as opções" <?= (count($vsi_lczc) == 3 ? "checked" : "") ?>
+                                           type="checkbox" id ="ckbx-Visibilidade-mestre"/>
                                     <label for="ckbx-Visibilidade-mestre">Todos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input type="checkbox" name="ckbox-nomedoinput" id ="ckbx-Visibilidade-opt1"/>
+                                    <input name="vsi_lczc[]" value="1" <?= (in_array(1, $vsi_lczc) ? "checked" : "") ?>
+                                           title="Permite que seus amigos possam visualizar essa Localização"
+                                           type="checkbox" id ="ckbx-Visibilidade-opt1"/>
                                     <label for="ckbx-Visibilidade-opt1">Amigos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input type="checkbox" name="ckbox-nomedoinput" id ="ckbx-Visibilidade-opt2"/>
+                                    <input name="vsi_lczc[]" value="2" <?= (in_array(2, $vsi_lczc) ? "checked" : "") ?>
+                                           title="Permite que sua equipe possa visualizar essa Localização"
+                                           type="checkbox" id ="ckbx-Visibilidade-opt2"/>
                                     <label for="ckbx-Visibilidade-opt2">Equipe</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input type="checkbox" name="ckbox-nomedoinput" id ="ckbx-Visibilidade-opt3"/>
+                                    <input name="vsi_lczc[]" value="4" <?= (in_array(4, $vsi_lczc) ? "checked" : "") ?>
+                                           title="Permite que o público possa visualizar essa Localização"
+                                           type="checkbox" id ="ckbx-Visibilidade-opt3"/>
                                     <label for="ckbx-Visibilidade-opt3">Público</label>
                                 </div>
                             </div>

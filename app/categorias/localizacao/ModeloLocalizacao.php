@@ -55,14 +55,6 @@ class ModeloLocalizacao extends ConexaoBd {
         if (!isset($res) or $res == null) {
             return array();
         }
-
-//        $tabela = "tb_personagem";
-//        $condicao = "WHERE";
-//        foreach ($res as $idPsna) {
-//            $condicao .= " pk_psna='$idPsna'";
-//        }
-//        $res = $this->listarBase('*', $tabela, $condicao);
-
         return $res;
     }
 

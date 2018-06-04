@@ -45,7 +45,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $this->setResultados($res[0]);
             $this->setVisao('FormLocalizacao');
             $this->setTituloPagina($res[0]["nm_lczc"]);
-            
+
             //Lista todos os personagens e localizações
             $modeloPnsa = new ModeloPersonagem();
             $resPsna = $modeloPnsa->listar("");
@@ -67,15 +67,25 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
 
         $modelo = new ModeloLocalizacao();
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        //Cuida da parte de imagem
         $idUsuario = sessao()->getUserData()->id;
         if (isset($_FILES) && $_FILES['im_lczc']['size'] != 0) {
             $idLocalizacao = $modelo->proximoID();
             $parametros['im_lczc'] = uploadImagem($idUsuario, "localizacao", $idLocalizacao, $_FILES['im_lczc']);
         }
-
+        //Cuida da parte da visibilidade
+        if (isset($parametros['vsi_lczc']) && is_array($parametros['vsi_lczc'])) {
+            $tempStr = 0;
+            foreach ($parametros['vsi_lczc'] as $value) {
+                $tempStr = $tempStr + $value;
+            }
+            $parametros['vsi_lczc'] = $tempStr;
+        }
+        //Gerencia a qual história essa localização pertence
         $parametros['fk_hist'] = $idHistoria;
-        $res = $modelo->salvar($parametros);
         
+        $res = $modelo->salvar($parametros);
+
         if ($res) {
             redirecionar("?categoria=localizacao&acao=listar");
         } else {
