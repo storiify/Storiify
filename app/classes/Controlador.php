@@ -37,6 +37,12 @@ class Controlador {
             }
         }
 
+        if (empty((array) $this->sessao->getHistoriaSelecionada())) {
+            if ($categoria != "historia" || ($categoria == "historia" && ($acao != "listar" && $acao != "listarCategorias"))) {
+                redirecionar("?categoria=historia&acao=listar");
+            }
+        }
+
         $this->controlador = $this->controladorCategoria($categoria);
         $this->resultados = $this->executeAcao($acao, $parametros);
 
