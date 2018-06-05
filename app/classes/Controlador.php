@@ -37,13 +37,15 @@ class Controlador {
             }
         }
 
-        $acoesPermitidas = ['logar', 'check', 'registrar', 'salvar', 'verificar','listar', 'listarCategorias', 'cadastrar'];
-        if (($categoria != "historia"  && $categoria!= "login") || (!in_array($acao, $acoesPermitidas))) {
-            if (empty((array) $this->sessao->getHistoriaSelecionada())) {
-                redirecionar("?categoria=historia&acao=listar");
+        if (($this->sessao->getChave(CHAVE_LOGIN) == TRUE)) {
+            $acoesPermitidas = ['listar', 'listarCategorias', 'cadastrar'];
+            if (($categoria != "historia" && $categoria != "login") || (!in_array($acao, $acoesPermitidas))) {
+                if (empty((array) $this->sessao->getHistoriaSelecionada())) {
+                    redirecionar("?categoria=historia&acao=listar");
+                }
             }
         }
-
+        
         $this->controlador = $this->controladorCategoria($categoria);
         $this->resultados = $this->executeAcao($acao, $parametros);
 
