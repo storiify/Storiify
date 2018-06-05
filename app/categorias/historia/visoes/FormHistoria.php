@@ -1,5 +1,6 @@
 <?php
 $resultado = $controlador->getResultados();
+$resultadoSelect = $controlador->getResultadosSelect();
 
 if (empty((array) $resultado)) {
     // PK
@@ -19,6 +20,7 @@ if (empty((array) $resultado)) {
     $pbco_alvo = '';
     $vsi_hist = array();
     // Aba 2
+    $fk_psna_ppl = '';
     $dcr_em_uma_sntn = '';
     $snp_hist = '';
     $rsm_hist = '';
@@ -293,27 +295,27 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                             <div class="input-checkbox" id="input-ckbx-Visibilidade">
                                 <div class="form-check-inline ckbox-mestre">
                                     <input title="Seleciona todas as opções"
-<?php echo(count($vsi_hist) == 3 ? "checked" : "") ?>
+                                    <?php echo(count($vsi_hist) == 3 ? "checked" : "") ?>
                                            type="checkbox" id ="ckbx-Visibilidade-mestre"/>
                                     <label for="ckbx-Visibilidade-mestre">Todos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="vsi_hist[]" value="1" 
-<?php echo(in_array(1, $vsi_hist) ? "checked" : "") ?>
+                                    <?php echo(in_array(1, $vsi_hist) ? "checked" : "") ?>
                                            title="Permite que sua equipe possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt1"/>
                                     <label for="ckbx-Visibilidade-opt1">Equipe</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="vsi_hist[]" value="2"
-<?php echo(in_array(2, $vsi_hist) ? "checked" : "") ?>
+                                    <?php echo(in_array(2, $vsi_hist) ? "checked" : "") ?>
                                            title="Permite que todos os seus amigos possam visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt2"/>
                                     <label for="ckbx-Visibilidade-opt2">Amigos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="vsi_hist[]" value="4"
-<?php echo(in_array(4, $vsi_hist) ? "checked" : "") ?>
+                                    <?php echo(in_array(4, $vsi_hist) ? "checked" : "") ?>
                                            title="Permite que o público possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt3"/>
                                     <label for="ckbx-Visibilidade-opt3">Público</label>
@@ -326,7 +328,45 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                 </div>
                 <!--FINAL - INPUT CHECKBOX-->
             </div>
-            <div id="abaEnredo" class="container tab-pane fade"><br>
+            <div id="abaEnredo" class="container tab-pane fade">
+                <!--INPUT TEXTOSELECT SINGLE-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-PersonagemPrincipal">Personagem Principal</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo">
+                                <select class="form-control select2 input-textoselect" 
+                                        name="fk_psna_ppl" id="input-txselr-PersonagemPrincipal">
+                                    <option value="0" selected>-- Personagens --</option>
+                                    <?php
+                                    foreach ($resultadoSelect->psna as $personagemSelect) {
+                                        $id = $personagemSelect["pk_psna"];
+                                        $nome = $personagemSelect["nm_psna"];
+                                        $isSelected = ($fk_psna_ppl == $id ? "selected" : "");
+
+                                        if ($id != $pk_lczc) {
+                                            echo "<option value='$id' $isSelected>$nome</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT SINGLE-->
                 <!--INPUT TEXTOAREA-->
                 <div class="form-group">
                     <div class="row">
