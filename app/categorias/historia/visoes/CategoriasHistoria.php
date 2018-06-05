@@ -1,8 +1,8 @@
 <?php
 $resultado = $controlador->getResultados();
-$raca = (array) $resultado;
+$historia = (array) $resultado;
 
-foreach ($raca[0] as $key => $value) {
+foreach ($historia[0] as $key => $value) {
     $$key = $value;
 }
 $nome = truncar($tit_hist, 30);

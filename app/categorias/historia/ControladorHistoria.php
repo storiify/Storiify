@@ -52,8 +52,8 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
 
         $modelo = new ModeloHistoria();
         $idUsuario = sessao()->getUserData()->id;
+        $idHistoria = $modelo->proximoID();
         if (isset($_FILES) && $_FILES['im_ppl']['size'] != 0) {
-            $idHistoria = $modelo->proximoID();
             $parametros['im_ppl'] = uploadImagem($idUsuario, "historia", $idHistoria, $_FILES['im_ppl']);
         }
         if (isset($parametros['vsi_hist']) && is_array($parametros['vsi_hist'])) {
@@ -67,7 +67,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         $res = $modelo->salvar($parametros);
 
         if ($res != false) {
-            redirecionar("?categoria=historia&acao=listarCategorias");
+            redirecionar("?categoria=historia&acao=listarCategorias&id=$idHistoria");
         } else {
             redirecionar("?categoria=historia&acao=cadastrar");
         }
@@ -92,12 +92,15 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         
         $modelo = new ModeloHistoria();
         $res = $modelo->listar($parametros);
-	
+        
         sessao()->setHistoriaSelecionada($res[0]);
         
         $this->setVisao('CategoriasHistoria');
         $this->setTituloPagina($res[0]["tit_hist"]);
         
         $this->setResultados($res);
+        
+        $res = $modelo->listar("");
+        sessao()->setHistoriasData($res);
     }
 }
