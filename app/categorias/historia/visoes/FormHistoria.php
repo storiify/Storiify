@@ -347,8 +347,15 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_psna_ppl" id="input-txselr-PersonagemPrincipal">
-                                    <option value="0" selected>-- Personagens --</option>
-                                    <?php
+                                    <option value="0" selected>
+                                        <?php
+                                        if ($fk_psna_ppl == "") {
+                                            echo"Seus Personagens aparecerão aqui";
+                                        } else {
+                                            echo"Personagens de $tit_hist";
+                                        }
+                                        ?></option>
+                                        <?php
                                     foreach ($resultadoSelect->psna as $personagemSelect) {
                                         $id = $personagemSelect["pk_psna"];
                                         $nome = $personagemSelect["nm_psna"];
