@@ -37,8 +37,8 @@ class Controlador {
             }
         }
 
-        $acoesPermitidas = ['listar', 'listarCategorias', 'cadastrar'];
-        if (($categoria != "historia") || (!in_array($acao, $acoesPermitidas))) {
+        $acoesPermitidas = ['logar', 'check', 'registrar', 'salvar', 'verificar','listar', 'listarCategorias', 'cadastrar'];
+        if (($categoria != "historia"  && $categoria!= "login") || (!in_array($acao, $acoesPermitidas))) {
             if (empty((array) $this->sessao->getHistoriaSelecionada())) {
                 redirecionar("?categoria=historia&acao=listar");
             }
