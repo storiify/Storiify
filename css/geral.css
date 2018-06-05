@@ -4,7 +4,6 @@ body{
 }
 
 footer{  
-    position:fixed;
     top: -80px;
     clear: both;
     position: relative;
@@ -48,7 +47,7 @@ footer{
     max-width: 80%;
     background-color: white;
     border-radius: 5px;
-    padding-bottom: 2rem;
+    padding-bottom: .5rem;
 }
 @media screen and (max-width: 1300px){
     .conteudo{

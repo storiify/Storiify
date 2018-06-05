@@ -47,9 +47,11 @@
     position: sticky;
     bottom: 2rem;
     align-self: flex-end;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 #btn-salvar-form{
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 .input-label{
     text-align: left;
