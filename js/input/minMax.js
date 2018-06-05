@@ -7,23 +7,19 @@ $(document).ready(function () {
 
 function trazerMinMax(objeto) {
     var valores = $(objeto).data("minmax-valores").split(",");
-    var vlMaximo = 10;
+    var vlMaximo = valores.length - 1;
+    var valorInicial = ($(objeto).val() == "" ? vlMaximo / 2 : valores.indexOf($(objeto).val()));
 
-    //Cria o MinMax no objeto atual, não modificar
     $(objeto).ionRangeSlider({
         type: 'single',
         min: 0,
         max: vlMaximo,
-        from: $(objeto).prop("Value"),
+        from: valorInicial,
         step: 1,
         values: valores,
-        hasGrid: false
+        hasGrid: false,
+        onFinish: function (data) {
+            $(objeto).prop("value",data.from_value);
+        }
     });
-    
-	$(objeto).on("change", function () {
-    var value = $(this).prop("value");
-	
-	$(objeto).attr('Value' + value);
-	});
-	
 }
