@@ -328,6 +328,8 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                 </div>
                 <!--FINAL - INPUT CHECKBOX-->
             </div>
+            <!--FINAL - ABA GERAL-->
+            <!--ABA ENREDO-->
             <div id="abaEnredo" class="container tab-pane fade">
                 <!--INPUT TEXTOSELECT SINGLE-->
                 <div class="form-group">
@@ -355,7 +357,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                             echo"Personagens de $tit_hist";
                                         }
                                         ?></option>
-                                        <?php
+                                    <?php
                                     foreach ($resultadoSelect->psna as $personagemSelect) {
                                         $id = $personagemSelect["pk_psna"];
                                         $nome = $personagemSelect["nm_psna"];
@@ -456,6 +458,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                 </div>
                 <!--FINAL - INPUT TEXTOAREA-->
             </div>
+            <!--FINAL - ABA ENREDO-->
         </div>
         <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="col-md-12 form-controle">
