@@ -275,3 +275,11 @@ textarea, input[type="text"]{
     padding: 5px 20px;
 }
 /*FINAL - INPUT INCLUIR*/
+/*INPUT MINMAX*/
+.irs-slider{
+    z-index: 0 !important; /*btn salvar form estava sendo coberto*/
+}
+.irs-single{
+    z-index: 0 !important; /*btn salvar form estava sendo coberto*/
+}
+/*FINAL - INPUT MINMAX*/
