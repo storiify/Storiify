@@ -38,7 +38,9 @@ class Controlador {
         }
 
         if (empty((array) $this->sessao->getHistoriaSelecionada())) {
-            if ($categoria != "historia" || ($categoria == "historia" && ($acao != "listar" && $acao != "listarCategorias"))) {
+            if ($categoria != "historia" || 
+                    ($categoria == "historia" && 
+                    ($acao != "listar" && $acao != "listarCategorias" && $acao != "cadastrar"))) {
                 redirecionar("?categoria=historia&acao=listar");
             }
         }
