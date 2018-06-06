@@ -22,7 +22,18 @@ define("const_Indefinida", "./imagens/sem-instancia.png");
 define("const_Indefinida_Msg", "Suas %s aparecerão aqui");
 
 function consoleLog($msg) {
+    
+    static $handle;
+    
     if(DEBUG){
-        echo "<script>console.log( '" . $msg . "' );</script>";        
+        echo "<script>console.log( '" . $msg . "' );</script>";       
+        
+        if (!isset($handle)) {
+            $handle = fopen('debug.txt', 'a+');
+            fwrite($handle, "----------------------------------------------------".PHP_EOL);
+            fwrite($handle, "Log iniciado " . date("Y-m-d h:i:sa", time()) . PHP_EOL);
+        }
+        
+        fwrite($handle, $msg.PHP_EOL);
     }        
 }
