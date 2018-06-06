@@ -40,7 +40,19 @@ class ControladorRaca extends Controlador  implements InterfaceControlador {
     }
 
     public function salvar($parametros) {
+        //Não altera o que não foi alterado
+        foreach ($parametros as $key => $value) {
+            if (!isset($parametros[$key]) || $parametros[$key] == '') {
+                unset($parametros[$key]);
+            }
+        }
+        
         $modelo = new ModeloRaca();
+        
+        //Gerencia a qual história essa localização pertence
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $parametros['fk_hist'] = $idHistoria;
+        
         $res = $modelo->salvar($parametros);
 
         if ($res != false) {

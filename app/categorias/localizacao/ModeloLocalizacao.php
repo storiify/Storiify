@@ -20,16 +20,21 @@ class ModeloLocalizacao extends ConexaoBd {
         //Gerencia a coluna de personagens mais conhecidos
         $idsPsnaCnhd = $parametros['fk_psna_cnhd'];
         unset($parametros['fk_psna_cnhd']);
+        //Gerencia a coluna de raças
+        $idsRaca = $parametros['fk_raca'];
+        unset($parametros['fk_raca']);
         //Editando
         if (isset($parametros['pk_lczc']) && $parametros['pk_lczc'] != '') {
             $condicao = " pk_lczc='{$parametros['pk_lczc']}'";
             $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
 
-            //Deleta todas as relações de personagens conhecidos
             if ($res) {
+                //Deleta todas as relações de personagens conhecidos
                 $this->excluirPsnaCnhd($parametros['pk_lczc']);
+                //Deleta todas as relações raças
+                $this->excluirRaca($parametros['pk_lczc']);
             }
-        //Criando
+            //Criando
         } else {
             $parametros['dt_cric'] = $horarioAtual;
             $res = $modeloBase->inserirBase($parametros, $this->tabela);
@@ -37,6 +42,7 @@ class ModeloLocalizacao extends ConexaoBd {
         //Cria relação de personagens conhecidos
         if ($res) {
             $this->salvarPsnaCnhd($idsPsnaCnhd);
+            $this->salvarRaca($idsRaca);
         }
 
         return $res;
@@ -106,6 +112,41 @@ class ModeloLocalizacao extends ConexaoBd {
         $condicao = "fk_lczc='$idLczc'";
 
         $res = $this->excluirBase($tb_psna_cnhd, $condicao);
+
+        return $res;
+    }
+
+    private function salvarRaca($idsRaca) {
+        $tb_rel_raca = "tb_localizacao_rel_raca";
+        foreach ($idsRaca as $raca) {
+            $rel['fk_lczc'] = $this->proximoID() - 1;
+            $rel['fk_raca'] = $raca;
+            $res = $this->inserirBase($rel, $tb_rel_raca);
+        }
+        return $res;
+    }
+
+    public function listarRaca($parametros) {
+        $res = false;
+        $tabela = "tb_localizacao_rel_raca";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_raca', $tabela, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+        return $res;
+    }
+
+    private function excluirRaca($idLczc) {
+        $tb_rel_raca = "tb_localizacao_rel_raca";
+
+        $res = false;
+        $condicao = "fk_lczc='$idLczc'";
+
+        $res = $this->excluirBase($tb_rel_raca, $condicao);
 
         return $res;
     }

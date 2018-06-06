@@ -17,9 +17,12 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         $resPsna = $modeloPnsa->listar("");
         $modeloLczc = new ModeloLocalizacao();
         $resLczc = $modeloLczc->listar("");
+        $modeloRaca = new ModeloRaca();
+        $resRaca = $modeloRaca->listar("");
         $res = array(
             "psna" => $resPsna,
-            "lczc" => $resLczc);
+            "lczc" => $resLczc,
+            "raca" => $resRaca);
         $this->setResultadosSelect($res);
     }
 
@@ -51,12 +54,18 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $resPsna = $modeloPnsa->listar("");
             $modeloLczc = new ModeloLocalizacao();
             $resLczc = $modeloLczc->listar("");
+            $modeloRaca = new ModeloRaca();
+            $resRaca = $modeloRaca->listar("");
             //Get personagens registrados como mais conhecidos
             $idsPsnaCnhd = $modeloLczc->listarPsnaCnhd($res[0]["pk_lczc"]);
+            //Get raças registrados
+            $idsRaca = $modeloLczc->listarRaca($res[0]["pk_lczc"]);
             $res = array(
                 "psna" => $resPsna,
                 "lczc" => $resLczc,
-                "idsPsnaLczc" => $idsPsnaCnhd);
+                "raca" => $resRaca,
+                "idsPsnaLczc" => $idsPsnaCnhd,
+                "idsRaca" => $idsRaca);
             $this->setResultadosSelect($res);
         } else {
             redirecionar("?categoria=localizacao&acao=listar");
@@ -70,7 +79,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
                 unset($parametros[$key]);
             }
         }
-        
+
         $modelo = new ModeloLocalizacao();
 
         //Cuida da parte de imagem

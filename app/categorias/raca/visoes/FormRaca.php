@@ -6,6 +6,7 @@ if (empty((array) $resultado)) {
     $fk_hist = '';
     $nm_raca = '';
     $dcr_raca = '';
+    $apci_raca = '';
     $pvmt_raca = '';
     $rptc_raca = '';
 } else {
@@ -88,7 +89,33 @@ $nome = (!empty($nm_raca) ? truncar($nm_raca, 30) : nomeFormal($categoria));
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="dcr_raca" value="" 
                                           placeholder="Digite aqui a Descrição da Raça" title="Campo para Descrição da Raça" 
-                                          id="input-txarea-VisaoGeral"><?php echo $dcr_raca; ?></textarea>
+                                          id="input-txarea-Descricao"><?php echo $dcr_raca; ?></textarea>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOAREA-->
+                <!--APARÊNCIA - INPUT TEXTOAREA-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txarea-Aparencia">Aparência</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo"> 
+                                <textarea name="apci_raca" value="" 
+                                          placeholder="Digite aqui a Aparência da Raça" title="Campo para Aparência da Raça" 
+                                          id="input-txarea-Aparencia"><?php echo $apci_raca; ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>

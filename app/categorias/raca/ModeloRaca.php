@@ -1,9 +1,9 @@
 <?php
 
-class Modeloraca extends ConexaoBd{
+class ModeloRaca extends ConexaoBd{
     
     private $tabela;
-    private $campos = 'pk_raca,fk_hist,nm_raca, dcr_raca, pvmt_raca, rptc_raca';
+    private $campos = '*';
     
     public function __construct() {
 	parent::__construct();
@@ -13,10 +13,6 @@ class Modeloraca extends ConexaoBd{
     public function salvar($parametros) {
 	$modeloBase = new ConexaoBd();
 	$res = false;	
-	
-        //Tirar
-        $parametros['pvmt_raca'] = 1;
-        $parametros['rptc_raca'] = 2;
         
 	if(isset($parametros['pk_raca']) && $parametros['pk_raca']!=''){ //Ao editar
 	    $condicao = " pk_raca='{$parametros['pk_raca']}'";
