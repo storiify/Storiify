@@ -3,7 +3,7 @@ $(".btn-input-controle.minimizar").on("click", function () {
     $(this).parent().siblings(".input-corpo").slideToggle("fast");
     if ($(this).children().hasClass("fa-minus")) {
         $(this).children().addClass("fa-plus").removeClass("fa-minus");
-    } else if ($(this).children().hasClass("fa-plus")){
+    } else if ($(this).children().hasClass("fa-plus")) {
         $(this).children().addClass("fa-minus").removeClass("fa-plus");
     }
 
@@ -22,14 +22,25 @@ $(".detalhes-link").on("click", function () {
     }
 });
 
-$(".detalhes-conteudo").each(function(){
-    if ($(this).children().val()!=="" && $(this).children().css("visibility", "hidden")) {
+$(".detalhes-conteudo").each(function () {
+    if ($(this).children().val() !== "" && $(this).children().css("visibility", "hidden")) {
         $(this).toggle();
         $(this).children().css('visibility', 'visible');
         $(this).siblings().html("Remover Detalhes");
     }
 });
-
-$(document).on("keypress", ":input:not(textarea)", function(event) {
+//Não enviar formulário ao apertar enter
+$(document).on("keypress", ":input:not(textarea)", function (event) {
     return event.keyCode != 13;
 });
+
+//Carregar e descarregar todas as abas pra salvar os valores nos minmax
+//$(document).ready(function () {
+//    $(".tab-pane.fade").each(function () {
+//        $(this).removeClass("tab-pane");
+//    });
+//    
+//    $(".fade").each(function () {
+//        $(this).addClass("tab-pane");
+//    });
+//});

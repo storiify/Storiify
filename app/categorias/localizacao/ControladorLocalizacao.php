@@ -64,9 +64,15 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
     }
 
     public function salvar($parametros) {
-
-        $modelo = new ModeloLocalizacao();
+        //Não altera o que não foi alterado
+        foreach ($parametros as $key => $value) {
+            if (!isset($parametros[$key]) || $parametros[$key] == '') {
+                unset($parametros[$key]);
+            }
+        }
         
+        $modelo = new ModeloLocalizacao();
+
         //Cuida da parte de imagem
         $idUsuario = sessao()->getUserData()->id;
         if (isset($_FILES) && $_FILES['im_lczc']['size'] != 0) {
@@ -84,7 +90,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
         $parametros['fk_hist'] = $idHistoria;
-        
+
         $res = $modelo->salvar($parametros);
 
         if ($res) {
