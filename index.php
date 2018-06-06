@@ -5,6 +5,9 @@ require_once 'app/autoload/config.php';
 /**
  * Autoload - Carrega arquivos iniciais e essenciais para o funcionamento do sistema.
  */
+if (DEBUG) {
+    error_reporting(E_ALL); ini_set('display_errors', 'On'); 
+}
 
 $dirloads = PATH_AUTOLOAD;
 if ($handle = opendir($dirloads)) {
