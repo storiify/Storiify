@@ -41,7 +41,7 @@ class ModeloLocalizacao extends ConexaoBd {
         }
         //Cria relação de personagens conhecidos
         if ($res) {
-            $this->salvarPsnaCnhd($idsPsnaCnhd);
+            $this->salvarPsnaCnhd($idsPsnaCnhd, $parametros['pk_lczc']);
             $this->salvarRaca($idsRaca);
         }
 
@@ -81,10 +81,10 @@ class ModeloLocalizacao extends ConexaoBd {
         return $res;
     }
 
-    private function salvarPsnaCnhd($idsPsnaCnhd) {
+    private function salvarPsnaCnhd($idsPsnaCnhd, $idLczc) {
         $tb_psna_cnhd = "tb_localizacao_rel_personagem";
         foreach ($idsPsnaCnhd as $psna) {
-            $rel['fk_lczc'] = $this->proximoID() - 1;
+            $rel['fk_lczc'] = $idLczc;
             $rel['fk_psna'] = $psna;
             $res = $this->inserirBase($rel, $tb_psna_cnhd);
         }
