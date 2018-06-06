@@ -11,6 +11,7 @@ $(".instancia-corpo").on("click", function () {
 });
 //Minimizar
 $(".btn-minimizar-instancia").on("click", function () {
+    //Minimizar
     if ($(this).children().hasClass("fa-minus")) {
         $(this).children().attr("class", "fa fa-plus");
         $(this).prop("title","Clique para maximizar");
@@ -23,7 +24,13 @@ $(".btn-minimizar-instancia").on("click", function () {
                 .parent()
                 .siblings(".instancia-corpo")
                 .children(".instancia-imagem").css({"width": "80px", "height": "80px"});
+        $(this)
+                .parent()
+                .siblings(".instancia-corpo")
+                .children(".instancia-conteudo")
+                .children(".instancia-cabecalho").css({"line-height": "5.5rem"});
     }
+    //Maximizar
     else{
         $(this).children().attr("class", "fa fa-minus");
         $(this).prop("title","Clique para minimizar");
@@ -36,6 +43,11 @@ $(".btn-minimizar-instancia").on("click", function () {
                 .parent()
                 .siblings(".instancia-corpo")
                 .children(".instancia-imagem").css({"width": "200px", "height": "200px"});
+        $(this)
+                .parent()
+                .siblings(".instancia-corpo")
+                .children(".instancia-conteudo")
+                .children(".instancia-cabecalho").css({"line-height": ""});
     }
 
 });
