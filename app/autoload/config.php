@@ -3,6 +3,7 @@
  * Arquivo base de configurações
  */
 define("DEBUG", TRUE);
+define("DEBUG_VERBOSE", FALSE);
 define("PATH", $_SERVER['DOCUMENT_ROOT'].'/storiify/');
 define("PATH_AUTOLOAD", PATH."app/autoload/");
 define("PATH_CLASS", PATH."app/classes/");

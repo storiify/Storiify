@@ -5,7 +5,7 @@ require_once 'app/autoload/config.php';
 /**
  * Autoload - Carrega arquivos iniciais e essenciais para o funcionamento do sistema.
  */
-if (DEBUG) {
+if (DEBUG && DEBUG_VERBOSE) {
     error_reporting(E_ALL); ini_set('display_errors', 'On'); 
 }
 
