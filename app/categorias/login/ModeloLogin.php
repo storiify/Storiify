@@ -7,7 +7,7 @@ class ModeloLogin extends ConexaoBd {
 
     public function __construct() {
         parent::__construct();
-        if (phpversion() < 7.2) {
+        if (!defined('PASSWORD_ARGON2I')) {
             $this->cryptAlgo = PASSWORD_BCRYPT;
         } else {
             $this->cryptAlgo = PASSWORD_ARGON2I;
@@ -18,7 +18,7 @@ class ModeloLogin extends ConexaoBd {
 
         $email = $param['email'];
         $senha = $param['senha'];
-        
+
         $condicao = "WHERE MAIL_USU='$email'";
 
         $modeloBase = new ConexaoBd();
@@ -27,7 +27,7 @@ class ModeloLogin extends ConexaoBd {
         if (!isset($res[0]) || $res[0] == null || !password_verify($senha, $res[0]['snh_usu'])) {
             return false;
         }
-        
+
         $temp = array(0 => array());
         $temp[0]['id'] = $res[0]['pk_usu'];
         $temp[0]['nome'] = $res[0]['nm_usu'];
