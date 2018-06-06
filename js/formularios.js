@@ -33,14 +33,3 @@ $(".detalhes-conteudo").each(function () {
 $(document).on("keypress", ":input:not(textarea)", function (event) {
     return event.keyCode != 13;
 });
-
-//Carregar e descarregar todas as abas pra salvar os valores nos minmax
-//$(document).ready(function () {
-//    $(".tab-pane.fade").each(function () {
-//        $(this).removeClass("tab-pane");
-//    });
-//    
-//    $(".fade").each(function () {
-//        $(this).addClass("tab-pane");
-//    });
-//});
