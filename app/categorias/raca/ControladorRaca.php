@@ -1,6 +1,6 @@
 <?php
 
-class ControladorRaca extends Controlador  implements InterfaceControlador {
+class ControladorRaca extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
@@ -10,7 +10,7 @@ class ControladorRaca extends Controlador  implements InterfaceControlador {
 
     public function cadastrar($parametros) {
         $this->setVisao('FormRaca');
-        $this->setTituloPagina("Cadastrar ".nomeFormal($this->getCategoria(), "singular"));
+        $this->setTituloPagina("Cadastrar " . nomeFormal($this->getCategoria(), "singular"));
     }
 
     public function listar($parametros) {
@@ -20,9 +20,9 @@ class ControladorRaca extends Controlador  implements InterfaceControlador {
 
         $this->setVisao('ListarRaca');
         $nomeHistoria = sessao()->getHistoriaSelecionada()->tit_hist;
-        $titulo = nomeFormal($this->getCategoria(),"plural") . (empty($nomeHistoria)? "" : " de ".$nomeHistoria);
+        $titulo = nomeFormal($this->getCategoria(), "plural") . (empty($nomeHistoria) ? "" : " de " . $nomeHistoria);
         $this->setTituloPagina($titulo);
-        
+
         $this->setResultados($res);
     }
 
@@ -40,23 +40,33 @@ class ControladorRaca extends Controlador  implements InterfaceControlador {
     }
 
     public function salvar($parametros) {
+        $isAjax = false;
+        if (isset($parametros['isAjax']) && $parametros['isAjax'] != "") {
+            $isAjax = $parametros['isAjax'];
+            unset($parametros['isAjax']);
+        }
+
         //Não altera o que não foi alterado
         foreach ($parametros as $key => $value) {
             if (!isset($parametros[$key]) || $parametros[$key] == '') {
                 unset($parametros[$key]);
             }
         }
-        
+
         $modelo = new ModeloRaca();
-        
+
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
         $parametros['fk_hist'] = $idHistoria;
-        
+
         $res = $modelo->salvar($parametros);
 
-        if ($res != false) {
+        if ($res && !$isAjax) {
             redirecionar("?categoria=raca&acao=listar");
+        } elseif ($res && $isAjax) {
+            $idInserido = $modelo->proximoID()-1;
+            echo "idInserido:".$idInserido;
+            exit;
         } else {
             redirecionar("?categoria=raca&acao=cadastrar");
         }

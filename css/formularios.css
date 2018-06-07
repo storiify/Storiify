@@ -225,20 +225,28 @@ textarea, input[type="text"]{
 
 /*FINAL - INPUT IMAGEM*/
 /*INPUT INCLUIR*/
-.incluir-btn-remover{
+/*.incluir-btn-remover{
     border-top-right-radius: 0px; 
     border-bottom-right-radius: 0px;
+}*/
+.input-incluir{
+    padding: 0;
+}
+.input-incluir .select2-container .selection .select2-selection{
+    height: 38px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 .incluir-btn-adicionar{
     border-top-left-radius: 0px; 
     border-bottom-left-radius: 0px;
 }
 
-.incluir-status{
+/*.incluir-status{
     text-align: center;
     background-color: white !important;
 }
-/*filhos*/
+filhos
 .btn-icl-controle{
     background-color: #162338;
     color:white;
@@ -275,7 +283,7 @@ textarea, input[type="text"]{
     border-radius: 0.25rem 0 0 0.25rem;
     margin-right: 0 !important;
     padding: 5px 20px;
-}
+}*/
 /*FINAL - INPUT INCLUIR*/
 /*INPUT MINMAX*/
 .irs-slider{

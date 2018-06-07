@@ -626,7 +626,7 @@ if (empty((array) $resultado)) {
             <!-- FINAL - ABA PASSADO -->
             <!-- ABA BIOLOGIA -->
             <div id="abaBiologia" class="container tab-pane fade">
-                <!--FINAL - INPUT TEXTOSELECT-->
+                <!--RAÇA - INPUT TEXTOSELECT-->
                 <div class="form-group">
                     <div class="row">
                         <!--INPUT CONTROLE-->
@@ -642,7 +642,7 @@ if (empty((array) $resultado)) {
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo row">
-                                <div class="col-md-11">
+                                <div class="col-md-11 input-incluir">
                                     <select class="form-control select2 input-textoselect" multiple="multiple" 
                                             name="fk_raca[]" id="input-txselr-Raca">
                                                 <?php
@@ -662,9 +662,11 @@ if (empty((array) $resultado)) {
                                     </select>
                                 </div>
                                 <span class="incluir-adicionar">
-                                    <button class="btn btn-azul incluir-btn-adicionar" type="button" data-toggle="modal" id="btnFormCls" data-target="#formCls">Criar Classe</button>
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarRaca" >
+                                        Criar Raça
+                                    </button>
                                 </span>
-
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>

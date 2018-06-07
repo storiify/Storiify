@@ -27,14 +27,13 @@ class ModeloRaca extends ConexaoBd{
     }
     
     public function listar($parametros) {
-	
 	$modeloBase = new ConexaoBd();
 	
 	$idHistoriaSelecionada = sessao()->getHistoriaSelecionada()->pk_hist;
 	$condicao = "WHERE fk_hist='$idHistoriaSelecionada'";
 	
-	if(isset($parametros['pk_raca']) && array_key_exists("pk_raca", $parametros)){
-	    $id = $parametros['pk_raca'];
+	if(isset($parametros['id']) && array_key_exists("id", $parametros)){
+	    $id = $parametros['id'];
 	    $condicao.=" AND pk_raca='$id'";
 	}
 	

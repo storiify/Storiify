@@ -60,7 +60,11 @@
         ?>
         <!-- FINAL - RODAPÉ DA PÁGINA-->
         <!--FINAL - CORPO DA PÁGINA-->
-
+        <!-- MODAIS -->
+        <?php
+        require_once "visoes_publicas/modais.php";
+        ?>
+        <!-- FINAL - MODAIS -->
         <!-- Load site level scripts -->
 
         <!-- Load jQuery -->
@@ -103,6 +107,8 @@
         <script src="./plugins/ion.rangeSlider-2.2.0/js/ion-rangeSlider/ion.rangeSlider.js" type="text/javascript"></script>
         <!--Selector2-->
         <script src="./plugins/select2/js/select2.js"></script>
+        <!--Modais-->
+        <script src="./js/modais.js" type="text/javascript"></script>
         <!-- End loading site level scripts -->
         <!-- Load page level scripts-->
         <!-- End loading page level scripts-->
