@@ -6,7 +6,6 @@ $(".btn-input-controle.minimizar").on("click", function () {
     } else if ($(this).children().hasClass("fa-plus")) {
         $(this).children().addClass("fa-minus").removeClass("fa-plus");
     }
-
 });
 
 //adicionar/remover detalhes

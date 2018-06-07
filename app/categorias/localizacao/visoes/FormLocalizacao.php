@@ -426,7 +426,7 @@ if (empty((array) $resultado)) {
             </div>
             <!-- FINAL - ABA GERAL -->
             <!-- ABA PASSADO -->
-            <div id="abaPassado" class="container tab-pane fade"><br>
+            <div id="abaPassado" class="container tab-pane fade">
                 <!--INPUT TEXTOAREA-->
                 <div class="form-group">
                     <div class="row">
@@ -626,6 +626,7 @@ if (empty((array) $resultado)) {
             <!-- FINAL - ABA PASSADO -->
             <!-- ABA BIOLOGIA -->
             <div id="abaBiologia" class="container tab-pane fade">
+                <!--FINAL - INPUT TEXTOSELECT-->
                 <div class="form-group">
                     <div class="row">
                         <!--INPUT CONTROLE-->
@@ -671,43 +672,6 @@ if (empty((array) $resultado)) {
                     </div>
                 </div>
                 <!--FINAL - INPUT TEXTOSELECT-->
-                <!--INPUT INCLUIR-->
-                <div class="form-group">
-                    <div class="row">
-                        <!--INPUT CONTROLE-->
-                        <div class="col-md-1 input-controle">
-                            <button type="button" class="btn btn-input-controle minimizar">
-                                <i class="fa fa-minus"></i>
-                            </button>                      
-                        </div>
-                        <!--FINAL - INPUT CONTROLE-->
-                        <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-incr-Raca">Raça</label>
-                        <!--FINAL - INPUT LABEL-->
-                        <!--INPUT CORPO-->
-                        <div class="col-md-12 input-corpo">
-                            <div class="col-md-12 input-conteudo">
-                                <div class="input-incluir"
-                                     <div class="input-group"> 
-                                        <div class="col-md-10" style="padding-right: 0px;">
-                                            <select class="form-control select2" multiple="multiple">
-                                                <option>Pandaren</option>
-                                            </select>
-                                        </div>
-                                        <span class="input-group-btn incluir-adicionar">
-                                            <button class="btn btn-azul incluir-btn-adicionar" type="button" data-toggle="modal" id="btnFormCls" data-target="#formCls">Criar Classe</button>
-                                        </span>
-                                    </div>
-                                    <div class="incluir-filhos-area">
-                                        <!--Aqui entrarão as instâncias-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--FINAL - INPUT CORPO-->
-                    </div>
-                </div>
-                <!--FINAL - INPUT INCLUIR-->
             </div>
             <!-- FINAL - ABA BIOLOGIA -->
             <!-- ABA CULTURA -->
