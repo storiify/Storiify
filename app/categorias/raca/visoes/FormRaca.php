@@ -1,31 +1,15 @@
 <?php
-$resultado = $controlador->getResultados();
-
-if (empty((array) $resultado)) {
-    $pk_raca = '';
-    $fk_hist = '';
-    $nm_raca = '';
-    $dcr_raca = '';
-    $apci_raca = '';
-    $pvmt_raca = '';
-    $rptc_raca = '';
-} else {
-    $raca = (array) $resultado;
-    foreach ($raca as $key => $value) {
-        $$key = $value;
-    }
-}
-$nome = (!empty($nm_raca) ? truncar($nm_raca, 30) : nomeFormal($categoria));
+$resultado = ($controlador->getResultados() == null? new ModeloRaca(array()) : $controlador->getResultados());
 ?>
 
 <div class="pular-menu">
-    <div class="marquee"><?= $this->getDicas() ?></div>
+    <div class="marquee"><?=$this->getDicas()?></div>
 </div>
 
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= $nome; ?></h1>
+        <h1><?=($resultado->nm_raca() == ""? ModeloRaca::$nomeSingular : $resultado->nm_raca(30))?></h1>
     </div>
 </div>
 
@@ -39,7 +23,7 @@ $nome = (!empty($nm_raca) ? truncar($nm_raca, 30) : nomeFormal($categoria));
         </nav>
     </div>
     <!-- FINAL - ABAS DE NAVEGAÇÃO -->
-    <form action="?categoria=<?= $categoria ?>&acao=salvar" method="post" enctype="multipart/form-data">
+    <form action="?categoria=<?=$categoria?>&acao=salvar" method="post" enctype="multipart/form-data">
         <!-- CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="tab-content">
             <!--ABA GERAL-->
@@ -60,7 +44,7 @@ $nome = (!empty($nm_raca) ? truncar($nm_raca, 30) : nomeFormal($categoria));
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="nm_raca" value="<?= $nm_raca ?>" 
+                                <input name="nm_raca" value="<?=$resultado->nm_raca()?>" 
                                        placeholder="Digite aqui o Nome da Raça"
                                        title="Campo para Nome da Raça"
                                        maxlength="60" type="text"
@@ -89,7 +73,7 @@ $nome = (!empty($nm_raca) ? truncar($nm_raca, 30) : nomeFormal($categoria));
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="dcr_raca" value="" 
                                           placeholder="Digite aqui a Descrição da Raça" title="Campo para Descrição da Raça" 
-                                          id="input-txarea-Descricao"><?php echo $dcr_raca; ?></textarea>
+                                          id="input-txarea-Descricao"><?=$resultado->dcr_raca()?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -115,7 +99,7 @@ $nome = (!empty($nm_raca) ? truncar($nm_raca, 30) : nomeFormal($categoria));
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="apci_raca" value="" 
                                           placeholder="Digite aqui a Aparência da Raça" title="Campo para Aparência da Raça" 
-                                          id="input-txarea-Aparencia"><?php echo $apci_raca; ?></textarea>
+                                          id="input-txarea-Aparencia"><?=$resultado->apci_raca()?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -141,7 +125,7 @@ $nome = (!empty($nm_raca) ? truncar($nm_raca, 30) : nomeFormal($categoria));
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="pvmt_raca" 
                                        data-minmax-valores="Quase Inexistente, Baixo, Médio, Alto, Abundante" class="input-minmax" 
-                                       value="<?= $pvmt_raca; ?>" id="input-minmax-Hostilidade"></input>
+                                       value="<?=$resultado->pvmt_raca()?>" id="input-minmax-Hostilidade"></input>
                             </div>
                         </div>
                         <!--FINAL - INPUT CORPO-->
@@ -166,7 +150,7 @@ $nome = (!empty($nm_raca) ? truncar($nm_raca, 30) : nomeFormal($categoria));
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="rptc_raca" 
                                        data-minmax-valores="Odiado, Desvalorizado, Neutro, Respeitado, Venerado" class="input-minmax" 
-                                       value="<?= $rptc_raca; ?>" id="input-minmax-Reputacao"></input>
+                                       value="<?=$resultado->rptc_raca()?>" id="input-minmax-Reputacao"></input>
                             </div>
                         </div>
                         <!--FINAL - INPUT CORPO-->
@@ -178,9 +162,10 @@ $nome = (!empty($nm_raca) ? truncar($nm_raca, 30) : nomeFormal($categoria));
         </div>
         <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="col-md-12 form-controle">
-            <input type="hidden" name="pk_raca" value="<?= $pk_raca; ?>">
+            <input type="hidden" name="pk_raca" value="<?=$resultado->pk_raca()?>">
+            <input type="hidden" name="fk_hist" value="<?=$resultado->fk_hist()?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
-                Salvar <?=nomeFormal($categoria)?>
+                Salvar <?= ModeloRaca::$nomeSingular?>
             </button>
         </div>
     </form>

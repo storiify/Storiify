@@ -22,7 +22,6 @@ class Controlador {
     public function __construct() {
         //Em Breve chamar sessão aqui
         $this->sessao = new Sessao();
-        $this->resultados = array();
         $this->dicas = "As dicas ficarão rodando aqui!";
         $this->tituloPagina = "Torne suas Histórias reais!";
     }
@@ -135,7 +134,7 @@ class Controlador {
      * @var $resultados Manda uma array para ser salva
      */
 
-    public function setResultados(array $resultados) {
+    public function setResultados($resultados) {
         $this->resultados = $resultados;
     }
 
@@ -146,7 +145,7 @@ class Controlador {
      */
 
     public function getResultados() {
-        return (object) $this->resultados;
+        return $this->resultados;
     }
 
     /*

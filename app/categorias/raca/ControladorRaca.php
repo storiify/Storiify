@@ -6,40 +6,43 @@ class ControladorRaca extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Raça");
         $this->setCategoria($categoria);
+        require_once "BdContextRaca.php";
     }
 
     public function cadastrar($parametros) {
-        $this->setVisao('FormRaca');
-        $this->setTituloPagina("Cadastrar " . nomeFormal($this->getCategoria(), "singular"));
+        $this->setVisao(ModeloRaca::$viewForm);
+
+        $this->setTituloPagina(ModeloRaca::getTituloPagina("cadastrar"));
     }
 
     public function listar($parametros) {
+        
+        $bdContext = new BdContextRaca();
+        $instancias = $bdContext->listar($parametros);
+        $this->setResultados($instancias);
 
-        $modelo = new ModeloRaca();
-        $res = $modelo->listar($parametros);
+        $this->setVisao(ModeloRaca::$viewListar);
 
-        $this->setVisao('ListarRaca');
-        $nomeHistoria = sessao()->getHistoriaSelecionada()->tit_hist;
-        $titulo = nomeFormal($this->getCategoria(), "plural") . (empty($nomeHistoria) ? "" : " de " . $nomeHistoria);
-        $this->setTituloPagina($titulo);
-
-        $this->setResultados($res);
+        $this->setTituloPagina(ModeloRaca::getTituloPagina("listar"));
     }
 
     public function editar($parametros) {
-        $modelo = new ModeloRaca();
-        $res = $modelo->listar($parametros);
+        $bdContext = new BdContextRaca();
+        $instancia = new ModeloRaca($bdContext->listar($parametros)[0]);
 
-        if ($res[0] != false) {
-            $this->setResultados($res[0]);
-            $this->setVisao('FormRaca');
-            $this->setTituloPagina($res[0]["nm_raca"]);
+        if ($instancia != null) {
+            $this->setResultados($instancia);
+
+            $this->setVisao(ModeloRaca::$viewForm);
+
+            $this->setTituloPagina($instancia->nm_raca());
         } else {
             redirecionar("?categoria=raca&acao=listar");
         }
     }
 
     public function salvar($parametros) {
+        //Checa se veio a partir de um Ajax
         $isAjax = false;
         if (isset($parametros['isAjax']) && $parametros['isAjax'] != "") {
             $isAjax = $parametros['isAjax'];
@@ -52,20 +55,17 @@ class ControladorRaca extends Controlador implements InterfaceControlador {
                 unset($parametros[$key]);
             }
         }
-
-        $modelo = new ModeloRaca();
-
-        //Gerencia a qual história essa localização pertence
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
-        $parametros['fk_hist'] = $idHistoria;
-
-        $res = $modelo->salvar($parametros);
-
-        if ($res && !$isAjax) {
+        
+        //Faz a inserção
+        $bdContext = new BdContextRaca();
+        $resultado = $bdContext->salvar($parametros);
+        
+        //Checa o que fazer com o resultado
+        if ($resultado && !$isAjax) {
             redirecionar("?categoria=raca&acao=listar");
-        } elseif ($res && $isAjax) {
-            $idInserido = $modelo->proximoID()-1;
-            echo "idInserido:".$idInserido;
+        } elseif ($resultado && $isAjax) {
+            $idInserido = $bdContext->proximoID() - 1;
+            echo "idInserido:" . $idInserido;
             exit;
         } else {
             redirecionar("?categoria=raca&acao=cadastrar");
@@ -73,10 +73,10 @@ class ControladorRaca extends Controlador implements InterfaceControlador {
     }
 
     public function excluir($parametros) {
-        $modelo = new ModeloHistoria();
-        $res = $modelo->excluir($parametros);
+        $bdContext = new BdContextRaca();
+        $resultado = $bdContext->excluir($parametros);
 
-        if ($res != false) {
+        if ($resultado) {
             redirecionar("?categoria=raca&acao=listar");
         } else {
             redirecionar("?categoria=raca&acao=listar");
