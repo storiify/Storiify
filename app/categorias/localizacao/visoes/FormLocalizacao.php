@@ -661,7 +661,7 @@ if (empty((array) $resultado)) {
                                                 ?>
                                     </select>
                                 </div>
-                                <span class="incluir-adicionar">
+                                <span class="incluir-adicionar col-md-1">
                                     <button class="btn btn-azul incluir-btn-adicionar" type="button"
                                             data-toggle="modal" data-target="#modalCadastrarRaca" >
                                         Criar Raça

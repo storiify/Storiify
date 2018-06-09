@@ -237,6 +237,9 @@ textarea, input[type="text"]{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
+.incluir-adicionar{
+    padding: 0;
+}
 .incluir-btn-adicionar{
     border-top-left-radius: 0px; 
     border-bottom-left-radius: 0px;
