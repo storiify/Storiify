@@ -98,9 +98,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             }
             $parametros['vsi_lczc'] = $tempStr;
         }
-        //Gerencia a qual história essa localização pertence
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
-        $parametros['fk_hist'] = $idHistoria;
+        
 
         $res = $modelo->salvar($parametros);
 

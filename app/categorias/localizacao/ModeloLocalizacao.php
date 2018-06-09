@@ -10,8 +10,6 @@ class ModeloLocalizacao extends ConexaoBd {
     }
 
     public function salvar($parametros) {
-        $modeloBase = new ConexaoBd();
-        $res = false;
         //Gerencia as colunas de hora
         date_default_timezone_set('America/Sao_Paulo');
         $horarioAtual = date("Y-m-d H:i:s");
@@ -22,10 +20,16 @@ class ModeloLocalizacao extends ConexaoBd {
         //Gerencia a coluna de raças
         $idsRaca = $parametros['fk_raca'];
         unset($parametros['fk_raca']);
+        //Gerencia a qual história essa localização pertence
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $parametros['fk_hist'] = $idHistoria;
+        
+        $res = false;
+        
         //Editando
         if (isset($parametros['pk_lczc']) && $parametros['pk_lczc'] != '') {
             $condicao = " pk_lczc='{$parametros['pk_lczc']}'";
-            $res = $modeloBase->updateBase($parametros, $this->tabela, $condicao);
+            $res = $this->updateBase($parametros, $this->tabela, $condicao);
 
             if ($res) {
                 //Deleta todas as relações de personagens conhecidos
@@ -33,15 +37,17 @@ class ModeloLocalizacao extends ConexaoBd {
                 //Deleta todas as relações raças
                 $this->excluirRaca($parametros['pk_lczc']);
             }
-            //Criando
+        //Criando
         } else {
             $parametros['dt_cric'] = $horarioAtual;
-            $res = $modeloBase->inserirBase($parametros, $this->tabela);
+            $res = $this->inserirBase($parametros, $this->tabela);
         }
-        //Cria relação de personagens conhecidos
+        
         if ($res) {
+            //Cria a relação de personagens conhecidos
             $this->salvarPsnaCnhd($idsPsnaCnhd, $parametros['pk_lczc']);
-            $this->salvarRaca($idsRaca);
+            //Cria a relação de raças existentes
+            $this->salvarRacaExistente($idsRaca);
         }
 
         return $res;
@@ -115,7 +121,7 @@ class ModeloLocalizacao extends ConexaoBd {
         return $res;
     }
 
-    private function salvarRaca($idsRaca) {
+    private function salvarRacaExistente($idsRaca) {
         $tb_rel_raca = "tb_localizacao_rel_raca";
         foreach ($idsRaca as $raca) {
             $rel['fk_lczc'] = $this->proximoID() - 1;
