@@ -2,13 +2,12 @@
 
 class ModeloHistoria extends ConexaoBd{
     
-    private $tabela;
+    private $tabela = "tb_historia";
     private $campos = 'pk_hist,fk_usu,im_hist,im_hist_dets,tit_hist,tit_hist_dets,stit_hist,stit_hist_dets,aur_hist,
 	aur_hist_dets,iltd_hist,iltd_hist_dets,pbco_alvo,vsi_hist,fk_psna_ppl,dcr_em_uma_sntn,snp_hist,rsm_hist,dt_cric,dt_alt';
     
     public function __construct() {
 	parent::__construct();
-	$this->tabela = "tb_historia";
     }
     
     public function salvar($parametros) {
@@ -28,7 +27,6 @@ class ModeloHistoria extends ConexaoBd{
 	    unset($parametros['pk_hist']);
 	    $parametros['dt_cric'] = $horarioAtual;
 	    $res = $modeloBase->inserirBase($parametros, $this->tabela);
-	    
 	}
 	
 	return $res;

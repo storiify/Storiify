@@ -41,7 +41,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?php echo $nome; ?></h1>
+        <h1><?=$nome?></h1>
     </div>
 </div>
 
@@ -349,7 +349,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_psna_ppl" id="input-txselr-PersonagemPrincipal">
-                                    <option value="0" selected>
+                                    <option value="" selected>
                                         <?php
                                         if ($fk_psna_ppl == "") {
                                             echo"Seus Personagens aparecerão aqui";
