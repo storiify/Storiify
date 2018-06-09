@@ -6,6 +6,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         parent::__construct();
         parent::setDicas("Dicas Localização");
         $this->setCategoria($categoria);
+        
+        require_once PATH_CAT."/raca/BdContextRaca.php";
     }
 
     public function cadastrar($parametros) {
@@ -17,8 +19,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         $resPsna = $modeloPnsa->listar("");
         $modeloLczc = new ModeloLocalizacao();
         $resLczc = $modeloLczc->listar("");
-        $modeloRaca = new ModeloRaca();
-        $resRaca = $modeloRaca->listar("");
+        $bdRaca = new BdContextRaca();
+        $resRaca = $bdRaca->listar("");
         $res = array(
             "psna" => $resPsna,
             "lczc" => $resLczc,
@@ -54,8 +56,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $resPsna = $modeloPnsa->listar("");
             $modeloLczc = new ModeloLocalizacao();
             $resLczc = $modeloLczc->listar("");
-            $modeloRaca = new ModeloRaca();
-            $resRaca = $modeloRaca->listar("");
+            $bdRaca = new BdContextRaca();
+            $resRaca = $bdRaca->listar("");
             //Get personagens registrados como mais conhecidos
             $idsPsnaCnhd = $modeloLczc->listarPsnaCnhd($res[0]["pk_lczc"]);
             //Get raças registrados

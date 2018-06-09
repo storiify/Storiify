@@ -31,6 +31,14 @@ $resultados = $controlador->getResultados();
             $raca = new ModeloRaca($racaArray);
             $nome = ($raca->nm_raca());
 
+            $camposListar = "";
+            foreach ($raca->getAtributosListar() as $nomeCampo => $valorCampo) {
+                $camposListar .= "<tr>"
+                        . "         <th scope='row'>$nomeCampo</th>"
+                        . "         <td>$valorCampo</td>"
+                        . "       </tr>";
+            }
+
             echo
             "<div title='Clique para editar $nome'"
             . "class='instancia-card mx-auto row clicavel' data-id='{$raca->pk_raca()}' data-nome='$nome'>"
@@ -41,14 +49,7 @@ $resultados = $controlador->getResultados();
             . "            </div>"
             . "            <div class='instancia-detalhes'>"
             . "                <table class='table'>"
-            . "                    <tr>"
-            . "                        <th scope='row'>Descrição:</th>"
-            . "                        <td>{$raca->dcr_raca()}</td>"
-            . "                    </tr>"
-            . "                    <tr>"
-            . "                        <th scope='row'>Povoamento:</th>"
-            . "                        <td>{$raca->pvmt_raca()}</td>"
-            . "                    </tr>"
+            . "                     $camposListar"
             . "                </table>"
             . "            </div>"
             . "        </div>"

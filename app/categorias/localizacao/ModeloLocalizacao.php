@@ -2,12 +2,11 @@
 
 class ModeloLocalizacao extends ConexaoBd {
 
-    private $tabela;
+    private $tabela = "tb_localizacao";
     private $campos = '*';
 
     public function __construct() {
         parent::__construct();
-        $this->tabela = "tb_localizacao";
     }
 
     public function salvar($parametros) {
