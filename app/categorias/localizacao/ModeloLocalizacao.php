@@ -78,6 +78,7 @@ class ModeloLocalizacao {
                 }
             }
         }
+        
     }
 
     public function getAtributosListar() {

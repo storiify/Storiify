@@ -97,7 +97,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="nm_lczc" value="<?php $resultado->nm_lczc() ?>" type="text" class="form-control" 
+                                <input name="nm_lczc" value="<?= $resultado->nm_lczc() ?>" type="text" class="form-control" 
                                        placeholder="Digite aqui o Nome da Localização" id="input-tx-Nome"/>
                             </div>
 
@@ -106,7 +106,7 @@ $resultado = ($controlador->getResultados() == null ?
                                 <div class="detalhes-conteudo">
                                     <textarea name="nm_lczc_dets" 
                                               placeholder="Campo de texto para detalhes" 
-                                              title="Digite seu texto aqui"><?php $resultado->nm_lczc_dets() ?></textarea>
+                                              title="Digite seu texto aqui"><?= $resultado->nm_lczc_dets() ?></textarea>
                                 </div>
                             </div>
 
@@ -134,7 +134,7 @@ $resultado = ($controlador->getResultados() == null ?
                                 <textarea name="vis_grl" value="" 
                                           placeholder="Digite aqui a Visão Geral dessa Localização" 
                                           title="Visão Geral" 
-                                          id="input-txarea-VisaoGeral"><?php $resultado->vis_grl() ?></textarea>
+                                          id="input-txarea-VisaoGeral"><?= $resultado->vis_grl() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -200,7 +200,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="marc_geo" value="" placeholder="Digite aqui os Marcos Geográficos dessa Localização" 
                                           title="Campo para Marcos Geográficos" 
-                                          id="input-txarea-MarcosGeograficos"><?php $resultado->marc_geo() ?></textarea>
+                                          id="input-txarea-MarcosGeograficos"><?= $resultado->marc_geo() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -263,7 +263,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="arrd_lczc" value="" placeholder="Digite aqui informações sobre os Arredores dessa Localização" 
-                                          title="Campo para Arredores" id="input-txarea-Arredores"><?php $resultado->arrd_lczc() ?></textarea>
+                                          title="Campo para Arredores" id="input-txarea-Arredores"><?= $resultado->arrd_lczc() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -372,7 +372,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="dcr_pasd" value="" placeholder="Digite aqui a Descrição do Passado dessa Localização" 
-                                          title="Campo para Descrição do Passado" id="input-txarea-DescricaodoPassado"><?php $resultado->dcr_pasd() ?></textarea>
+                                          title="Campo para Descrição do Passado" id="input-txarea-DescricaodoPassado"><?= $resultado->dcr_pasd() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -467,7 +467,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="envl_grrs" value="" placeholder="Digite aqui o Envolvimento em Guerras dessa Localização" 
-                                          title="Campo para Envolvimento em Guerras" id="input-txarea-DescricaodoPassado"><?php $resultado->envl_grrs() ?></textarea>
+                                          title="Campo para Envolvimento em Guerras" id="input-txarea-DescricaodoPassado"><?= $resultado->envl_grrs() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -492,7 +492,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="hist_gov" value="" placeholder="Digite aqui a História de Governo dessa Localização" 
-                                          title="Campo para História de Governo" id="input-txarea-DescricaodoPassado"><?php $resultado->hist_gov() ?></textarea>
+                                          title="Campo para História de Governo" id="input-txarea-DescricaodoPassado"><?= $resultado->hist_gov() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -517,7 +517,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="actm_mor_oglh" value="" placeholder="Digite aqui o Acontecimento de Maior Orgulho dessa Localização" 
-                                          title="Campo para Acontecimento de Maior Orgulho" id="input-txarea-AcontecimentodeMaiorOrgulho"><?php $resultado->actm_mor_oglh() ?></textarea>
+                                          title="Campo para Acontecimento de Maior Orgulho" id="input-txarea-AcontecimentodeMaiorOrgulho"><?= $resultado->actm_mor_oglh() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -542,7 +542,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="manc_hist" value="" placeholder="Digite aqui a Mancha na História dessa Localização" 
-                                          title="Campo para Mancha na História" id="input-txarea-ManchanaHistoria"><?php $resultado->manc_hist() ?></textarea>
+                                          title="Campo para Mancha na História" id="input-txarea-ManchanaHistoria"><?= $resultado->manc_hist() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -623,7 +623,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="rtus_lczc" value="" placeholder="Digite aqui os Rituais dessa Localização" 
-                                          title="Campo para Rituais" id="input-txarea-Rituais"><?php $resultado->rtus_lczc() ?></textarea>
+                                          title="Campo para Rituais" id="input-txarea-Rituais"><?= $resultado->rtus_lczc() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -648,7 +648,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="etca_vls" value="" placeholder="Digite aqui Ética e Valores dessa Localização" 
-                                          title="Campo para Ética e Valores" id="input-txarea-DescricaodoPassado"><?php $resultado->etca_vls() ?></textarea>
+                                          title="Campo para Ética e Valores" id="input-txarea-DescricaodoPassado"><?= $resultado->etca_vls() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -673,7 +673,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="art_ettm" value="" placeholder="Digite aqui Arte e Entretenimento dessa Localização" 
-                                          title="Campo para Arte e Entretenimento" id="input-txarea-ArteeEntretenimento"><?php $resultado->art_ettm() ?></textarea>
+                                          title="Campo para Arte e Entretenimento" id="input-txarea-ArteeEntretenimento"><?= $resultado->art_ettm() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -698,7 +698,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="tbus_lczc" value="" placeholder="Digite aqui sobre os Tabus dessa Localização" 
-                                          title="Campo para Tabus" id="input-txarea-DescricaodoPassado"><?php $resultado->tbus_lczc() ?></textarea>
+                                          title="Campo para Tabus" id="input-txarea-DescricaodoPassado"><?= $resultado->tbus_lczc() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -723,7 +723,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="dics_lczc" value="" placeholder="Digite aqui as Discriminações dessa Localização" 
-                                          title="Campo para Discriminações" id="input-txarea-Discriminacoes"><?php $resultado->dics_lczc() ?></textarea>
+                                          title="Campo para Discriminações" id="input-txarea-Discriminacoes"><?= $resultado->dics_lczc() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -752,7 +752,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="dcr_ecn" value="" placeholder="Digite aqui a Descrição da Economia dessa Localização" 
-                                          title="Campo para Descrição da Economia" id="input-txarea-DescricaodaEconomia"><?php $resultado->dcr_ecn() ?></textarea>
+                                          title="Campo para Descrição da Economia" id="input-txarea-DescricaodaEconomia"><?= $resultado->dcr_ecn() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -777,7 +777,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="moe_lczc" value="" placeholder="Digite aqui sobre a Moeda dessa Localização" 
-                                          title="Campo para Moeda" id="input-txarea-Moeda"><?php $resultado->moe_lczc() ?></textarea>
+                                          title="Campo para Moeda" id="input-txarea-Moeda"><?= $resultado->moe_lczc() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -802,7 +802,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="cmc_lczc" value="" placeholder="Digite aqui sobre o Comércio dessa Localização" 
-                                          title="Campo para Comércio" id="input-txarea-Comercio"><?php $resultado->cmc_lczc() ?></textarea>
+                                          title="Campo para Comércio" id="input-txarea-Comercio"><?= $resultado->cmc_lczc() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -827,7 +827,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="rlcs_extr_ecn" value="" placeholder="Digite aqui sobre as Relações Exteriores dessa Localização" 
-                                          title="Campo para Relações Exteriores" id="input-txarea-RelacoesExteriores"><?php $resultado->rlcs_extr_ecn() ?></textarea>
+                                          title="Campo para Relações Exteriores" id="input-txarea-RelacoesExteriores"><?= $resultado->rlcs_extr_ecn() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -852,7 +852,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="rlcs_itna_ecn" value="" placeholder="Digite aqui sobre as Relações Internas dessa Localização" 
-                                          title="Campo para Relações Internas" id="input-txarea-RelacoesInternas"><?php $resultado->rlcs_itna_ecn() ?></textarea>
+                                          title="Campo para Relações Internas" id="input-txarea-RelacoesInternas"><?= $resultado->rlcs_itna_ecn() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -877,7 +877,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="negs_ind" value="" placeholder="Digite aqui sobre os Negócios/Indústrias dessa Localização" 
-                                          title="Campo para Negócios/Indústrias" id="input-txarea-NegociosIndustrias"><?php $resultado->negs_ind() ?></textarea>
+                                          title="Campo para Negócios/Indústrias" id="input-txarea-NegociosIndustrias"><?= $resultado->negs_ind() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -903,14 +903,14 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="degd_scl"
                                        data-minmax-valores="Muito Desigual, Pouco Desigual, Sem Desigualdades" class="input-minmax" 
-                                       value="<?php $resultado->degd_scl() ?>" id="input-minmax-DesigualdadeSocial"></input>
+                                       value="<?= $resultado->degd_scl() ?>" id="input-minmax-DesigualdadeSocial"></input>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="degd_scl_dets" placeholder="Digite aqui os detalhes para Desigualdade Social" 
-                                              title="Campo para detalhes de Desigualdade Social"><?php $resultado->degd_scl_dets() ?></textarea>
+                                              title="Campo para detalhes de Desigualdade Social"><?= $resultado->degd_scl_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -940,7 +940,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="fma_gov" value="" placeholder="Digite aqui a Forma de Governo dessa Localização" 
-                                          title="Campo para Forma de Governo" id="input-txarea-FormadeGoverno"><?php $resultado->fma_gov() ?></textarea>
+                                          title="Campo para Forma de Governo" id="input-txarea-FormadeGoverno"><?= $resultado->fma_gov() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -965,7 +965,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="leis_lczc" value="" placeholder="Digite aqui sobre as Leis dessa Localização" 
-                                          title="Campo para Leis" id="input-txarea-Leis"><?php $resultado->leis_lczc() ?></textarea>
+                                          title="Campo para Leis" id="input-txarea-Leis"><?= $resultado->leis_lczc() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -990,7 +990,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="punc_lczc" value="" placeholder="Digite aqui sobre as Punições dessa Localização" 
-                                          title="Campo para Punições" id="input-txarea-Punicoes"><?php $resultado->punc_lczc() ?></textarea>
+                                          title="Campo para Punições" id="input-txarea-Punicoes"><?= $resultado->punc_lczc() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1015,7 +1015,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="rlcs_extr_pol" value="" placeholder="Digite aqui sobre as Relações Exteriores dessa Localização" 
-                                          title="Campo para Relações Exteriores" id="input-txarea-RelacoesExteriores"><?php $resultado->rlcs_extr_pol() ?></textarea>
+                                          title="Campo para Relações Exteriores" id="input-txarea-RelacoesExteriores"><?= $resultado->rlcs_extr_pol() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1041,14 +1041,14 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="satc_pop"
                                        data-minmax-valores="Muito Insatisfeita,Insatisfeita,Neutra,Satisfeita,Muito Satisfeita" class="input-minmax" 
-                                       value="<?php $resultado->satc_pop() ?>" id="input-minmax-SatisfacaodaPopulacao"></input>
+                                       value="<?= $resultado->satc_pop() ?>" id="input-minmax-SatisfacaodaPopulacao"></input>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="satc_pop_dets" placeholder="Digite aqui os detalhes para Satisfação da População" 
-                                              title="Campo para detalhes de Satisfação da População"><?php $resultado->satc_pop_dets() ?></textarea>
+                                              title="Campo para detalhes de Satisfação da População"><?= $resultado->satc_pop_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -1074,7 +1074,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="orgz_anti_gov" value="" placeholder="Digite aqui sobre as Organizações Antigoverno dessa Localização" 
-                                          title="Campo para Organizações Antigoverno" id="input-txarea-OrganizacoesAntigoverno"><?php $resultado->orgz_anti_gov() ?></textarea>
+                                          title="Campo para Organizações Antigoverno" id="input-txarea-OrganizacoesAntigoverno"><?= $resultado->orgz_anti_gov() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1099,7 +1099,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="cls_cast" value="" placeholder="Digite aqui sobre as Classes/Castas dessa Localização" 
-                                          title="Campo para Classes/Castas" id="input-txarea-ClassesCastas"><?php $resultado->cls_cast() ?></textarea>
+                                          title="Campo para Classes/Castas" id="input-txarea-ClassesCastas"><?= $resultado->cls_cast() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1129,14 +1129,14 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="nvl_tecn"
                                        data-minmax-valores="Rudimentar,Inferior,Mediana,Desenvolvida,Avançada" class="input-minmax" 
-                                       value="<?php $resultado->nvl_tecn() ?>" id="input-minmax-NivelTecnologico"></input>
+                                       value="<?= $resultado->nvl_tecn() ?>" id="input-minmax-NivelTecnologico"></input>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="nvl_tecn_dets" placeholder="Digite aqui os detalhes para o Nível Tecnológico" 
-                                              title="Campo para detalhes do Nível Tecnológico"><?php $resultado->nvl_tecn_dets() ?></textarea>
+                                              title="Campo para detalhes do Nível Tecnológico"><?= $resultado->nvl_tecn_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -1163,14 +1163,14 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="depe_tecn"
                                        data-minmax-valores="Totalmente Dependentes,Elevada,Mediana,Pouca,Totalmente Independentes" class="input-minmax" 
-                                       value="<?php $resultado->depe_tecn() ?>" id="input-minmax-DependenciadeTecnologia"></input>
+                                       value="<?= $resultado->depe_tecn() ?>" id="input-minmax-DependenciadeTecnologia"></input>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="depe_tecn_dets" placeholder="Digite aqui os detalhes para Dependência de Tecnologia" 
-                                              title="Campo para detalhes de Dependência de Tecnologia"><?php $resultado->depe_tecn_dets() ?></textarea>
+                                              title="Campo para detalhes de Dependência de Tecnologia"><?= $resultado->depe_tecn_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -1197,14 +1197,14 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="acss_tecn"
                                        data-minmax-valores="Muito Insatisfeita,Insatisfeita,Neutra,Satisfeita,Muito Satisfeita" class="input-minmax" 
-                                       value="<?php $resultado->acss_tecn() ?>" id="input-minmax-AcessoaTecnologia"></input>
+                                       value="<?= $resultado->acss_tecn() ?>" id="input-minmax-AcessoaTecnologia"></input>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="acss_tecn_dets" placeholder="Digite aqui os detalhes para Acesso à Tecnologia" 
-                                              title="Campo para detalhes de Acesso à Tecnologia"><?php $resultado->acss_tecn_dets() ?></textarea>
+                                              title="Campo para detalhes de Acesso à Tecnologia"><?= $resultado->acss_tecn_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -1230,7 +1230,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="mtd_cmco" value="" placeholder="Digite aqui o Método de Comunicação dessa Localização" 
-                                          title="Campo para Método de Comunicação" id="input-txarea-MetododeComunicacao"><?php $resultado->mtd_cmco() ?></textarea>
+                                          title="Campo para Método de Comunicação" id="input-txarea-MetododeComunicacao"><?= $resultado->mtd_cmco() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1255,7 +1255,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="mtd_trnt" value="" placeholder="Digite aqui sobre o Método de Transporte dessa Localização" 
-                                          title="Campo para Método de Transporte" id="input-txarea-MetododeTransporte"><?php $resultado->mtd_trnt() ?></textarea>
+                                          title="Campo para Método de Transporte" id="input-txarea-MetododeTransporte"><?= $resultado->mtd_trnt() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1280,7 +1280,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="ciec_dcob" value="" placeholder="Digite aqui sobre a Ciência e Descobertas dessa Localização" 
-                                          title="Campo para Ciência e Descobertas" id="input-txarea-CienciaeDescobertas"><?php $resultado->ciec_dcob() ?></textarea>
+                                          title="Campo para Ciência e Descobertas" id="input-txarea-CienciaeDescobertas"><?= $resultado->ciec_dcob() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1310,14 +1310,14 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="acss_magi"
                                        data-minmax-valores="Quase Nenhum,Baixo,Acessível,Comum,Maioria dos Habitantes" class="input-minmax" 
-                                       value="<?php $resultado->acss_magi() ?>" id="input-minmax-AcessoaMagia"></input>
+                                       value="<?= $resultado->acss_magi() ?>" id="input-minmax-AcessoaMagia"></input>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
                                     <textarea name="acss_magi_dets" placeholder="Digite aqui os detalhes para o Acesso à Magia" 
-                                              title="Campo para detalhes do Acesso à Magia"><?php $resultado->acss_magi_dets() ?></textarea>
+                                              title="Campo para detalhes do Acesso à Magia"><?= $resultado->acss_magi_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -1343,7 +1343,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="efe_magi_lczc" value="" placeholder="Digite aqui os Efeitos da Magia na Localização" 
-                                          title="Campo para Efeitos da Magia na Localização" id="input-txarea-EfeitosdaMagianaLocalizacao"><?php $resultado->efe_magi_lczc() ?></textarea>
+                                          title="Campo para Efeitos da Magia na Localização" id="input-txarea-EfeitosdaMagianaLocalizacao"><?= $resultado->efe_magi_lczc() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1368,7 +1368,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="efe_magi_scdd" value="" placeholder="Digite aqui sobre os Efeitos da Magia na Sociedade" 
-                                          title="Campo para Efeitos da Magia na Sociedade" id="input-txarea-EfeitosdaMagianaSociedade"><?php $resultado->efe_magi_scdd() ?></textarea>
+                                          title="Campo para Efeitos da Magia na Sociedade" id="input-txarea-EfeitosdaMagianaSociedade"><?= $resultado->efe_magi_scdd() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1393,7 +1393,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="efe_magi_tecn" value="" placeholder="Digite aqui sobre os Efeitos da Magia na Tecnologia" 
-                                          title="Campo para Efeitos da Magia na Tecnologia" id="input-txarea-EfeitosdaMagianaTecnologia"><?php $resultado->efe_magi_tecn() ?></textarea>
+                                          title="Campo para Efeitos da Magia na Tecnologia" id="input-txarea-EfeitosdaMagianaTecnologia"><?= $resultado->efe_magi_tecn() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1406,10 +1406,10 @@ $resultado = ($controlador->getResultados() == null ?
         </div>
         <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="col-md-12 form-controle">
-            <input type="hidden" name="pk_lczc" value="<?php $resultado->pk_lczc() ?>">
-            <input type="hidden" name="pk_lczc" value="<?php $resultado->fk_hist() ?>">
+            <input type="hidden" name="pk_lczc" value="<?= $resultado->pk_lczc() ?>">
+            <input type="hidden" name="pk_lczc" value="<?= $resultado->fk_hist() ?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
-                Salvar <?php ModeloLocalizacao::$nomeSingular ?>
+                Salvar <?= ModeloLocalizacao::$nomeSingular ?>
             </button>
         </div>
     </form>

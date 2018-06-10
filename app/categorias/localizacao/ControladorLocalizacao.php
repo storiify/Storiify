@@ -42,7 +42,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
     public function editar($parametros) {
         $bdContext = new BdContextLocalizacao();
         $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
-
+        
         if ($instancia != null) {
             $this->setResultados($instancia);
 
