@@ -59,7 +59,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $resRaca = $bdRaca->listar("");
             //Get personagens registrados como mais conhecidos
             $idsPsnaCnhd = $bdLczc->listarPsnaCnhd($instancia->pk_lczc());
-            //Get raças registrados
+            //Get raças registradas
             $idsRaca = $bdLczc->listarRaca($instancia->pk_lczc());
             $res = array(
                 "psna" => $resPsna,

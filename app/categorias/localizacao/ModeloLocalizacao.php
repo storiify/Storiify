@@ -62,7 +62,6 @@ class ModeloLocalizacao {
     private $dt_cric;
     private $dt_alt;
 // </editor-fold>
-    
     //Views
     public static $viewForm = "FormLocalizacao";
     public static $viewListar = "ListarLocalizacao";
@@ -78,7 +77,6 @@ class ModeloLocalizacao {
                 }
             }
         }
-        
     }
 
     public function getAtributosListar() {
@@ -89,7 +87,11 @@ class ModeloLocalizacao {
             $atributosSelecionados["Visão Geral"] = $this->vis_grl;
         }
         if ($this->fk_ppl_lcld != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            $atributosSelecionados["Principal Localidade"] = $this->fk_ppl_lcld;
+            $bdContext = new BdContextLocalizacao();
+            $parametros["id"] = $this->fk_ppl_lcld;
+            $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
+            
+            $atributosSelecionados["Principal Localidade"] = $instancia->nm_lczc();
         }
         if ($this->fk_fdd_decb != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Fundador/Descoridor"] = $this->fk_fdd_decb;
