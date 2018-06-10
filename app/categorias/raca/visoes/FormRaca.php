@@ -1,15 +1,16 @@
 <?php
-$resultado = ($controlador->getResultados() == null? new ModeloRaca(array()) : $controlador->getResultados());
+$resultado = new ModeloLocalizacao(array()); //Necessário para usar o autoComplete
+$resultado = ($controlador->getResultados() == null ? 
+        new ModeloRaca(array()) : $controlador->getResultados());
 ?>
 
 <div class="pular-menu">
-    <div class="marquee"><?=$this->getDicas()?></div>
+    <div class="marquee"><?= $this->getDicas() ?></div>
 </div>
-
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?=($resultado->nm_raca() == ""? ModeloRaca::$nomeSingular : $resultado->nm_raca(30))?></h1>
+        <h1><?= (empty($resultado->nm_raca()) ? ModeloRaca::$nomeSingular : $resultado->nm_raca(30)) ?></h1>
     </div>
 </div>
 
@@ -23,7 +24,7 @@ $resultado = ($controlador->getResultados() == null? new ModeloRaca(array()) : $
         </nav>
     </div>
     <!-- FINAL - ABAS DE NAVEGAÇÃO -->
-    <form action="?categoria=<?=$categoria?>&acao=salvar" method="post" enctype="multipart/form-data">
+    <form action="?categoria=<?= $categoria ?>&acao=salvar" method="post" enctype="multipart/form-data">
         <!-- CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="tab-content">
             <!--ABA GERAL-->
@@ -44,7 +45,7 @@ $resultado = ($controlador->getResultados() == null? new ModeloRaca(array()) : $
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="nm_raca" value="<?=$resultado->nm_raca()?>" 
+                                <input name="nm_raca" value="<?= $resultado->nm_raca() ?>" 
                                        placeholder="Digite aqui o Nome da Raça"
                                        title="Campo para Nome da Raça"
                                        maxlength="60" type="text"
@@ -73,7 +74,7 @@ $resultado = ($controlador->getResultados() == null? new ModeloRaca(array()) : $
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="dcr_raca" value="" 
                                           placeholder="Digite aqui a Descrição da Raça" title="Campo para Descrição da Raça" 
-                                          id="input-txarea-Descricao"><?=$resultado->dcr_raca()?></textarea>
+                                          id="input-txarea-Descricao"><?= $resultado->dcr_raca() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -99,7 +100,7 @@ $resultado = ($controlador->getResultados() == null? new ModeloRaca(array()) : $
                             <div class="col-md-12 input-conteudo"> 
                                 <textarea name="apci_raca" value="" 
                                           placeholder="Digite aqui a Aparência da Raça" title="Campo para Aparência da Raça" 
-                                          id="input-txarea-Aparencia"><?=$resultado->apci_raca()?></textarea>
+                                          id="input-txarea-Aparencia"><?= $resultado->apci_raca() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -125,7 +126,7 @@ $resultado = ($controlador->getResultados() == null? new ModeloRaca(array()) : $
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="pvmt_raca" 
                                        data-minmax-valores="Quase Inexistente, Baixo, Médio, Alto, Abundante" class="input-minmax" 
-                                       value="<?=$resultado->pvmt_raca()?>" id="input-minmax-Hostilidade"></input>
+                                       value="<?= $resultado->pvmt_raca() ?>" id="input-minmax-Hostilidade"></input>
                             </div>
                         </div>
                         <!--FINAL - INPUT CORPO-->
@@ -150,7 +151,7 @@ $resultado = ($controlador->getResultados() == null? new ModeloRaca(array()) : $
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="rptc_raca" 
                                        data-minmax-valores="Odiado, Desvalorizado, Neutro, Respeitado, Venerado" class="input-minmax" 
-                                       value="<?=$resultado->rptc_raca()?>" id="input-minmax-Reputacao"></input>
+                                       value="<?= $resultado->rptc_raca() ?>" id="input-minmax-Reputacao"></input>
                             </div>
                         </div>
                         <!--FINAL - INPUT CORPO-->
@@ -162,10 +163,10 @@ $resultado = ($controlador->getResultados() == null? new ModeloRaca(array()) : $
         </div>
         <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="col-md-12 form-controle">
-            <input type="hidden" name="pk_raca" value="<?=$resultado->pk_raca()?>">
-            <input type="hidden" name="fk_hist" value="<?=$resultado->fk_hist()?>">
+            <input type="hidden" name="pk_raca" value="<?= $resultado->pk_raca() ?>">
+            <input type="hidden" name="fk_hist" value="<?= $resultado->fk_hist() ?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
-                Salvar <?= ModeloRaca::$nomeSingular?>
+                Salvar <?= ModeloRaca::$nomeSingular ?>
             </button>
         </div>
     </form>

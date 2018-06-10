@@ -1,164 +1,363 @@
 <?php
 
-class ModeloLocalizacao extends ConexaoBd {
+class ModeloLocalizacao {
 
-    private $tabela = "tb_localizacao";
-    private $campos = '*';
+    // <editor-fold defaultstate="collapsed" desc="Colunas">
+    private $pk_lczc;
+    private $fk_hist;
+    private $im_lczc;
+    private $im_lczc_dets;
+    private $nm_lczc;
+    private $nm_lczc_dets;
+    private $vis_grl;
+    private $marc_geo;
+    private $fk_ppl_lcld;
+    private $arrd_lczc;
+    private $hotl_lczc;
+    private $hotl_lczc_dets;
+    private $vsi_lczc;
+    private $dcr_pasd;
+    private $fk_fdd_decb;
+    private $dt_fdc_decb;
+    private $dt_fdc_decb_dets;
+    private $envl_grrs;
+    private $hist_gov;
+    private $actm_mor_oglh;
+    private $manc_hist;
+    private $rtus_lczc;
+    private $etca_vls;
+    private $art_ettm;
+    private $tbus_lczc;
+    private $dics_lczc;
+    private $dcr_ecn;
+    private $moe_lczc;
+    private $cmc_lczc;
+    private $rlcs_extr_ecn;
+    private $rlcs_itna_ecn;
+    private $negs_ind;
+    private $degd_scl;
+    private $degd_scl_dets;
+    private $fma_gov;
+    private $leis_lczc;
+    private $punc_lczc;
+    private $rlcs_extr_pol;
+    private $satc_pop;
+    private $satc_pop_dets;
+    private $orgz_anti_gov;
+    private $cls_cast;
+    private $nvl_tecn;
+    private $nvl_tecn_dets;
+    private $depe_tecn;
+    private $depe_tecn_dets;
+    private $acss_tecn;
+    private $acss_tecn_dets;
+    private $mtd_cmco;
+    private $mtd_trnt;
+    private $ciec_dcob;
+    private $acss_magi;
+    private $acss_magi_dets;
+    private $efe_magi_lczc;
+    private $efe_magi_scdd;
+    private $efe_magi_tecn;
+    private $dt_cric;
+    private $dt_alt;
+// </editor-fold>
+    
+    //Views
+    public static $viewForm = "FormLocalizacao";
+    public static $viewListar = "ListarLocalizacao";
+    //Nomes Formais
+    public static $nomeSingular = "Localização";
+    public static $nomePlural = "Localizações";
 
-    public function __construct() {
-        parent::__construct();
-    }
-
-    public function salvar($parametros) {
-        //Gerencia as colunas de hora
-        date_default_timezone_set('America/Sao_Paulo');
-        $horarioAtual = date("Y-m-d H:i:s");
-        $parametros['dt_alt'] = $horarioAtual;
-        //Gerencia a coluna de personagens mais conhecidos
-        $idsPsnaCnhd = $parametros['fk_psna_cnhd'];
-        unset($parametros['fk_psna_cnhd']);
-        //Gerencia a coluna de raças
-        $idsRaca = $parametros['fk_raca'];
-        unset($parametros['fk_raca']);
-        //Gerencia a qual história essa localização pertence
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
-        $parametros['fk_hist'] = $idHistoria;
-        
-        $res = false;
-        
-        //Editando
-        if (isset($parametros['pk_lczc']) && $parametros['pk_lczc'] != '') {
-            $condicao = " pk_lczc='{$parametros['pk_lczc']}'";
-            $res = $this->updateBase($parametros, $this->tabela, $condicao);
-
-            if ($res) {
-                //Deleta todas as relações de personagens conhecidos
-                $this->excluirPsnaCnhd($parametros['pk_lczc']);
-                //Deleta todas as relações raças
-                $this->excluirRaca($parametros['pk_lczc']);
+    public function __construct($colunas) {
+        foreach ($this as $keyLocalizacao => $valueLocalizacao) {
+            foreach ($colunas as $keyColuna => $valueColuna) {
+                if ($keyLocalizacao == $keyColuna) {
+                    $this->$keyLocalizacao = $valueColuna ? $valueColuna : "";
+                }
             }
-        //Criando
-        } else {
-            $parametros['dt_cric'] = $horarioAtual;
-            $res = $this->inserirBase($parametros, $this->tabela);
         }
-        
-        if ($res) {
-            //Cria a relação de personagens conhecidos
-            $this->salvarPsnaCnhd($idsPsnaCnhd, $parametros['pk_lczc']);
-            //Cria a relação de raças existentes
-            $this->salvarRacaExistente($idsRaca);
+    }
+
+    public function getAtributosListar() {
+        $qtdMaxAtt = 3;
+        $atributosSelecionados = array();
+
+        if ($this->vis_grl != "") {
+            $atributosSelecionados["Visão Geral"] = $this->vis_grl;
+        }
+        if ($this->fk_ppl_lcld != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Principal Localidade"] = $this->fk_ppl_lcld;
+        }
+        if ($this->fk_fdd_decb != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Fundador/Descoridor"] = $this->fk_fdd_decb;
+        }
+        if ($this->hist_gov != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["História de Governo"] = $this->hist_gov;
+        }
+        if ($this->actm_mor_oglh != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Acontecimento de Maior Orgulho"] = $this->actm_mor_oglh;
+        }
+        if ($this->etca_vls != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Ética e Valores"] = $this->etca_vls;
+        }
+        if ($this->dcr_ecn != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Descrição da Economia"] = $this->dcr_ecn;
+        }
+        if ($this->degd_scl != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Desigualdade Social"] = $this->degd_scl;
+        }
+        if ($this->nvl_tecn != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Nível Tecnológico"] = $this->nvl_tecn;
         }
 
-        return $res;
+        return $atributosSelecionados;
     }
 
-    public function listar($parametros) {
-        $modeloBase = new ConexaoBd();
-
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
-        $condicao = "WHERE fk_hist='$idHistoria'";
-
-        if (isset($parametros['parametros']) && array_key_exists("parametros", $parametros)) {
-            $id = $parametros['parametros'];
-            $condicao .= " AND pk_lczc='$id'";
+    public static function getTituloPagina($acao) {
+        if ($acao == "cadastrar") {
+            return "Cadastrar " . ModeloLocalizacao::$nomeSingular;
+        } elseif ($acao == "listar") {
+            return ModeloLocalizacao::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
         }
+    }
 
-        $res = $modeloBase->listarBase($this->campos, $this->tabela, $condicao);
+    // <editor-fold defaultstate="collapsed" desc="Getters">
+    public function pk_lczc() {
+        return $this->pk_lczc;
+    }
 
+    public function fk_hist() {
+        return $this->fk_hist;
+    }
 
-        if (!isset($res) or $res == null) {
-            return array();
+    public function im_lczc() {
+        return $this->im_lczc;
+    }
+
+    public function im_lczc_dets() {
+        return $this->im_lczc_dets;
+    }
+
+    public function nm_lczc($tamanhoMaximo = -1) {
+        if ($tamanhoMaximo == -1) {
+            return $this->nm_lczc;
         }
-
-        return $res;
+        return truncar($this->nm_lczc, $tamanhoMaximo);
     }
 
-    public function excluir($parametros) {
-        $id = $parametros['parametros'];
-        $res = false;
-
-        $this->excluirPsnaCnhd($id);
-
-        $condicao = "pk_lczc='$id'";
-        $res = $this->excluirBase($this->tabela, $condicao);
-
-        return $res;
+    public function nm_lczc_dets() {
+        return $this->nm_lczc_dets;
     }
 
-    private function salvarPsnaCnhd($idsPsnaCnhd, $idLczc) {
-        $tb_psna_cnhd = "tb_localizacao_rel_personagem";
-        foreach ($idsPsnaCnhd as $psna) {
-            $rel['fk_lczc'] = $idLczc;
-            $rel['fk_psna'] = $psna;
-            $res = $this->inserirBase($rel, $tb_psna_cnhd);
-        }
-        return $res;
+    public function vis_grl() {
+        return $this->vis_grl;
     }
 
-    public function listarPsnaCnhd($parametros) {
-        $res = false;
-        $tabela = "tb_localizacao_rel_personagem";
-        $idLocalizacao = $parametros;
-        $condicao = "WHERE fk_lczc='$idLocalizacao'";
-
-        $res = $this->listarBase('fk_psna', $tabela, $condicao);
-
-        if (!isset($res) or $res == null) {
-            return array();
-        }
-        return $res;
+    public function marc_geo() {
+        return $this->marc_geo;
     }
 
-    private function excluirPsnaCnhd($idLczc) {
-        $tb_psna_cnhd = "tb_localizacao_rel_personagem";
-
-        $res = false;
-        $condicao = "fk_lczc='$idLczc'";
-
-        $res = $this->excluirBase($tb_psna_cnhd, $condicao);
-
-        return $res;
+    public function fk_ppl_lcld() {
+        return $this->fk_ppl_lcld;
     }
 
-    private function salvarRacaExistente($idsRaca) {
-        $tb_rel_raca = "tb_localizacao_rel_raca";
-        foreach ($idsRaca as $raca) {
-            $rel['fk_lczc'] = $this->proximoID() - 1;
-            $rel['fk_raca'] = $raca;
-            $res = $this->inserirBase($rel, $tb_rel_raca);
-        }
-        return $res;
+    public function arrd_lczc() {
+        return $this->arrd_lczc;
     }
 
-    public function listarRaca($parametros) {
-        $res = false;
-        $tabela = "tb_localizacao_rel_raca";
-        $idLocalizacao = $parametros;
-        $condicao = "WHERE fk_lczc='$idLocalizacao'";
-
-        $res = $this->listarBase('fk_raca', $tabela, $condicao);
-
-        if (!isset($res) or $res == null) {
-            return array();
-        }
-        return $res;
+    public function hotl_lczc() {
+        return $this->hotl_lczc;
     }
 
-    private function excluirRaca($idLczc) {
-        $tb_rel_raca = "tb_localizacao_rel_raca";
-
-        $res = false;
-        $condicao = "fk_lczc='$idLczc'";
-
-        $res = $this->excluirBase($tb_rel_raca, $condicao);
-
-        return $res;
+    public function hotl_lczc_dets() {
+        return $this->hotl_lczc_dets;
     }
 
-    public function proximoID() {
-        $modeloBase = new ConexaoBd();
-        return $modeloBase->getNextID($this->tabela);
+    public function vsi_lczc() {
+        return parseCheckbox($this->vsi_lczc);
     }
 
+    public function dcr_pasd() {
+        return $this->dcr_pasd;
+    }
+
+    public function fk_fdd_decb() {
+        return $this->fk_fdd_decb;
+    }
+
+    public function dt_fdc_decb() {
+        return $this->dt_fdc_decb;
+    }
+
+    public function dt_fdc_decb_dets() {
+        return $this->dt_fdc_decb_dets;
+    }
+
+    public function envl_grrs() {
+        return $this->envl_grrs;
+    }
+
+    public function hist_gov() {
+        return $this->hist_gov;
+    }
+
+    public function actm_mor_oglh() {
+        return $this->actm_mor_oglh;
+    }
+
+    public function manc_hist() {
+        return $this->manc_hist;
+    }
+
+    public function rtus_lczc() {
+        return $this->rtus_lczc;
+    }
+
+    public function etca_vls() {
+        return $this->etca_vls;
+    }
+
+    public function art_ettm() {
+        return $this->art_ettm;
+    }
+
+    public function tbus_lczc() {
+        return $this->tbus_lczc;
+    }
+
+    public function dics_lczc() {
+        return $this->dics_lczc;
+    }
+
+    public function dcr_ecn() {
+        return $this->dcr_ecn;
+    }
+
+    public function moe_lczc() {
+        return $this->moe_lczc;
+    }
+
+    public function cmc_lczc() {
+        return $this->cmc_lczc;
+    }
+
+    public function rlcs_extr_ecn() {
+        return $this->rlcs_extr_ecn;
+    }
+
+    public function rlcs_itna_ecn() {
+        return $this->rlcs_itna_ecn;
+    }
+
+    public function negs_ind() {
+        return $this->negs_ind;
+    }
+
+    public function degd_scl() {
+        return $this->degd_scl;
+    }
+
+    public function degd_scl_dets() {
+        return $this->degd_scl_dets;
+    }
+
+    public function fma_gov() {
+        return $this->fma_gov;
+    }
+
+    public function leis_lczc() {
+        return $this->leis_lczc;
+    }
+
+    public function punc_lczc() {
+        return $this->punc_lczc;
+    }
+
+    public function rlcs_extr_pol() {
+        return $this->rlcs_extr_pol;
+    }
+
+    public function satc_pop() {
+        return $this->satc_pop;
+    }
+
+    public function satc_pop_dets() {
+        return $this->satc_pop_dets;
+    }
+
+    public function orgz_anti_gov() {
+        return $this->orgz_anti_gov;
+    }
+
+    public function cls_cast() {
+        return $this->cls_cast;
+    }
+
+    public function nvl_tecn() {
+        return $this->nvl_tecn;
+    }
+
+    public function nvl_tecn_dets() {
+        return $this->nvl_tecn_dets;
+    }
+
+    public function depe_tecn() {
+        return $this->depe_tecn;
+    }
+
+    public function depe_tecn_dets() {
+        return $this->depe_tecn_dets;
+    }
+
+    public function acss_tecn() {
+        return $this->acss_tecn;
+    }
+
+    public function acss_tecn_dets() {
+        return $this->acss_tecn_dets;
+    }
+
+    public function mtd_cmco() {
+        return $this->mtd_cmco;
+    }
+
+    public function mtd_trnt() {
+        return $this->mtd_trnt;
+    }
+
+    public function ciec_dcob() {
+        return $this->ciec_dcob;
+    }
+
+    public function acss_magi() {
+        return $this->acss_magi;
+    }
+
+    public function acss_magi_dets() {
+        return $this->acss_magi_dets;
+    }
+
+    public function efe_magi_lczc() {
+        return $this->efe_magi_lczc;
+    }
+
+    public function efe_magi_scdd() {
+        return $this->efe_magi_scdd;
+    }
+
+    public function efe_magi_tecn() {
+        return $this->efe_magi_tecn;
+    }
+
+    public function dt_cric() {
+        return $this->dt_cric;
+    }
+
+    public function dt_alt() {
+        return $this->dt_alt;
+    }
+
+// </editor-fold>
 }

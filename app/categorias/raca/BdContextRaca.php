@@ -29,8 +29,8 @@ class BdContextRaca extends ConexaoBd {
 
     public function listar($parametros) {
 
-        $idHistoriaSelecionada = sessao()->getHistoriaSelecionada()->pk_hist;
-        $condicao = "WHERE fk_hist='$idHistoriaSelecionada'";
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $condicao = "WHERE fk_hist='$idHistoria'";
 
         if (isset($parametros['id']) && array_key_exists("id", $parametros)) {
             $id = $parametros['id'];

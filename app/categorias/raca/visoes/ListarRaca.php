@@ -14,7 +14,6 @@ $resultados = $controlador->getResultados();
 </div>
 
 <div class="conteudo">
-
     <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
         <a href='?categoria=<?= $categoria ?>&acao=cadastrar' 

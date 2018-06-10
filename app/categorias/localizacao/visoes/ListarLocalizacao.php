@@ -2,36 +2,46 @@
 $resultados = $controlador->getResultados();
 ?>
 
-<div style="margin-top:60px;">
-    <div class="marquee"><?= $this->getDicas(); ?></div>
+<div class="pular-menu">
+    <div class="marquee"><?= $this->getDicas() ?></div>
 </div>
 
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= nomeFormal($categoria) ?></h1>
+        <h1><?= nomeFormal($categoria, "plural") ?></h1>
     </div>
 </div>
 
 <div class="conteudo">
+    <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
         <a href='?categoria=<?= $categoria ?>&acao=cadastrar' 
-           title='Clique para criar uma nova <?= nomeFormal($categoria) ?>'
+           title='Clique para criar uma nova <?= ModeloLocalizacao::$nomeSingular ?>'
            class='btn btn-azul criar-nova-instancia'>
             <i class="fa fa-plus"></i>
-            &nbsp&nbspCriar nova <?= nomeFormal($categoria) ?>
+            &nbsp&nbspCriar nova <?= ModeloLocalizacao::$nomeSingular ?>
         </a>
     </div>
 
     <?php
     if (isset($resultados)) {
-        foreach ($resultados as $localizacao) {
-            $modelo = (object) $localizacao;
-            $nome = $modelo->nm_lczc;
-            $imagemPrincipal = (isset($modelo->im_lczc)) ? $modelo->im_lczc : const_Indefinida_IM;
+        foreach ($resultados as $localizacaoArray) {
+            $localizacao = new ModeloLocalizacao($localizacaoArray);
+            $nome = $localizacao->nm_lczc();
+            $imagemPrincipal = ($localizacao->im_lczc() != "" ? $localizacao->im_lczc() : const_Indefinida_IM);
+
+            $camposListar = "";
+            foreach ($localizacao->getAtributosListar() as $nomeCampo => $valorCampo) {
+                $camposListar .= "<tr>"
+                        . "         <th scope='row'>$nomeCampo</th>"
+                        . "         <td>$valorCampo</td>"
+                        . "       </tr>";
+            }
+
             echo
             "<div title='Clique para editar $nome'"
-            . "class='instancia-card mx-auto row' data-id='$modelo->pk_lczc' data-nome='$nome'>"
+            . "class='instancia-card mx-auto row' data-id='{$localizacao->pk_lczc()}' data-nome='$nome'>"
             . "    <div class='instancia-corpo col-md-11 row'>"
             . "        <div class='instancia-imagem' style='background-image:url($imagemPrincipal)'></div>"
             . "        <div class='instancia-conteudo col'>"
@@ -40,31 +50,20 @@ $resultados = $controlador->getResultados();
             . "            </div>"
             . "            <div class='instancia-detalhes'>"
             . "                <table class='table'>"
-            . "                    <tr>"
-            . "                        <th scope='row'>Visão Geral:</th>"
-            . "                        <td>" . $modelo->vis_grl . "</td>"
-            . "                    </tr>"
-            . "                    <tr>"
-            . "                        <th scope='row'>Arredores:</th>"
-            . "                        <td>" . $modelo->arrd_lczc . "</td>"
-            . "                    </tr>"
-            . "                    <tr>"
-            . "                        <th scope='row'>Descrição Passado:</th>"
-            . "                        <td>" . $modelo->dcr_pasd . "</td>"
-            . "                    </tr>"
+            . "                     $camposListar"
             . "                </table>"
             . "            </div>"
             . "            <div class='instancia-ultima-alteracao hidden-xl-down'>"
-            . "                <span>Última edição: $modelo->dt_alt </span>"
+            . "                <span>Última edição: {$localizacao->dt_alt()} </span>"
             . "            </div>"
             . "        </div>"
             . "    </div>"
-            . "    <a href='?categoria=$categoria&acao=editar&parametros=$modelo->pk_lczc'></a>"
+            . "    <a href='?categoria=$categoria&acao=editar&id={$localizacao->pk_lczc()}'></a>"
             . "    <div class='instancia-controle col-md-1' style='padding-left: 0px;'>"
             . "        <button class='btn btn-azul btn-deletar-instancia' title='Clique para deletar $nome'>"
             . "            <i class='fa fa-times'></i>"
             . "        </button>"
-            . "        <a href='?categoria=$categoria&acao=excluir&parametros=$modelo->pk_lczc' class='deletar-instancia-escondido'></a>"
+            . "        <a href='?categoria=$categoria&acao=excluir&id={$localizacao->pk_lczc()}' class='deletar-instancia-escondido'></a>"
             . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar'>"
             . "            <i class='fa fa-minus'></i>"
             . "        </button>"
@@ -76,7 +75,7 @@ $resultados = $controlador->getResultados();
             . "</div>";
         }
     }
-    if (!isset($modelo)) {
+    if (!isset($localizacao)) {
         echo"<div align='center' class='sem-instancia' style='margin-bottom: 0.5%'>"
         . "	<div align='left' style='padding-left: 0.5%'>"
         . "	    <span>" . sprintf(const_Indefinida_Msg, nomeFormal($categoria, "plural")) . "</span>"

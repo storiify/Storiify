@@ -6,19 +6,19 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         parent::__construct();
         parent::setDicas("Dicas Localização");
         $this->setCategoria($categoria);
-        
-        require_once PATH_CAT."/raca/BdContextRaca.php";
+
+        require_once "BdContextLocalizacao.php";
+        require_once PATH_CAT . "/raca/BdContextRaca.php";
     }
 
     public function cadastrar($parametros) {
-        //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
-        $this->setVisao('FormLocalizacao');
-        $this->setTituloPagina("Cadastrar " . nomeFormal($this->getCategoria()));
+        $this->setVisao(ModeloLocalizacao::$viewForm);
+        $this->setTituloPagina(ModeloLocalizacao::getTituloPagina("cadastrar"));
 
         $modeloPnsa = new ModeloPersonagem();
         $resPsna = $modeloPnsa->listar("");
-        $modeloLczc = new ModeloLocalizacao();
-        $resLczc = $modeloLczc->listar("");
+        $bdLczc = new BdContextLocalizacao();
+        $resLczc = $bdLczc->listar("");
         $bdRaca = new BdContextRaca();
         $resRaca = $bdRaca->listar("");
         $res = array(
@@ -30,38 +30,37 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
 
     public function listar($parametros) {
 
-        $modelo = new ModeloLocalizacao();
-        $res = $modelo->listar($parametros);
-
-        $this->setVisao('ListarLocalizacao');
-        $nomeHistoria = sessao()->getHistoriaSelecionada()->tit_hist;
-        $titulo = nomeFormal($this->getCategoria(), "plural") . (empty($nomeHistoria) ? "" : " de " . $nomeHistoria);
-        $this->setTituloPagina($titulo);
-
+        $bdRaca = new BdContextLocalizacao();
+        $res = $bdRaca->listar($parametros);
         $this->setResultados($res);
+
+        $this->setVisao(ModeloLocalizacao::$viewListar);
+
+        $this->setTituloPagina(ModeloLocalizacao::getTituloPagina("listar"));
     }
 
     public function editar($parametros) {
+        $bdContext = new BdContextLocalizacao();
+        $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
 
-        $modelo = new ModeloLocalizacao();
-        $res = $modelo->listar($parametros);
+        if ($instancia != null) {
+            $this->setResultados($instancia);
 
-        if ($res[0] != false) {
-            $this->setResultados($res[0]);
-            $this->setVisao('FormLocalizacao');
-            $this->setTituloPagina($res[0]["nm_lczc"]);
+            $this->setVisao(ModeloLocalizacao::$viewForm);
+
+            $this->setTituloPagina($instancia->nm_lczc());
 
             //Lista todos os personagens e localizações
             $modeloPnsa = new ModeloPersonagem();
             $resPsna = $modeloPnsa->listar("");
-            $modeloLczc = new ModeloLocalizacao();
-            $resLczc = $modeloLczc->listar("");
+            $bdLczc = new BdContextLocalizacao();
+            $resLczc = $bdLczc->listar("");
             $bdRaca = new BdContextRaca();
             $resRaca = $bdRaca->listar("");
             //Get personagens registrados como mais conhecidos
-            $idsPsnaCnhd = $modeloLczc->listarPsnaCnhd($res[0]["pk_lczc"]);
+            $idsPsnaCnhd = $bdLczc->listarPsnaCnhd($instancia->pk_lczc());
             //Get raças registrados
-            $idsRaca = $modeloLczc->listarRaca($res[0]["pk_lczc"]);
+            $idsRaca = $bdLczc->listarRaca($instancia->pk_lczc());
             $res = array(
                 "psna" => $resPsna,
                 "lczc" => $resLczc,
@@ -82,12 +81,12 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             }
         }
 
-        $modelo = new ModeloLocalizacao();
+        $bdContext = new BdContextLocalizacao();
 
         //Cuida da parte de imagem
         $idUsuario = sessao()->getUserData()->id;
         if (isset($_FILES) && $_FILES['im_lczc']['size'] != 0) {
-            $idLocalizacao = $modelo->proximoID();
+            $idLocalizacao = $bdContext->proximoID();
             $parametros['im_lczc'] = uploadImagem($idUsuario, "localizacao", $idLocalizacao, $_FILES['im_lczc']);
         }
         //Cuida da parte da visibilidade
@@ -98,9 +97,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             }
             $parametros['vsi_lczc'] = $tempStr;
         }
-        
 
-        $res = $modelo->salvar($parametros);
+        $res = $bdContext->salvar($parametros);
 
         if ($res) {
             redirecionar("?categoria=localizacao&acao=listar");
@@ -111,10 +109,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
 
     public function excluir($parametros) {
 
-        $modelo = new ModeloLocalizacao();
-        $idUsuario = sessao()->getUserData()->id;
-        $parametros['fk_usu'] = $idUsuario;
-        $res = $modelo->excluir($parametros);
+        $bdContext = new BdContextLocalizacao();
+        $res = $bdContext->excluir($parametros);
 
         if ($res) {
             redirecionar("?categoria=localizacao&acao=listar");

@@ -18,13 +18,41 @@ class ModeloRaca {
     public static $nomePlural = "Raças";
 
     public function __construct($colunas) {
-        $this->pk_raca = (isset($colunas["pk_raca"]) ? $colunas["pk_raca"] : "");
-        $this->fk_hist = (isset($colunas["fk_hist"]) ? $colunas["fk_hist"] : "");
-        $this->nm_raca = (isset($colunas["nm_raca"]) ? $colunas["nm_raca"] : "");
-        $this->dcr_raca = (isset($colunas["dcr_raca"]) ? $colunas["dcr_raca"] : "");
-        $this->apci_raca = (isset($colunas["apci_raca"]) ? $colunas["apci_raca"] : "");
-        $this->pvmt_raca = (isset($colunas["pvmt_raca"]) ? $colunas["pvmt_raca"] : "");
-        $this->rptc_raca = (isset($colunas["rptc_raca"]) ? $colunas["rptc_raca"] : "");
+        foreach ($this as $keyRaca => $valueRaca) {
+            foreach ($colunas as $keyColuna => $valueColuna) {
+                if ($keyRaca == $keyColuna) {
+                    $this->$keyRaca = $valueColuna ? $valueColuna : "";
+                }
+            }
+        }
+    }
+
+    public function getAtributosListar() {
+        $qtdMaxAtt = 2;
+        $atributosSelecionados = array();
+
+        if ($this->dcr_raca != "") {
+            $atributosSelecionados["Descrição"] = $this->dcr_raca;
+        }
+        if ($this->pvmt_raca != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Povoamento"] = $this->pvmt_raca;
+        }
+        if ($this->apci_raca != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Aparência"] = $this->apci_raca;
+        }
+        if ($this->rptc_raca != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Reputação"] = $this->rptc_raca;
+        }
+
+        return $atributosSelecionados;
+    }
+
+    public static function getTituloPagina($acao) {
+        if ($acao == "cadastrar") {
+            return "Cadastrar " . ModeloRaca::$nomeSingular;
+        } elseif ($acao == "listar") {
+            return ModeloRaca::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+        }
     }
 
     public function pk_raca() {
@@ -56,26 +84,6 @@ class ModeloRaca {
 
     public function rptc_raca() {
         return $this->rptc_raca;
-    }
-
-    public function getAtributosListar() {
-        if ($this->dcr_raca != "") {
-            return array(
-                "Descrição" => $this->dcr_raca,
-                "Povoamento" => $this->pvmt_raca);
-        } elseif ($this->apci_raca != "") {
-            return array(
-                "Aparência" => $this->apci_raca,
-                "Povoamento" => $this->pvmt_raca);
-        }
-    }
-
-    public static function getTituloPagina($acao) {
-        if ($acao == "cadastrar") {
-            return "Cadastrar " . ModeloRaca::$nomeSingular;
-        } elseif ($acao == "listar") {
-            return ModeloRaca::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
-        }
     }
 
 }
