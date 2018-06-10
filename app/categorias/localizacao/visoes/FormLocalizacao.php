@@ -233,7 +233,7 @@ $resultado = ($controlador->getResultados() == null ?
                                         $nome = $localizacaoSelect["nm_lczc"];
                                         $isSelected = ($resultado->fk_ppl_lcld() == $id ? "selected" : "");
 
-                                        if ($id != $pk_lczc) {
+                                        if ($id != $resultado->pk_lczc()) {
                                             echo "<option value='$id' $isSelected>$nome</option>";
                                         }
                                     }
@@ -575,8 +575,9 @@ $resultado = ($controlador->getResultados() == null ?
                                             name="fk_raca[]" id="input-txselr-Raca">
                                                 <?php
                                                 foreach ($resultadoSelect->raca as $racaSelect) {
-                                                    $id = $racaSelect["pk_raca"];
-                                                    $nome = $racaSelect["nm_raca"];
+                                                    $raca = new ModeloRaca($racaSelect);
+                                                    $id = $raca->pk_raca();
+                                                    $nome = $raca->nm_raca();
                                                     $isSelected = "";
                                                     foreach ($resultadoSelect->idsRaca as $idRaca) {
                                                         if ($id == $idRaca["fk_raca"]) {
@@ -1128,7 +1129,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="nvl_tecn"
-                                       data-minmax-valores="Rudimentar,Inferior,Mediana,Desenvolvida,Avançada" class="input-minmax" 
+                                       data-minmax-valores="Rudimentar,Inferior,Mediano,Desenvolvido,Avançado" class="input-minmax" 
                                        value="<?= $resultado->nvl_tecn() ?>" id="input-minmax-NivelTecnologico"></input>
                             </div>
                             <!--DETALHES-->
@@ -1196,7 +1197,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="acss_tecn"
-                                       data-minmax-valores="Muito Insatisfeita,Insatisfeita,Neutra,Satisfeita,Muito Satisfeita" class="input-minmax" 
+                                       data-minmax-valores="Quase Nenhum,Baixo,Acessível,Comum,Maioria dos Habitantes" class="input-minmax" 
                                        value="<?= $resultado->acss_tecn() ?>" id="input-minmax-AcessoaTecnologia"></input>
                             </div>
                             <!--DETALHES-->
@@ -1407,7 +1408,7 @@ $resultado = ($controlador->getResultados() == null ?
         <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="col-md-12 form-controle">
             <input type="hidden" name="pk_lczc" value="<?= $resultado->pk_lczc() ?>">
-            <input type="hidden" name="pk_lczc" value="<?= $resultado->fk_hist() ?>">
+            <input type="hidden" name="fk_hist" value="<?= $resultado->fk_hist() ?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
                 Salvar <?= ModeloLocalizacao::$nomeSingular ?>
             </button>
