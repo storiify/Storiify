@@ -3,10 +3,11 @@
 class BdContextLocalizacao extends ConexaoBd {
 
     private $tabela = "tb_localizacao";
-    private $campos = '*';
+    private $campos;
 
-    public function __construct() {
+    public function __construct($campos = '*') {
         parent::__construct();
+        $this->campos = $campos;
     }
 
     public function salvar($parametros) {
@@ -18,15 +19,17 @@ class BdContextLocalizacao extends ConexaoBd {
         $idsPsnaCnhd = $parametros['fk_psna_cnhd'];
         unset($parametros['fk_psna_cnhd']);
         //Gerencia a coluna de raças
-        $idsRaca = $parametros['fk_raca'];
-        unset($parametros['fk_raca']);
+        if (isset($parametros['fk_raca'])) {
+            $idsRaca = $parametros['fk_raca'];
+            unset($parametros['fk_raca']);
+        }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
-        $parametros['fk_hist'] = ($parametros['fk_hist'] != '' ? $parametros['fk_hist'] : $idHistoria);
+        $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
 
         $res = false;
 
-        if ($parametros['pk_lczc'] != '') { //Ao editar
+        if (isset($parametros['pk_lczc']) && $parametros['pk_lczc'] != '') { //Ao editar
             $condicao = " pk_lczc='{$parametros['pk_lczc']}'";
             $res = $this->updateBase($parametros, $this->tabela, $condicao);
 
@@ -43,27 +46,47 @@ class BdContextLocalizacao extends ConexaoBd {
         }
 
         if ($res) {
+            $idAtual = (isset($parametros['pk_lczc']) ? $parametros['pk_lczc'] : $this->proximoID() - 1);
             //Cria a relação de personagens conhecidos
-            $this->salvarPsnaCnhd($idsPsnaCnhd, $parametros['pk_lczc']);
+            $this->salvarPsnaCnhd($idsPsnaCnhd, $idAtual);
             //Cria a relação de raças existentes
-            $this->salvarRacaExistente($idsRaca);
+            $this->salvarRacaExistente($idsRaca, $idAtual);
         }
 
         return $res;
     }
 
     public function listar($parametros) {
-
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
         $condicao = "WHERE fk_hist='$idHistoria'";
-        
-        if (isset($parametros['id']) && array_key_exists("id", $parametros)) {
-            $id = $parametros['id'];
+
+        if (isset($parametros["id"])) {
+            $id = $parametros["id"];
             $condicao .= " AND pk_lczc='$id'";
         }
 
         $res = $this->listarBase($this->campos, $this->tabela, $condicao);
+
+        if (!isset($res) || $res == null) {
+            return array();
+        }
+
+        return $res;
+    }
+
+    public function listarVarios($parametros) {
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $condicao = "WHERE fk_hist='$idHistoria' AND ";
+
+        $pks = array();
+        foreach ($parametros as $id) {
+            $id = $id["fk_lczc"];
+            $pks[] = "pk_lczc='$id'";
+        }
+        $condicao .= join(" OR ", $pks);
         
+        $res = $this->listarBase($this->campos, $this->tabela, $condicao);
+
         if (!isset($res) || $res == null) {
             return array();
         }
@@ -121,10 +144,10 @@ class BdContextLocalizacao extends ConexaoBd {
         return $res;
     }
 
-    private function salvarRacaExistente($idsRaca) {
+    private function salvarRacaExistente($idsRaca, $idLczc) {
         $tbLczcRaca = "tb_localizacao_rel_raca";
         foreach ($idsRaca as $raca) {
-            $rel['fk_lczc'] = $this->proximoID() - 1;
+            $rel['fk_lczc'] = $idLczc;
             $rel['fk_raca'] = $raca;
             $res = $this->inserirBase($rel, $tbLczcRaca);
         }
@@ -152,4 +175,5 @@ class BdContextLocalizacao extends ConexaoBd {
 
         return $res;
     }
+
 }
