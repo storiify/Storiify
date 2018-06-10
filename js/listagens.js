@@ -14,7 +14,7 @@ $(".btn-minimizar-instancia").on("click", function () {
     //Minimizar
     if ($(this).children().hasClass("fa-minus")) {
         $(this).children().attr("class", "fa fa-plus");
-        $(this).prop("title","Clique para maximizar");
+        $(this).prop("title", "Clique para maximizar");
         $(this)
                 .parent()
                 .siblings(".instancia-corpo")
@@ -31,9 +31,9 @@ $(".btn-minimizar-instancia").on("click", function () {
                 .children(".instancia-cabecalho").css({"line-height": "5.5rem"});
     }
     //Maximizar
-    else{
+    else {
         $(this).children().attr("class", "fa fa-minus");
-        $(this).prop("title","Clique para minimizar");
+        $(this).prop("title", "Clique para minimizar");
         $(this)
                 .parent()
                 .siblings(".instancia-corpo")
@@ -50,4 +50,9 @@ $(".btn-minimizar-instancia").on("click", function () {
                 .children(".instancia-cabecalho").css({"line-height": ""});
     }
 
+});
+//Editar categorias relacionadas
+$(".listar-select-raca").on("click", function (e) {
+    e.stopPropagation();
+    document.location = $(this).attr("href");
 });

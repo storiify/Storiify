@@ -19,7 +19,7 @@ class BdContextRaca extends ConexaoBd {
         if ($parametros['pk_raca'] != '') { //Ao editar
             $condicao = " pk_raca='{$parametros['pk_raca']}'";
             $res = $this->updateBase($parametros, $this->tabela, $condicao);
-            consoleLog("BdContext: ".$res);
+            consoleLog("BdContext: " . $res);
         } else { //Ao criar
             unset($parametros['pk_raca']);
             $res = $this->inserirBase($parametros, $this->tabela);
@@ -32,13 +32,12 @@ class BdContextRaca extends ConexaoBd {
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
         $condicao = "WHERE fk_hist='$idHistoria'";
 
-        if (isset($parametros['id']) && array_key_exists("id", $parametros)) {
-            $id = $parametros['id'];
+        if (isset($parametros["id"])) {
+            $id = $parametros["id"];
             $condicao .= " AND pk_raca='$id'";
         }
 
         $res = $this->listarBase($this->campos, $this->tabela, $condicao);
-
         if (!isset($res) || $res == null) {
             return array();
         }
@@ -62,6 +61,26 @@ class BdContextRaca extends ConexaoBd {
 
     public function proximoID() {
         return $this->getNextID($this->tabela);
+    }
+
+    public function localizacoesQueAparece($parametros) {
+        $tbLczcRaca = "tb_localizacao_rel_raca";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_raca='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_lczc', $tbLczcRaca, $condicao);
+        
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+
+        require_once PATH_CAT . "localizacao/BdContextLocalizacao.php";
+
+        $bdContextLczc = new BdContextLocalizacao("pk_lczc, nm_lczc");
+
+        $res = $bdContextLczc->listarVarios($res);
+
+        return $res;
     }
 
 }

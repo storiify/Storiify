@@ -89,3 +89,19 @@ th{
 .instancia-controle .btn:last-child{
     border-bottom-right-radius: 0.3rem;
 }
+/*campos internos da listagem*/
+.listar-select-raca{
+    z-index: 2;
+    display: inline-block;
+    background-color: #30c5ff;
+    color: white;
+    border: 1px solid #10a4de;
+    border-radius: 4px;
+    font-weight: bold;
+    margin: 2px 4px;
+    padding: 2px 4px;
+    transition: transform .2s;
+}
+.listar-select-raca:hover{
+    transform: scale(1.08);
+}

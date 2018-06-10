@@ -34,6 +34,17 @@ class ModeloRaca {
         if ($this->dcr_raca != "") {
             $atributosSelecionados["Descrição"] = $this->dcr_raca;
         }
+        $bdContext = new BdContextRaca();
+        $lczcQueAparece = $bdContext->localizacoesQueAparece($this->pk_raca);
+        if (!empty($lczcQueAparece)) {
+            $atributosSelecionados["Presente em"] = "";
+            foreach ($lczcQueAparece as $lczc) {
+                $atributosSelecionados["Presente em"] .= "<span class='listar-select-raca' "
+                        . "title='Clique para editar {$lczc["nm_lczc"]}'"
+                        . "href='?categoria=localizacao&acao=editar&id={$lczc["pk_lczc"]}'>" .
+                        truncar($lczc["nm_lczc"], 20) . "</span>";
+            }
+        }
         if ($this->pvmt_raca != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Povoamento"] = $this->pvmt_raca;
         }
