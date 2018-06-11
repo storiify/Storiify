@@ -13,7 +13,10 @@ $resultado = ($controlador->getResultados() == null ?
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= (empty($resultado->nm_lczc()) ? ModeloLocalizacao::$nomeSingular : $resultado->nm_lczc(30)) ?></h1>
+        <h1><?= (empty($resultado->nm_lczc()) ?
+        ModeloLocalizacao::$nomeSingular : $resultado->nm_lczc(30))
+?>
+        </h1>
     </div>
 </div>
 
@@ -226,7 +229,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_ppl_lcld" id="input-txselr-PrincipalLocalidade">
-                                    <option value="0" selected>-- Localidades de <?= $historiaSelecionada->tit_hist ?> --</option>
+                                    <option value="0" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                     <?php
                                     foreach ($resultadoSelect->lczc as $localizacaoSelect) {
                                         $id = $localizacaoSelect["pk_lczc"];
@@ -398,7 +401,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_fdd_decb" id="input-txselr-FundadorDescobridor">
-                                    <option value="0" selected>-- Personagens de <?= $historiaSelecionada->tit_hist ?> --</option>
+                                    <option value="0" selected>-- Personagens de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                     <?php
                                     foreach ($resultadoSelect->psna as $personagemSelect) {
                                         $id = $personagemSelect["pk_psna"];
@@ -1292,7 +1295,7 @@ $resultado = ($controlador->getResultados() == null ?
             </div>
             <!-- FINAL - ABA TECNOLOGIA -->
             <!-- ABA MAGIA -->
-            <div id="abaMagia" class="container tab-pane fade"><br>
+            <div id="abaMagia" class="container tab-pane fade">
                 <!--INPUT MINMAX-->
                 <div class="form-group">
                     <div class="row">
@@ -1310,15 +1313,20 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <input type="text" name="acss_magi"
-                                       data-minmax-valores="Quase Nenhum,Baixo,Acessível,Comum,Maioria dos Habitantes" class="input-minmax" 
-                                       value="<?= $resultado->acss_magi() ?>" id="input-minmax-AcessoaMagia"></input>
+                                       data-minmax-valores="Quase Nenhum,Baixo,Acessível,Comum,Maioria dos Habitantes" 
+                                       class="input-minmax" value="<?= $resultado->acss_magi() ?>" 
+                                       id="input-minmax-AcessoaMagia">
+                                </input>
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
-                                    <textarea name="acss_magi_dets" placeholder="Digite aqui os detalhes para o Acesso à Magia" 
-                                              title="Campo para detalhes do Acesso à Magia"><?= $resultado->acss_magi_dets() ?></textarea>
+                                    <textarea name="acss_magi_dets" 
+                                              placeholder="Digite aqui os detalhes para o Acesso à Magia" 
+                                              title="Campo para detalhes do Acesso à Magia">
+<?= $resultado->acss_magi_dets() ?>
+                                    </textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -1338,13 +1346,20 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txarea-EfeitosdaMagianaLocalizacao">Efeitos da Magia na Localização</label>
+                        <label class="col-md-11 input-label" 
+                               for="input-txarea-EfeitosdaMagianaLocalizacao">
+                            Efeitos da Magia na Localização
+                        </label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
-                                <textarea name="efe_magi_lczc" value="" placeholder="Digite aqui os Efeitos da Magia na Localização" 
-                                          title="Campo para Efeitos da Magia na Localização" id="input-txarea-EfeitosdaMagianaLocalizacao"><?= $resultado->efe_magi_lczc() ?></textarea>
+                                <textarea name="efe_magi_lczc" value="" 
+                                          placeholder="Digite aqui os Efeitos da Magia na Localização" 
+                                          title="Campo para Efeitos da Magia na Localização" 
+                                          id="input-txarea-EfeitosdaMagianaLocalizacao">
+<?= $resultado->efe_magi_lczc() ?>
+                                </textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1363,13 +1378,20 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txarea-EfeitosdaMagianaSociedade">Efeitos da Magia na Sociedade</label>
+                        <label class="col-md-11 input-label" 
+                               for="input-txarea-EfeitosdaMagianaSociedade">
+                            Efeitos da Magia na Sociedade
+                        </label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
-                                <textarea name="efe_magi_scdd" value="" placeholder="Digite aqui sobre os Efeitos da Magia na Sociedade" 
-                                          title="Campo para Efeitos da Magia na Sociedade" id="input-txarea-EfeitosdaMagianaSociedade"><?= $resultado->efe_magi_scdd() ?></textarea>
+                                <textarea name="efe_magi_scdd" value="" 
+                                          placeholder="Digite aqui sobre os Efeitos da Magia na Sociedade" 
+                                          title="Campo para Efeitos da Magia na Sociedade" 
+                                          id="input-txarea-EfeitosdaMagianaSociedade">
+<?= $resultado->efe_magi_scdd() ?>
+                                </textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -1388,13 +1410,20 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txarea-EfeitosdaMagianaTecnologia">Efeitos da Magia na Tecnologia</label>
+                        <label class="col-md-11 input-label" 
+                               for="input-txarea-EfeitosdaMagianaTecnologia">
+                            Efeitos da Magia na Tecnologia
+                        </label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
-                                <textarea name="efe_magi_tecn" value="" placeholder="Digite aqui sobre os Efeitos da Magia na Tecnologia" 
-                                          title="Campo para Efeitos da Magia na Tecnologia" id="input-txarea-EfeitosdaMagianaTecnologia"><?= $resultado->efe_magi_tecn() ?></textarea>
+                                <textarea name="efe_magi_tecn" value="" 
+                                          placeholder="Digite aqui sobre os Efeitos da Magia na Tecnologia" 
+                                          title="Campo para Efeitos da Magia na Tecnologia" 
+                                          id="input-txarea-EfeitosdaMagianaTecnologia">
+<?= $resultado->efe_magi_tecn() ?>
+                                </textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
