@@ -1,12 +1,13 @@
 <?php
+require_once PATH_CAT . "/historia/BdContextHistoria.php";
 $historias = sessao()->getHistoriasData();
 $historiaSelecionada = sessao()->getHistoriaSelecionada();
 
-if (property_exists($historiaSelecionada, "pk_hist")) {
+if ($historiaSelecionada != NULL) {
     $qtdHist = count((array)$historias);
-    $qtdPsna = ModeloHistoria::getQtdPsna($historiaSelecionada->pk_hist);
-    $qtdLczc = ModeloHistoria::getQtdLczc($historiaSelecionada->pk_hist);
-    $qtdCena = ModeloHistoria::getQtdCena($historiaSelecionada->pk_hist);
+    $qtdPsna = BdContextHistoria::getQtdPsna($historiaSelecionada->pk_hist());
+    $qtdLczc = BdContextHistoria::getQtdLczc($historiaSelecionada->pk_hist());
+    $qtdCena = BdContextHistoria::getQtdCena($historiaSelecionada->pk_hist());
 }
 ?>
 
@@ -21,12 +22,18 @@ if (property_exists($historiaSelecionada, "pk_hist")) {
                     <span class='bem-vindo-texto'>Bem-vindo à</span><br/>
                     <select class='nome-historia' id='selecao-nome-historia' title='Clique aqui para escolher qual história deseja editar'>
                         <?php
-                        foreach ($historias as $historia) {
-                            $historia = (object) $historia;
-                            $nome = $historia->tit_hist;
-                            $selected = ($historia->pk_hist == $historiaSelecionada->pk_hist) ? "selected" : "";
-
-                            echo "<option value='$historia->pk_hist'"
+                        foreach ($historias as $historiaArray) {
+                            $historia = new ModeloHistoria($historiaArray);
+                            $nome = $historia->tit_hist();
+                            
+                            if ($historiaSelecionada != null) {
+                                $selected = ($historia->pk_hist() == $historiaSelecionada->pk_hist()) ? "selected" : "";
+                            }
+                            else{
+                                $selected = "";
+                            }
+                            
+                            echo "<option value='{$historia->pk_hist()}'"
                             . "$selected>" . truncar($nome, 25, "...") . "</option>";
                         }
                         ?>

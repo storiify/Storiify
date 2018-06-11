@@ -29,7 +29,7 @@ class BdContextRaca extends ConexaoBd {
 
     public function listar($parametros) {
 
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "WHERE fk_hist='$idHistoria'";
 
         if (isset($parametros["id"])) {
@@ -48,7 +48,7 @@ class BdContextRaca extends ConexaoBd {
     public function excluir($parametros) {
 
         //Primeira condição = fk_hist
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "fk_hist='$idHistoria'";
         //Segunda condição = pk_raca
         $id = $parametros['id'];

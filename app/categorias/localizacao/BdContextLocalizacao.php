@@ -24,7 +24,7 @@ class BdContextLocalizacao extends ConexaoBd {
             unset($parametros['fk_raca']);
         }
         //Gerencia a qual história essa localização pertence
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
 
         $res = false;
@@ -57,7 +57,8 @@ class BdContextLocalizacao extends ConexaoBd {
     }
 
     public function listar($parametros) {
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "WHERE fk_hist='$idHistoria'";
 
         if (isset($parametros["id"])) {
@@ -75,7 +76,7 @@ class BdContextLocalizacao extends ConexaoBd {
     }
 
     public function listarVarios($parametros) {
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "WHERE fk_hist='$idHistoria' AND ";
 
         $pks = array();
@@ -96,9 +97,9 @@ class BdContextLocalizacao extends ConexaoBd {
 
     public function excluir($parametros) {
 
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "fk_hist='$idHistoria'";
-        //Segunda condição = pk_raca
+        //Segunda condição
         $id = $parametros['id'];
         $condicao .= " AND pk_lczc='$id'";
 

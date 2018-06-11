@@ -1,11 +1,6 @@
 <?php
+$resultado = new ModeloHistoria(array());
 $resultado = $controlador->getResultados();
-$historia = (array) $resultado;
-
-foreach ($historia[0] as $key => $value) {
-    $$key = $value;
-}
-$nome = truncar($tit_hist, 30);
 ?>
 
 <div class="pular-menu">
@@ -14,7 +9,7 @@ $nome = truncar($tit_hist, 30);
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= $nome ?></h1>
+        <h1><?= $resultado->tit_hist() ?></h1>
     </div>    
 </div>
 
@@ -26,7 +21,7 @@ $nome = truncar($tit_hist, 30);
     </div>
 
     <div class="lista-categorias">
-        <a href="?categoria=historia&acao=editar&id=<?= $pk_hist?>" class="btn btn-azul btn-categoria">
+        <a href="?categoria=historia&acao=editar&id=<?= $resultado->pk_hist() ?>" class="btn btn-azul btn-categoria">
             <i class='fa fa-book col-md-2'></i><br><span>História</span>
         </a>
         <a href="?categoria=personagem&acao=listar" class="btn btn-azul btn-categoria">

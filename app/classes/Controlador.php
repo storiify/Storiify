@@ -39,12 +39,12 @@ class Controlador {
         if (($this->sessao->getChave(CHAVE_LOGIN) == TRUE)) {
             $acoesPermitidas = ['listar', 'listarCategorias', 'cadastrar'];
             if (($categoria != "historia" && $categoria != "login") || (!in_array($acao, $acoesPermitidas))) {
-                if (empty((array) $this->sessao->getHistoriaSelecionada())) {
+                if ($this->sessao->getHistoriaSelecionada() == NULL) {
                     redirecionar("?categoria=historia&acao=listar");
                 }
             }
         }
-        
+
         $this->controlador = $this->controladorCategoria($categoria);
         $this->resultados = $this->executeAcao($acao, $parametros);
 

@@ -18,7 +18,6 @@ if ($handle = opendir($dirloads)) {
         }
     }
 }
-
 $resultadoURL = proccessRequest();
 $controlador = new Controlador();
 $controlador->exe($resultadoURL->categoria,$resultadoURL->acao,$resultadoURL->parametros);

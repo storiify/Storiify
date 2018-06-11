@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8" />
 
-        <title><?=$controlador->tituloPagina?> - Storiify</title>
+        <title><?= $controlador->tituloPagina ?> - Storiify</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -27,7 +27,7 @@
         <link href="./css/listagens.css" rel="stylesheet" type="text/css"/>
         <!-- Estilo da Seleção de Categoria -->
         <link href="./css/selecionarCategoria.css" rel="stylesheet" type="text/css"/>
-        
+
         <!--ICheck-->
         <link href="./plugins/icheck-1.x/skins/flat/blue.css" rel="stylesheet" />
         <!--IONRangeSlider-->

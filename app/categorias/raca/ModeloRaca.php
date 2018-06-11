@@ -62,7 +62,7 @@ class ModeloRaca {
         if ($acao == "cadastrar") {
             return "Cadastrar " . ModeloRaca::$nomeSingular;
         } elseif ($acao == "listar") {
-            return ModeloRaca::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+            return ModeloRaca::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist();
         }
     }
 

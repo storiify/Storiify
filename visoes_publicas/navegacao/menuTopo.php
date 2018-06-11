@@ -1,10 +1,11 @@
 <?php
-$historiaSelecionada = (array) sessao()->getHistoriaSelecionada();
+$historiaSelecionada = new ModeloHistoria(array());
+$historiaSelecionada = sessao()->getHistoriaSelecionada();
 ?>
 <nav class="navbar">
 
     <button type="button" class="btn btn-azul menu-esquerdo-toggle"
-            <?= empty($historiaSelecionada) ? "disabled" : "" ?>>
+            <?= ($historiaSelecionada == null ? "disabled" : "") ?>>
         <i class="fa fa-reorder"></i>
     </button>
 
@@ -15,7 +16,9 @@ $historiaSelecionada = (array) sessao()->getHistoriaSelecionada();
     <div class="position-relative">
         <a href="?categoria=historia&acao=listar">
             <div class="fundo-logo"></div>
-            <img src="./imagens/logo/540logoFundo.png" class="rounded-circle logo-topo" alt="Logo Storiify" title="Clique aqui para listar todas as suas Histórias"/>
+            <img src="./imagens/logo/540logoFundo.png" 
+                 class="rounded-circle logo-topo" alt="Logo Storiify" 
+                 title="Clique aqui para listar todas as suas Histórias"/>
         </a>
     </div>
 

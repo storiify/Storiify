@@ -30,8 +30,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
 
     public function listar($parametros) {
 
-        $bdRaca = new BdContextLocalizacao();
-        $res = $bdRaca->listar($parametros);
+        $bdContext = new BdContextLocalizacao();
+        $res = $bdContext->listar($parametros);
         $this->setResultados($res);
 
         $this->setVisao(ModeloLocalizacao::$viewListar);
@@ -40,6 +40,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
     }
 
     public function editar($parametros) {
+        
         $bdContext = new BdContextLocalizacao();
         $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
         

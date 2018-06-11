@@ -90,11 +90,10 @@ class ModeloLocalizacao {
             $bdContext = new BdContextLocalizacao();
             $parametros["id"] = $this->fk_ppl_lcld;
             $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
-            
             $atributosSelecionados["Principal Localidade"] = $instancia->nm_lczc();
         }
         if ($this->fk_fdd_decb != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            $atributosSelecionados["Fundador/Descoridor"] = $this->fk_fdd_decb;
+            $atributosSelecionados["Fundador/Descobridor"] = $this->fk_fdd_decb;
         }
         if ($this->hist_gov != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["História de Governo"] = $this->hist_gov;
@@ -122,7 +121,7 @@ class ModeloLocalizacao {
         if ($acao == "cadastrar") {
             return "Cadastrar " . ModeloLocalizacao::$nomeSingular;
         } elseif ($acao == "listar") {
-            return ModeloLocalizacao::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+            return ModeloLocalizacao::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist();
         }
     }
 

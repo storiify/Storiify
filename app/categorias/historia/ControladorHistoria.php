@@ -6,43 +6,46 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas História");
         $this->setCategoria($categoria);
+
+        require_once "BdContextHistoria.php";
     }
 
     public function cadastrar($parametros) {
         //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
-        $this->setVisao('FormHistoria');
-        $this->setTituloPagina("Cadastrar " . nomeFormal($this->getCategoria(), "singular"));
+        $this->setVisao(ModeloHistoria::$viewForm);
+        $this->setTituloPagina(ModeloHistoria::getTituloPagina("cadastrar"));
     }
 
     public function listar($parametros) {
-        $modelo = new ModeloHistoria();
-        $res = $modelo->listar($parametros);
-
-        sessao()->setHistoriaSelecionada(null);
+        $bdContext = new BdContextHistoria();
+        $res = $bdContext->listar($parametros);
+        $this->setResultados($res);
 
         sessao()->setHistoriasData($res);
+        sessao()->setHistoriaSelecionada(null);
 
-        $this->setVisao('ListarHistoria');
-        $this->setTituloPagina("Suas " . nomeFormal($this->getCategoria(), "plural"));
-
-        $this->setResultados($res);
+        $this->setVisao(ModeloHistoria::$viewListar);
+        $this->setTituloPagina(ModeloHistoria::getTituloPagina("listar"));
     }
 
     public function listarAoLogar($parametros) {
-        $modelo = new ModeloHistoria();
-        $res = $modelo->listar($parametros);
+        $bdContext = new BdContextHistoria();
+        var_dump($parametros);
+        $res = $bdContext->listar($parametros);
         sessao()->setHistoriasData($res);
     }
 
     public function editar($parametros) {
 
-        $modelo = new ModeloHistoria();
-        $res = $modelo->listar($parametros);
+        $bdContext = new BdContextHistoria();
+        $instancia = new ModeloHistoria($bdContext->listar($parametros)[0]);
 
-        if ($res[0] != false) {
-            $this->setResultados($res[0]);
-            $this->setVisao('FormHistoria');
-            $this->setTituloPagina("Editando " . $res[0]["tit_hist"]);
+        if ($instancia != null) {
+            $this->setResultados($instancia);
+
+            $this->setVisao(ModeloHistoria::$viewForm);
+
+            $this->setTituloPagina($instancia->tit_hist());
 
             //Lista todos os personagens
             $modeloPnsa = new ModeloPersonagem();
@@ -63,15 +66,14 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
             }
         }
         $idUsuario = sessao()->getUserData()->id;
-        
-        $modelo = new ModeloHistoria();
-        if (isset($parametros['pk_hist']) && $parametros['pk_hist']!='') {
+        $bdContext = new BdContextHistoria();
+
+        if (isset($parametros['pk_hist']) && $parametros['pk_hist'] != '') {
             $idHistoria = $parametros['pk_hist'];
+        } else {
+            $idHistoria = $bdContext->proximoID();
         }
-        else{
-            $idHistoria = $modelo->proximoID();
-        }
-        
+
         if (isset($_FILES) && $_FILES['im_ppl']['size'] != 0) {
             $parametros['im_ppl'] = uploadImagem($idUsuario, "historia", $idHistoria, $_FILES['im_ppl']);
         }
@@ -83,9 +85,9 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
             $parametros['vsi_hist'] = $tempStr;
         }
         $parametros['fk_usu'] = $idUsuario;
-        $res = $modelo->salvar($parametros);
+        $res = $bdContext->salvar($parametros);
 
-        if ($res != false) {
+        if ($res) {
             redirecionar("?categoria=historia&acao=listarCategorias&id=$idHistoria");
         } else {
             redirecionar("?categoria=historia&acao=cadastrar");
@@ -94,13 +96,10 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
 
     public function excluir($parametros) {
 
-        $modelo = new ModeloHistoria();
-        $idUsuario = sessao()->getUserData()->id;
-        $parametros['fk_usu'] = $idUsuario;
+        $bdContext = new BdContextHistoria();
+        $res = $bdContext->excluir($parametros);
 
-        $res = $modelo->excluir($parametros);
-
-        if ($res != false) {
+        if ($res) {
             redirecionar("?categoria=historia&acao=listar");
         } else {
             redirecionar("?categoria=historia&acao=listar"); //mudar pra uma pagina de erro (Personagem não encontrado ou não faz parte de seus persongens cadastrados) :D
@@ -109,17 +108,17 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
 
     public function listarCategorias($parametros) {
 
-        $modelo = new ModeloHistoria();
-        $res = $modelo->listar($parametros);
+        $bdContext = new BdContextHistoria();
+        $instancia = new ModeloHistoria($bdContext->listar($parametros)[0]);
+        $this->setResultados($instancia);
+        
+        sessao()->setHistoriaSelecionada($instancia);
 
-        sessao()->setHistoriaSelecionada($res[0]);
+        $this->setVisao(ModeloHistoria::$viewCategoriasHistoria);
+        
+        $this->setTituloPagina($instancia->tit_hist());
 
-        $this->setVisao('CategoriasHistoria');
-        $this->setTituloPagina($res[0]["tit_hist"]);
-
-        $this->setResultados($res);
-
-        $res = $modelo->listar("");
+        $res = $bdContext->listar("");
         sessao()->setHistoriasData($res);
     }
 

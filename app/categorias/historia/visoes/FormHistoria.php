@@ -1,47 +1,18 @@
 <?php
-$resultado = $controlador->getResultados();
 $resultadoSelect = $controlador->getResultadosSelect();
 
-if (empty((array) $resultado)) {
-    // PK
-    $pk_hist = '';
-    // Aba 1
-    $im_hist = './imagens/sem-foto.png';
-    $im_hist_dets = '';
-    $tit_hist = '';
-    $tit_hist_dets = '';
-    $stit_hist_dets = '';
-    $stit_hist = '';
-    $aur_hist = '';
-    $aur_hist_dets = '';
-    $iltd_hist = '';
-    $iltd_hist_dets = '';
-    $dets_iltd = '';
-    $pbco_alvo = '';
-    $vsi_hist = array();
-    // Aba 2
-    $fk_psna_ppl = '';
-    $dcr_em_uma_sntn = '';
-    $snp_hist = '';
-    $rsm_hist = '';
-} else {
-    $raca = (array) $resultado;
-    foreach ($raca as $key => $value) {
-        $$key = $value;
-    }
-    $vsi_hist = parseCheckbox($vsi_hist);
-}
-$nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
+$resultado = new ModeloHistoria(array());
+$resultado = ($controlador->getResultados() == null ?
+        new ModeloHistoria(array()) : $controlador->getResultados());
 ?>
 
 <div class="pular-menu">
     <div class="marquee"><?= $this->getDicas() ?></div>
 </div>
 
-
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?=$nome?></h1>
+        <h1><?= (empty($resultado->tit_hist()) ? ModeloLocalizacao::$nomeSingular : $resultado->tit_hist(30)) ?></h1>
     </div>
 </div>
 
@@ -56,7 +27,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
         </nav>
     </div>
     <!-- FINAL - ABAS DE NAVEGAÇÃO -->
-    <form action="?categoria=historia&acao=salvar" method="post" enctype="multipart/form-data">
+    <form action="?categoria=<?= $categoria ?>&acao=salvar" method="post" enctype="multipart/form-data">
         <!-- CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="tab-content">
             <!--ABA GERAL-->
@@ -79,7 +50,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                             <div class="col-md-12 input-conteudo">
 
                                 <div class="input-imagem" title="Campo para Imagem da história" id="input-im-ImagemdaHistoria"
-                                     style="background-image:url(<?php echo $im_hist; ?>)"></div>
+                                     style="background-image:url(<?= $resultado->im_hist() ?>)"></div>
 
                                 <input value="" accept="image/*" type='file' class="imgUploader" name="im_hist"/>
 
@@ -94,7 +65,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                 <div class="detalhes-conteudo">
                                     <textarea name="im_hist_dets" placeholder="Digite aqui os detalhes para Imagem Principal" 
                                               title="Detalhes para Imagem Principal"
-                                              maxlength="1000"><?php echo $im_hist_dets; ?></textarea>
+                                              maxlength="1000"><?= $resultado->im_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -119,7 +90,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="tit_hist" value="<?php echo $tit_hist ?>" 
+                                <input name="tit_hist" value="<?= $resultado->tit_hist() ?>" 
                                        placeholder="Digite aqui o Título da História"
                                        title="Campo para Título da História"
                                        maxlength="60" type="text"
@@ -131,7 +102,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                 <div class="detalhes-conteudo">
                                     <textarea name="tit_hist_dets" placeholder="Digite aqui os detalhes do Título da História" 
                                               title="Campo para detalhes do Título da História"
-                                              maxlength="1000"><?php echo $tit_hist_dets; ?></textarea>
+                                              maxlength="1000"><?= $resultado->tit_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -156,7 +127,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="stit_hist" value="<?php echo $stit_hist; ?>" 
+                                <input name="stit_hist" value="<?= $resultado->stit_hist() ?>" 
                                        placeholder="Digite aqui o Subtítulo da História"
                                        maxlength="80" type="text" 
                                        class="form-control" id="input-tx-SubtitulodaHistoria"/>
@@ -167,7 +138,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                 <div class="detalhes-conteudo">
                                     <textarea name="stit_hist_dets" placeholder="Digite aqui detlhes para o Subtítulo da História" 
                                               title="Detalhes do Nome do Input"
-                                              maxlength="1000"><?php echo $stit_hist_dets; ?></textarea>
+                                              maxlength="1000"><?= $resultado->stit_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -192,7 +163,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="aur_hist" value="<?php echo $aur_hist; ?>" 
+                                <input name="aur_hist" value="<?= $resultado->aur_hist() ?>" 
                                        placeholder="Digite aqui o nome do Autor(a) da História"
                                        title="Campo para Autor(a) da História"
                                        maxlength="70" type="text" 
@@ -204,7 +175,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                 <div class="detalhes-conteudo">
                                     <textarea name="aur_hist_dets" placeholder="Digite aqui os detalhes do(a) Autor(a) da História" 
                                               title="Campo para detalhes do(a) Autor(a) da História"
-                                              maxlength="1000"><?php echo $aur_hist_dets; ?></textarea>
+                                              maxlength="1000"><?= $resultado->aur_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -229,7 +200,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="iltd_hist" value="<?php echo $iltd_hist; ?>" 
+                                <input name="iltd_hist" value="<?= $resultado->iltd_hist() ?>" 
                                        placeholder="Digite aqui o nome do(a) Ilustrador(a) da História"
                                        title="Campo para Ilustrador(a) da História"
                                        maxlength="70" type="text" 
@@ -241,7 +212,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                 <div class="detalhes-conteudo">
                                     <textarea name="iltd_hist_dets" placeholder="Digite aqui detalhes do(a) Ilustrador(a) da História" 
                                               title="Campo para detalhes do(a) Ilustrador(a) da História"
-                                              maxlength="1000"><?php echo $iltd_hist_dets; ?></textarea>
+                                              maxlength="1000"><?= $resultado->iltd_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -269,7 +240,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                 <textarea name="pbco_alvo" placeholder="Digite aqui o Público Alvo" 
                                           title="Campo para Público Alvo" 
                                           id="input-txarea-PublicoAlvo"
-                                          maxlength="1000"><?php echo $pbco_alvo; ?></textarea>
+                                          maxlength="1000"><?= $resultado->pbco_alvo() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -295,27 +266,27 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                             <div class="input-checkbox" id="input-ckbx-Visibilidade">
                                 <div class="form-check-inline ckbox-mestre">
                                     <input title="Seleciona todas as opções"
-                                    <?php echo(count($vsi_hist) == 3 ? "checked" : "") ?>
+                                    <?php echo(count($resultado->vsi_hist()) == 3 ? "checked" : "") ?>
                                            type="checkbox" id ="ckbx-Visibilidade-mestre"/>
                                     <label for="ckbx-Visibilidade-mestre">Todos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="vsi_hist[]" value="1" 
-                                    <?php echo(in_array(1, $vsi_hist) ? "checked" : "") ?>
+                                    <?php echo(in_array(1, $resultado->vsi_hist()) ? "checked" : "") ?>
                                            title="Permite que sua equipe possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt1"/>
                                     <label for="ckbx-Visibilidade-opt1">Equipe</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="vsi_hist[]" value="2"
-                                    <?php echo(in_array(2, $vsi_hist) ? "checked" : "") ?>
+                                    <?php echo(in_array(2, $resultado->vsi_hist()) ? "checked" : "") ?>
                                            title="Permite que todos os seus amigos possam visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt2"/>
                                     <label for="ckbx-Visibilidade-opt2">Amigos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
                                     <input name="vsi_hist[]" value="4"
-                                    <?php echo(in_array(4, $vsi_hist) ? "checked" : "") ?>
+                                    <?php echo(in_array(4, $resultado->vsi_hist()) ? "checked" : "") ?>
                                            title="Permite que o público possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt3"/>
                                     <label for="ckbx-Visibilidade-opt3">Público</label>
@@ -351,17 +322,17 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                         name="fk_psna_ppl" id="input-txselr-PersonagemPrincipal">
                                     <option value="" selected>
                                         <?php
-                                        if ($fk_psna_ppl == "") {
+                                        if ($resultado->fk_psna_ppl() == "") {
                                             echo"Seus Personagens aparecerão aqui";
                                         } else {
-                                            echo"Personagens de $tit_hist";
+                                            echo"Personagens de {$resultado->tit_hist()}";
                                         }
                                         ?></option>
                                     <?php
                                     foreach ($resultadoSelect->psna as $personagemSelect) {
                                         $id = $personagemSelect["pk_psna"];
                                         $nome = $personagemSelect["nm_psna"];
-                                        $isSelected = ($fk_psna_ppl == $id ? "selected" : "");
+                                        $isSelected = ($resultado->fk_psna_ppl() == $id ? "selected" : "");
 
                                         if ($id != $pk_lczc) {
                                             echo "<option value='$id' $isSelected>$nome</option>";
@@ -395,7 +366,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                 <textarea name="dcr_em_uma_sntn" placeholder="Digite aqui a Descrição em uma Sentença da história" 
                                           title="Campo para a Descrição em uma Sentença da hisória" 
                                           id="input-txarea-DescricaoemumaSentença"
-                                          maxlength="200"><?php echo $dcr_em_uma_sntn; ?></textarea>
+                                          maxlength="200"><?= $resultado->dcr_em_uma_sntn() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -422,7 +393,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                 <textarea name="snp_hist" placeholder="Digite aqui a Sinopse da História" 
                                           title="Campo para a Sinopse da História" 
                                           id="input-txarea-Sinopse"
-                                          maxlength="1000"><?php echo $snp_hist; ?></textarea>
+                                          maxlength="1000"><?= $resultado->snp_hist() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -449,7 +420,7 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
                                 <textarea name="rsm_hist" placeholder="Digite aqui o Resumo da História" 
                                           title="Campo para Resumo da História" 
                                           id="input-txarea-Resumo"
-                                          maxlength="10000"><?php echo $rsm_hist; ?></textarea>
+                                          maxlength="10000"><?= $resultado->rsm_hist() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -462,9 +433,9 @@ $nome = (isset($tit_hist) ? truncar($tit_hist, 30) : nomeFormal($categoria));
         </div>
         <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="col-md-12 form-controle">
-            <input type="hidden" name="pk_hist" value="<?php echo $pk_hist; ?>">
+            <input type="hidden" name="pk_hist" value="<?= $resultado->pk_hist() ?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
-                Salvar História
+                Salvar <?= ModeloHistoria::$nomeSingular ?>
             </button>
         </div>
     </form>
