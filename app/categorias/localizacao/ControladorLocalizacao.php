@@ -9,22 +9,26 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
 
         require_once "BdContextLocalizacao.php";
         require_once PATH_CAT . "/raca/BdContextRaca.php";
+        require_once PATH_CAT . "/fauna/BdContextFauna.php";
     }
 
     public function cadastrar($parametros) {
         $this->setVisao(ModeloLocalizacao::$viewForm);
         $this->setTituloPagina(ModeloLocalizacao::getTituloPagina("cadastrar"));
 
-        $modeloPnsa = new ModeloPersonagem();
-        $resPsna = $modeloPnsa->listar("");
+        $modeloPsna = new ModeloPersonagem();
+        $resPsna = $modeloPsna->listar("");
         $bdLczc = new BdContextLocalizacao();
         $resLczc = $bdLczc->listar("");
         $bdRaca = new BdContextRaca();
         $resRaca = $bdRaca->listar("");
+        $bdFauna = new BdContextFauna();
+        $resFauna = $bdFauna->listar("");
         $res = array(
             "psna" => $resPsna,
             "lczc" => $resLczc,
-            "raca" => $resRaca);
+            "raca" => $resRaca,
+            "fauna" => $resFauna);
         $this->setResultadosSelect($res);
     }
 
@@ -58,16 +62,22 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $resLczc = $bdLczc->listar("");
             $bdRaca = new BdContextRaca();
             $resRaca = $bdRaca->listar("");
+            $bdFauna = new BdContextFauna();
+            $resFauna = $bdFauna->listar("");
             //Get personagens registrados como mais conhecidos
             $idsPsnaCnhd = $bdLczc->listarPsnaCnhd($instancia->pk_lczc());
             //Get raças registradas
             $idsRaca = $bdLczc->listarRaca($instancia->pk_lczc());
+            //Get faunas registradas
+            $idsFauna = $bdLczc->listarFauna($instancia->pk_lczc());
             $res = array(
                 "psna" => $resPsna,
                 "lczc" => $resLczc,
                 "raca" => $resRaca,
+                "fauna" => $resFauna,
                 "idsPsnaLczc" => $idsPsnaCnhd,
-                "idsRaca" => $idsRaca);
+                "idsRaca" => $idsRaca,
+                "idsFauna" => $idsFauna);
             $this->setResultadosSelect($res);
         } else {
             redirecionar("?categoria=localizacao&acao=listar");

@@ -9,7 +9,7 @@ $resultados = $controlador->getResultados();
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= ModeloRaca::$nomePlural ?></h1>
+        <h1><?= ModeloFauna::$nomePlural ?></h1>
     </div>    
 </div>
 
@@ -17,21 +17,21 @@ $resultados = $controlador->getResultados();
     <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
         <a href='?categoria=<?= $categoria ?>&acao=cadastrar' 
-           title='Clique para criar uma nova <?= ModeloRaca::$nomeSingular ?>'
+           title='Clique para criar uma nova <?= ModeloFauna::$nomeSingular ?>'
            class='btn btn-azul criar-nova-instancia'>
             <i class="fa fa-plus"></i>
-            &nbsp&nbspCriar nova <?= ModeloRaca::$nomeSingular ?>
+            &nbsp&nbspCriar nova <?= ModeloFauna::$nomeSingular ?>
         </a>
     </div>
 
     <?php
     if (isset($resultados)) {
         foreach ($resultados as $racaArray) {
-            $raca = new ModeloRaca($racaArray);
-            $nome = ($raca->nm_raca());
+            $fauna = new ModeloFauna($racaArray);
+            $nome = ($fauna->nm_fna());
 
             $camposListar = "";
-            foreach ($raca->getAtributosListar() as $nomeCampo => $valorCampo) {
+            foreach ($fauna->getAtributosListar() as $nomeCampo => $valorCampo) {
                 $camposListar .= "<tr>"
                         . "         <th scope='row'>$nomeCampo</th>"
                         . "         <td>$valorCampo</td>"
@@ -40,7 +40,7 @@ $resultados = $controlador->getResultados();
 
             echo
             "<div title='Clique para editar $nome'"
-            . "class='instancia-card mx-auto row clicavel' data-id='{$raca->pk_raca()}' data-nome='$nome'>"
+            . "class='instancia-card mx-auto row clicavel' data-id='{$fauna->pk_fna()}' data-nome='$nome'>"
             . "    <div class='instancia-corpo col-md-11 row'>"
             . "        <div class='instancia-conteudo col'>"
             . "            <div class='instancia-cabecalho'>"
@@ -53,12 +53,12 @@ $resultados = $controlador->getResultados();
             . "            </div>"
             . "        </div>"
             . "    </div>"
-            . "    <a href='?categoria=$categoria&acao=editar&id={$raca->pk_raca()}'></a>"
+            . "    <a href='?categoria=$categoria&acao=editar&id={$fauna->pk_fna()}'></a>"
             . "    <div class='instancia-controle col-md-1' style='padding-left: 0px;'>"
             . "        <button class='btn btn-azul btn-deletar-instancia' title='Clique para deletar $nome'>"
             . "            <i class='fa fa-times'></i>"
             . "        </button>"
-            . "        <a href='?categoria=$categoria&acao=excluir&id={$raca->pk_raca()}' class='deletar-instancia-escondido'></a>"
+            . "        <a href='?categoria=$categoria&acao=excluir&id={$fauna->pk_fna()}' class='deletar-instancia-escondido'></a>"
             . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar'>"
             . "            <i class='fa fa-minus'></i>"
             . "        </button>"
@@ -79,10 +79,10 @@ $resultados = $controlador->getResultados();
             . "</div>";
         }
     }
-    if (!isset($raca)) {
+    if (!isset($fauna)) {
         echo"<div align='center' class='sem-instancia' style='margin-bottom: 0.5%'>"
         . "	<div align='left' style='padding-left: 0.5%'>"
-        . "	    <span>" . sprintf(const_Indefinida_Msg, ModeloRaca::$nomePlural) . "</span>"
+        . "	    <span>" . sprintf(const_Indefinida_Msg, ModeloFauna::$nomePlural) . "</span>"
         . "	</div>"
         . "     <img src='" . const_Indefinida . "' alt='' style='max-width: 99%;'/>"
         . "</div>";

@@ -1,7 +1,7 @@
 <?php
-$resultado = new ModeloRaca(array()); //Necessário para usar o autoComplete
+$resultado = new ModeloFauna(array()); //Necessário para usar o autoComplete
 $resultado = ($controlador->getResultados() == null ? 
-        new ModeloRaca(array()) : $controlador->getResultados());
+        new ModeloFauna(array()) : $controlador->getResultados());
 ?>
 
 <div class="pular-menu">
@@ -10,7 +10,7 @@ $resultado = ($controlador->getResultados() == null ?
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= (empty($resultado->nm_raca()) ? ModeloRaca::$nomeSingular : $resultado->nm_raca(30)) ?></h1>
+        <h1><?= (empty($resultado->nm_fna()) ? ModeloFauna::$nomeSingular : $resultado->nm_fna(30)) ?></h1>
     </div>
 </div>
 
@@ -45,9 +45,9 @@ $resultado = ($controlador->getResultados() == null ?
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="nm_raca" value="<?= $resultado->nm_raca() ?>" 
-                                       placeholder="Digite aqui o Nome da Raça"
-                                       title="Campo para Nome da Raça"
+                                <input name="nm_fna" value="<?= $resultado->nm_fna() ?>" 
+                                       placeholder="Digite aqui o Nome da Fauna"
+                                       title="Campo para Nome da Fauna"
                                        maxlength="60" type="text"
                                        class="form-control" id="input-tx-Nome"/>
                             </div>
@@ -72,9 +72,9 @@ $resultado = ($controlador->getResultados() == null ?
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
-                                <textarea name="dcr_raca" value="" 
-                                          placeholder="Digite aqui a Descrição da Raça" title="Campo para Descrição da Raça" 
-                                          id="input-txarea-Descricao"><?= $resultado->dcr_raca() ?></textarea>
+                                <textarea name="dcr_fna" value="" 
+                                          placeholder="Digite aqui a Descrição da Fauna" title="Campo para Descrição da Fauna" 
+                                          id="input-txarea-Descricao"><?= $resultado->dcr_fna() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -98,9 +98,9 @@ $resultado = ($controlador->getResultados() == null ?
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo"> 
-                                <textarea name="apci_raca" value="" 
-                                          placeholder="Digite aqui a Aparência da Raça" title="Campo para Aparência da Raça" 
-                                          id="input-txarea-Aparencia"><?= $resultado->apci_raca() ?></textarea>
+                                <textarea name="apci_fna" value="" 
+                                          placeholder="Digite aqui a Aparência da Fauna" title="Campo para Aparência da Fauna" 
+                                          id="input-txarea-Aparencia"><?= $resultado->apci_fna() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -124,16 +124,16 @@ $resultado = ($controlador->getResultados() == null ?
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input type="text" name="pvmt_raca" 
+                                <input type="text" name="pvmt_fna" 
                                        data-minmax-valores="Quase Inexistente, Baixo, Médio, Alto, Abundante" class="input-minmax" 
-                                       value="<?= $resultado->pvmt_raca() ?>" id="input-minmax-Hostilidade"></input>
+                                       value="<?= $resultado->pvmt_fna() ?>" id="input-minmax-Hostilidade"></input>
                             </div>
                         </div>
                         <!--FINAL - INPUT CORPO-->
                     </div>
                 </div>
                 <!--FINAL - INPUT MINMAX-->
-                <!--REPUTAÇÃO - INPUT MINMAX-->
+                <!--AGRESSIVIDADE - INPUT MINMAX-->
                 <div class="form-group">
                     <div class="row">
                         <!--INPUT CONTROLE-->
@@ -144,14 +144,14 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-minmax-Reputacao">Reputação</label>
+                        <label class="col-md-11 input-label" for="input-minmax-Reputacao">Agressividade</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input type="text" name="rptc_raca" 
-                                       data-minmax-valores="Odiado, Desvalorizado, Neutro, Respeitado, Venerado" class="input-minmax" 
-                                       value="<?= $resultado->rptc_raca() ?>" id="input-minmax-Reputacao"></input>
+                                <input type="text" name="agsd_fna" 
+                                       data-minmax-valores="Inofensivo, Calmo, Neutro, Bravo, Violento" class="input-minmax" 
+                                       value="<?= $resultado->agsd_fna() ?>" id="input-minmax-Reputacao"></input>
                             </div>
                         </div>
                         <!--FINAL - INPUT CORPO-->
@@ -163,10 +163,10 @@ $resultado = ($controlador->getResultados() == null ?
         </div>
         <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="col-md-12 form-controle">
-            <input type="hidden" name="pk_raca" value="<?= $resultado->pk_raca() ?>">
+            <input type="hidden" name="pk_fna" value="<?= $resultado->pk_fna() ?>">
             <input type="hidden" name="fk_hist" value="<?= $resultado->fk_hist() ?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
-                Salvar <?= ModeloRaca::$nomeSingular ?>
+                Salvar <?= ModeloFauna::$nomeSingular ?>
             </button>
         </div>
     </form>

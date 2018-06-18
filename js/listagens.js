@@ -52,7 +52,7 @@ $(".btn-minimizar-instancia").on("click", function () {
 
 });
 //Editar categorias relacionadas
-$(".listar-select-raca").on("click", function (e) {
+$(".btn-listar-select").on("click", function (e) {
     e.stopPropagation();
     document.location = $(this).attr("href");
 });

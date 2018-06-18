@@ -39,7 +39,7 @@ class ModeloRaca {
         if (!empty($lczcQueAparece)) {
             $atributosSelecionados["Presente em"] = "";
             foreach ($lczcQueAparece as $lczc) {
-                $atributosSelecionados["Presente em"] .= "<span class='listar-select-raca' "
+                $atributosSelecionados["Presente em"] .= "<span class='btn-listar-select' "
                         . "title='Clique para editar {$lczc["nm_lczc"]}'"
                         . "href='?categoria=localizacao&acao=editar&id={$lczc["pk_lczc"]}'>" .
                         truncar($lczc["nm_lczc"], 20) . "</span>";

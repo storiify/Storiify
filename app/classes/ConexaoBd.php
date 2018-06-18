@@ -45,7 +45,6 @@ class ConexaoBd {
 	$sql = "UPDATE `$tabela`a SET $query WHERE $where";
         
         $res = self::getInstance()->query($sql);
-        consoleLog("BdConex: ".$res->rowCount());
 	if($res->rowCount()>=0){
 	    return true;
 	}else{

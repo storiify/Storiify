@@ -16,12 +16,17 @@ class BdContextLocalizacao extends ConexaoBd {
         $horarioAtual = date("Y-m-d H:i:s");
         $parametros['dt_alt'] = $horarioAtual;
         //Gerencia a coluna de personagens mais conhecidos
-        $idsPsnaCnhd = $parametros['fk_psna_cnhd'];
+        $idsPsnaCnhd = (isset($parametros['fk_psna_cnhd']) ? $parametros['fk_psna_cnhd'] : 0);
         unset($parametros['fk_psna_cnhd']);
         //Gerencia a coluna de raças
         if (isset($parametros['fk_raca'])) {
             $idsRaca = $parametros['fk_raca'];
             unset($parametros['fk_raca']);
+        }
+        //Gerencia a coluna de faunas
+        if (isset($parametros['fk_fna'])) {
+            $idsFauna = $parametros['fk_fna'];
+            unset($parametros['fk_fna']);
         }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
@@ -38,6 +43,8 @@ class BdContextLocalizacao extends ConexaoBd {
                 $this->excluirPsnaCnhd($parametros['pk_lczc']);
                 //Deleta todas as relações raças
                 $this->excluirRaca($parametros['pk_lczc']);
+                //Deleta todas as relações fauna
+                $this->excluirFauna($parametros['pk_lczc']);
             }
         } else { //Ao criar
             $parametros['dt_cric'] = $horarioAtual;
@@ -51,13 +58,15 @@ class BdContextLocalizacao extends ConexaoBd {
             $this->salvarPsnaCnhd($idsPsnaCnhd, $idAtual);
             //Cria a relação de raças existentes
             $this->salvarRacaExistente($idsRaca, $idAtual);
+            //Cria a relação de faunas existentes
+            $this->salvarFaunaExistente($idsFauna, $idAtual);
         }
 
         return $res;
     }
 
     public function listar($parametros) {
-        
+
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "WHERE fk_hist='$idHistoria'";
 
@@ -85,7 +94,7 @@ class BdContextLocalizacao extends ConexaoBd {
             $pks[] = "pk_lczc='$id'";
         }
         $condicao .= join(" OR ", $pks);
-        
+
         $res = $this->listarBase($this->campos, $this->tabela, $condicao);
 
         if (!isset($res) || $res == null) {
@@ -173,6 +182,38 @@ class BdContextLocalizacao extends ConexaoBd {
         $condicao = "fk_lczc='$idLczc'";
 
         $res = $this->excluirBase($tbLczcRaca, $condicao);
+
+        return $res;
+    }
+
+    private function salvarFaunaExistente($idsFauna, $idLczc) {
+        $tbLczcFna = "tb_localizacao_rel_fauna";
+        foreach ($idsFauna as $fauna) {
+            $rel['fk_lczc'] = $idLczc;
+            $rel['fk_fna'] = $fauna;
+            $res = $this->inserirBase($rel, $tbLczcFna);
+        }
+        return $res;
+    }
+
+    public function listarFauna($parametros) {
+        $tbLczcFauna = "tb_localizacao_rel_fauna";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_fna', $tbLczcFauna, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+        return $res;
+    }
+
+    private function excluirFauna($idLczc) {
+        $tbLczcFna = "tb_localizacao_rel_fauna";
+        $condicao = "fk_lczc='$idLczc'";
+
+        $res = $this->excluirBase($tbLczcFna, $condicao);
 
         return $res;
     }

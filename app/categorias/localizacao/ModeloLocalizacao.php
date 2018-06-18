@@ -11,7 +11,7 @@ class ModeloLocalizacao {
     private $nm_lczc_dets;
     private $vis_grl;
     private $marc_geo;
-    private $fk_ppl_lcld;
+    private $fk_ppl_lczc;
     private $arrd_lczc;
     private $hotl_lczc;
     private $hotl_lczc_dets;
@@ -86,9 +86,9 @@ class ModeloLocalizacao {
         if ($this->vis_grl != "") {
             $atributosSelecionados["Visão Geral"] = $this->vis_grl;
         }
-        if ($this->fk_ppl_lcld != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+        if ($this->fk_ppl_lczc != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $bdContext = new BdContextLocalizacao();
-            $parametros["id"] = $this->fk_ppl_lcld;
+            $parametros["id"] = $this->fk_ppl_lczc;
             $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
             $atributosSelecionados["Principal Localidade"] = $instancia->nm_lczc();
         }
@@ -161,8 +161,8 @@ class ModeloLocalizacao {
         return $this->marc_geo;
     }
 
-    public function fk_ppl_lcld() {
-        return $this->fk_ppl_lcld;
+    public function fk_ppl_lczc() {
+        return $this->fk_ppl_lczc;
     }
 
     public function arrd_lczc() {

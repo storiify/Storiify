@@ -12,7 +12,7 @@ $resultado = ($controlador->getResultados() == null ?
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= (empty($resultado->tit_hist()) ? ModeloLocalizacao::$nomeSingular : $resultado->tit_hist(30)) ?></h1>
+        <h1><?= (empty($resultado->tit_hist()) ? ModeloHistoria::$nomeSingular : $resultado->tit_hist(30)) ?></h1>
     </div>
 </div>
 

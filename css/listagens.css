@@ -90,7 +90,7 @@ th{
     border-bottom-right-radius: 0.3rem;
 }
 /*campos internos da listagem*/
-.listar-select-raca{
+.btn-listar-select{
     z-index: 2;
     display: inline-block;
     background-color: #30c5ff;
@@ -102,6 +102,6 @@ th{
     padding: 2px 4px;
     transition: transform .2s;
 }
-.listar-select-raca:hover{
+.btn-listar-select:hover{
     transform: scale(1.08);
 }

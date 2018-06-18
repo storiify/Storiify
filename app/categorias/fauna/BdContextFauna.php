@@ -1,8 +1,8 @@
 <?php
 
-class BdContextRaca extends ConexaoBd {
+class BdContextFauna extends ConexaoBd {
 
-    private $tabela = "tb_raca";
+    private $tabela = "tb_fauna";
     private $campos = '*';
 
     public function __construct() {
@@ -15,12 +15,13 @@ class BdContextRaca extends ConexaoBd {
         $parametros['fk_hist'] = ($parametros['fk_hist'] != '' ? $parametros['fk_hist'] : $idHistoria);
 
         $res = false;
-
-        if ($parametros['pk_raca'] != '') { //Ao editar
-            $condicao = " pk_raca='{$parametros['pk_raca']}'";
+        
+        if (isset($parametros['pk_fna']) && $parametros['pk_fna'] != '') { //Ao editar
+            consoleLog($parametros['pk_fna']);
+            $condicao = " pk_fna='{$parametros['pk_fna']}'";
             $res = $this->updateBase($parametros, $this->tabela, $condicao);
         } else { //Ao criar
-            unset($parametros['pk_raca']);
+            unset($parametros['pk_fna']);
             $res = $this->inserirBase($parametros, $this->tabela);
         }
         return $res;
@@ -33,7 +34,7 @@ class BdContextRaca extends ConexaoBd {
 
         if (isset($parametros["id"])) {
             $id = $parametros["id"];
-            $condicao .= " AND pk_raca='$id'";
+            $condicao .= " AND pk_fna='$id'";
         }
 
         $res = $this->listarBase($this->campos, $this->tabela, $condicao);
@@ -49,9 +50,9 @@ class BdContextRaca extends ConexaoBd {
         //Primeira condição = fk_hist
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "fk_hist='$idHistoria'";
-        //Segunda condição = pk_raca
+        //Segunda condição = pk_fna
         $id = $parametros['id'];
-        $condicao .= " AND pk_raca='$id'";
+        $condicao .= " AND pk_fna='$id'";
 
         $res = $this->excluirBase($this->tabela, $condicao);
 
@@ -63,11 +64,11 @@ class BdContextRaca extends ConexaoBd {
     }
 
     public function localizacoesQueAparece($parametros) {
-        $tbLczcRaca = "tb_localizacao_rel_raca";
+        $tbLczcFauna = "tb_localizacao_rel_fauna";
         $idLocalizacao = $parametros;
-        $condicao = "WHERE fk_raca='$idLocalizacao'";
+        $condicao = "WHERE fk_fna='$idLocalizacao'";
 
-        $res = $this->listarBase('fk_lczc', $tbLczcRaca, $condicao);
+        $res = $this->listarBase('fk_lczc', $tbLczcFauna, $condicao);
         
         if (!isset($res) or $res == null) {
             return array();

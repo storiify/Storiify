@@ -1,3 +1,4 @@
+//RAÇA
 $(".salvar-raca-modal").on("click", function () {
     var nm_raca = $("[name='nm_raca']").val();
     var dcr_raca = $("[name='dcr_raca']").val();
@@ -23,3 +24,31 @@ $(".salvar-raca-modal").on("click", function () {
 function inserirOptionRaca(idRaca, nomeRaca){
     $("#input-txselr-Raca").append("<option value='"+idRaca+"' selected>"+nomeRaca+"</option>");
 }
+//FINAL RAÇA
+//FAUNA
+$(".salvar-fauna-modal").on("click", function () {
+    var nm_fna = $("[name='nm_fna']").val();
+    var dcr_fna = $("[name='dcr_fna']").val();
+    var apci_fna = $("[name='apci_fna']").val();
+    var pvmt_fna = $("[name='pvmt_fna']").val();
+    var agsd_fna = $("[name='agsd_fna']").val();
+    $.ajax({
+        url: "?categoria=fauna&acao=salvar",
+        method: "POST",
+        data: {isAjax: 'true', nm_fna: nm_fna, dcr_fna: dcr_fna, apci_fna: apci_fna, pvmt_fna: pvmt_fna, agsd_fna: agsd_fna},
+        success: function (data) {
+            alert("A fauna"+ (nm_fna == ""? "": " " + nm_fna) +" foi cadastrada com sucesso");
+            
+            var pre = "idInserido";
+            var idFauna = data.substr(data.indexOf(pre) + pre.length + 1);
+            inserirOptionFauna(idFauna, nm_fna);
+            
+            $("#modalCadastrarFauna").modal('hide');
+        }
+    });
+});
+
+function inserirOptionFauna(idFauna, nomeFauna){
+    $("#input-txselr-Fauna").append("<option value='"+idFauna+"' selected>"+nomeFauna+"</option>");
+}
+//FINAL FAUNA

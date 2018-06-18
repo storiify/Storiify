@@ -228,13 +228,13 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
-                                        name="fk_ppl_lcld" id="input-txselr-PrincipalLocalidade">
-                                    <option value="0" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
+                                        name="fk_ppl_lczc" id="input-txselr-PrincipalLocalidade">
+                                    <option value="" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                     <?php
                                     foreach ($resultadoSelect->lczc as $localizacaoSelect) {
                                         $id = $localizacaoSelect["pk_lczc"];
                                         $nome = $localizacaoSelect["nm_lczc"];
-                                        $isSelected = ($resultado->fk_ppl_lcld() == $id ? "selected" : "");
+                                        $isSelected = ($resultado->fk_ppl_lczc() == $id ? "selected" : "");
 
                                         if ($id != $resultado->pk_lczc()) {
                                             echo "<option value='$id' $isSelected>$nome</option>";
@@ -401,7 +401,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_fdd_decb" id="input-txselr-FundadorDescobridor">
-                                    <option value="0" selected>-- Personagens de <?= $historiaSelecionada->tit_hist() ?> --</option>
+                                    <option value="" selected>-- Personagens de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                     <?php
                                     foreach ($resultadoSelect->psna as $personagemSelect) {
                                         $id = $personagemSelect["pk_psna"];
@@ -596,7 +596,56 @@ $resultado = ($controlador->getResultados() == null ?
                                 <span class="incluir-adicionar col-md-1">
                                     <button class="btn btn-azul incluir-btn-adicionar" type="button"
                                             data-toggle="modal" data-target="#modalCadastrarRaca" >
-                                        Criar Raça
+                                        Criar <?= ModeloRaca::$nomeSingular?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
+                <!--FAUNA - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-Fauna">Fauna</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_fna[]" id="input-txselr-Fauna">
+                                                <?php
+                                                foreach ($resultadoSelect->fauna as $faunaSelect) {
+                                                    $fauna = new ModeloFauna($faunaSelect);
+                                                    $id = $fauna->pk_fna();
+                                                    $nome = $fauna->nm_fna();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsFauna as $idFauna) {
+                                                        if ($id == $idFauna["fk_fna"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarFauna" >
+                                        Criar <?= ModeloFauna::$nomeSingular?>
                                     </button>
                                 </span>
                             </div>
