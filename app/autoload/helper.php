@@ -6,9 +6,22 @@
  */
 
 function proccessRequest() {
-    $arrayTratado = ['categoria' => 'login', 'acao' => 'logar', 'parametros' => []];
+    $arrayTratado = ['categoria' => 'historia', 'acao' => 'listar', 'parametros' => []];
 
     foreach ($_GET as $key => $val) {
+        switch ($key) {
+            case 'categoria':
+                $arrayTratado['categoria'] = $val;
+                break;
+            case 'acao':
+                $arrayTratado['acao'] = $val;
+                break;
+            default:
+                $arrayTratado['parametros'][$key] = $val;
+                break;
+        }
+    }
+    foreach ($_POST as $key => $val) {
         switch ($key) {
             case 'categoria':
                 $arrayTratado['categoria'] = $val;
@@ -35,7 +48,7 @@ function sessao() {
 
 function notfount($msg = null) {
     $sessao = sessao();
-    $sessao->setSessao('MSG_404', $msg);
+    $sessao->setChave('MSG_404', $msg);
     require_once PATH_VISOES_PUBLICAS . VISAO_404;
     die;
 }
@@ -45,10 +58,13 @@ function truncar($stringEntrada, $tamanhoMaximo, $dots = "...") {
 }
 
 function uploadImagem($idUsuario, $nmCategoria, $idInstancia, $file) {
+    if ($file["size"] == 0) {
+        return null;
+    }
     $nomeSaida = "im_ppl";
     $diretorioAlvo = "usuarios/$idUsuario/$nmCategoria/$idInstancia/";
 
-//Check if the directory already exists.
+    //Check if the directory already exists.
     if (!is_dir($diretorioAlvo)) {
         //Directory does not exist, so lets create it.
         mkdir($diretorioAlvo, 0755, true);
@@ -59,7 +75,7 @@ function uploadImagem($idUsuario, $nmCategoria, $idInstancia, $file) {
     $target_file = $diretorioAlvo . $nomeSaida . "." . $imExtensao;
     $uploadOk = 1;
 
-// Check if image file is a actual image or fake image
+    // Check if image file is a actual image or fake image
     $check = getimagesize($file["tmp_name"]);
     if ($check !== false) {
         //echo "File is an image - " . $check["mime"] . ".";
@@ -68,21 +84,20 @@ function uploadImagem($idUsuario, $nmCategoria, $idInstancia, $file) {
         //echo "File is not an image.";
         $uploadOk = 0;
     }
-// Check file size
+    // Check file size
     if ($file["size"] > 5000000) {
         //echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
-// Allow certain file formats
-    if ($imExtensao != "png") {
-        //echo "Sorry, only PNG files are allowed.";
+    // Allow certain file formats
+    if ($imExtensao != "png" && $imExtensao != "jpg" && $imExtensao != "jpeg" && $imExtensao != "gif") {
         $uploadOk = 0;
     }
-// Check if $uploadOk is set to 0 by an error
+    // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         //echo "Sorry, your file was not uploaded.";
         return NULL;
-// if everything is ok, try to upload file
+        // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($file["tmp_name"], $target_file)) {
             //echo "The file " . basename($file["name"]) . " has been uploaded.";
@@ -119,20 +134,21 @@ function parseCheckbox($valor) {
     return $opcoesRetorno;
 }
 
-
-function nomeFormal($nome, $plural = "singular"){
-    if($plural == "plural"){
-        return ($nome == "historia"?
-                "Histórias":($nome == "mundo"?
-                "Mundos" : ($nome=="localizacao"?
-                "Localizações" : ($nome == "cena"?
-                "Cenas" : ($nome == "personagem"?
-                "Personagens" : "Categoria não encontrada")))));
+function nomeFormal($nome, $plural = "singular") {
+    if ($plural == "plural") {
+        return ($nome == "historia" ? "Histórias" :
+                ($nome == "mundo" ? "Mundos" :
+                ($nome == "localizacao" ? "Localizações" :
+                ($nome == "cena" ? "Cenas" :
+                ($nome == "personagem" ? "Personagens" :
+                ($nome == "raca" ? "Raças" :
+                "Categoria não encontrada"))))));
     }
-    return ($nome == "historia"?
-                "História":($nome == "mundo"?
-                "Mundo" : ($nome=="localizacao"?
-                "Localização" : ($nome == "cena"?
-                "Cena" : ($nome == "personagem"?
-                "Personagem" : "Categoria não encontrada")))));
+    return ($nome == "historia" ? "História" : 
+            ($nome == "mundo" ? "Mundo" : 
+            ($nome == "localizacao" ? "Localização" : 
+            ($nome == "cena" ? "Cena" : 
+            ($nome == "personagem" ?  "Personagem" :
+            ($nome == "raca" ?  "Raça" : 
+            "Categoria não encontrada"))))));
 }

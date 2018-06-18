@@ -6,7 +6,7 @@
  * Somente copie e edite a class abaixo caso tenha duvida do funcionamento. 
  */
 
-class ControladorExemplo extends Controlador{
+class ControladorExemplo extends Controlador implements InterfaceControlador{
     
     public function __construct($categoria) {
         parent::__construct();
@@ -24,5 +24,26 @@ class ControladorExemplo extends Controlador{
         //$this->setVisao('none');
         
     }
-    
+
+    /* Metodos padrões */
+    public function cadastrar($parametros) {
+	
+    }
+
+    public function editar($parametros) {
+	
+    }
+
+    public function excluir($parametros) {
+	
+    }
+
+    public function listar($parametros) {
+	
+    }
+
+    public function salvar($parametros) {
+	
+    }
+
 }

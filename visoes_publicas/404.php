@@ -12,18 +12,22 @@
         text-shadow: 2px 2px #000;
         color: #FFF;
     }
-    .hero{
+    .hero {
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 60px);
+	padding-top: 60px;
     }
-    body{
-	margin: 0;
+    footer {
+	display: none !important;
+    }
+    body {
+	margin: 0px;
     }
 </style>
 <div class="container hero" style="background-color: #485a5a">
     <div class="row">
-        <div align="center" class="col-md-12 text-center"><br><br><br>
-            <img src="imagens/404.png" class="img-responsive" alt="Responsive image" style="display: inline; width: 90%;">
+        <div align="center" class="col-md-12 text-center" style="width: 100%;">
+            <img src="imagens/404.png" class="img-responsive" alt="Responsive image" style="display: inline; width: 70%;">
             <h2>Parece que sua imaginação foi longe demais!</h2>
             <p class="animated fadeInUpDelay"><?= (sessao()->getChave("MSG_404")!=null?sessao()->getChave("MSG_404"):'')?></p>
         </div>

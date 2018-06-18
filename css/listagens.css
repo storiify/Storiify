@@ -26,7 +26,6 @@ th{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    margin-bottom: 2rem;
 }
 .sem-instancia span{
     color: #cacaca;
@@ -60,7 +59,7 @@ th{
 .instancia-imagem{
     width: 200px;
     height: 200px;
-    margin: 1rem .3rem 0 .5rem;
+    margin: .5rem .3rem .5rem .5rem;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
@@ -90,57 +89,19 @@ th{
 .instancia-controle .btn:last-child{
     border-bottom-right-radius: 0.3rem;
 }
-
-/*.entidade-card{
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3rem;
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-.entidade-card:hover{
-    -webkit-box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
-}
-.entidade-cabecalho{
-    background-color: #162338;
-    font-size: 20px;
+/*campos internos da listagem*/
+.btn-listar-select{
+    z-index: 2;
+    display: inline-block;
+    background-color: #30c5ff;
+    color: white;
+    border: 1px solid #10a4de;
+    border-radius: 4px;
     font-weight: bold;
-    border-top: 1px solid #ff7b00;
-    border-right: 1px solid #ff7b00;
-    border-left: 1px solid #ff7b00;
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem;
-    line-height: 50px;
+    margin: 2px 4px;
+    padding: 2px 4px;
+    transition: transform .2s;
 }
-.entidade-nome{
-    color: white !important;
-    display: inline-block;
-    margin-left: 2rem;
+.btn-listar-select:hover{
+    transform: scale(1.08);
 }
-.entidade-controle{
-    display: inline-block;
-    position: relative;
-    top: 12px;
-    right: 12px;
-}
-.entidade-corpo{
-    background-color: white;
-    border-right: 1px solid #cacaca;
-    border-bottom: 1px solid #cacaca;
-    border-left: 1px solid #cacaca;
-    
-}
-.entidade-img{
-
-}
-.instancia-ultima-alteracao{
-    position: absolute;
-    right: 1%;
-    bottom: -75px;
-    color: #c8c8c8;
-}
-.deletar-entidade-escondido{
-    display: none;
-}*/

@@ -7,7 +7,7 @@
     Cinza - #c8c8c8
 */
 .container{
-    max-width: 1400px;
+    max-width: 100%;
 }
 /*Título*/
 #titulo-bg{
@@ -29,7 +29,8 @@
     position:relative;
     top:-80px;
     color:white;
-    padding-left: 12%;
+    padding-left: 4%;
+    text-align: center;
 }
 /*Final - Título*/
 .tab-content{
@@ -40,9 +41,17 @@
     padding-top: 2%;
     padding-bottom: 2%;
 }
+
+.form-controle{
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 2rem;
+    align-self: flex-end;
+    padding-left: 40px;
+    padding-right: 40px;
+}
 #btn-salvar-form{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
 }
 .input-label{
     text-align: left;
@@ -153,6 +162,9 @@ textarea, input[type="text"]{
     font-weight: bold;
     margin-right: 10px !important;
 }
+.select2-selection--single{
+    padding: 0 !important;
+}
 /*FINAL - INPUT TEXTOSELECT*/
 /*INPUT CHECKBOX*/
 .form-check-inline>label{
@@ -213,20 +225,31 @@ textarea, input[type="text"]{
 
 /*FINAL - INPUT IMAGEM*/
 /*INPUT INCLUIR*/
-.incluir-btn-remover{
+/*.incluir-btn-remover{
     border-top-right-radius: 0px; 
     border-bottom-right-radius: 0px;
+}*/
+.input-incluir{
+    padding: 0;
+}
+.input-incluir .select2-container .selection .select2-selection{
+    height: 38px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.incluir-adicionar{
+    padding: 0;
 }
 .incluir-btn-adicionar{
     border-top-left-radius: 0px; 
     border-bottom-left-radius: 0px;
 }
 
-.incluir-status{
+/*.incluir-status{
     text-align: center;
     background-color: white !important;
 }
-/*filhos*/
+filhos
 .btn-icl-controle{
     background-color: #162338;
     color:white;
@@ -263,5 +286,13 @@ textarea, input[type="text"]{
     border-radius: 0.25rem 0 0 0.25rem;
     margin-right: 0 !important;
     padding: 5px 20px;
-}
+}*/
 /*FINAL - INPUT INCLUIR*/
+/*INPUT MINMAX*/
+.irs-slider{
+    z-index: 0 !important; /*btn salvar form estava sendo coberto*/
+}
+.irs-single{
+    z-index: 0 !important; /*btn salvar form estava sendo coberto*/
+}
+/*FINAL - INPUT MINMAX*/

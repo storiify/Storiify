@@ -1,23 +1,18 @@
-<?php $modelo = $controlador->getParametros();
+<?php
+$resultadoSelect = $controlador->getResultadosSelect();
 
- if (isset($modelo->tit_hist)) {
-    $nome = ($modelo->tit_hist == "" || ctype_space($modelo->tit_hist)) ?
-                "" : $modelo->tit_hist;
-        $nome .= ($modelo->stit_hist == "" || ctype_space($modelo->stit_hist) ? "" :
-                ($nome == "" ? $modelo->stit_hist : ": " . $modelo->stit_hist));
-} else{
-    $nome = "";
-}
+$resultado = new ModeloHistoria(array());
+$resultado = ($controlador->getResultados() == null ?
+        new ModeloHistoria(array()) : $controlador->getResultados());
 ?>
 
-<div style="margin-top:60px;">
+<div class="pular-menu">
     <div class="marquee"><?= $this->getDicas() ?></div>
 </div>
 
-
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?php echo ($nome == "" || ctype_space($nome)? "História" : $nome) ?></h1>
+        <h1><?= (empty($resultado->tit_hist()) ? ModeloHistoria::$nomeSingular : $resultado->tit_hist(30)) ?></h1>
     </div>
 </div>
 
@@ -32,7 +27,7 @@
         </nav>
     </div>
     <!-- FINAL - ABAS DE NAVEGAÇÃO -->
-    <form action="?categoria=historia&acao=salvar" method="post" enctype="multipart/form-data">
+    <form action="?categoria=<?= $categoria ?>&acao=salvar" method="post" enctype="multipart/form-data">
         <!-- CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="tab-content">
             <!--ABA GERAL-->
@@ -53,25 +48,24 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                
+
                                 <div class="input-imagem" title="Campo para Imagem da história" id="input-im-ImagemdaHistoria"
-                                     style="background-image:url(<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : "../imagens/sem-foto.png"; ?>)"></div>
-                                
-                                <input value="<?php echo (isset($modelo->im_ppl)) ? $modelo->im_ppl : null; ?>" 
-                                       accept='.png' type='file' class="imgUploader" name="view_im_ppl"/>
-                                
+                                     style="background-image:url(<?= $resultado->im_hist() ?>)"></div>
+
+                                <input value="" accept="image/*" type='file' class="imgUploader" name="im_hist"/>
+
                                 <a class="input-imagem-reset" title="Clique para resetar a Imagem da História" alt="Clique para resetar a Imagem da História">
                                     <i class="fa fa-ban"></i>
                                 </a>
-                                
+
                             </div>
                             <!--DETALHES-->
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
-                                    <textarea name="view_dets_im_ppl" placeholder="Digite aqui os detalhes para Imagem Principal" 
+                                    <textarea name="im_hist_dets" placeholder="Digite aqui os detalhes para Imagem Principal" 
                                               title="Detalhes para Imagem Principal"
-                                              maxlength="1000"><?php echo (isset($modelo->dets_im_ppl)) ? $modelo->dets_im_ppl : ""; ?></textarea>
+                                              maxlength="1000"><?= $resultado->im_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -96,7 +90,7 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="view_tit_hist" value="<?php echo (isset($modelo->tit_hist)) ? $modelo->tit_hist : ""; ?>" 
+                                <input name="tit_hist" value="<?= $resultado->tit_hist() ?>" 
                                        placeholder="Digite aqui o Título da História"
                                        title="Campo para Título da História"
                                        maxlength="60" type="text"
@@ -106,9 +100,9 @@
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
-                                    <textarea name="view_dets_tit" placeholder="Digite aqui os detalhes do Título da História" 
+                                    <textarea name="tit_hist_dets" placeholder="Digite aqui os detalhes do Título da História" 
                                               title="Campo para detalhes do Título da História"
-                                              maxlength="1000"><?php echo (isset($modelo->dets_tit)) ? $modelo->dets_tit : ""; ?></textarea>
+                                              maxlength="1000"><?= $resultado->tit_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -133,7 +127,7 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="view_stit_hist" value="<?php echo (isset($modelo->stit_hist)) ? $modelo->stit_hist : ""; ?>" 
+                                <input name="stit_hist" value="<?= $resultado->stit_hist() ?>" 
                                        placeholder="Digite aqui o Subtítulo da História"
                                        maxlength="80" type="text" 
                                        class="form-control" id="input-tx-SubtitulodaHistoria"/>
@@ -142,9 +136,9 @@
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
-                                    <textarea name="view_dets_stit" placeholder="Digite aqui detlhes para o Subtítulo da História" 
+                                    <textarea name="stit_hist_dets" placeholder="Digite aqui detlhes para o Subtítulo da História" 
                                               title="Detalhes do Nome do Input"
-                                              maxlength="1000"><?php echo (isset($modelo->dets_stit)) ? $modelo->dets_stit : ""; ?></textarea>
+                                              maxlength="1000"><?= $resultado->stit_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -169,7 +163,7 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="view_aur_hist" value="<?php echo (isset($modelo->aur_hist)) ? $modelo->aur_hist : ""; ?>" 
+                                <input name="aur_hist" value="<?= $resultado->aur_hist() ?>" 
                                        placeholder="Digite aqui o nome do Autor(a) da História"
                                        title="Campo para Autor(a) da História"
                                        maxlength="70" type="text" 
@@ -179,9 +173,9 @@
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
-                                    <textarea name="view_dets_aur" placeholder="Digite aqui os detalhes do(a) Autor(a) da História" 
+                                    <textarea name="aur_hist_dets" placeholder="Digite aqui os detalhes do(a) Autor(a) da História" 
                                               title="Campo para detalhes do(a) Autor(a) da História"
-                                              maxlength="1000"><?php echo (isset($modelo->dets_aur)) ? $modelo->dets_aur : ""; ?></textarea>
+                                              maxlength="1000"><?= $resultado->aur_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -206,8 +200,8 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <input name="view_iltd_hist" value="<?php echo (isset($modelo->iltd_hist)) ? $modelo->iltd_hist : ""; ?>" 
-                                       placeholder="Digite aqui o nome do(a) Ilustrador(a) da Históri"
+                                <input name="iltd_hist" value="<?= $resultado->iltd_hist() ?>" 
+                                       placeholder="Digite aqui o nome do(a) Ilustrador(a) da História"
                                        title="Campo para Ilustrador(a) da História"
                                        maxlength="70" type="text" 
                                        class="form-control" id="input-tx-Ilustrador"/>
@@ -216,9 +210,9 @@
                             <div class="col-md-12 input-detalhes">
                                 <a class="detalhes-link">Adicionar Detalhes</a>
                                 <div class="detalhes-conteudo">
-                                    <textarea name="view_dets_iltd" placeholder="Digite aqui detalhes do(a) Ilustrador(a) da História" 
+                                    <textarea name="iltd_hist_dets" placeholder="Digite aqui detalhes do(a) Ilustrador(a) da História" 
                                               title="Campo para detalhes do(a) Ilustrador(a) da História"
-                                              maxlength="1000"><?php echo (isset($modelo->dets_iltd)) ? $modelo->dets_iltd : ""; ?></textarea>
+                                              maxlength="1000"><?= $resultado->iltd_hist_dets() ?></textarea>
                                 </div>
                             </div>
                             <!--FINAL - DETALHES-->
@@ -243,18 +237,18 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <textarea name="view_pbco_alvo" placeholder="Digite aqui o Público Alvo" 
+                                <textarea name="pbco_alvo" placeholder="Digite aqui o Público Alvo" 
                                           title="Campo para Público Alvo" 
                                           id="input-txarea-PublicoAlvo"
-                                          maxlength="1000"><?php echo (isset($modelo->pbco_alvo)) ? $modelo->pbco_alvo : ""; ?></textarea>
+                                          maxlength="1000"><?= $resultado->pbco_alvo() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
                         <!--FINAL - INPUT CORPO-->
                     </div>
                 </div>
+                <!--FINAL - INPUT TEXTOAREA-->
                 <!--VISIBILIDADE DA HISTÓRIA - INPUT CHECKBOX-->
-                <?php $opcoes =(isset($modelo->vsi_hist)? parseCheckbox($modelo->vsi_hist) : [0]) ?>
                 <div class="form-group">
                     <div class="row">
                         <!--INPUT CONTROLE-->
@@ -272,26 +266,27 @@
                             <div class="input-checkbox" id="input-ckbx-Visibilidade">
                                 <div class="form-check-inline ckbox-mestre">
                                     <input title="Seleciona todas as opções"
+                                    <?php echo(count($resultado->vsi_hist()) == 3 ? "checked" : "") ?>
                                            type="checkbox" id ="ckbx-Visibilidade-mestre"/>
                                     <label for="ckbx-Visibilidade-mestre">Todos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input name="view_vsi_hist[]" value="1" 
-                                           <?php echo(in_array(1, $opcoes)? "checked": "") ?>
+                                    <input name="vsi_hist[]" value="1" 
+                                    <?php echo(in_array(1, $resultado->vsi_hist()) ? "checked" : "") ?>
                                            title="Permite que sua equipe possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt1"/>
                                     <label for="ckbx-Visibilidade-opt1">Equipe</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input name="view_vsi_hist[]" value="2"
-                                           <?php echo(in_array(2, $opcoes)? "checked": "") ?>
+                                    <input name="vsi_hist[]" value="2"
+                                    <?php echo(in_array(2, $resultado->vsi_hist()) ? "checked" : "") ?>
                                            title="Permite que todos os seus amigos possam visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt2"/>
                                     <label for="ckbx-Visibilidade-opt2">Amigos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input name="view_vsi_hist[]" value="4"
-                                           <?php echo(in_array(4, $opcoes)? "checked": "") ?>
+                                    <input name="vsi_hist[]" value="4"
+                                    <?php echo(in_array(4, $resultado->vsi_hist()) ? "checked" : "") ?>
                                            title="Permite que o público possa visualizar essa história"
                                            type="checkbox" id ="ckbx-Visibilidade-opt3"/>
                                     <label for="ckbx-Visibilidade-opt3">Público</label>
@@ -304,7 +299,54 @@
                 </div>
                 <!--FINAL - INPUT CHECKBOX-->
             </div>
-            <div id="abaEnredo" class="container tab-pane fade"><br>
+            <!--FINAL - ABA GERAL-->
+            <!--ABA ENREDO-->
+            <div id="abaEnredo" class="container tab-pane fade">
+                <!--INPUT TEXTOSELECT SINGLE-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-PersonagemPrincipal">Personagem Principal</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo">
+                                <select class="form-control select2 input-textoselect" 
+                                        name="fk_psna_ppl" id="input-txselr-PersonagemPrincipal">
+                                    <option value="" selected>
+                                        <?php
+                                        if ($resultado->fk_psna_ppl() == "") {
+                                            echo"Seus Personagens aparecerão aqui";
+                                        } else {
+                                            echo"Personagens de {$resultado->tit_hist()}";
+                                        }
+                                        ?></option>
+                                    <?php
+                                    foreach ($resultadoSelect->psna as $personagemSelect) {
+                                        $id = $personagemSelect["pk_psna"];
+                                        $nome = $personagemSelect["nm_psna"];
+                                        $isSelected = ($resultado->fk_psna_ppl() == $id ? "selected" : "");
+
+                                        if ($id != $pk_lczc) {
+                                            echo "<option value='$id' $isSelected>$nome</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT SINGLE-->
                 <!--INPUT TEXTOAREA-->
                 <div class="form-group">
                     <div class="row">
@@ -321,10 +363,10 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <textarea name="view_dcr_em_uma_sntn" placeholder="Digite aqui a Descrição em uma Sentença da história" 
+                                <textarea name="dcr_em_uma_sntn" placeholder="Digite aqui a Descrição em uma Sentença da história" 
                                           title="Campo para a Descrição em uma Sentença da hisória" 
                                           id="input-txarea-DescricaoemumaSentença"
-                                          maxlength="200"><?php echo (isset($modelo->dcr_em_uma_sntn)) ? $modelo->dcr_em_uma_sntn : ""; ?></textarea>
+                                          maxlength="200"><?= $resultado->dcr_em_uma_sntn() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -348,10 +390,10 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <textarea name="view_snp_hist" placeholder="Digite aqui a Sinopse da História" 
+                                <textarea name="snp_hist" placeholder="Digite aqui a Sinopse da História" 
                                           title="Campo para a Sinopse da História" 
                                           id="input-txarea-Sinopse"
-                                          maxlength="1000"><?php echo (isset($modelo->snp_hist)) ? $modelo->snp_hist : ""; ?></textarea>
+                                          maxlength="1000"><?= $resultado->snp_hist() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -375,10 +417,10 @@
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
                             <div class="col-md-12 input-conteudo">
-                                <textarea name="view_rsm_hist" placeholder="Digite aqui o Resumo da História" 
+                                <textarea name="rsm_hist" placeholder="Digite aqui o Resumo da História" 
                                           title="Campo para Resumo da História" 
                                           id="input-txarea-Resumo"
-                                          maxlength="10000"><?php echo (isset($modelo->rsm_hist)) ? $modelo->rsm_hist : ""; ?></textarea>
+                                          maxlength="10000"><?= $resultado->rsm_hist() ?></textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
                         </div>
@@ -387,12 +429,13 @@
                 </div>
                 <!--FINAL - INPUT TEXTOAREA-->
             </div>
+            <!--FINAL - ABA ENREDO-->
         </div>
         <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
         <div class="col-md-12 form-controle">
-            <input type="hidden" name="view_pk_hist" value="<?php echo (isset($modelo->pk_hist)) ? $modelo->pk_hist : 0; ?>">
+            <input type="hidden" name="pk_hist" value="<?= $resultado->pk_hist() ?>">
             <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
-                Salvar História
+                Salvar <?= ModeloHistoria::$nomeSingular ?>
             </button>
         </div>
     </form>

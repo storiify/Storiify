@@ -5,6 +5,9 @@ require_once 'app/autoload/config.php';
 /**
  * Autoload - Carrega arquivos iniciais e essenciais para o funcionamento do sistema.
  */
+if (DEBUG && DEBUG_VERBOSE) {
+    error_reporting(E_ALL); ini_set('display_errors', 'On'); 
+}
 
 $dirloads = PATH_AUTOLOAD;
 if ($handle = opendir($dirloads)) {
@@ -15,8 +18,6 @@ if ($handle = opendir($dirloads)) {
         }
     }
 }
-
 $resultadoURL = proccessRequest();
-
 $controlador = new Controlador();
 $controlador->exe($resultadoURL->categoria,$resultadoURL->acao,$resultadoURL->parametros);

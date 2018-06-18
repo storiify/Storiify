@@ -1,45 +1,47 @@
-<nav class="navbar navbar-expand-lg">
+<?php
+$historiaSelecionada = new ModeloHistoria(array());
+$historiaSelecionada = sessao()->getHistoriaSelecionada();
+?>
+<nav class="navbar">
 
-    <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
-        <button type="button" class="btn btn-azul menu-esquerdo-toggle">
-            <i class="fa fa-reorder"></i>
-        </button>
+    <button type="button" class="btn btn-azul menu-esquerdo-toggle"
+            <?= ($historiaSelecionada == null ? "disabled" : "") ?>>
+        <i class="fa fa-reorder"></i>
+    </button>
+
+    <div class="logo-nome-topo">
+        <img src="./imagens/logo/180nomeInvertido.png" alt="Logo Storiify" title="Logo Storiify"/>
     </div>
-    
-    <div class="navbar-collapse collapse logo-nome-topo dual-collapse2 order-1 order-md-0">
-        <img src="../../imagens/logo/180nomeInvertido.png" alt="Logo Storiify" title="Logo Storiify"/>
-    </div>
-    
-    <div class="mx-auto my-2 order-0 order-md-1 position-relative">
-        <a class="mx-auto" href="?categoria=historia&acao=listar">
+
+    <div class="position-relative">
+        <a href="?categoria=historia&acao=listar">
             <div class="fundo-logo"></div>
-            <img src="../../imagens/logo/540logoFundo.png" class="rounded-circle logo-topo" alt="Logo Storiify" title="Logo Storiify"/>
+            <img src="./imagens/logo/540logoFundo.png" 
+                 class="rounded-circle logo-topo" alt="Logo Storiify" 
+                 title="Clique aqui para listar todas as suas Histórias"/>
         </a>
     </div>
 
-    <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
-        <ul class="navbar-nav ml-auto text-center">
-            <li class="nav-item">
-                <div class="container">
-                    <!--Botão de Usuário-->
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-azul dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../imagens/avatares/avatar_07.png" class="rounded-circle avatar-usuario" />
-                            Nome do Usuário
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Editar Perfil</a>
-                            <a class="dropdown-item" href="#">Configurações da Conta</a>
-                            <a class="dropdown-item" href="#">Ajuda</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="">Sair</a>
-                        </div>
+    <ul class="menu-usuario-topo">
+        <li class="nav-item">
+            <div class="container">
+                <!--Botão de Usuário-->
+                <div class="dropdown">
+                    <button type="button" class="btn btn-azul dropdown-toggle" data-toggle="dropdown">
+                        <img src="./imagens/sem-foto.png" class="rounded-circle avatar-usuario" />
+                        <?= $controlador->userData['nome'] ?>
+                    </button>
+                    <div class="dropdown-menu" style="left: calc(100% - 187px);">
+                        <a class="dropdown-item" href="#">Editar Perfil</a>
+                        <a class="dropdown-item" href="#">Configurações da Conta</a>
+                        <a class="dropdown-item" href="#">Ajuda</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="?categoria=login&acao=deslogar">Sair</a>
                     </div>
-                    <!--Fim Botão de Usuário-->
                 </div>
-            </li>
-        </ul>
-    </div>
+                <!--Fim Botão de Usuário-->
+            </div>
+        </li>
+    </ul>
 
 </nav>
-

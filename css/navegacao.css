@@ -26,7 +26,6 @@
     max-height: 90px;
     position: absolute;
     top: -50px;
-    left: -30px;
     z-index: 5;
 }
 
@@ -38,7 +37,7 @@
     border-bottom: 1px solid #ff7b00;
     border-radius: 50%;
     top: -30px;
-    left: -40px;
+    left: -10px;
     z-index: 4;
     -webkit-box-shadow: 0 8px 6px -6px black;
     -moz-box-shadow: 0 8px 6px -6px black;
@@ -47,7 +46,7 @@
 
 .logo-nome-topo{
     position: absolute;
-    left:10%;
+    left:15%;
     padding: 5px;
     width: 10px;
 }
@@ -100,6 +99,10 @@
 }
 .menu-esquerdo-toggle:hover i{
     color:#ff7b00;
+}
+
+.menu-usuario-topo{
+    margin-top: 1rem;
 }
 /*FINAL - MENU TOPO*/
 
@@ -163,11 +166,16 @@
     right: -300px;
     top: -2px;
     width: 300px;
-    overflow: visible;
+/*    overflow: visible;*/
+    max-height: 200px;
+    overflow-y:scroll;
 }
 
 .list-group-item:hover > .list-group {
     display: block;
+}
+.item-sem-filhos{
+    text-align:left;
 }
 .acao-categoria{
     position: relative;
@@ -187,7 +195,7 @@
     top:1px;   
 }
 
-.lista-clicavel:hover .insignia {
+.list-group-item:hover .insignia{
     color: #ff7b00;
     border: 1px solid #ff7b00 !important;
 }
@@ -235,5 +243,11 @@
     color: #162338;
     line-height: 40px;
     text-align: center;
+}
+
+.insignia-container{
+    position:absolute;
+    top:.5rem;
+    right: 1.5rem;
 }
 /*FINAL - MENU LATERAL ESQUERDO*/

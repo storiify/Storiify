@@ -1,0 +1,40 @@
+/*
+    Azul - #30c5ff
+    Azul-Escuro - #162338;
+    Laranja - #ff7b00
+    Preto - #162128
+    Verde - #deefb7
+    Cinza - #c8c8c8
+*/
+
+.texto-lista-categorias{
+    text-align: center;
+    font-weight: bold;
+}
+
+.lista-categorias{
+    max-width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.btn-categoria{
+    width: 100px;
+    height: 100px; 
+    margin-right: 3%;
+    margin-bottom: 20px;
+    padding:0;
+    padding-top: 20px;
+    transition: transform .2s;
+}
+
+.btn-categoria:hover{
+    transform: scale(1.2);
+}
+.btn-categoria>i{
+    display:initial;
+    font-size: 2.5rem;
+}

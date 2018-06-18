@@ -1,83 +1,125 @@
 <?php
 
-class ControladorHistoria extends Controlador {
+class ControladorHistoria extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
         parent::setDicas("Dicas História");
         $this->setCategoria($categoria);
+
+        require_once "BdContextHistoria.php";
     }
 
-    public function criar() {
+    public function cadastrar($parametros) {
         //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
-        $this->setVisao('FormHistoria');
+        $this->setVisao(ModeloHistoria::$viewForm);
+        $this->setTituloPagina(ModeloHistoria::getTituloPagina("cadastrar"));
     }
 
-    public function listar() {
-        $historias = Historia::SelecionarTodosCustomizado(array("pk_hist", "im_ppl", "tit_hist", "stit_hist", "aur_hist", "pbco_alvo", "snp_hist", "dt_alt"));
-        $this->setParametros($historias);
-        $this->setVisao('ListarHistoria');
+    public function listar($parametros) {
+        $bdContext = new BdContextHistoria();
+        $res = $bdContext->listar($parametros);
+        $this->setResultados($res);
+
+        sessao()->setHistoriasData($res);
+        sessao()->setHistoriaSelecionada(null);
+
+        $this->setVisao(ModeloHistoria::$viewListar);
+        $this->setTituloPagina(ModeloHistoria::getTituloPagina("listar"));
+    }
+
+    public function listarAoLogar($parametros) {
+        $bdContext = new BdContextHistoria();
+        var_dump($parametros);
+        $res = $bdContext->listar($parametros);
+        sessao()->setHistoriasData($res);
     }
 
     public function editar($parametros) {
-        $id = $parametros['parametros'];
 
-        $historia = Historia::SelecionarUm($id);
-        if ($historia == null) {
-            consoleLog("Não há instância com esse Id");
+        $bdContext = new BdContextHistoria();
+        $instancia = new ModeloHistoria($bdContext->listar($parametros)[0]);
+
+        if ($instancia != null) {
+            $this->setResultados($instancia);
+
+            $this->setVisao(ModeloHistoria::$viewForm);
+
+            $this->setTituloPagina($instancia->tit_hist());
+
+            //Lista todos os personagens
+            $modeloPnsa = new ModeloPersonagem();
+            $resPsna = $modeloPnsa->listar("");
+            $res = array(
+                "psna" => $resPsna);
+            $this->setResultadosSelect($res);
+        } else {
+            redirecionar("?categoria=historia&acao=listar");
         }
-        $this->setParametros($historia);
-        $this->setVisao('FormHistoria');
     }
 
-    public function salvar() { //dá pra receber $historia ?             
-        $historia = new Historia($_POST['view_pk_hist']);
-        $historia->tit_hist = (isset($_POST['view_tit_hist']) ? $_POST['view_tit_hist'] : NULL);
-        $historia->dets_im_ppl = (isset($_POST['view_dets_im_ppl']) ? $_POST['view_dets_im_ppl'] : NULL);
-        $historia->dets_tit = (isset($_POST['view_dets_tit']) ? $_POST['view_dets_tit'] : NULL);
-        $historia->stit_hist = (isset($_POST['view_stit_hist']) ? $_POST['view_stit_hist'] : NULL);
-        $historia->dets_stit = (isset($_POST['view_dets_stit']) ? $_POST['view_dets_stit'] : NULL);
-        $historia->aur_hist = (isset($_POST['view_aur_hist']) ? $_POST['view_aur_hist'] : NULL);
-        $historia->dets_aur = (isset($_POST['view_dets_aur']) ? $_POST['view_dets_aur'] : NULL);
-        $historia->iltd_hist = (isset($_POST['view_iltd_hist']) ? $_POST['view_iltd_hist'] : NULL);
-        $historia->dets_iltd = (isset($_POST['view_dets_iltd']) ? $_POST['view_dets_iltd'] : NULL);
-        $historia->pbco_alvo = (isset($_POST['view_pbco_alvo']) ? $_POST['view_pbco_alvo'] : NULL);       
-        if (isset($_POST['view_vsi_hist'])) {
-            foreach ($_POST['view_vsi_hist'] as $valor) {
-            $historia->vsi_hist += $valor;
+    public function salvar($parametros) {
+        //Não altera o que não foi alterado
+        foreach ($parametros as $key => $value) {
+            if (!isset($parametros[$key]) || $parametros[$key] == '') {
+                unset($parametros[$key]);
             }
-        }else{
-            $historia->vsi_hist = NULL;
-        }             
-        $historia->dcr_em_uma_sntn = (isset($_POST['view_dcr_em_uma_sntn']) ? $_POST['view_dcr_em_uma_sntn'] : NULL);
-        $historia->snp_hist = (isset($_POST['view_snp_hist']) ? $_POST['view_snp_hist'] : NULL);
-        $historia->rsm_hist = (isset($_POST['view_rsm_hist']) ? $_POST['view_rsm_hist'] : NULL);      
+        }
+        $idUsuario = sessao()->getUserData()->id;
+        $bdContext = new BdContextHistoria();
+
+        if (isset($parametros['pk_hist']) && $parametros['pk_hist'] != '') {
+            $idHistoria = $parametros['pk_hist'];
+        } else {
+            $idHistoria = $bdContext->proximoID();
+        }
+
+        if (isset($_FILES) && $_FILES['im_ppl']['size'] != 0) {
+            $parametros['im_ppl'] = uploadImagem($idUsuario, "historia", $idHistoria, $_FILES['im_ppl']);
+        }
+        if (isset($parametros['vsi_hist']) && is_array($parametros['vsi_hist'])) {
+            $tempStr = 0;
+            foreach ($parametros['vsi_hist'] as $value) {
+                $tempStr = $tempStr + $value;
+            }
+            $parametros['vsi_hist'] = $tempStr;
+        }
+        $parametros['fk_usu'] = $idUsuario;
+        $res = $bdContext->salvar($parametros);
+
+        if ($res) {
+            redirecionar("?categoria=historia&acao=listarCategorias&id=$idHistoria");
+        } else {
+            redirecionar("?categoria=historia&acao=cadastrar");
+        }
+    }
+
+    public function excluir($parametros) {
+
+        $bdContext = new BdContextHistoria();
+        $res = $bdContext->excluir($parametros);
+
+        if ($res) {
+            redirecionar("?categoria=historia&acao=listar");
+        } else {
+            redirecionar("?categoria=historia&acao=listar"); //mudar pra uma pagina de erro (Personagem não encontrado ou não faz parte de seus persongens cadastrados) :D
+        }
+    }
+
+    public function listarCategorias($parametros) {
+
+        $bdContext = new BdContextHistoria();
+        $instancia = new ModeloHistoria($bdContext->listar($parametros)[0]);
+        $this->setResultados($instancia);
         
-        if ($historia->pk_hist == 0) {
-            if ($_FILES['view_im_ppl']['name'] != "") {
-                $idAlterado = Historia::ProximoId();
-                $historia->im_ppl = uploadImagem(1, "historia", $idAlterado, $_FILES['view_im_ppl']);
-            }
-            Historia::Inserir($historia);
-        } else {
-            if ($_FILES['view_im_ppl']['name'] != "") {
-                $historia->im_ppl = uploadImagem(1, "historia", $historia->pk_hist, $_FILES['view_im_ppl']);
-            }
-            Historia::Alterar($historia);
-        }
+        sessao()->setHistoriaSelecionada($instancia);
 
-        if (true) { //usuário estiver logado
-            $this->listar();
-        } else {
-            $this->setVisao('ALGUMA PÁGINA INICIAL');
-        }
+        $this->setVisao(ModeloHistoria::$viewCategoriasHistoria);
+        
+        $this->setTituloPagina($instancia->tit_hist());
+
+        $res = $bdContext->listar("");
+        sessao()->setHistoriasData($res);
     }
 
-    public function deletar($parametros) {
-        $id = $parametros['parametros'];
-        if (Historia::Deletar($id)) {
-            deleteImagem(1, "historia", $id);
-            $this->listar();
-        }
-    }
 }
