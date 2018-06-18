@@ -55,7 +55,7 @@ class ModeloObjeto {
         if ($acao == "cadastrar") {
             return "Cadastrar " . ModeloObjeto::$nomeSingular;
         } elseif ($acao == "listar") {
-            return ModeloClasse::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+            return ModeloClasse::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist();
         }
     }
 

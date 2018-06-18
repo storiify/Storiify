@@ -188,7 +188,7 @@ $resultado = ($controlador->getResultados() == null ?
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
                             <select class="form-control select2 input-textoselect" name="fk_lclz_natl" id="input-txselr-LocalizacaoNatal">
-                                <option value="0" selected>-- Localidades de <?= $historiaSelecionada->tit_hist ?> --</option>
+                                <option value="0" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                         <?php
                                         foreach ($resultadoSelect->relLczc as $localizacaoSelect) {
                                         $id = $localizacaoSelect["pk_lczc"];
@@ -224,7 +224,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo row">
                                 <div class="col-md-11 input-incluir">
                                     <select class="form-control select2 input-textoselect" name="fk_raca" id="input-txselr-Raca">
-									    <option value="0" selected>-- Raças de <?= $historiaSelecionada->tit_hist ?> --</option>
+									    <option value="0" selected>-- Raças de <?= $historiaSelecionada->tit_hist() ?> --</option>
 
 										<?php
                                         foreach ($resultadoSelect->raca as $racaSelect) {

@@ -54,7 +54,7 @@ class ModeloHabilidade_magica {
         if ($acao == "cadastrar") {
             return "Cadastrar " . ModeloHabilidade_magica::$nomeSingular;
         } elseif ($acao == "listar") {
-            return ModeloHabilidade_magica::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+            return ModeloHabilidade_magica::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist();
         }
     }
 

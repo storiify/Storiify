@@ -11,7 +11,7 @@ class BdContextProfissao extends ConexaoBd {
 
     public function salvar($parametros) {
         //Gerencia a qual história essa localização pertence
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = ($parametros['fk_hist'] != '' ? $parametros['fk_hist'] : $idHistoria);
 
         $res = false;
@@ -29,7 +29,7 @@ class BdContextProfissao extends ConexaoBd {
 
     public function listar($parametros) {
 
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "WHERE fk_hist='$idHistoria'";
 
         if (isset($parametros["id"])) {
@@ -48,7 +48,7 @@ class BdContextProfissao extends ConexaoBd {
     public function excluir($parametros) {
 
         //Primeira condição = fk_hist
-        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist;
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "fk_hist='$idHistoria'";
         //Segunda condição = pk_pfs
         $id = $parametros['id'];

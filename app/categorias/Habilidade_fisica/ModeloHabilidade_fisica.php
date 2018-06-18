@@ -54,7 +54,7 @@ class ModeloHabilidade_fisica {
         if ($acao == "cadastrar") {
             return "Cadastrar " . ModeloHabilidade_fisica::$nomeSingular;
         } elseif ($acao == "listar") {
-            return ModeloHabilidade_fisica::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+            return ModeloHabilidade_fisica::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist();
         }
     }
 

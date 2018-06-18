@@ -53,7 +53,7 @@ class ModeloLembranca {
         if ($acao == "cadastrar") {
             return "Cadastrar " . ModeloLembranca::$nomeSingular;
         } elseif ($acao == "listar") {
-            return ModeloLembranca::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+            return ModeloLembranca::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist();
         }
     }
 

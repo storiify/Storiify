@@ -58,7 +58,7 @@ class MOdeloClasse {
         if ($acao == "cadastrar") {
             return "Cadastrar " . ModeloClasse::$nomeSingular;
         } elseif ($acao == "listar") {
-            return ModeloClasse::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+            return ModeloClasse::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist();
         }
     }
 

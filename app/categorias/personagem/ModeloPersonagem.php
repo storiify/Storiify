@@ -116,7 +116,7 @@ class ModeloPersonagem {
         if ($acao == "cadastrar") {
             return "Cadastrar " . ModeloPersonagem::$nomeSingular;
         } elseif ($acao == "listar") {
-            return ModeloPersonagem::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+            return ModeloPersonagem::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist();
         }
     }
 

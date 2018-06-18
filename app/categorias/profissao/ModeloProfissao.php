@@ -58,7 +58,7 @@ class ModeloProfissao {
         if ($acao == "cadastrar") {
             return "Cadastrar " . ModeloProfissao::$nomeSingular;
         } elseif ($acao == "listar") {
-            return ModeloProfissao::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist;
+            return ModeloProfissao::$nomePlural . " de " . sessao()->getHistoriaSelecionada()->tit_hist();
         }
     }
 

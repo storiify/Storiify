@@ -548,7 +548,7 @@
                     <div class="col-md-12 form-controle">
                         <input type="hidden" name="pk_pfs" value="">
                         <button type="button" id="btn-salvar-form" class="btn btn-azul btn-block salvar-profissao-modal">
-                            Salvar Classe
+                            Salvar Profissão
                         </button>
                     </div>
                 </form>
@@ -675,7 +675,7 @@
                     <div class="col-md-12 form-controle">
                         <input type="hidden" name="pk_obj" value="">
                         <button type="button" id="btn-salvar-form" class="btn btn-azul btn-block salvar-objeto-modal">
-                            Salvar Classe
+                            Salvar Objeto
                         </button>
                     </div>
                 </form>
