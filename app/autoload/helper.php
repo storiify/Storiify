@@ -142,13 +142,25 @@ function nomeFormal($nome, $plural = "singular") {
                 ($nome == "cena" ? "Cenas" :
                 ($nome == "personagem" ? "Personagens" :
                 ($nome == "raca" ? "Raças" :
-                "Categoria não encontrada"))))));
+                ($nome == "classe" ? "Classes" :
+                ($nome == "profisao" ? "Profissões" :
+                ($nome == "habilidade_fisica" ? "Habilidades Físicas" :
+                ($nome == "habilidade_magica" ? "Habilidades Mágicas" :
+                ($nome == "lembranca" ? "Lembranças" :
+                ($nome == "objeto" ? "Objetos" :
+                "Categoria não encontrada"))))))))))));
     }
     return ($nome == "historia" ? "História" : 
             ($nome == "mundo" ? "Mundo" : 
             ($nome == "localizacao" ? "Localização" : 
             ($nome == "cena" ? "Cena" : 
             ($nome == "personagem" ?  "Personagem" :
-            ($nome == "raca" ?  "Raça" : 
-            "Categoria não encontrada"))))));
+            ($nome == "raca" ?  "Raça" :
+            ($nome == "classe" ? "Classe" :
+            ($nome == "profisao" ? "Profissão" :
+            ($nome == "habilidade_fisica" ? "Habilidade Física" :
+            ($nome == "habilidade_magica" ? "Habilidade Mágica" :
+            ($nome == "lembranca" ? "Lembrança" :
+            ($nome == "objeto" ? "Objeto" :
+            "Categoria não encontrada"))))))))))));
 }

@@ -1,13 +1,12 @@
 <?php
-require_once PATH_CAT . "/historia/BdContextHistoria.php";
 $historias = sessao()->getHistoriasData();
 $historiaSelecionada = sessao()->getHistoriaSelecionada();
 
-if ($historiaSelecionada != NULL) {
+if (property_exists($historiaSelecionada, "pk_hist")) {
     $qtdHist = count((array)$historias);
-    $qtdPsna = BdContextHistoria::getQtdPsna($historiaSelecionada->pk_hist());
-    $qtdLczc = BdContextHistoria::getQtdLczc($historiaSelecionada->pk_hist());
-    $qtdCena = BdContextHistoria::getQtdCena($historiaSelecionada->pk_hist());
+    $qtdPsna = ModeloHistoria::getQtdPsna($historiaSelecionada->pk_hist);
+    $qtdLczc = ModeloHistoria::getQtdLczc($historiaSelecionada->pk_hist);
+    $qtdCena = ModeloHistoria::getQtdCena($historiaSelecionada->pk_hist);
 }
 ?>
 
@@ -22,18 +21,12 @@ if ($historiaSelecionada != NULL) {
                     <span class='bem-vindo-texto'>Bem-vindo à</span><br/>
                     <select class='nome-historia' id='selecao-nome-historia' title='Clique aqui para escolher qual história deseja editar'>
                         <?php
-                        foreach ($historias as $historiaArray) {
-                            $historia = new ModeloHistoria($historiaArray);
-                            $nome = $historia->tit_hist();
-                            
-                            if ($historiaSelecionada != null) {
-                                $selected = ($historia->pk_hist() == $historiaSelecionada->pk_hist()) ? "selected" : "";
-                            }
-                            else{
-                                $selected = "";
-                            }
-                            
-                            echo "<option value='{$historia->pk_hist()}'"
+                        foreach ($historias as $historia) {
+                            $historia = (object) $historia;
+                            $nome = $historia->tit_hist;
+                            $selected = ($historia->pk_hist == $historiaSelecionada->pk_hist) ? "selected" : "";
+
+                            echo "<option value='$historia->pk_hist'"
                             . "$selected>" . truncar($nome, 25, "...") . "</option>";
                         }
                         ?>
@@ -232,7 +225,7 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=habilidadefisica&acao=listar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=habilidade_fisica&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Habilidade Física</div>
@@ -240,7 +233,7 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=habilidademagica&acao=listar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=habilidade_magica&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Habilidade Mágica</div>
@@ -248,7 +241,7 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=lembraca&acao=listar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=lembranca&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Lembrança</div>
