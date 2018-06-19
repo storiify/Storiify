@@ -12,7 +12,7 @@ class ModeloPersonagem {
     private $sexo_psna;
     private $dt_nsc;
     private $dt_nsc_dets;
-    private $fk_lclz_natl;
+    private $fk_lczc_natl;
     private $fk_raca;
     private $vsi_psna;
     private $dcr_bsca;
@@ -160,8 +160,8 @@ class ModeloPersonagem {
         return $this->dt_nsc_dets;
     }
 
-    public function fk_lclz_natl() {
-        return $this->fk_lclz_natl;
+    public function fk_lczc_natl() {
+        return $this->fk_lczc_natl;
     }
 
     public function fk_raca() {

@@ -187,13 +187,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" name="fk_lclz_natl" id="input-txselr-LocalizacaoNatal">
-                                <option value="0" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
+                            <select class="form-control select2 input-textoselect" name="fk_lczc_natl" id="input-txselr-LocalizacaoNatal">
+                                <option value="" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                         <?php
                                         foreach ($resultadoSelect->relLczc as $localizacaoSelect) {
                                         $id = $localizacaoSelect["pk_lczc"];
                                         $nome = $localizacaoSelect["nm_lczc"];
-                                        $isSelected = ($resultado->fk_lclz_natl() == $id ? "selected" : "");
+                                        $isSelected = ($resultado->fk_lczc_natl() == $id ? "selected" : "");
                                         echo "<option value='$id' $isSelected>$nome</option>";
 
                                         }
@@ -224,7 +224,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo row">
                                 <div class="col-md-11 input-incluir">
                                     <select class="form-control select2 input-textoselect" name="fk_raca" id="input-txselr-Raca">
-									    <option value="0" selected>-- Raças de <?= $historiaSelecionada->tit_hist() ?> --</option>
+									    <option value="" selected>-- Raças de <?= $historiaSelecionada->tit_hist() ?> --</option>
 
 										<?php
                                         foreach ($resultadoSelect->raca as $racaSelect) {
@@ -1037,15 +1037,7 @@ $resultado = ($controlador->getResultados() == null ?
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
                             <select class="form-control select2 input-textoselect" name="fk_cena_into_erdo" id="input-txselr-LocalizacaoNatal">
-                                <option value="0" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
-                                        <?php
-                                        foreach ($resultadoSelect->relLczc as $localizacaoSelect) {
-                                        $id = $localizacaoSelect["pk_lczc"];
-                                        $nome = $localizacaoSelect["nm_lczc"];
-                                        $isSelected = ($resultado->fk_cena_into_erdo() == $id ? "selected" : "");
-                                        echo "<option value='$id' $isSelected>$nome</option>";
-                                        }
-                                ?>
+                                      
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->

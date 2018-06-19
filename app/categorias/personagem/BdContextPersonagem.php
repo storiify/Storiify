@@ -15,11 +15,7 @@ class BdContextPersonagem extends ConexaoBd {
         date_default_timezone_set('America/Sao_Paulo');
         $horarioAtual = date("Y-m-d H:i:s");
         $parametros['dt_alt'] = $horarioAtual;
-        //Gerencia a coluna de personagens mais conhecidos
-        $idsClasse = $parametros['fk_classe'];
-        unset($parametros['fk_psna_cnhd']);
-        //Gerencia a coluna de raças
-        //Gerencia a qual história essa localização pertence
+
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
 
@@ -85,9 +81,6 @@ class BdContextPersonagem extends ConexaoBd {
             $res = $this->updateBase($parametros, $this->tabela, $condicao);
 
             if ($res) {
-                // Deleta todas as relações de personagens conhecidos
-                // $this->excluirPsnaCnhd($parametros['pk_psna']);
-                // Deleta todas as relações raças
                 $this->excluirClasse($parametros['pk_psna']);
                 $this->excluirProfissao($parametros['pk_psna']);
                 $this->excluirObjeto($parametros['pk_psna']);
@@ -108,9 +101,6 @@ class BdContextPersonagem extends ConexaoBd {
 
         if ($res) {
             $idAtual = (isset($parametros['pk_psna']) ? $parametros['pk_psna'] : $this->proximoID() - 1);
-            //Cria a relação de personagens conhecidos
-            // $this->salvarPsnaCnhd($idsPsnaCnhd, $idAtual);
-            //Cria a relação de raças existentes
             $this->salvarClasseExistente($idsClasse, $idAtual);
             $this->salvarProfissaoExistente($idsPfs, $idAtual);
             $this->salvarObjetoExistente($idsObj, $idAtual);
