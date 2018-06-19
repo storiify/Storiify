@@ -69,7 +69,7 @@ $resultado = ($controlador->getResultados() == null ?
 						<div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="detalhes-conteudo">
-                                <textarea name="im_psna_dets" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->im_psna_dets() ?></textarea>
+                                <textarea name="im_psna_dets" placeholder="Digite Aqui os Detalhes da Imagem do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->im_psna_dets() ?></textarea>
                             </div>
                         </div>
                                 
@@ -94,12 +94,12 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="nm_psna" value="<?= $resultado->nm_psna() ?>" type="text" class="form-control" placeholder="Placeholder para Nome" id="input-tx-Nome" maxlength="45"/>
+                            <input name="nm_psna" value="<?= $resultado->nm_psna() ?>" type="text" class="form-control" placeholder="Digite Aqui o Nome do Personagem" id="input-tx-Nome" maxlength="45"/>
                         </div>
 						<div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="detalhes-conteudo">
-                                <textarea name="nm_psna_dets" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->nm_psna_dets() ?></textarea>
+                                <textarea name="nm_psna_dets" placeholder="Digite Aqui os Detalhes do Nome do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->nm_psna_dets() ?></textarea>
                             </div>
                         </div>							
                     </div>
@@ -158,12 +158,12 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="dt_nsc" value="<?= $resultado->dt_nsc(); ?>" type="date" class="form-control" placeholder="Placeholder para Data de Nascimento" id="input-tx-DatadeNascimento"/>
+                            <input name="dt_nsc" value="<?= $resultado->dt_nsc(); ?>" type="date" class="form-control" placeholder="Digite Aqui a Data de Nascimento do Personagem" id="input-tx-DatadeNascimento"/>
                         </div>
 						<div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="detalhes-conteudo">
-                                <textarea name="dt_nsc_dets" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $resultado->dt_nsc_dets(); ?></textarea>
+                                <textarea name="dt_nsc_dets" placeholder="Digite Aqui os Detalhes do Nascimento do Personagem" title="Digite seu texto aqui" maxlength="1000"><?php echo $resultado->dt_nsc_dets(); ?></textarea>
                             </div>
                         </div>	
                     </div>
@@ -410,7 +410,7 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo"> 
-                            <textarea name="dcr_bsca" value="" placeholder="Placeholder para Descrição Básica" title="Descrição Básica" id="input-txarea-DescricaoBasica" maxlength="1000"><?= $resultado->dcr_bsca(); ?></textarea>
+                            <textarea name="dcr_bsca" value="" placeholder="Digite Aqui a Descrição Básica do Personagem" title="Descrição Básica" id="input-txarea-DescricaoBasica" maxlength="1000"><?= $resultado->dcr_bsca(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -440,7 +440,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="detalhes-conteudo">
-                                <textarea name="h_psna_dets" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->h_psna_dets(); ?></textarea>
+                                <textarea name="h_psna_dets" placeholder="Digite Aqui os Detalhes Da Altura do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->h_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -472,7 +472,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="peso_pnsa_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->peso_pnsa_dets(); ?></textarea>
+                                <textarea name="peso_pnsa_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Peso do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->peso_pnsa_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -503,7 +503,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="prte_fsco_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->prte_fsco_dets(); ?></textarea>
+                                <textarea name="prte_fsco_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Porte Físico do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->prte_fsco_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -528,13 +528,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="tip_pele" value="<?= $resultado->tip_pele(); ?>" type="text" class="form-control" placeholder="Placeholder para Tipo de Pele" id="input-tx-TipodePele" maxlength="45"/>
+                            <input name="tip_pele" value="<?= $resultado->tip_pele(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Tipo De Pele do Personagem" id="input-tx-TipodePele" maxlength="45"/>
                         </div>
                         <!--DETALHES--> 
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="tip_pele_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->tip_pele_dets(); ?></textarea>
+                                <textarea name="tip_pele_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes da Pele do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->tip_pele_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -559,13 +559,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="cblo_pnsa" value="<?= $resultado->cblo_pnsa(); ?>" type="text" class="form-control" placeholder="Placeholder para Cabelo" id="input-tx-TipodePele" maxlength="45"/>
+                            <input name="cblo_pnsa" value="<?= $resultado->cblo_pnsa(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Tipo de Cabelo do Personagem" id="input-tx-TipodePele" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="cblo_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->cblo_psna_dets(); ?></textarea>
+                                <textarea name="cblo_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Cabelo do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->cblo_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -590,13 +590,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="vstm_psna" value="<?= $resultado->vstm_psna(); ?>" type="text" class="form-control" placeholder="Placeholder para Vestimentas" id="input-tx-Vestimentas" maxlength="45"/>
+                            <input name="vstm_psna" value="<?= $resultado->vstm_psna(); ?>" type="text" class="form-control" placeholder="Digite Aqui os Tipos de Vestimentas do Personagem" id="input-tx-Vestimentas" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="vstm_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->vstm_psna_dets(); ?></textarea>
+                                <textarea name="vstm_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes da Vestimenta do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->vstm_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -621,13 +621,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="acsr_psna" value="<?= $resultado->acsr_psna(); ?>" type="text" class="form-control" placeholder="Placeholder para Acessórios" id="input-tx-Acessorios" maxlength="45"/>
+                            <input name="acsr_psna" value="<?= $resultado->acsr_psna(); ?>" type="text" class="form-control" placeholder="Digite Aqui os Acessórios do Personagem" id="input-tx-Acessorios" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="acsr_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->acsr_psna_dets(); ?></textarea>
+                                <textarea name="acsr_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes dos Acessórios do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->acsr_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -704,13 +704,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="cptc_pst" value="<?= $resultado->cptc_pst() ?>" type="text" class="form-control" placeholder="Placeholder para Competências Positivas" id="input-tx-CompetenciasPositivas" maxlength="45" />
+                            <input name="cptc_pst" value="<?= $resultado->cptc_pst() ?>" type="text" class="form-control" placeholder="Digite Aqui as Competências Positivas do Personagem" id="input-tx-CompetenciasPositivas" maxlength="45" />
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="cptc_pst_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->cptc_pst_dets(); ?></textarea>
+                                <textarea name="cptc_pst_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes das Competências Positivas do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->cptc_pst_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -735,13 +735,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="cptc_ngt" value="<?= $resultado->cptc_ngt(); ?>" type="text" class="form-control" placeholder="Placeholder para Competências Negativas" id="input-tx-CompetenciasNegativas" maxlength="45"/>
+                            <input name="cptc_ngt" value="<?= $resultado->cptc_ngt(); ?>" type="text" class="form-control" placeholder="Digite Aqui as Competências Negativas Do Personagem" id="input-tx-CompetenciasNegativas" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="cptc_ngt_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->cptc_ngt_dets(); ?></textarea>
+                                <textarea name="cptc_ngt_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes da Competencias Negativas do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->cptc_ngt_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -772,7 +772,7 @@ $resultado = ($controlador->getResultados() == null ?
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="almt_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->almt_psna_dets(); ?></textarea>
+                                <textarea name="almt_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Alinhamento do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->almt_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -895,13 +895,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="papl_hist" value="<?= $resultado->papl_hist(); ?>" type="text" class="form-control" placeholder="Placeholder para Papel na História" id="input-tx-PapelnaHistoria" maxlength="45"/>
+                            <input name="papl_hist" value="<?= $resultado->papl_hist(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Papel na História que o Personagem possui" id="input-tx-PapelnaHistoria" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="papl_hist_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->papl_hist_dets(); ?></textarea>
+                                <textarea name="papl_hist_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Pepel na História do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->papl_hist_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -926,7 +926,7 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="envl_hist" value="" placeholder="Placeholder para Envolvimento na História" title="Envolvimento na História" id="input-txarea-EnvolvimentonaHistoria" maxlength="1000"><?= $resultado->envl_hist(); ?></textarea>
+                            <textarea name="envl_hist" value="" placeholder="Digite Aqui o Envolvimento na História do Personagem" title="Envolvimento na História" id="input-txarea-EnvolvimentonaHistoria" maxlength="1000"><?= $resultado->envl_hist(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -950,7 +950,7 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="mmt_mact" value="" placeholder="Placeholder para Momento Marcante" title="Momento Marcante" id="input-txarea-MomentoMarcante" maxlength="1000"><?= $resultado->mmt_mact(); ?></textarea>
+                            <textarea name="mmt_mact" value="" placeholder="Digite Aqui o Momento Marcante do Personagem" title="Momento Marcante" id="input-txarea-MomentoMarcante" maxlength="1000"><?= $resultado->mmt_mact(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -974,13 +974,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="objt_ppl" value="<?= $resultado->objt_ppl(); ?>" type="text" class="form-control" placeholder="Placeholder para Objetivo Principal" id="input-tx-ObjetivoPrincipal" maxlength="45"/>
+                            <input name="objt_ppl" value="<?= $resultado->objt_ppl(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Objetivo Principal Do Personagem" id="input-tx-ObjetivoPrincipal" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="objt_ppl_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->objt_ppl_dets(); ?></textarea>
+                                <textarea name="objt_ppl_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Objetivo Principal do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->objt_ppl_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -1005,13 +1005,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="objt_pllo" value="<?= $resultado->objt_pllo(); ?>" type="text" class="form-control" placeholder="Placeholder para Objetivo Paralelo" id="input-tx-ObjetivoParalelo" maxlength="45"/>
+                            <input name="objt_pllo" value="<?= $resultado->objt_pllo(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Objetivo Paralelo do Personagem" id="input-tx-ObjetivoParalelo" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="objt_pllo_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->objt_pllo_dets(); ?></textarea>
+                                <textarea name="objt_pllo_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Objetivo Paralelo do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->objt_pllo_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -1036,10 +1036,16 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-IntroducaonoEnredo">
-                                <option selected="selected">Cena1</option>
-                                <option>Cena2</option>
-                                <option>Cena3</option>
+                            <select class="form-control select2 input-textoselect" name="fk_cena_into_erdo" id="input-txselr-LocalizacaoNatal">
+                                <option value="0" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
+                                        <?php
+                                        foreach ($resultadoSelect->relLczc as $localizacaoSelect) {
+                                        $id = $localizacaoSelect["pk_lczc"];
+                                        $nome = $localizacaoSelect["nm_lczc"];
+                                        $isSelected = ($resultado->fk_cena_into_erdo() == $id ? "selected" : "");
+                                        echo "<option value='$id' $isSelected>$nome</option>";
+                                        }
+                                ?>
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->
@@ -1064,7 +1070,7 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="mtvc_psna" value="" placeholder="Placeholder para Motivações" title="Motivações" id="input-txarea-Motivacoes" maxlength="1000"><?= $resultado->mtvc_psna(); ?></textarea>
+                            <textarea name="mtvc_psna" value="" placeholder="Digite Aqui as Motivações do Personagem" title="Motivações" id="input-txarea-Motivacoes" maxlength="1000"><?= $resultado->mtvc_psna(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -1296,13 +1302,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="evt_mact" value="<?= $resultado->evt_mact(); ?>" type="text" class="form-control" placeholder="Placeholder para Evento Marcante" id="input-tx-EventoMarcante" maxlength="45"/>
+                            <input name="evt_mact" value="<?= $resultado->evt_mact(); ?>" type="text" class="form-control" placeholder="Digite Aqui um Evento Marcante do Personagem" id="input-tx-EventoMarcante" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="evt_mact_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->evt_mact_dets(); ?></textarea>
+                                <textarea name="evt_mact_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os detalhes do Evento Marcante do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->evt_mact_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -1327,13 +1333,13 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="pda_mact" value="<?= $resultado->pda_mact(); ?>" type="text" class="form-control" placeholder="Placeholder para Perda Marcante" id="input-tx-PerdaMarcante" maxlength="45"/>
+                            <input name="pda_mact" value="<?= $resultado->pda_mact(); ?>" type="text" class="form-control" placeholder="Digite Aqui uma Perda Marcante do Personagem" id="input-tx-PerdaMarcante" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="pda_mact_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->pda_mact_dets(); ?></textarea>
+                                <textarea name="pda_mact_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes da Perda Marcante do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->pda_mact_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -1358,7 +1364,7 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="medo_psna" value="" placeholder="Placeholder para Medos" title="Medos" id="input-txarea-Medos" maxlength="1000"><?= $resultado->medo_psna(); ?></textarea>
+                            <textarea name="medo_psna" value="" placeholder="Digite Aqui Medos do Personagem" title="Medos" id="input-txarea-Medos" maxlength="1000"><?= $resultado->medo_psna(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -1382,7 +1388,7 @@ $resultado = ($controlador->getResultados() == null ?
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="segd_psna" value="" placeholder="Placeholder para Segredos" title="Segredos" id="input-txarea-Segredos" maxlength="1000"><?= $resultado->segd_psna(); ?></textarea>
+                            <textarea name="segd_psna" value="" placeholder="Digite Aqui Segredos do Personagem" title="Segredos" id="input-txarea-Segredos" maxlength="1000"><?= $resultado->segd_psna(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>

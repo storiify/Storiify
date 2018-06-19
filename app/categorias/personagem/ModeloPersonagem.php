@@ -149,7 +149,7 @@ class ModeloPersonagem {
     }
 
     public function sexo_psna() {
-        return parseCheckbox($this->sexo_psna);
+        return $this->sexo_psna;
     }
 
     public function dt_nsc() {

@@ -151,12 +151,12 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
             $parametros['im_psna'] = uploadImagem($idUsuario, "Personagem", $idPersonagem, $_FILES['im_psna']);
         }
         //Cuida da parte da visibilidade
-        if (isset($parametros['vsi_lczc']) && is_array($parametros['vsi_lczc'])) {
+        if (isset($parametros['vsi_psna']) && is_array($parametros['vsi_psna'])) {
             $tempStr = 0;
-            foreach ($parametros['vsi_lczc'] as $value) {
+            foreach ($parametros['vsi_psna'] as $value) {
                 $tempStr = $tempStr + $value;
             }
-            $parametros['vsi_lczc'] = $tempStr;
+            $parametros['vsi_psna'] = $tempStr;
         }
 
         $res = $bdContext->salvar($parametros);
