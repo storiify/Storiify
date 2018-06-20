@@ -49,9 +49,19 @@ class ModeloHistoria {
         if ($this->aur_hist != "") {
             $atributosSelecionados["Autor"] = $this->aur_hist;
         }
-        if ($this->fk_psna_ppl != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            $atributosSelecionados["Personagem Principal"] = $this->fk_psna_ppl;
+        if($this->fk_psna_ppl != "") {
+            $parametros["idHist"] = $this->pk_hist;
+            $parametros["idPsna"] = $this->fk_psna_ppl;
+            
+            $bdContext = new BdContextPersonagem();
+            $psnaPpl = $bdContext->getPsnaDeHist($parametros)[0];
+            
+            $atributosSelecionados["Personagem Principal"] = "<span class='btn-listar-select' "
+                    . "title='Clique para editar {$psnaPpl["nm_psna"]}'"
+                    . "href='?categoria=personagem&acao=editarExterno&idPsna={$psnaPpl["pk_psna"]}&idHist={$this->pk_hist}'>" .
+                    truncar($psnaPpl["nm_psna"], 20) . "</span>";
         }
+
         if ($this->dcr_em_uma_sntn != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Descrição em uma Sentença"] = $this->dcr_em_uma_sntn;
         }
@@ -153,5 +163,6 @@ class ModeloHistoria {
     public function dt_alt() {
         return $this->dt_alt;
     }
+
 // </editor-fold>
 }

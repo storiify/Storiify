@@ -37,10 +37,13 @@ class Controlador {
         }
 
         if (($this->sessao->getChave(CHAVE_LOGIN) == TRUE)) {
-            $acoesPermitidas = ['listar', 'listarCategorias', 'cadastrar'];
+            $acoesPermitidas = ['listar', 'listarCategorias', 'cadastrar', 'editarExterno'];
+            $acoesPermitidasPsna = ['editarExterno'];
             if (($categoria != "historia" && $categoria != "login") || (!in_array($acao, $acoesPermitidas))) {
-                if ($this->sessao->getHistoriaSelecionada() == NULL) {
-                    redirecionar("?categoria=historia&acao=listar");
+                if (!in_array($acao, $acoesPermitidasPsna)) {
+                    if ($this->sessao->getHistoriaSelecionada() == NULL) {
+                        redirecionar("?categoria=historia&acao=listar");
+                    }
                 }
             }
         }

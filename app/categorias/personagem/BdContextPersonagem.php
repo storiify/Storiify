@@ -20,58 +20,58 @@ class BdContextPersonagem extends ConexaoBd {
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
 
         $res = false;
-		
+
         if (isset($parametros['fk_classe'])) {
             $idsClasse = $parametros['fk_classe'];
             unset($parametros['fk_classe']);
         }
-		
+
         if (isset($parametros['fk_profissao'])) {
             $idsPfs = $parametros['fk_profissao'];
             unset($parametros['fk_profissao']);
         }
-		
+
         if (isset($parametros['fk_objeto'])) {
             $idsObj = $parametros['fk_objeto'];
             unset($parametros['fk_objeto']);
         }
-        
+
         if (isset($parametros['fk_hbld_fsca'])) {
             $idsHbld_fsca = $parametros['fk_hbld_fsca'];
             unset($parametros['fk_hbld_fsca']);
         }
-		
+
         if (isset($parametros['fk_hbld_mgca'])) {
             $idsHbld_mgca = $parametros['fk_hbld_mgca'];
             unset($parametros['fk_hbld_mgca']);
         }
-		
+
         if (isset($parametros['familia'])) {
             $idsFamilia = $parametros['familia'];
             unset($parametros['familia']);
         }
-		
+
         if (isset($parametros['amigos'])) {
             $idsAmigos = $parametros['amigos'];
             unset($parametros['amigos']);
         }
-        
+
         if (isset($parametros['lacos'])) {
             $idsLacos = $parametros['lacos'];
             unset($parametros['lacos']);
         }
-        
+
         if (isset($parametros['companheiros'])) {
             $idsComp = $parametros['companheiros'];
             unset($parametros['companheiros']);
         }
-        
+
         if (isset($parametros['rivais'])) {
             $idsRivais = $parametros['rivais'];
             unset($parametros['rivais']);
         }
-		
-		if (isset($parametros['fk_lembranca'])) {
+
+        if (isset($parametros['fk_lembranca'])) {
             $idsLmca = $parametros['fk_lembranca'];
             unset($parametros['fk_lembranca']);
         }
@@ -89,9 +89,9 @@ class BdContextPersonagem extends ConexaoBd {
                 $this->excluirFamilia($parametros['pk_psna']);
                 $this->excluirAmigos($parametros['pk_psna']);
                 $this->excluirLacos($parametros['pk_psna']);
-                $this->excluirComp($parametros['pk_psna']);     
-                $this->excluirRivais($parametros['pk_psna']); 
-				$this->excluirLembranca($parametros['pk_psna']); 
+                $this->excluirComp($parametros['pk_psna']);
+                $this->excluirRivais($parametros['pk_psna']);
+                $this->excluirLembranca($parametros['pk_psna']);
             }
         } else { //Ao criar
             $parametros['dt_cric'] = $horarioAtual;
@@ -111,7 +111,7 @@ class BdContextPersonagem extends ConexaoBd {
             $this->salvarLacosExistente($idsLacos, $idAtual);
             $this->salvarCompExistente($idsComp, $idAtual);
             $this->salvarRivaisExistente($idsRivais, $idAtual);
-			$this->salvarLembrancaExistente($idsLmca, $idAtual);
+            $this->salvarLembrancaExistente($idsLmca, $idAtual);
         }
 
         return $res;
@@ -145,7 +145,7 @@ class BdContextPersonagem extends ConexaoBd {
             $pks[] = "pk_psna='$id'";
         }
         $condicao .= join(" OR ", $pks);
-        
+
         $res = $this->listarBase($this->campos, $this->tabela, $condicao);
 
         if (!isset($res) || $res == null) {
@@ -203,9 +203,8 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
- 
- 
-     private function salvarProfissaoExistente($idsPfs, $idPsna) {
+
+    private function salvarProfissaoExistente($idsPfs, $idPsna) {
         $tbRelPfs = "tb_personagem_rel_Profissao";
         foreach ($idsPfs as $pfs) {
             $rel['fk_psna'] = $idPsna;
@@ -236,15 +235,15 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
-	
+
     private function salvarObjetoExistente($idsObj, $idPsna) {
-    $tbRelObj = "tb_personagem_rel_objeto";
-    foreach ($idsObj as $obj) {
-        $rel['fk_psna'] = $idPsna;
-        $rel['fk_obj'] = $obj;
-        $res = $this->inserirBase($rel, $tbRelObj);
-    }
-    return $res;
+        $tbRelObj = "tb_personagem_rel_objeto";
+        foreach ($idsObj as $obj) {
+            $rel['fk_psna'] = $idPsna;
+            $rel['fk_obj'] = $obj;
+            $res = $this->inserirBase($rel, $tbRelObj);
+        }
+        return $res;
     }
 
     public function listarObjeto($parametros) {
@@ -268,7 +267,7 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
-	
+
     private function salvarHabilidade_fisicaExistente($idsHbld_fsca, $idPsna) {
         $tbRelHbld_fsca = "tb_personagem_rel_habilidade_fisica";
         foreach ($idsHbld_fsca as $hbld_fsca) {
@@ -276,7 +275,7 @@ class BdContextPersonagem extends ConexaoBd {
             $rel['fk_hbld_fsca'] = $hbld_fsca;
             $res = $this->inserirBase($rel, $tbRelHbld_fsca);
         }
-    return $res;
+        return $res;
     }
 
     public function listarHabilidade_fisica($parametros) {
@@ -300,7 +299,7 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
-	
+
     private function salvarHabilidade_magicaExistente($idsHbld_mgca, $idPsna) {
         $tbRelHbld_mgca = "tb_personagem_rel_habilidade_magica";
         foreach ($idsHbld_mgca as $hbld_mgca) {
@@ -308,7 +307,7 @@ class BdContextPersonagem extends ConexaoBd {
             $rel['fk_hbld_mgca'] = $hbld_mgca;
             $res = $this->inserirBase($rel, $tbRelHbld_mgca);
         }
-    return $res;
+        return $res;
     }
 
     public function listarHabilidade_magica($parametros) {
@@ -332,16 +331,16 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
-	
+
     private function salvarFamiliaExistente($idsFamilia, $idPsna) {
-	$tbRelFamilia = "tb_personagem_rel_relacionamento";
-	foreach ($idsFamilia as $familia) {
-		$rel['fk_psna1'] = $idPsna;
-		$rel['fk_psna2'] = $familia;
-		$rel['fk_rlc'] = '1';
-		$res = $this->inserirBase($rel, $tbRelFamilia);
-	}
-    return $res;
+        $tbRelFamilia = "tb_personagem_rel_relacionamento";
+        foreach ($idsFamilia as $familia) {
+            $rel['fk_psna1'] = $idPsna;
+            $rel['fk_psna2'] = $familia;
+            $rel['fk_rlc'] = '1';
+            $res = $this->inserirBase($rel, $tbRelFamilia);
+        }
+        return $res;
     }
 
     public function listarFamilia($parametros) {
@@ -365,16 +364,16 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
-	
+
     private function salvarAmigosExistente($idsAmigos, $idPsna) {
-	$tbRelAmigos = "tb_personagem_rel_relacionamento";
-	foreach ($idsAmigos as $Amigos) {
+        $tbRelAmigos = "tb_personagem_rel_relacionamento";
+        foreach ($idsAmigos as $Amigos) {
             $rel['fk_psna1'] = $idPsna;
             $rel['fk_psna2'] = $Amigos;
             $rel['fk_rlc'] = '2';
             $res = $this->inserirBase($rel, $tbRelAmigos);
-	}
-    return $res;
+        }
+        return $res;
     }
 
     public function listarAmigos($parametros) {
@@ -398,16 +397,16 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
-    
+
     private function salvarLacosExistente($idsLacos, $idPsna) {
-	$tbRelLacos = "tb_personagem_rel_relacionamento";
-	foreach ($idsLacos as $lacos) {
+        $tbRelLacos = "tb_personagem_rel_relacionamento";
+        foreach ($idsLacos as $lacos) {
             $rel['fk_psna1'] = $idPsna;
             $rel['fk_psna2'] = $lacos;
             $rel['fk_rlc'] = '3';
             $res = $this->inserirBase($rel, $tbRelLacos);
-	}
-    return $res;
+        }
+        return $res;
     }
 
     public function listarLacos($parametros) {
@@ -431,16 +430,16 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
-    
+
     private function salvarCompExistente($idsComp, $idPsna) {
-	$tbRelComp = "tb_personagem_rel_relacionamento";
-	foreach ($idsComp as $Comp) {
+        $tbRelComp = "tb_personagem_rel_relacionamento";
+        foreach ($idsComp as $Comp) {
             $rel['fk_psna1'] = $idPsna;
             $rel['fk_psna2'] = $Comp;
             $rel['fk_rlc'] = '4';
             $res = $this->inserirBase($rel, $tbRelComp);
-	}
-    return $res;
+        }
+        return $res;
     }
 
     public function listarComp($parametros) {
@@ -464,16 +463,16 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
-    
+
     private function salvarRivaisExistente($idsRivais, $idPsna) {
-	$tbRelRivais = "tb_personagem_rel_relacionamento";
-	foreach ($idsRivais as $rivais) {
+        $tbRelRivais = "tb_personagem_rel_relacionamento";
+        foreach ($idsRivais as $rivais) {
             $rel['fk_psna1'] = $idPsna;
             $rel['fk_psna2'] = $rivais;
             $rel['fk_rlc'] = '5';
             $res = $this->inserirBase($rel, $tbRelRivais);
-	}
-    return $res;
+        }
+        return $res;
     }
 
     public function listarRivais($parametros) {
@@ -497,15 +496,15 @@ class BdContextPersonagem extends ConexaoBd {
 
         return $res;
     }
-	
-	private function salvarLembrancaExistente($idsLmca, $idPsna) {
-    $tbRellmca = "tb_personagem_rel_lembranca";
-    foreach ($idsLmca as $lmca) {
-        $rel['fk_psna'] = $idPsna;
-        $rel['fk_lmca'] = $lmca;
-        $res = $this->inserirBase($rel, $tbRellmca);
-    }
-    return $res;
+
+    private function salvarLembrancaExistente($idsLmca, $idPsna) {
+        $tbRellmca = "tb_personagem_rel_lembranca";
+        foreach ($idsLmca as $lmca) {
+            $rel['fk_psna'] = $idPsna;
+            $rel['fk_lmca'] = $lmca;
+            $res = $this->inserirBase($rel, $tbRellmca);
+        }
+        return $res;
     }
 
     public function listarLembranca($parametros) {
@@ -522,11 +521,28 @@ class BdContextPersonagem extends ConexaoBd {
     }
 
     private function excluirLembranca($idPsna) {
-		$tbRellmca = "tb_personagem_rel_lembranca";
+        $tbRellmca = "tb_personagem_rel_lembranca";
         $condicao = "fk_psna='$idPsna'";
 
         $res = $this->excluirBase($tbRellmca, $condicao);
 
         return $res;
     }
- }
+
+    public function getPsnaDeHist($parametros) {
+        $idHistoria = $parametros["idHist"];
+        $condicao = "WHERE fk_hist='$idHistoria'";
+
+        $id = $parametros["idPsna"];
+        $condicao .= " AND pk_psna='$id'";
+
+        $res = $this->listarBase("pk_psna, nm_psna", $this->tabela, $condicao);
+
+        if (!isset($res) || $res == null) {
+            return array();
+        }
+
+        return $res;
+    }
+
+}

@@ -15,13 +15,15 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
         require_once PATH_CAT . "/objeto/BdContextObjeto.php";
         require_once PATH_CAT . "/habilidade_fisica/BdContextHabilidade_fisica.php";
         require_once PATH_CAT . "/habilidade_magica/BdContextHabilidade_magica.php";
-		require_once PATH_CAT . "/lembranca/BdContextLembranca.php";
+        require_once PATH_CAT . "/lembranca/BdContextLembranca.php";
+        
+        require_once PATH_CAT . "/historia/BdContextHistoria.php";
     }
 
     public function cadastrar($parametros) {
         $this->setVisao(ModeloPersonagem::$viewForm);
         $this->setTituloPagina(ModeloPersonagem::getTituloPagina("cadastrar"));
-		
+
         $bdPsna = new bdContextPersonagem();
         $resPsna = $bdPsna->listar("");
         $bdLczc = new BdContextLocalizacao();
@@ -38,7 +40,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
         $resHbld_fsca = $bdHbld_fsca->listar("");
         $bdHbld_mgca = new BdContextHabilidade_magica();
         $resHbld_mgca = $bdHbld_mgca->listar("");
-		$bdLmca = new BdContextLembranca();
+        $bdLmca = new BdContextLembranca();
         $resLmca = $bdLmca->listar("");
         $res = array(
             "psna" => $resPsna,
@@ -48,7 +50,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
             "obj" => $resObj,
             "hbld_fsca" => $resHbld_fsca,
             "hbld_mgca" => $resHbld_mgca,
-			"lmca" => $resLmca,
+            "lmca" => $resLmca,
             "raca" => $resRaca);
         $this->setResultadosSelect($res);
     }
@@ -67,7 +69,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
     public function editar($parametros) {
         $bdContext = new BdContextPersonagem();
         $instancia = new ModeloPersonagem($bdContext->listar($parametros)[0]);
-        
+
         if ($instancia != null) {
             $this->setResultados($instancia);
 
@@ -97,15 +99,15 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
             $bdHbld_mgca = new BdContextHabilidade_magica();
             $resHbld_mgca = $bdHbld_mgca->listar("");
             $idsHbld_mgca = $bdPnsa->listarHabilidade_magica($instancia->pk_psna());
-			
+
             $idsFamilia = $bdPnsa->listarFamilia($instancia->pk_psna());
             $idsAmigos = $bdPnsa->listarAmigos($instancia->pk_psna());
             $idsLacos = $bdPnsa->listarLacos($instancia->pk_psna());
             $idsComp = $bdPnsa->listarComp($instancia->pk_psna());
             $idsRivais = $bdPnsa->listarRivais($instancia->pk_psna());
-			
-			$bdLmca = new BdContextLembranca();
-			$resLmca = $bdLmca->listar("");
+
+            $bdLmca = new BdContextLembranca();
+            $resLmca = $bdLmca->listar("");
             $idsLmca = $bdPnsa->listarLembranca($instancia->pk_psna());
             $res = array(
                 "psna" => $resPsna,
@@ -114,7 +116,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
                 "classe" => $resClasse,
                 "pfs" => $resPfs,
                 "obj" => $resObj,
-				"lmca" => $resLmca,
+                "lmca" => $resLmca,
                 "hbld_fsca" => $resHbld_fsca,
                 "hbld_mgca" => $resHbld_mgca,
                 "idsPfs" => $idsPfs,
@@ -126,7 +128,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
                 "idsLacos" => $idsLacos,
                 "idsComp" => $idsComp,
                 "idsRivais" => $idsRivais,
-				"idsLmca" => $idsLmca,
+                "idsLmca" => $idsLmca,
                 "idsClasse" => $idsClasse);
             $this->setResultadosSelect($res);
         } else {
@@ -179,5 +181,12 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
             redirecionar("?categoria=personagem&acao=listar"); //mudar pra uma pagina de erro (Localização não encontrada ou não faz parte de suas localizações cadastradas) :D
         }
     }
-
+    
+    public function editarExterno($parametros) {
+        $bdContext = new BdContextHistoria();
+        $instancia = new ModeloHistoria($bdContext->listar($parametros["idHist"])[0]);        
+        sessao()->setHistoriaSelecionada($instancia);
+        
+        $this->editar($parametros["idPsna"]);
+    }
 }

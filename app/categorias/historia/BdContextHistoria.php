@@ -33,7 +33,7 @@ class BdContextHistoria extends ConexaoBd {
     }
 
     public function listar($parametros) {
-        
+
         $idusuario = sessao()->getUserData()->id;
         $condicao = "WHERE fk_usu='$idusuario'";
 
@@ -93,5 +93,4 @@ class BdContextHistoria extends ConexaoBd {
 
         return $bdBase->listarBase($colunas, $tbCena, $where)[0][0];
     }
-
 }

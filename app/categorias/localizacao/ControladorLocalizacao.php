@@ -10,13 +10,14 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         require_once "BdContextLocalizacao.php";
         require_once PATH_CAT . "/raca/BdContextRaca.php";
         require_once PATH_CAT . "/fauna/BdContextFauna.php";
+        require_once PATH_CAT . "/personagem/BdContextPersonagem.php";
     }
 
     public function cadastrar($parametros) {
         $this->setVisao(ModeloLocalizacao::$viewForm);
         $this->setTituloPagina(ModeloLocalizacao::getTituloPagina("cadastrar"));
 
-        $modeloPsna = new ModeloPersonagem();
+        $modeloPsna = new BdContextPersonagem();
         $resPsna = $modeloPsna->listar("");
         $bdLczc = new BdContextLocalizacao();
         $resLczc = $bdLczc->listar("");
@@ -56,7 +57,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $this->setTituloPagina($instancia->nm_lczc());
 
             //Lista todos os personagens e localizações
-            $modeloPnsa = new ModeloPersonagem();
+            $modeloPnsa = new BdContextPersonagem();
             $resPsna = $modeloPnsa->listar("");
             $bdLczc = new BdContextLocalizacao();
             $resLczc = $bdLczc->listar("");

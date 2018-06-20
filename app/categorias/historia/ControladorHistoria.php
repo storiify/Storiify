@@ -8,6 +8,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         $this->setCategoria($categoria);
 
         require_once "BdContextHistoria.php";
+        require_once PATH_CAT . "/personagem/BdContextPersonagem.php";
     }
 
     public function cadastrar($parametros) {
@@ -30,7 +31,6 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
 
     public function listarAoLogar($parametros) {
         $bdContext = new BdContextHistoria();
-        var_dump($parametros);
         $res = $bdContext->listar($parametros);
         sessao()->setHistoriasData($res);
     }
@@ -48,7 +48,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
             $this->setTituloPagina($instancia->tit_hist());
 
             //Lista todos os personagens
-            $modeloPnsa = new ModeloPersonagem();
+            $modeloPnsa = new BdContextPersonagem();
             $resPsna = $modeloPnsa->listar("");
             $res = array(
                 "psna" => $resPsna);
