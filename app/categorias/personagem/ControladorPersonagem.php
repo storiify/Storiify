@@ -186,7 +186,8 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
         $bdContext = new BdContextHistoria();
         $instancia = new ModeloHistoria($bdContext->listar($parametros["idHist"])[0]);        
         sessao()->setHistoriaSelecionada($instancia);
+        unset($parametros["idHist"]);
         
-        $this->editar($parametros["idPsna"]);
+        $this->editar($parametros);
     }
 }
