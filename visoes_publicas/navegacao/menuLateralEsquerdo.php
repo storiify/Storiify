@@ -4,7 +4,7 @@ $historias = sessao()->getHistoriasData();
 $historiaSelecionada = sessao()->getHistoriaSelecionada();
 
 if ($historiaSelecionada != NULL) {
-    $qtdHist = count((array)$historias);
+    $qtdHist = count((array) $historias);
     $qtdPsna = BdContextHistoria::getQtdPsna($historiaSelecionada->pk_hist());
     $qtdLczc = BdContextHistoria::getQtdLczc($historiaSelecionada->pk_hist());
     $qtdCena = BdContextHistoria::getQtdCena($historiaSelecionada->pk_hist());
@@ -22,19 +22,18 @@ if ($historiaSelecionada != NULL) {
                     <span class='bem-vindo-texto'>Bem-vindo à</span><br/>
                     <select class='nome-historia' id='selecao-nome-historia' title='Clique aqui para escolher qual história deseja editar'>
                         <?php
-						foreach ($historias as $historiaArray) {
+                        foreach ($historias as $historiaArray) {
                             $historia = new ModeloHistoria($historiaArray);
                             $nome = $historia->tit_hist();
-                            
+
                             if ($historiaSelecionada != null) {
                                 $selected = ($historia->pk_hist() == $historiaSelecionada->pk_hist()) ? "selected" : "";
-                            }
-                            else{
+                            } else {
                                 $selected = "";
-                            }                            
-							echo "<option value='{$historia->pk_hist()}'"
-							. "$selected>" . truncar($nome, 25, "...") . "</option>";
-                         }
+                            }
+                            echo "<option value='{$historia->pk_hist()}'"
+                            . "$selected>" . truncar($nome, 25, "...") . "</option>";
+                        }
                         ?>
                     </select>
                 </div>
@@ -55,7 +54,7 @@ if ($historiaSelecionada != NULL) {
         </li>
 
         <li class="item-sem-filhos">
-            <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
+            <a href="?categoria=historia&acao=editar&id=<?= ($historiaSelecionada != null ? $historiaSelecionada->pk_hist() : "") ?>" class="nav-item list-group-item lista-clicavel">
                 <i class='fa fa-book col-md-2'></i>
                 <span class='col-md-10'>História</span>
             </a>
