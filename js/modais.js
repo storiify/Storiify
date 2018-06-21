@@ -78,6 +78,33 @@ function inserirOptionFlora(idFlora, nomeFlora){
 }
 //FINAL FLORA
 
+//RECURSO NATURAL
+$(".salvar-recursoNatural-modal").on("click", function () {
+    var nm_rcs_ntrl = $("[name='nm_rcs_ntrl']").val();
+    var dcr_rcs_ntrl = $("[name='dcr_rcs_ntrl']").val();
+    var rrdd_rcs_ntrl = $("[name='rrdd_rcs_ntrl']").val();
+    $.ajax({
+        url: "?categoria=recurso_natural&acao=salvar",
+        method: "POST",
+        data: {isAjax: 'true', nm_rcs_ntrl: nm_rcs_ntrl, dcr_rcs_ntrl: dcr_rcs_ntrl, rrdd_rcs_ntrl: rrdd_rcs_ntrl},
+        success: function (data) {
+            alert("O recurso natural"+ (nm_rcs_ntrl == ""? "": " " + nm_rcs_ntrl) +" foi cadastrado com sucesso");
+            
+            var pre = "idInserido";
+            var idRcsNtrl = data.substr(data.indexOf(pre) + pre.length + 1);
+            inserirOptionFlora(idRcsNtrl, nm_rcs_ntrl);
+            
+            $("#modalCadastrarRcsNtrl").modal('hide');
+        }
+    });
+});
+
+function inserirOptionFlora(idRcsNtrl, nomeRcsNtrl){
+    $("#input-txselr-RcsNtrl").append("<option value='"+idRcsNtrl+"' selected>"+nomeRcsNtrl+"</option>");
+}
+//FINAL RECURSO NATURAL
+
+
 $(".salvar-classe-modal").on("click", function () {
     var nm_cls = $("[name='nm_cls']").val();
     var dcr_cls = $("[name='dcr_cls']").val();

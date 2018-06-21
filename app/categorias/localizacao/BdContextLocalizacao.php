@@ -33,6 +33,11 @@ class BdContextLocalizacao extends ConexaoBd {
             $idsFlora = $parametros['fk_flra'];
             unset($parametros['fk_flra']);
         }
+        //Gerencia a coluna de recursos naturais
+        if (isset($parametros['fk_rcs_ntrl'])) {
+            $idsRcsNtrl = $parametros['fk_rcs_ntrl'];
+            unset($parametros['fk_rcs_ntrl']);
+        }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
@@ -52,6 +57,8 @@ class BdContextLocalizacao extends ConexaoBd {
                 $this->excluirFauna($parametros['pk_lczc']);
                 //Deleta todas as relações flora
                 $this->excluirFlora($parametros['pk_lczc']);
+                //Deleta todas as relações recursos naturais
+                $this->excluirRcsNtrl($parametros['pk_lczc']);
             }
         } else { //Ao criar
             $parametros['dt_cric'] = $horarioAtual;
@@ -69,6 +76,8 @@ class BdContextLocalizacao extends ConexaoBd {
             $this->salvarFaunaExistente($idsFauna, $idAtual);
             //Cria a relação de floras existentes
             $this->salvarFloraExistente($idsFlora, $idAtual);
+            //Cria a relação de recursos naturais existentes
+            $this->salvarRcsNtrlExistente($idsRcsNtrl, $idAtual);
         }
 
         return $res;
@@ -258,4 +267,37 @@ class BdContextLocalizacao extends ConexaoBd {
 
         return $res;
     }
+
+    private function salvarRcsNtrlExistente($idsRscNtrl, $idLczc) {
+        $tbLczcRcsNtrl = "tb_localizacao_rel_recurso_natural";
+        foreach ($idsRscNtrl as $rcsNtrl) {
+            $rel['fk_lczc'] = $idLczc;
+            $rel['fk_rcs_ntrl'] = $rcsNtrl;
+            $res = $this->inserirBase($rel, $tbLczcRcsNtrl);
+        }
+        return $res;
+    }
+
+    public function listarRcsNtrl($parametros) {
+        $tbLczcRcsNtrl = "tb_localizacao_rel_recurso_natural";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_rcs_ntrl', $tbLczcRcsNtrl, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+        return $res;
+    }
+
+    private function excluirRcsNtrl($idLczc) {
+        $tbLczcRcsNtrl = "tb_localizacao_rel_recurso_natural";
+        $condicao = "fk_lczc='$idLczc'";
+
+        $res = $this->excluirBase($tbLczcRcsNtrl, $condicao);
+
+        return $res;
+    }
+
 }

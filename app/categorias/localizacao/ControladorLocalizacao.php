@@ -11,6 +11,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         require_once PATH_CAT . "/raca/BdContextRaca.php";
         require_once PATH_CAT . "/fauna/BdContextFauna.php";
         require_once PATH_CAT . "/flora/BdContextFlora.php";
+        require_once PATH_CAT . "/Recurso_natural/BdContextRecurso_natural.php";
         require_once PATH_CAT . "/personagem/BdContextPersonagem.php";
     }
 
@@ -28,12 +29,15 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         $resFauna = $bdFauna->listar("");
         $bdFlora = new BdContextFlora();
         $resFlora = $bdFlora->listar("");
+        $bdRcsNtrl = new BdContextRecurso_natural();
+        $resRcsNtrl = $bdRcsNtrl->listar("");
         $res = array(
             "psna" => $resPsna,
             "lczc" => $resLczc,
             "raca" => $resRaca,
             "fauna" => $resFauna,
-            "flora" => $resFlora);
+            "flora" => $resFlora,
+            "rcs_ntrl" => $resRcsNtrl);
         $this->setResultadosSelect($res);
     }
 
@@ -71,6 +75,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $resFauna = $bdFauna->listar("");
             $bdFlora = new BdContextFlora();
             $resFlora = $bdFlora->listar("");
+            $bdRcsNtrl = new BdContextRecurso_natural();
+            $resRcsNtrl = $bdRcsNtrl->listar("");
             //Get personagens registrados como mais conhecidos
             $idsPsnaCnhd = $bdLczc->listarPsnaCnhd($instancia->pk_lczc());
             //Get raças registradas
@@ -79,16 +85,20 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $idsFauna = $bdLczc->listarFauna($instancia->pk_lczc());
             //Get floras registradas
             $idsFlora = $bdLczc->listarFlora($instancia->pk_lczc());
+            //Get recursos registrados
+            $idsRcsNtrl = $bdLczc->listarRcsNtrl($instancia->pk_lczc());
             $res = array(
                 "psna" => $resPsna,
                 "lczc" => $resLczc,
                 "raca" => $resRaca,
                 "fauna" => $resFauna,
                 "flora" => $resFlora,
+                "rcs_ntrl" => $resRcsNtrl,
                 "idsPsnaLczc" => $idsPsnaCnhd,
                 "idsRaca" => $idsRaca,
                 "idsFauna" => $idsFauna,
-                "idsFlora" => $idsFlora);
+                "idsFlora" => $idsFlora,
+                "idsRcsNtrl" => $idsRcsNtrl);
             $this->setResultadosSelect($res);
         } else {
             redirecionar("?categoria=localizacao&acao=listar");
