@@ -52,7 +52,31 @@ function inserirOptionFauna(idFauna, nomeFauna){
     $("#input-txselr-Fauna").append("<option value='"+idFauna+"' selected>"+nomeFauna+"</option>");
 }
 //FINAL FAUNA
+//FLORA
+$(".salvar-flora-modal").on("click", function () {
+    var nm_flra = $("[name='nm_flra']").val();
+    var dcr_flra = $("[name='dcr_flra']").val();
+    var rrdd_flra = $("[name='rrdd_flra']").val();
+    $.ajax({
+        url: "?categoria=flora&acao=salvar",
+        method: "POST",
+        data: {isAjax: 'true', nm_flra: nm_flra, dcr_flra: dcr_flra, rrdd_flra: rrdd_flra},
+        success: function (data) {
+            alert("A flora"+ (nm_flra == ""? "": " " + nm_flra) +" foi cadastrada com sucesso");
+            
+            var pre = "idInserido";
+            var idFlora = data.substr(data.indexOf(pre) + pre.length + 1);
+            inserirOptionFlora(idFlora, nm_flra);
+            
+            $("#modalCadastrarFlora").modal('hide');
+        }
+    });
+});
 
+function inserirOptionFlora(idFlora, nomeFlora){
+    $("#input-txselr-Flora").append("<option value='"+idFlora+"' selected>"+nomeFlora+"</option>");
+}
+//FINAL FLORA
 
 $(".salvar-classe-modal").on("click", function () {
     var nm_cls = $("[name='nm_cls']").val();

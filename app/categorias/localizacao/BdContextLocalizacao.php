@@ -28,6 +28,11 @@ class BdContextLocalizacao extends ConexaoBd {
             $idsFauna = $parametros['fk_fna'];
             unset($parametros['fk_fna']);
         }
+        //Gerencia a coluna de floras
+        if (isset($parametros['fk_flra'])) {
+            $idsFlora = $parametros['fk_flra'];
+            unset($parametros['fk_flra']);
+        }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
@@ -45,6 +50,8 @@ class BdContextLocalizacao extends ConexaoBd {
                 $this->excluirRaca($parametros['pk_lczc']);
                 //Deleta todas as relações fauna
                 $this->excluirFauna($parametros['pk_lczc']);
+                //Deleta todas as relações flora
+                $this->excluirFlora($parametros['pk_lczc']);
             }
         } else { //Ao criar
             $parametros['dt_cric'] = $horarioAtual;
@@ -60,6 +67,8 @@ class BdContextLocalizacao extends ConexaoBd {
             $this->salvarRacaExistente($idsRaca, $idAtual);
             //Cria a relação de faunas existentes
             $this->salvarFaunaExistente($idsFauna, $idAtual);
+            //Cria a relação de floras existentes
+            $this->salvarFloraExistente($idsFlora, $idAtual);
         }
 
         return $res;
@@ -218,4 +227,35 @@ class BdContextLocalizacao extends ConexaoBd {
         return $res;
     }
 
+    private function salvarFloraExistente($idsFlora, $idLczc) {
+        $tbLczcFlra = "tb_localizacao_rel_flora";
+        foreach ($idsFlora as $flora) {
+            $rel['fk_lczc'] = $idLczc;
+            $rel['fk_flra'] = $flora;
+            $res = $this->inserirBase($rel, $tbLczcFlra);
+        }
+        return $res;
+    }
+
+    public function listarFlora($parametros) {
+        $tbLczcFlora = "tb_localizacao_rel_flora";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_flra', $tbLczcFlora, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+        return $res;
+    }
+
+    private function excluirFlora($idLczc) {
+        $tbLczcFlra = "tb_localizacao_rel_flora";
+        $condicao = "fk_lczc='$idLczc'";
+
+        $res = $this->excluirBase($tbLczcFlra, $condicao);
+
+        return $res;
+    }
 }

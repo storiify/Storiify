@@ -655,6 +655,55 @@ $resultado = ($controlador->getResultados() == null ?
                     </div>
                 </div>
                 <!--FINAL - INPUT TEXTOSELECT-->
+                <!--FLORA - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-Flora">Flora</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_flra[]" id="input-txselr-Flora">
+                                                <?php
+                                                foreach ($resultadoSelect->flora as $modeloSelect) {
+                                                    $modelo = new ModeloFlora($modeloSelect);
+                                                    $id = $modelo->pk_flra();
+                                                    $nome = $modelo->nm_flra();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsFlora as $idModelo) {
+                                                        if ($id == $idModelo["fk_flra"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarFlora" >
+                                        Criar <?= ModeloFlora::$nomeSingular?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
             </div>
             <!-- FINAL - ABA BIOLOGIA -->
             <!-- ABA CULTURA -->
