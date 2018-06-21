@@ -9,7 +9,7 @@ $resultados = $controlador->getResultados();
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= ModeloRecurso_natural::$nomePlural ?></h1>
+        <h1><?= ModeloBioma::$nomePlural ?></h1>
     </div>    
 </div>
 
@@ -17,18 +17,18 @@ $resultados = $controlador->getResultados();
     <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
         <a href='?categoria=<?= $categoria ?>&acao=cadastrar' 
-           title='Clique para criar um novo <?= ModeloRecurso_natural::$nomeSingular ?>'
+           title='Clique para criar um novo <?= ModeloBioma::$nomeSingular ?>'
            class='btn btn-azul criar-nova-instancia'>
             <i class="fa fa-plus"></i>
-            &nbsp&nbspCriar novo <?= ModeloRecurso_natural::$nomeSingular ?>
+            &nbsp&nbspCriar novo <?= ModeloBioma::$nomeSingular ?>
         </a>
     </div>
 
     <?php
     if (isset($resultados)) {
         foreach ($resultados as $modeloArray) {
-            $bioma = new ModeloRecurso_natural($modeloArray);
-            $nome = ($bioma->nm_rcs_ntrl());
+            $bioma = new ModeloBioma($modeloArray);
+            $nome = ($bioma->nm_bma());
 
             $camposListar = "";
             foreach ($bioma->getAtributosListar() as $nomeCampo => $valorCampo) {
@@ -40,7 +40,7 @@ $resultados = $controlador->getResultados();
 
             echo
             "<div title='Clique para editar $nome'"
-            . "class='instancia-card mx-auto row clicavel' data-id='{$bioma->pk_rcs_ntrl()}' data-nome='$nome'>"
+            . "class='instancia-card mx-auto row clicavel' data-id='{$bioma->pk_bma()}' data-nome='$nome'>"
             . "    <div class='instancia-corpo col-md-11 row'>"
             . "        <div class='instancia-conteudo col'>"
             . "            <div class='instancia-cabecalho'>"
@@ -53,12 +53,12 @@ $resultados = $controlador->getResultados();
             . "            </div>"
             . "        </div>"
             . "    </div>"
-            . "    <a href='?categoria=$categoria&acao=editar&id={$bioma->pk_rcs_ntrl()}'></a>"
+            . "    <a href='?categoria=$categoria&acao=editar&id={$bioma->pk_bma()}'></a>"
             . "    <div class='instancia-controle col-md-1' style='padding-left: 0px;'>"
             . "        <button class='btn btn-azul btn-deletar-instancia' title='Clique para deletar $nome'>"
             . "            <i class='fa fa-times'></i>"
             . "        </button>"
-            . "        <a href='?categoria=$categoria&acao=excluir&id={$bioma->pk_rcs_ntrl()}' class='deletar-instancia-escondido'></a>"
+            . "        <a href='?categoria=$categoria&acao=excluir&id={$bioma->pk_bma()}' class='deletar-instancia-escondido'></a>"
             . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar'>"
             . "            <i class='fa fa-minus'></i>"
             . "        </button>"
@@ -82,7 +82,7 @@ $resultados = $controlador->getResultados();
     if (!isset($bioma)) {
         echo"<div align='center' class='sem-instancia' style='margin-bottom: 0.5%'>"
         . "	<div align='left' style='padding-left: 0.5%'>"
-        . "	    <span>" . "Seus " . ModeloRecurso_natural::$nomePlural . " aparecerão aqui" . "</span>"
+        . "	    <span>" . "Seus " . ModeloBioma::$nomePlural . " aparecerão aqui" . "</span>"
         . "	</div>"
         . "     <img src='" . const_Indefinida . "' alt='' style='max-width: 99%;'/>"
         . "</div>";

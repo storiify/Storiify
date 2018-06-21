@@ -508,6 +508,138 @@
     </div>
 </div>
 <!--FINAL - MODAL RECURSO NATURAL-->
+<!--MODAL RECURSO NATURAL-->
+<div class="modal fade" id="modalCadastrarBioma" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastrar Bioma</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formModalBioma" class="form-horizontal">
+                    <!--NOME - INPUT TEXTO-->
+                    <div class="form-group">
+                        <div class="row">
+                            <!--INPUT CONTROLE-->
+                            <div class="col-md-1 input-controle">
+                                <button type="button" class="btn btn-input-controle minimizar">
+                                    <i class="fa fa-minus"></i>
+                                </button>                      
+                            </div>
+                            <!--FINAL - INPUT CONTROLE-->
+                            <!--INPUT LABEL-->
+                            <label class="col-md-11 input-label" for="input-tx-Nome">Nome</label>
+                            <!--FINAL - INPUT LABEL-->
+                            <!--INPUT CORPO-->
+                            <div class="col-md-12 input-corpo">
+                                <div class="col-md-12 input-conteudo">
+                                    <input name="nm_bma" value="" 
+                                           placeholder="Digite aqui o Nome do Bioma"
+                                           title="Campo para Nome do Bioma"
+                                           maxlength="60" type="text"
+                                           class="form-control" id="input-tx-Nome"/>
+                                </div>
+                            </div>
+                            <!--FINAL - INPUT CORPO-->
+                        </div>
+                    </div>
+                    <!--FINAL - INPUT TEXTO-->
+                    <!--DESCRIÇÃO - INPUT TEXTOAREA-->
+                    <div class="form-group">
+                        <div class="row">
+                            <!--INPUT CONTROLE-->
+                            <div class="col-md-1 input-controle">
+                                <button type="button" class="btn btn-input-controle minimizar">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!--FINAL - INPUT CONTROLE-->
+                            <!--INPUT LABEL-->
+                            <label class="col-md-11 input-label" for="input-txarea-Descricao">Descrição</label>
+                            <!--FINAL - INPUT LABEL-->
+                            <!--INPUT CORPO-->
+                            <div class="col-md-12 input-corpo">
+                                <div class="col-md-12 input-conteudo"> 
+                                    <textarea name="dcr_bma" value="" 
+                                              placeholder="Digite aqui a Descrição do Bioma" 
+                                              title="Campo para Descrição do Bioma" 
+                                              id="input-txarea-Descricao"></textarea>
+                                </div>
+                                <!--NÃO TEM DETALHES-->
+                            </div>
+                            <!--FINAL - INPUT CORPO-->
+                        </div>
+                    </div>
+                    <!--FINAL - INPUT TEXTOAREA-->
+                    <!--CLIMA - INPUT TEXTOAREA-->
+                    <div class="form-group">
+                        <div class="row">
+                            <!--INPUT CONTROLE-->
+                            <div class="col-md-1 input-controle">
+                                <button type="button" class="btn btn-input-controle minimizar">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!--FINAL - INPUT CONTROLE-->
+                            <!--INPUT LABEL-->
+                            <label class="col-md-11 input-label" for="input-txarea-Clima">Clima</label>
+                            <!--FINAL - INPUT LABEL-->
+                            <!--INPUT CORPO-->
+                            <div class="col-md-12 input-corpo">
+                                <div class="col-md-12 input-conteudo"> 
+                                    <textarea name="clma_bma" value="" 
+                                              placeholder="Digite aqui o Clima do Bioma" 
+                                              title="Campo para Clima do Bioma" 
+                                              id="input-txarea-Clima"></textarea>
+                                </div>
+                                <!--NÃO TEM DETALHES-->
+                            </div>
+                            <!--FINAL - INPUT CORPO-->
+                        </div>
+                    </div>
+                    <!--FINAL - INPUT TEXTOAREA-->
+                    <!--VARIAÇÕES - INPUT TEXTOAREA-->
+                    <div class="form-group">
+                        <div class="row">
+                            <!--INPUT CONTROLE-->
+                            <div class="col-md-1 input-controle">
+                                <button type="button" class="btn btn-input-controle minimizar">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!--FINAL - INPUT CONTROLE-->
+                            <!--INPUT LABEL-->
+                            <label class="col-md-11 input-label" for="input-txarea-Variacoes">Variações</label>
+                            <!--FINAL - INPUT LABEL-->
+                            <!--INPUT CORPO-->
+                            <div class="col-md-12 input-corpo">
+                                <div class="col-md-12 input-conteudo"> 
+                                    <textarea name="vrc_bma" value="" 
+                                              placeholder="Digite aqui as Variações do Bioma" 
+                                              title="Campo para Variações do Bioma" 
+                                              id="input-txarea-Variacoes"></textarea>
+                                </div>
+                                <!--NÃO TEM DETALHES-->
+                            </div>
+                            <!--FINAL - INPUT CORPO-->
+                        </div>
+                    </div>
+                    <!--FINAL - INPUT TEXTOAREA-->
+                    <div class="col-md-12 form-controle">
+                        <input type="hidden" name="pk_bioma" value="">
+                        <button type="button" id="btn-salvar-form" class="btn btn-azul btn-block salvar-bioma-modal">
+                            Salvar Bioma
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--FINAL - MODAL RECURSO NATURAL-->
 
 
 <div class="modal fade" id="modalCadastrarClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

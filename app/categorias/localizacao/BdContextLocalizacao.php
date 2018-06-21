@@ -38,6 +38,11 @@ class BdContextLocalizacao extends ConexaoBd {
             $idsRcsNtrl = $parametros['fk_rcs_ntrl'];
             unset($parametros['fk_rcs_ntrl']);
         }
+        //Gerencia a coluna de bioma
+        if (isset($parametros['fk_bma'])) {
+            $idsBioma = $parametros['fk_bma'];
+            unset($parametros['fk_bma']);
+        }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
@@ -59,6 +64,8 @@ class BdContextLocalizacao extends ConexaoBd {
                 $this->excluirFlora($parametros['pk_lczc']);
                 //Deleta todas as relações recursos naturais
                 $this->excluirRcsNtrl($parametros['pk_lczc']);
+                //Deleta todas as relações bioma
+                $this->excluirBioma($parametros['pk_lczc']);
             }
         } else { //Ao criar
             $parametros['dt_cric'] = $horarioAtual;
@@ -78,6 +85,8 @@ class BdContextLocalizacao extends ConexaoBd {
             $this->salvarFloraExistente($idsFlora, $idAtual);
             //Cria a relação de recursos naturais existentes
             $this->salvarRcsNtrlExistente($idsRcsNtrl, $idAtual);
+            //Cria a relação de recursos naturais existentes
+            $this->salvarBiomaExistente($idsBioma, $idAtual);
         }
 
         return $res;
@@ -296,6 +305,38 @@ class BdContextLocalizacao extends ConexaoBd {
         $condicao = "fk_lczc='$idLczc'";
 
         $res = $this->excluirBase($tbLczcRcsNtrl, $condicao);
+
+        return $res;
+    }
+
+    private function salvarBiomaExistente($idsBioma, $idLczc) {
+        $tbRel = "tb_localizacao_rel_bioma";
+        foreach ($idsBioma as $bioma) {
+            $rel['fk_lczc'] = $idLczc;
+            $rel['fk_bma'] = $bioma;
+            $res = $this->inserirBase($rel, $tbRel);
+        }
+        return $res;
+    }
+
+    public function listarBioma($parametros) {
+        $tbRel = "tb_localizacao_rel_bioma";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_bma', $tbRel, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+        return $res;
+    }
+
+    private function excluirBioma($idLczc) {
+        $tbRel = "tb_localizacao_rel_bioma";
+        $condicao = "fk_lczc='$idLczc'";
+
+        $res = $this->excluirBase($tbRel, $condicao);
 
         return $res;
     }

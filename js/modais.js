@@ -10,19 +10,19 @@ $(".salvar-raca-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', nm_raca: nm_raca, dcr_raca: dcr_raca, apci_raca: apci_raca, pvmt_raca: pvmt_raca, rptc_raca: rptc_raca},
         success: function (data) {
-            alert("A raça"+ (nm_raca == ""? "": " " + nm_raca) +" foi cadastrada com sucesso");
-            
+            alert("A raça" + (nm_raca == "" ? "" : " " + nm_raca) + " foi cadastrada com sucesso");
+
             var pre = "idInserido";
             var idRaca = data.substr(data.indexOf(pre) + pre.length + 1);
             inserirOptionRaca(idRaca, nm_raca);
-            
+
             $("#modalCadastrarRaca").modal('hide');
         }
     });
 });
 
-function inserirOptionRaca(idRaca, nomeRaca){
-    $("#input-txselr-Raca").append("<option value='"+idRaca+"' selected>"+nomeRaca+"</option>");
+function inserirOptionRaca(idRaca, nomeRaca) {
+    $("#input-txselr-Raca").append("<option value='" + idRaca + "' selected>" + nomeRaca + "</option>");
 }
 //FINAL RAÇA
 //FAUNA
@@ -37,19 +37,19 @@ $(".salvar-fauna-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', nm_fna: nm_fna, dcr_fna: dcr_fna, apci_fna: apci_fna, pvmt_fna: pvmt_fna, agsd_fna: agsd_fna},
         success: function (data) {
-            alert("A fauna"+ (nm_fna == ""? "": " " + nm_fna) +" foi cadastrada com sucesso");
-            
+            alert("A fauna" + (nm_fna == "" ? "" : " " + nm_fna) + " foi cadastrada com sucesso");
+
             var pre = "idInserido";
             var idFauna = data.substr(data.indexOf(pre) + pre.length + 1);
             inserirOptionFauna(idFauna, nm_fna);
-            
+
             $("#modalCadastrarFauna").modal('hide');
         }
     });
 });
 
-function inserirOptionFauna(idFauna, nomeFauna){
-    $("#input-txselr-Fauna").append("<option value='"+idFauna+"' selected>"+nomeFauna+"</option>");
+function inserirOptionFauna(idFauna, nomeFauna) {
+    $("#input-txselr-Fauna").append("<option value='" + idFauna + "' selected>" + nomeFauna + "</option>");
 }
 //FINAL FAUNA
 //FLORA
@@ -62,19 +62,19 @@ $(".salvar-flora-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', nm_flra: nm_flra, dcr_flra: dcr_flra, rrdd_flra: rrdd_flra},
         success: function (data) {
-            alert("A flora"+ (nm_flra == ""? "": " " + nm_flra) +" foi cadastrada com sucesso");
-            
+            alert("A flora" + (nm_flra == "" ? "" : " " + nm_flra) + " foi cadastrada com sucesso");
+
             var pre = "idInserido";
             var idFlora = data.substr(data.indexOf(pre) + pre.length + 1);
             inserirOptionFlora(idFlora, nm_flra);
-            
+
             $("#modalCadastrarFlora").modal('hide');
         }
     });
 });
 
-function inserirOptionFlora(idFlora, nomeFlora){
-    $("#input-txselr-Flora").append("<option value='"+idFlora+"' selected>"+nomeFlora+"</option>");
+function inserirOptionFlora(idFlora, nomeFlora) {
+    $("#input-txselr-Flora").append("<option value='" + idFlora + "' selected>" + nomeFlora + "</option>");
 }
 //FINAL FLORA
 
@@ -88,21 +88,49 @@ $(".salvar-recursoNatural-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', nm_rcs_ntrl: nm_rcs_ntrl, dcr_rcs_ntrl: dcr_rcs_ntrl, rrdd_rcs_ntrl: rrdd_rcs_ntrl},
         success: function (data) {
-            alert("O recurso natural"+ (nm_rcs_ntrl == ""? "": " " + nm_rcs_ntrl) +" foi cadastrado com sucesso");
-            
+            alert("O recurso natural" + (nm_rcs_ntrl == "" ? "" : " " + nm_rcs_ntrl) + " foi cadastrado com sucesso");
+
             var pre = "idInserido";
             var idRcsNtrl = data.substr(data.indexOf(pre) + pre.length + 1);
-            inserirOptionFlora(idRcsNtrl, nm_rcs_ntrl);
-            
+            inserirOptionRcsNtrl(idRcsNtrl, nm_rcs_ntrl);
+
             $("#modalCadastrarRcsNtrl").modal('hide');
         }
     });
 });
 
-function inserirOptionFlora(idRcsNtrl, nomeRcsNtrl){
-    $("#input-txselr-RcsNtrl").append("<option value='"+idRcsNtrl+"' selected>"+nomeRcsNtrl+"</option>");
+function inserirOptionRcsNtrl(idRcsNtrl, nomeRcsNtrl) {
+    $("#input-txselr-RcsNtrl").append("<option value='" + idRcsNtrl + "' selected>" + nomeRcsNtrl + "</option>");
 }
 //FINAL RECURSO NATURAL
+
+//BIOMA
+$(".salvar-bioma-modal").on("click", function () {
+    var nm_bma = $("[name='nm_bma']").val();
+    var dcr_bma = $("[name='dcr_bma']").val();
+    var clma_bma = $("[name='clma_bma']").val();
+    var vrc_bma = $("[name='vrc_bma']").val();
+
+    $.ajax({
+        url: "?categoria=bioma&acao=salvar",
+        method: "POST",
+        data: {isAjax: 'true', nm_bma: nm_bma, dcr_bma: dcr_bma, clma_bma: clma_bma, vrc_bma: vrc_bma},
+        success: function (data) {
+            alert("O bioma" + (nm_bma == "" ? "" : " " + nm_bma) + " foi cadastrado com sucesso");
+
+            var pre = "idInserido";
+            var idBioma = data.substr(data.indexOf(pre) + pre.length + 1);
+            inserirOptionBioma(idBioma, nm_bma);
+
+            $("#modalCadastrarBioma").modal('hide');
+        }
+    });
+});
+
+function inserirOptionBioma(idBioma, nomeBioma) {
+    $("#input-txselr-bioma").append("<option value='" + idBioma + "' selected>" + nomeBioma + "</option>");
+}
+//FINAL BIOMA
 
 
 $(".salvar-classe-modal").on("click", function () {
@@ -115,19 +143,19 @@ $(".salvar-classe-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', nm_cls: nm_cls, dcr_cls: dcr_cls, qt_cls: qt_cls, rptc_cls: rptc_cls},
         success: function (data) {
-            alert("A Classe"+ (nm_cls == ""? "": " " + nm_cls) +" foi cadastrada com sucesso");
-            
+            alert("A Classe" + (nm_cls == "" ? "" : " " + nm_cls) + " foi cadastrada com sucesso");
+
             var pre = "idInserido";
             var idClasse = data.substr(data.indexOf(pre) + pre.length + 1);
             inserirOptionClasse(idClasse, nm_cls);
-            
+
             $("#modalCadastrarClasse").modal('hide');
         }
     });
 });
 
-function inserirOptionClasse(idClasse, nm_cls){
-    $("#input-txselr-classe").append("<option value='"+idClasse+"' selected>"+nm_cls+"</option>");
+function inserirOptionClasse(idClasse, nm_cls) {
+    $("#input-txselr-classe").append("<option value='" + idClasse + "' selected>" + nm_cls + "</option>");
 }
 
 $(".salvar-profissao-modal").on("click", function () {
@@ -140,19 +168,19 @@ $(".salvar-profissao-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', nm_pfs: nm_pfs, dcr_pfs: dcr_pfs, qt_pfs: qt_pfs, rptc_pfs: rptc_pfs},
         success: function (data) {
-            alert("A Profissão"+ (nm_pfs == ""? "": " " + nm_pfs) +" foi cadastrada com sucesso");
-            
+            alert("A Profissão" + (nm_pfs == "" ? "" : " " + nm_pfs) + " foi cadastrada com sucesso");
+
             var pre = "idInserido";
             var idPfs = data.substr(data.indexOf(pre) + pre.length + 1);
             inserirOptionProfissao(idPfs, nm_pfs);
-            
+
             $("#modalCadastrarProfissao").modal('hide');
         }
     });
 });
 
-function inserirOptionProfissao(idPfs, nm_pfs){
-    $("#input-txselr-profissao").append("<option value='"+idPfs+"' selected>"+nm_pfs+"</option>");
+function inserirOptionProfissao(idPfs, nm_pfs) {
+    $("#input-txselr-profissao").append("<option value='" + idPfs + "' selected>" + nm_pfs + "</option>");
 }
 
 $(".salvar-objeto-modal").on("click", function () {
@@ -165,19 +193,19 @@ $(".salvar-objeto-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', nm_obj: nm_obj, dcr_obj: dcr_obj, apci_obj: apci_obj, vlr_obj: vlr_obj},
         success: function (data) {
-            alert("O Objeto"+ (nm_obj == ""? "": " " + nm_obj) +" foi cadastrado com sucesso");
-            
+            alert("O Objeto" + (nm_obj == "" ? "" : " " + nm_obj) + " foi cadastrado com sucesso");
+
             var pre = "idInserido";
             var idObj = data.substr(data.indexOf(pre) + pre.length + 1);
             inserirOptionObjeto(idObj, nm_obj);
-            
+
             $("#modalCadastrarObjeto").modal('hide');
         }
     });
 });
 
-function inserirOptionObjeto(idObj, nm_obj){
-    $("#input-txselr-objeto").append("<option value='"+idObj+"' selected>"+nm_obj+"</option>");
+function inserirOptionObjeto(idObj, nm_obj) {
+    $("#input-txselr-objeto").append("<option value='" + idObj + "' selected>" + nm_obj + "</option>");
 }
 
 $(".salvar-habilidade-fisica-modal").on("click", function () {
@@ -189,19 +217,19 @@ $(".salvar-habilidade-fisica-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', nm_hbld_fsca: nm_hbld_fsca, dcr_hbld_fsca: dcr_hbld_fsca, podr_hbld_fsca: podr_hbld_fsca},
         success: function (data) {
-            alert("A Habilidade Física"+ (nm_hbld_fsca == ""? "": " " + nm_hbld_fsca) +" foi cadastrada com sucesso");
-            
+            alert("A Habilidade Física" + (nm_hbld_fsca == "" ? "" : " " + nm_hbld_fsca) + " foi cadastrada com sucesso");
+
             var pre = "idInserido";
             var idhbld_fsca = data.substr(data.indexOf(pre) + pre.length + 1);
             inserirOptionHabilidadeFisica(idhbld_fsca, nm_hbld_fsca);
-            
+
             $("#modalCadastrarHabilidadeFisica").modal('hide');
         }
     });
 });
 
-function inserirOptionHabilidadeFisica(idhbld_fsca, nm_hbld_fsca){
-    $("#input-txselr-habilidade-fisica").append("<option value='"+idhbld_fsca+"' selected>"+nm_hbld_fsca+"</option>");
+function inserirOptionHabilidadeFisica(idhbld_fsca, nm_hbld_fsca) {
+    $("#input-txselr-habilidade-fisica").append("<option value='" + idhbld_fsca + "' selected>" + nm_hbld_fsca + "</option>");
 }
 
 $(".salvar-habilidade-magica-modal").on("click", function () {
@@ -213,19 +241,19 @@ $(".salvar-habilidade-magica-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', nm_hbld_mgca: nm_hbld_mgca, dcr_hbld_mgca: dcr_hbld_mgca, podr_hbld_mgca: podr_hbld_mgca},
         success: function (data) {
-            alert("A Habilidade Mágica"+ (nm_hbld_mgca == ""? "": " " + nm_hbld_mgca) +" foi cadastrada com sucesso");
-            
+            alert("A Habilidade Mágica" + (nm_hbld_mgca == "" ? "" : " " + nm_hbld_mgca) + " foi cadastrada com sucesso");
+
             var pre = "idInserido";
             var idhbld_mgca = data.substr(data.indexOf(pre) + pre.length + 1);
             inserirOptionHabilidademagica(idhbld_mgca, nm_hbld_mgca);
-            
+
             $("#modalCadastrarHabilidademagica").modal('hide');
         }
     });
 });
 
-function inserirOptionHabilidademagica(idhbld_mgca, nm_hbld_mgca){
-    $("#input-txselr-habilidade-magica").append("<option value='"+idhbld_mgca+"' selected>"+nm_hbld_mgca+"</option>");
+function inserirOptionHabilidademagica(idhbld_mgca, nm_hbld_mgca) {
+    $("#input-txselr-habilidade-magica").append("<option value='" + idhbld_mgca + "' selected>" + nm_hbld_mgca + "</option>");
 }
 
 $(".salvar-lembranca-modal").on("click", function () {
@@ -236,18 +264,18 @@ $(".salvar-lembranca-modal").on("click", function () {
         method: "POST",
         data: {isAjax: 'true', dcr_lmca: dcr_lmca, apcc_lmca: apcc_lmca},
         success: function (data) {
-            alert("A Lembrança"+ (dcr_lmca == ""? "": " " + dcr_lmca) +" foi cadastrada com sucesso");
-            
+            alert("A Lembrança" + (dcr_lmca == "" ? "" : " " + dcr_lmca) + " foi cadastrada com sucesso");
+
             var pre = "idInserido";
             var idLembranca = data.substr(data.indexOf(pre) + pre.length + 1);
             inserirOptionLembranca(idLembranca, dcr_lmca);
-            
+
             $("#modalCadastrarLembranca").modal('hide');
         }
     });
 });
 
-function inserirOptionLembranca(idLembranca, dcr_lmca){
-    $("#input-txselr-lembranca").append("<option value='"+idLembranca+"' selected>"+dcr_lmca+"</option>");
+function inserirOptionLembranca(idLembranca, dcr_lmca) {
+    $("#input-txselr-lembranca").append("<option value='" + idLembranca + "' selected>" + dcr_lmca + "</option>");
 }
 //final lembrança e tudo de personagem
