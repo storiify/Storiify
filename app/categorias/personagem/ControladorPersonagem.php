@@ -183,10 +183,16 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
     }
     
     public function editarExterno($parametros) {
+        
+        $parametros["id"] = $parametros["idHist"];
+        
         $bdContext = new BdContextHistoria();
-        $instancia = new ModeloHistoria($bdContext->listar($parametros["idHist"])[0]);        
+        $instancia = new ModeloHistoria($bdContext->listar($parametros)[0]);
+        
         sessao()->setHistoriaSelecionada($instancia);
         unset($parametros["idHist"]);
+        
+        $parametros["id"] = $parametros["idPsna"];
         
         $this->editar($parametros);
     }

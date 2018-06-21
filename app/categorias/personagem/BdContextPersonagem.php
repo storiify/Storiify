@@ -118,6 +118,7 @@ class BdContextPersonagem extends ConexaoBd {
     }
 
     public function listar($parametros) {
+        
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "WHERE fk_hist='$idHistoria'";
 

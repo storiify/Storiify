@@ -58,7 +58,7 @@ class ModeloHistoria {
             
             $atributosSelecionados["Personagem Principal"] = "<span class='btn-listar-select' "
                     . "title='Clique para editar {$psnaPpl["nm_psna"]}'"
-                    . "href='?categoria=personagem&acao=editarExterno&id={$psnaPpl["pk_psna"]}&idHist={$this->pk_hist}'>" .
+                    . "href='?categoria=personagem&acao=editarExterno&idPsna={$psnaPpl["pk_psna"]}&idHist={$this->pk_hist}'>" .
                     truncar($psnaPpl["nm_psna"], 20) . "</span>";
         }
 
