@@ -213,6 +213,32 @@ function inserirOptionMito(idMito, nomeMito) {
 }
 //FINAL MITO
 
+//MAGIA
+$(".salvar-magia-modal").on("click", function () {
+    var nm_magi = $("[name='nm_magi']").val();
+    var dcr_magi = $("[name='dcr_magi']").val();
+    var rgrs_magi = $("[name='rgrs_magi']").val();
+
+    $.ajax({
+        url: "?categoria=magia&acao=salvar",
+        method: "POST",
+        data: {isAjax: 'true', nm_magi: nm_magi, dcr_magi: dcr_magi, rgrs_magi: rgrs_magi},
+        success: function (data) {
+            alert("A magia" + (nm_magi == "" ? "" : " " + nm_magi) + " foi cadastrada com sucesso");
+
+            var pre = "idInserido";
+            var idMagia = data.substr(data.indexOf(pre) + pre.length + 1);
+            inserirOptionMagia(idMagia, nm_magi);
+
+            $("#modalCadastrarMagia").modal('hide');
+        }
+    });
+});
+
+function inserirOptionMagia(idMagia, nomeMagia) {
+    $("#input-txselr-magia").append("<option value='" + idMagia + "' selected>" + nomeMagia + "</option>");
+}
+//FINAL MAGIA
 
 $(".salvar-classe-modal").on("click", function () {
     var nm_cls = $("[name='nm_cls']").val();

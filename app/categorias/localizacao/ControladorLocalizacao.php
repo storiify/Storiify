@@ -16,6 +16,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         require_once PATH_CAT . "/religiao/BdContextReligiao.php";
         require_once PATH_CAT . "/lingua/BdContextLingua.php";
         require_once PATH_CAT . "/mito/BdContextMito.php";
+        require_once PATH_CAT . "/magia/BdContextMagia.php";
         require_once PATH_CAT . "/personagem/BdContextPersonagem.php";
     }
 
@@ -43,6 +44,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         $resLingua = $bdLingua->listar("");
         $bdMito = new BdContextMito();
         $resMito = $bdMito->listar("");
+        $bdMagia = new BdContextMagia();
+        $resMagia = $bdMagia->listar("");
         $res = array(
             "psna" => $resPsna,
             "lczc" => $resLczc,
@@ -53,7 +56,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             "bioma" => $resBioma,
             "religiao" => $resReligiao,
             "lingua" => $resLingua,
-            "mito" => $resMito);
+            "mito" => $resMito,
+            "magia" => $resMagia);
         $this->setResultadosSelect($res);
     }
 
@@ -101,6 +105,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $resLingua = $bdLingua->listar("");
             $bdMito = new BdContextMito();
             $resMito = $bdMito->listar("");
+            $bdMagia = new BdContextMagia();
+            $resMagia = $bdMagia->listar("");
             //Get personagens registrados como mais conhecidos
             $idsPsnaCnhd = $bdLczc->listarPsnaCnhd($instancia->pk_lczc());
             //Get raças registradas
@@ -119,6 +125,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $idsLingua = $bdLczc->listarLingua($instancia->pk_lczc());
             //Get mitos registrados
             $idsMito = $bdLczc->listarMito($instancia->pk_lczc());
+            //Get magias registradas
+            $idsMagia = $bdLczc->listarMagia($instancia->pk_lczc());
             $res = array(
                 "psna" => $resPsna,
                 "lczc" => $resLczc,
@@ -138,7 +146,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
                 "idsBioma" => $idsBioma,
                 "idsReligiao" => $idsReligiao,
                 "idsLingua" => $idsLingua,
-                "idsMito" => $idsMito);
+                "idsMito" => $idsMito,
+                "idsMagia" => $idsMagia);
             $this->setResultadosSelect($res);
         } else {
             redirecionar("?categoria=localizacao&acao=listar");

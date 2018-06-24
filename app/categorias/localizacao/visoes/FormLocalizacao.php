@@ -13,9 +13,10 @@ $resultado = ($controlador->getResultados() == null ?
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= (empty($resultado->nm_lczc()) ?
-        ModeloLocalizacao::$nomeSingular : $resultado->nm_lczc(30))
-?>
+        <h1><?=
+            (empty($resultado->nm_lczc()) ?
+                    ModeloLocalizacao::$nomeSingular : $resultado->nm_lczc(30))
+            ?>
         </h1>
     </div>
 </div>
@@ -596,7 +597,7 @@ $resultado = ($controlador->getResultados() == null ?
                                 <span class="incluir-adicionar col-md-1">
                                     <button class="btn btn-azul incluir-btn-adicionar" type="button"
                                             data-toggle="modal" data-target="#modalCadastrarRaca" >
-                                        Criar <?= ModeloRaca::$nomeSingular?>
+                                        Criar <?= ModeloRaca::$nomeSingular ?>
                                     </button>
                                 </span>
                             </div>
@@ -645,7 +646,7 @@ $resultado = ($controlador->getResultados() == null ?
                                 <span class="incluir-adicionar col-md-1">
                                     <button class="btn btn-azul incluir-btn-adicionar" type="button"
                                             data-toggle="modal" data-target="#modalCadastrarFauna" >
-                                        Criar <?= ModeloFauna::$nomeSingular?>
+                                        Criar <?= ModeloFauna::$nomeSingular ?>
                                     </button>
                                 </span>
                             </div>
@@ -694,7 +695,7 @@ $resultado = ($controlador->getResultados() == null ?
                                 <span class="incluir-adicionar col-md-1">
                                     <button class="btn btn-azul incluir-btn-adicionar" type="button"
                                             data-toggle="modal" data-target="#modalCadastrarFlora" >
-                                        Criar <?= ModeloFlora::$nomeSingular?>
+                                        Criar <?= ModeloFlora::$nomeSingular ?>
                                     </button>
                                 </span>
                             </div>
@@ -1639,6 +1640,55 @@ $resultado = ($controlador->getResultados() == null ?
             <!-- FINAL - ABA TECNOLOGIA -->
             <!-- ABA MAGIA -->
             <div id="abaMagia" class="container tab-pane fade">
+                <!--MAGIAS - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-magia">Tipos de Magia</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_magi[]" id="input-txselr-magia">
+                                                <?php
+                                                foreach ($resultadoSelect->magia as $modeloSelect) {
+                                                    $modelo = new ModeloMagia($modeloSelect);
+                                                    $id = $modelo->pk_magi();
+                                                    $nome = $modelo->nm_magi();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsMagia as $idModelo) {
+                                                        if ($id == $idModelo["fk_magi"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarMagia" >
+                                        Criar <?= (strlen(ModeloMagia::$nomeSingular) <= 10 ? ModeloMagia::$nomeSingular : "Nova") ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
                 <!--INPUT MINMAX-->
                 <div class="form-group">
                     <div class="row">
@@ -1667,8 +1717,7 @@ $resultado = ($controlador->getResultados() == null ?
                                 <div class="detalhes-conteudo">
                                     <textarea name="acss_magi_dets" 
                                               placeholder="Digite aqui os detalhes para o Acesso à Magia" 
-                                              title="Campo para detalhes do Acesso à Magia">
-<?= $resultado->acss_magi_dets() ?>
+                                              title="Campo para detalhes do Acesso à Magia"><?= $resultado->acss_magi_dets() ?>
                                     </textarea>
                                 </div>
                             </div>
@@ -1701,7 +1750,7 @@ $resultado = ($controlador->getResultados() == null ?
                                           placeholder="Digite aqui os Efeitos da Magia na Localização" 
                                           title="Campo para Efeitos da Magia na Localização" 
                                           id="input-txarea-EfeitosdaMagianaLocalizacao">
-<?= $resultado->efe_magi_lczc() ?>
+                                              <?= $resultado->efe_magi_lczc() ?>
                                 </textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
@@ -1733,7 +1782,7 @@ $resultado = ($controlador->getResultados() == null ?
                                           placeholder="Digite aqui sobre os Efeitos da Magia na Sociedade" 
                                           title="Campo para Efeitos da Magia na Sociedade" 
                                           id="input-txarea-EfeitosdaMagianaSociedade">
-<?= $resultado->efe_magi_scdd() ?>
+                                              <?= $resultado->efe_magi_scdd() ?>
                                 </textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
@@ -1765,7 +1814,7 @@ $resultado = ($controlador->getResultados() == null ?
                                           placeholder="Digite aqui sobre os Efeitos da Magia na Tecnologia" 
                                           title="Campo para Efeitos da Magia na Tecnologia" 
                                           id="input-txarea-EfeitosdaMagianaTecnologia">
-<?= $resultado->efe_magi_tecn() ?>
+                                              <?= $resultado->efe_magi_tecn() ?>
                                 </textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->

@@ -58,6 +58,11 @@ class BdContextLocalizacao extends ConexaoBd {
             $idsMito = $parametros['fk_mito'];
             unset($parametros['fk_mito']);
         }
+        //Gerencia a coluna de magia
+        if (isset($parametros['fk_magi'])) {
+            $idsMagia = $parametros['fk_magi'];
+            unset($parametros['fk_magi']);
+        }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
@@ -87,6 +92,8 @@ class BdContextLocalizacao extends ConexaoBd {
                 $this->excluirLingua($parametros['pk_lczc']);
                 //Deleta todas as relações mito
                 $this->excluirMito($parametros['pk_lczc']);
+                //Deleta todas as relações magia
+                $this->excluirMagia($parametros['pk_lczc']);
             }
         } else { //Ao criar
             $parametros['dt_cric'] = $horarioAtual;
@@ -114,6 +121,8 @@ class BdContextLocalizacao extends ConexaoBd {
             $this->salvarLinguaExistente($idsLingua, $idAtual);
             //Cria a relação de mitos existentes
             $this->salvarMitoExistente($idsMito, $idAtual);
+            //Cria a relação de magias existentes
+            $this->salvarMagiaExistente($idsMagia, $idAtual);
         }
 
         return $res;
@@ -431,7 +440,7 @@ class BdContextLocalizacao extends ConexaoBd {
 
         return $res;
     }
-    
+
     private function salvarMitoExistente($idsMito, $idLczc) {
         $tbRel = "tb_localizacao_rel_mito";
         foreach ($idsMito as $mito) {
@@ -457,6 +466,38 @@ class BdContextLocalizacao extends ConexaoBd {
 
     private function excluirMito($idLczc) {
         $tbRel = "tb_localizacao_rel_mito";
+        $condicao = "fk_lczc='$idLczc'";
+
+        $res = $this->excluirBase($tbRel, $condicao);
+
+        return $res;
+    }
+    
+    private function salvarMagiaExistente($idsMagia, $idLczc) {
+        $tbRel = "tb_localizacao_rel_magia";
+        foreach ($idsMagia as $magia) {
+            $rel['fk_lczc'] = $idLczc;
+            $rel['fk_magi'] = $magia;
+            $res = $this->inserirBase($rel, $tbRel);
+        }
+        return $res;
+    }
+
+    public function listarMagia($parametros) {
+        $tbRel = "tb_localizacao_rel_magia";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_magi', $tbRel, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+        return $res;
+    }
+
+    private function excluirMagia($idLczc) {
+        $tbRel = "tb_localizacao_rel_magia";
         $condicao = "fk_lczc='$idLczc'";
 
         $res = $this->excluirBase($tbRel, $condicao);
