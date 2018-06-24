@@ -1037,7 +1037,15 @@ $resultado = ($controlador->getResultados() == null ?
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
                             <select class="form-control select2 input-textoselect" name="fk_cena_into_erdo" id="input-txselr-LocalizacaoNatal">
-                                      
+                                <option value="" selected>-- Cenas de <?= $historiaSelecionada->tit_hist() ?> --</option>
+									<?php
+									foreach ($resultadoSelect->cena as $cenaSelect) {
+									$id = $cenaSelect["pk_cena"];
+									$nome = $cenaSelect["tit_cena"];
+									$isSelected = ($resultado->fk_cena_into_erdo() == $id ? "selected" : "");
+									echo "<option value='$id' $isSelected>$nome</option>";
+									}
+									?>      
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->
