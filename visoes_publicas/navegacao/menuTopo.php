@@ -27,7 +27,7 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
             <div class="container">
                 <!--Botão de Usuário-->
                 <div class="dropdown">
-                    <button type="button" class="btn btn-azul dropdown-toggle" data-toggle="dropdown">
+                    <button type="button" class="btn btn-azul dropdown-toggle btn-usuario" data-toggle="dropdown">
                         <div class='pull-left'>
                             <div class='avatar-usuario' style='background-image:url(usuarios/1/1/tb_historia/im_hist.png)'></div>
                         </div>
