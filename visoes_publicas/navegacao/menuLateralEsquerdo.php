@@ -8,11 +8,8 @@ if ($historiaSelecionada != NULL) {
     $qtdPsna = BdContextHistoria::getQtdPsna($historiaSelecionada->pk_hist());
     $qtdLczc = BdContextHistoria::getQtdLczc($historiaSelecionada->pk_hist());
     $qtdCena = BdContextHistoria::getQtdCena($historiaSelecionada->pk_hist());
-    if ($historiaSelecionada->im_hist() != const_Indefinida_IM) {
-        $imgHistSelecionada = "style='background-image:url({$historiaSelecionada->im_hist()})'";
-    } else {
-        $imgHistSelecionada = "";
-    }
+
+    $imgHistSelecionada = "style='background-image:url({$historiaSelecionada->im_hist()})'";
 }
 ?>
 
