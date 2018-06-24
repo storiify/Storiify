@@ -97,13 +97,14 @@ $resultado = ($controlador->getResultados() == null ?
                                        maxlength="60" type="text"
                                        class="form-control" id="input-tx-TitulodaCena"/>
                             </div>
-                        </div>
-                        <div class="col-md-12 input-detalhes">
-                            <a class="detalhes-link">Adicionar Detalhes</a>
-                            <div class="detalhes-conteudo">
-                                <textarea name="tit_cena_dets" 
-                                          placeholder="Digite aqui os Detalhes do Título da Cena" 
-                                          title="Campo para Detalhes do Título da Cena"><?= $resultado->tit_cena_dets() ?></textarea>
+
+                            <div class="col-md-12 input-detalhes">
+                                <a class="detalhes-link">Adicionar Detalhes</a>
+                                <div class="detalhes-conteudo">
+                                    <textarea name="tit_cena_dets" 
+                                              placeholder="Digite aqui os Detalhes do Título da Cena" 
+                                              title="Campo para Detalhes do Título da Cena"><?= $resultado->tit_cena_dets() ?></textarea>
+                                </div>
                             </div>
                         </div>
                         <!--FINAL - INPUT CORPO-->
@@ -208,13 +209,14 @@ $resultado = ($controlador->getResultados() == null ?
                                        maxlength="60" type="text"
                                        class="form-control" id="input-tx-DataeHoradaCena"/>
                             </div>
-                        </div>
-                        <div class="col-md-12 input-detalhes">
-                            <a class="detalhes-link">Adicionar Detalhes</a>
-                            <div class="detalhes-conteudo">
-                                <textarea name="tit_cena_dets" 
-                                          placeholder="Digite aqui os Detalhes da Data e Hora da Cena" 
-                                          title="Campo para Detalhes da Data e Hora da Cena"><?= $resultado->dt_hora_dets() ?></textarea>
+
+                            <div class="col-md-12 input-detalhes">
+                                <a class="detalhes-link">Adicionar Detalhes</a>
+                                <div class="detalhes-conteudo">
+                                    <textarea name="tit_cena_dets" 
+                                              placeholder="Digite aqui os Detalhes da Data e Hora da Cena" 
+                                              title="Campo para Detalhes da Data e Hora da Cena"><?= $resultado->dt_hora_dets() ?></textarea>
+                                </div>
                             </div>
                         </div>
                         <!--FINAL - INPUT CORPO-->
