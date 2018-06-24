@@ -16,7 +16,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
         require_once PATH_CAT . "/habilidade_fisica/BdContextHabilidade_fisica.php";
         require_once PATH_CAT . "/habilidade_magica/BdContextHabilidade_magica.php";
         require_once PATH_CAT . "/lembranca/BdContextLembranca.php";
-        
+        require_once PATH_CAT . "/cena/BdContextCena.php";
         require_once PATH_CAT . "/historia/BdContextHistoria.php";
     }
 
@@ -42,6 +42,8 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
         $resHbld_mgca = $bdHbld_mgca->listar("");
         $bdLmca = new BdContextLembranca();
         $resLmca = $bdLmca->listar("");
+		$bdCena = new BdContextCena();
+        $resCena = $bdCena->listar("");
         $res = array(
             "psna" => $resPsna,
             "relLczc" => $resLczc,
@@ -51,6 +53,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
             "hbld_fsca" => $resHbld_fsca,
             "hbld_mgca" => $resHbld_mgca,
             "lmca" => $resLmca,
+			"cena" => $resCena,
             "raca" => $resRaca);
         $this->setResultadosSelect($res);
     }
@@ -109,6 +112,8 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
             $bdLmca = new BdContextLembranca();
             $resLmca = $bdLmca->listar("");
             $idsLmca = $bdPnsa->listarLembranca($instancia->pk_psna());
+			$bdCena = new BdContextCena();
+			$resCena = $bdCena->listar("");
             $res = array(
                 "psna" => $resPsna,
                 "relLczc" => $resLczc,
@@ -117,6 +122,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
                 "pfs" => $resPfs,
                 "obj" => $resObj,
                 "lmca" => $resLmca,
+				"cena" => $resCena,
                 "hbld_fsca" => $resHbld_fsca,
                 "hbld_mgca" => $resHbld_mgca,
                 "idsPfs" => $idsPfs,
