@@ -53,8 +53,8 @@ $resultado = ($controlador->getResultados() == null ?
                                 <div class="input-imagem" title="Campo para Imagem da Cena" id="input-im-ImagemdaCena"
                                      style="background-image:url(<?= $resultado->im_cena() ?>)"></div>
 
-                                <input value="<?= $resultado->im_cena() ?>" 
-                                       accept='.png,.jpg' type='file' class="imgUploader" name="im_cena"/>
+                                <input value="" accept='.png,.jpg,.jpeg' type='file' class="imgUploader" name="im_cena"/>
+                                <input value="" type="hidden" name="im_cena_reset" class="request-reset"/>
 
                                 <a class="input-imagem-reset" title="Clique para resetar a Imagem da Cena" alt="Clique para resetar a Imagem da Cena">
                                     <i class="fa fa-ban"></i>

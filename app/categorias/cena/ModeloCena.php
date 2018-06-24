@@ -34,6 +34,10 @@ class ModeloCena {
                 }
             }
         }
+
+        if ($this->im_cena == "") {
+            $this->im_cena = const_Indefinida_IM;
+        }
     }
 
     public function getAtributosListar() {
