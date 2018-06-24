@@ -101,24 +101,46 @@ class BdContextPersonagem extends ConexaoBd {
 
         if ($res) {
             $idAtual = (isset($parametros['pk_psna']) ? $parametros['pk_psna'] : $this->proximoID() - 1);
-            $this->salvarClasseExistente($idsClasse, $idAtual);
-            $this->salvarProfissaoExistente($idsPfs, $idAtual);
-            $this->salvarObjetoExistente($idsObj, $idAtual);
-            $this->salvarHabilidade_fisicaExistente($idsHbld_fsca, $idAtual);
-            $this->salvarHabilidade_magicaExistente($idsHbld_mgca, $idAtual);
-            $this->salvarFamiliaExistente($idsFamilia, $idAtual);
-            $this->salvarAmigosExistente($idsAmigos, $idAtual);
-            $this->salvarLacosExistente($idsLacos, $idAtual);
-            $this->salvarCompExistente($idsComp, $idAtual);
-            $this->salvarRivaisExistente($idsRivais, $idAtual);
-            $this->salvarLembrancaExistente($idsLmca, $idAtual);
+            if (isset($idsClasse)) {
+                $this->salvarClasseExistente($idsClasse, $idAtual);
+            }
+            if (isset($idsPfs)) {
+                $this->salvarProfissaoExistente($idsPfs, $idAtual);
+            }
+            if (isset($idsObj)) {
+                $this->salvarObjetoExistente($idsObj, $idAtual);
+            }
+            if (isset($idsHbld_fsca)) {
+                $this->salvarHabilidade_fisicaExistente($idsHbld_fsca, $idAtual);
+            }
+            if (isset($idsHbld_mgca)) {
+                $this->salvarHabilidade_magicaExistente($idsHbld_mgca, $idAtual);
+            }
+            if (isset($idsFamilia)) {
+                $this->salvarFamiliaExistente($idsFamilia, $idAtual);
+            }
+            if (isset($idsAmigos)) {
+                $this->salvarAmigosExistente($idsAmigos, $idAtual);
+            }
+            if (isset($idsLacos)) {
+                $this->salvarLacosExistente($idsLacos, $idAtual);
+            }
+            if (isset($idsComp)) {
+                $this->salvarCompExistente($idsComp, $idAtual);
+            }
+            if (isset($idsRivais)) {
+                $this->salvarRivaisExistente($idsRivais, $idAtual);
+            }
+            if (isset($idsLmca)) {
+                $this->salvarLembrancaExistente($idsLmca, $idAtual);
+            }
         }
 
         return $res;
     }
 
     public function listar($parametros) {
-        
+
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $condicao = "WHERE fk_hist='$idHistoria'";
 
