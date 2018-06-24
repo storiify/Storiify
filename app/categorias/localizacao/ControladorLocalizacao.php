@@ -138,6 +138,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
                 "religiao" => $resReligiao,
                 "lingua" => $resLingua,
                 "mito" => $resMito,
+                "magia" => $resMagia,
                 "idsPsnaLczc" => $idsPsnaCnhd,
                 "idsRaca" => $idsRaca,
                 "idsFauna" => $idsFauna,
