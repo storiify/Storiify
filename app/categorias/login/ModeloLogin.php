@@ -3,6 +3,7 @@
 class ModeloLogin extends ConexaoBd {
 
     private $campos = '';
+    const tx_tabela = "tb_usuario";
     private $cryptAlgo;
 
     public function __construct() {
@@ -12,6 +13,7 @@ class ModeloLogin extends ConexaoBd {
         } else {
             $this->cryptAlgo = PASSWORD_ARGON2I;
         }
+        $this->tabela = self::tx_tabela;
     }
 
     public function check($param) {
@@ -22,7 +24,7 @@ class ModeloLogin extends ConexaoBd {
         $condicao = "WHERE MAIL_USU='$email'";
 
         $modeloBase = new ConexaoBd();
-        $res = $modeloBase->listarBase("*", "tb_usuario", $condicao);
+        $res = $modeloBase->listarBase("*", $this->tabela, $condicao);
 
         if (!isset($res[0]) || $res[0] == null || !password_verify($senha, $res[0]['snh_usu'])) {
             return false;
@@ -53,11 +55,9 @@ class ModeloLogin extends ConexaoBd {
 
         unset($parametros['input1'], $parametros['input2'], $parametros['input3']);
 
-        $tabela = "tb_usuario";
-
         $parametros['snh_usu'] = password_hash($parametros['snh_usu'], $this->cryptAlgo);
 
-        $res = $modeloBase->inserirBase($parametros, $tabela);
+        $res = $modeloBase->inserirBase($parametros, $this->tabela);
 
         return $res;
     }
@@ -72,9 +72,7 @@ class ModeloLogin extends ConexaoBd {
 
         $condicao = "WHERE MAIL_USU='$email'";
 
-        $tabela = "tb_usuario";
-
-        $res = $modeloBase->listarBase("*", "tb_usuario", $condicao);
+        $res = $modeloBase->listarBase("*", $this->tabela, $condicao);
 
         return $res;
     }

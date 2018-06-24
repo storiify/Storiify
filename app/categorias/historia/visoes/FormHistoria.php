@@ -52,7 +52,8 @@ $resultado = ($controlador->getResultados() == null ?
                                 <div class="input-imagem" title="Campo para Imagem da história" id="input-im-ImagemdaHistoria"
                                      style="background-image:url(<?= $resultado->im_hist() ?>)"></div>
 
-                                <input value="" accept="image/*" type='file' class="imgUploader" name="im_hist"/>
+                                <input value="" accept='.png,.jpg,.jpeg' type='file' class="imgUploader" name="im_hist"/>
+                                <input value="" type="hidden" name="im_hist_reset" class="request-reset"/>
 
                                 <a class="input-imagem-reset" title="Clique para resetar a Imagem da História" alt="Clique para resetar a Imagem da História">
                                     <i class="fa fa-ban"></i>

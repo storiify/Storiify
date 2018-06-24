@@ -2,12 +2,13 @@
 
 class BdContextPersonagem extends ConexaoBd {
 
-    private $tabela = "tb_personagem";
+    const tx_tabela = "tb_personagem";
     private $campos;
 
     public function __construct($campos = '*') {
         parent::__construct();
         $this->campos = $campos;
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

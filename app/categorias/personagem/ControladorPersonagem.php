@@ -150,14 +150,31 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
             }
         }
 
-        $bdContext = new BdContextPersonagem();
-
-        //Cuida da parte de imagem
         $idUsuario = sessao()->getUserData()->id;
-        if (isset($_FILES) && $_FILES['im_psna']['size'] != 0) {
+
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
+        
+        $bdContext = new BdContextPersonagem();
+        if (isset($parametros['pk_psna']) && $parametros['pk_psna'] != '') {
+            $idPersonagem = $parametros['pk_psna'];
+        } else {
             $idPersonagem = $bdContext->proximoID();
-            $parametros['im_psna'] = uploadImagem($idUsuario, "Personagem", $idPersonagem, $_FILES['im_psna']);
         }
+        
+        //Processamento de todas as imagens da categoria
+        $imagens = array('im_psna'); //adicionar nomes dos campos aqui
+
+        foreach ($imagens as $imagem) {
+            $reset = $imagem . '_reset';
+            if (array_key_exists($imagem, $_FILES) && $_FILES[$imagem]['error'] === UPLOAD_ERR_OK) {
+                $parametros[$imagem] = uploadImagem($idUsuario, $idHistoria, $bdContext->getTabela(), $idPersonagem, $imagem, $_FILES[$imagem]);
+            } else if (isset($parametros[$reset]) && $parametros[$reset] == true) {
+                deleteImagem($idUsuario, $idHistoria, $bdContext->getTabela(), $idPersonagem, $imagem);
+                $parametros[$imagem] = "0";
+            }
+            unset($parametros[$reset]);
+        }
+        
         //Cuida da parte da visibilidade
         if (isset($parametros['vsi_psna']) && is_array($parametros['vsi_psna'])) {
             $tempStr = 0;

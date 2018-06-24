@@ -2,12 +2,13 @@
 
 class BdContextLocalizacao extends ConexaoBd {
 
-    private $tabela = "tb_localizacao";
+    const tx_tabela = "tb_localizacao";
     private $campos;
 
     public function __construct($campos = '*') {
         parent::__construct();
         $this->campos = $campos;
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

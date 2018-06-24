@@ -2,11 +2,12 @@
 
 class BdContextReligiao extends ConexaoBd {
 
-    private $tabela = "tb_religiao";
+    const tx_tabela = "tb_religiao";
     private $campos = '*';
 
     public function __construct() {
         parent::__construct();
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

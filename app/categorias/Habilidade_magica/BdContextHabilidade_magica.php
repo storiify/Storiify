@@ -2,11 +2,12 @@
 
 class BdContextHabilidade_magica extends ConexaoBd {
 
-    private $tabela = "tb_habilidade_magica";
+    const tx_tabela = "tb_habilidade_magica";
     private $campos = '*';
 
     public function __construct() {
         parent::__construct();
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

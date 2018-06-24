@@ -2,11 +2,12 @@
 
 class BdContextRaca extends ConexaoBd {
 
-    private $tabela = "tb_raca";
+    const tx_tabela = "tb_raca";
     private $campos = '*';
 
     public function __construct() {
         parent::__construct();
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

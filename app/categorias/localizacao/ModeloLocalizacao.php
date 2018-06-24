@@ -77,6 +77,10 @@ class ModeloLocalizacao {
                 }
             }
         }
+        
+        if($this->im_lczc == "") {
+		$this->im_lczc = const_Indefinida_IM;
+	}
     }
 
     public function getAtributosListar() {

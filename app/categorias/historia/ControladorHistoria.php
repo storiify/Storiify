@@ -66,17 +66,28 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
             }
         }
         $idUsuario = sessao()->getUserData()->id;
+        
         $bdContext = new BdContextHistoria();
-
         if (isset($parametros['pk_hist']) && $parametros['pk_hist'] != '') {
             $idHistoria = $parametros['pk_hist'];
         } else {
             $idHistoria = $bdContext->proximoID();
         }
 
-        if (isset($_FILES) && $_FILES['im_ppl']['size'] != 0) {
-            $parametros['im_ppl'] = uploadImagem($idUsuario, "historia", $idHistoria, $_FILES['im_ppl']);
+        //Processamento de todas as imagens da categoria
+        $imagens = array('im_hist'); //adicionar nomes dos campos aqui
+
+        foreach ($imagens as $imagem) {
+            $reset = $imagem . '_reset';
+            if (array_key_exists($imagem, $_FILES) && $_FILES[$imagem]['error'] === UPLOAD_ERR_OK) {
+                $parametros[$imagem] = uploadImagem($idUsuario, $idHistoria, $bdContext->getTabela(), $idHistoria, $imagem, $_FILES[$imagem]);
+            } else if (isset($parametros[$reset]) && $parametros[$reset] == true) {
+                deleteImagem($idUsuario, $idHistoria, $bdContext->getTabela(), $idHistoria, $imagem);
+                $parametros[$imagem] = "0";
+            }
+            unset($parametros[$reset]);
         }
+
         if (isset($parametros['vsi_hist']) && is_array($parametros['vsi_hist'])) {
             $tempStr = 0;
             foreach ($parametros['vsi_hist'] as $value) {
@@ -111,11 +122,11 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         $bdContext = new BdContextHistoria();
         $instancia = new ModeloHistoria($bdContext->listar($parametros)[0]);
         $this->setResultados($instancia);
-        
+
         sessao()->setHistoriaSelecionada($instancia);
 
         $this->setVisao(ModeloHistoria::$viewCategoriasHistoria);
-        
+
         $this->setTituloPagina($instancia->tit_hist());
 
         $res = $bdContext->listar("");

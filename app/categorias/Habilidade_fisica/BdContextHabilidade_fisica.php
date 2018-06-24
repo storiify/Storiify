@@ -2,11 +2,12 @@
 
 class BdContextHabilidade_fisica extends ConexaoBd {
 
-    private $tabela = "tb_habilidade_fisica";
+    const tx_tabela = "tb_habilidade_fisica";
     private $campos = '*';
 
     public function __construct() {
         parent::__construct();
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

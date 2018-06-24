@@ -2,11 +2,12 @@
 
 class BdContextLingua extends ConexaoBd {
 
-    private $tabela = "tb_lingua";
+    const tx_tabela = "tb_lingua";
     private $campos = '*';
 
     public function __construct() {
         parent::__construct();
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

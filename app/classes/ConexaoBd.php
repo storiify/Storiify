@@ -5,7 +5,7 @@ require_once '..\passwordBD.php';
 class ConexaoBd {
 
     private static $instance = NULL;
-
+    protected $tabela;
     const colunasMinMax = array("hotl_lczc", "degd_scl", "satc_pop", "nvl_tecn", "depe_tecn",
         "acss_tecn", "acss_magi", "h_psna", "peso_psna", "prte_fsco", "pvmt_raca", "rptc_raca", "pvmt_fnaagsd_fna",
         "rrdd_flra", "rrdd_rcs_ntrl", "popd_relg", "popd_lnga", "popd_mito", "qt_cls", "apcc_lmca", "vlr_obj", "rptc_cls", "rptc_pfs", "qt_pfs");
@@ -89,6 +89,7 @@ class ConexaoBd {
         $valores = substr($valores, 0, -1);
 
         $sql = "INSERT INTO $tabela ($colunas) VALUES ($valores)";
+        consoleLog($sql);
         $res = self::getInstance()->query($sql);
 
         if ($res->rowCount() > 0) {
@@ -120,6 +121,11 @@ class ConexaoBd {
             $res = $row['Auto_increment'];
         }
         return $res;
+    }
+    
+    /* retorna o nome da tabela */
+    public function getTabela() {
+        return $this->tabela;
     }
 
 }

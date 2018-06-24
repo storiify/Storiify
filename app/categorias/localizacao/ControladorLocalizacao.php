@@ -156,14 +156,39 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
     }
 
     public function salvar($parametros) {
-        $bdContext = new BdContextLocalizacao();
-
-        //Cuida da parte de imagem
-        $idUsuario = sessao()->getUserData()->id;
-        if (isset($_FILES) && $_FILES['im_lczc']['size'] != 0) {
-            $idLocalizacao = $bdContext->proximoID();
-            $parametros['im_lczc'] = uploadImagem($idUsuario, "localizacao", $idLocalizacao, $_FILES['im_lczc']);
+        
+        //Não altera o que não foi alterado
+        foreach ($parametros as $key => $value) {
+            if (!isset($parametros[$key]) || $parametros[$key] == '') {
+                unset($parametros[$key]);
+            }
         }
+        
+        $idUsuario = sessao()->getUserData()->id;
+        
+        $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
+        
+        $bdContext = new BdContextLocalizacao();
+        if (isset($parametros['pk_lczc']) && $parametros['pk_lczc'] != '') {
+            $idLocalizacao = $parametros['pk_lczc'];
+        } else {
+            $idLocalizacao = $bdContext->proximoID();
+        }
+        
+        //Processamento de todas as imagens da categoria
+        $imagens = array('im_lczc'); //adicionar nomes dos campos aqui
+
+        foreach ($imagens as $imagem) {
+            $reset = $imagem . '_reset';
+            if (array_key_exists($imagem, $_FILES) && $_FILES[$imagem]['error'] === UPLOAD_ERR_OK) {
+                $parametros[$imagem] = uploadImagem($idUsuario, $idHistoria, $bdContext->getTabela(), $idLocalizacao, $imagem, $_FILES[$imagem]);
+            } else if (isset($parametros[$reset]) && $parametros[$reset] == true) {
+                deleteImagem($idUsuario, $idHistoria, $bdContext->getTabela(), $idLocalizacao, $imagem);
+                $parametros[$imagem] = "0";
+            }
+            unset($parametros[$reset]);
+        }
+        
         //Cuida da parte da visibilidade
         if (isset($parametros['vsi_lczc']) && is_array($parametros['vsi_lczc'])) {
             $tempStr = 0;

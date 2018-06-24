@@ -40,6 +40,10 @@ class ModeloHistoria {
                 }
             }
         }
+        
+        if($this->im_hist == "") {
+            $this->im_hist = const_Indefinida_IM;
+        }
     }
 
     public function getAtributosListar() {

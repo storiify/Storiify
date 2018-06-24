@@ -2,11 +2,12 @@
 
 class BdContextFauna extends ConexaoBd {
 
-    private $tabela = "tb_fauna";
+    const tx_tabela = "tb_fauna";
     private $campos = '*';
 
     public function __construct() {
         parent::__construct();
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

@@ -2,11 +2,12 @@
 
 class BdContextCena extends ConexaoBd {
 
-    private $tabela = "tb_cena";
+    const tx_tabela = "tb_cena";
     private $campos = '*';
 
     public function __construct() {
         parent::__construct();
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

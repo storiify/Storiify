@@ -2,11 +2,12 @@
 
 class BdContextRecurso_natural extends ConexaoBd {
 
-    private $tabela = "tb_recurso_natural";
+    const tx_tabela = "tb_recurso_natural";
     private $campos = '*';
 
     public function __construct() {
         parent::__construct();
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {

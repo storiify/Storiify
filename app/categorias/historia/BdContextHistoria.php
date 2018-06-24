@@ -2,12 +2,13 @@
 
 class BdContextHistoria extends ConexaoBd {
 
-    private $tabela = "tb_historia";
     private $campos;
+    const tx_tabela = 'tb_historia';
 
     public function __construct($campos = '*') {
         parent::__construct();
         $this->campos = $campos;
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {
@@ -93,4 +94,5 @@ class BdContextHistoria extends ConexaoBd {
 
         return $bdBase->listarBase($colunas, $tbCena, $where)[0][0];
     }
+
 }

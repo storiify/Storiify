@@ -71,6 +71,10 @@ class ModeloPersonagem {
                 }
             }
         }
+        
+        if($this->im_psna == "") {
+		$this->im_psna = const_Indefinida_IM;
+	}
     }
 
     // public function getAtributosListar() {

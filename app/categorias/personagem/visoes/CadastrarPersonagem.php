@@ -59,8 +59,8 @@ $resultado = ($controlador->getResultados() == null ?
 						<div class="input-imagem" title="Campo para Imagem da Personagem" id="input-im-ImagemdoPersonagem"
 							 style="background-image:url(<?= $resultado->im_psna() ?>)"></div>
 						
-						<input value="<?= $resultado->im_psna()?>" 
-							   accept='.png,.jpg' type='file' class="imgUploader" name="im_psna"/>
+						<input value="" accept='.png,.jpg,.jpeg' type='file' class="imgUploader" name="im_psna"/>
+                                                <input value="" type="hidden" name="im_psna_reset" class="request-reset"/>
 						
 						<a class="input-imagem-reset" title="Clique para resetar a Imagem da História" alt="Clique para resetar a Imagem do Personagem">
 							<i class="fa fa-ban"></i>

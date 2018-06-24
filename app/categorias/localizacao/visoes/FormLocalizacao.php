@@ -63,8 +63,8 @@ $resultado = ($controlador->getResultados() == null ?
                                 <div class="input-imagem" title="Campo para Imagem da Localização" id="input-im-ImagemdaLocalizacao"
                                      style="background-image:url(<?= $resultado->im_lczc() ?>)"></div>
 
-                                <input value="<?= $resultado->im_lczc() ?>" 
-                                       accept='.png,.jpg' type='file' class="imgUploader" name="im_lczc"/>
+                                <input value="" accept='.png,.jpg,.jpeg' type='file' class="imgUploader" name="im_lczc"/>
+                                <input value="" type="hidden" name="im_lczc_reset" class="request-reset"/>
 
                                 <a class="input-imagem-reset" title="Clique para resetar a Imagem da Localização" alt="Clique para resetar a Imagem da Localização">
                                     <i class="fa fa-ban"></i>
