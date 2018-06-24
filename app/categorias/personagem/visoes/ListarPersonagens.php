@@ -28,15 +28,24 @@ $resultados = $controlador->getResultados();
             </a>
         </div>
     </div>
-    <?php
+	<?php
     if (isset($resultados)) {
-        foreach ($resultados as $personagem) {
-            $modelo = (object) $personagem;
-            $nome = $modelo->nm_psna;
-            $imagemPrincipal = (isset($modelo->im_psna)) ? $modelo->im_psna : const_Indefinida_IM;
+        foreach ($resultados as $personagemArray) {
+            $personagem = new ModeloPersonagem($personagemArray);
+            $nome = $personagem->nm_psna();
+            $imagemPrincipal = ($personagem->im_psna() != "" ? $personagem->im_psna() : const_Indefinida_IM);
+
+            $camposListar = "";
+            foreach ($personagem->getAtributosListar() as $nomeCampo => $valorCampo) {
+                $camposListar .= "<tr>"
+                        . "         <th scope='row'>$nomeCampo</th>"
+                        . "         <td>$valorCampo</td>"
+                        . "       </tr>";
+            }
+
             echo
             "<div title='Clique para editar $nome'"
-            . "class='instancia-card mx-auto row' data-id='$modelo->pk_psna' data-nome='$nome'>"
+            . "class='instancia-card mx-auto row' data-id='{$personagem->pk_psna()}' data-nome='$nome'>"
             . "    <div class='instancia-corpo col-md-11 row'>"
             . "        <div class='instancia-imagem' style='background-image:url($imagemPrincipal)'></div>"
             . "        <div class='instancia-conteudo col'>"
@@ -45,31 +54,20 @@ $resultados = $controlador->getResultados();
             . "            </div>"
             . "            <div class='instancia-detalhes'>"
             . "                <table class='table'>"
-            . "                    <tr>"
-            . "                        <th scope='row'>Nome:</th>"
-            . "                        <td>" . $modelo->nm_psna . "</td>"
-            . "                    </tr>"
-            . "                    <tr>"
-            . "                        <th scope='row'>Descrição Básica:</th>"
-            . "                        <td>" . $modelo->dcr_bsca . "</td>"
-            . "                    </tr>"
-            . "                    <tr>"
-            . "                        <th scope='row'>Data de Nascimento:</th>"
-            . "                        <td>" . $modelo->dt_nsc . "</td>"
-            . "                    </tr>"
+            . "                     $camposListar"
             . "                </table>"
             . "            </div>"
             . "            <div class='instancia-ultima-alteracao hidden-xl-down'>"
-            . "                <span>Última edição: $modelo->dt_alt </span>"
+            . "                <span>Última edição: {$personagem->dt_alt()} </span>"
             . "            </div>"
             . "        </div>"
             . "    </div>"
-            . "    <a href='?categoria=$categoria&acao=editar&id=$modelo->pk_psna'></a>"
+            . "    <a href='?categoria=$categoria&acao=editar&id={$personagem->pk_psna()}'></a>"
             . "    <div class='instancia-controle col-md-1' style='padding-left: 0px;'>"
             . "        <button class='btn btn-azul btn-deletar-instancia' title='Clique para deletar $nome'>"
             . "            <i class='fa fa-times'></i>"
             . "        </button>"
-            . "        <a href='?categoria=$categoria&acao=excluir&id=$modelo->pk_psna' class='deletar-instancia-escondido'></a>"
+            . "        <a href='?categoria=$categoria&acao=excluir&id={$personagem->pk_psna()}' class='deletar-instancia-escondido'></a>"
             . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar'>"
             . "            <i class='fa fa-minus'></i>"
             . "        </button>"
@@ -81,7 +79,7 @@ $resultados = $controlador->getResultados();
             . "</div>";
         }
     }
-    if (!isset($personagem)) {
+    if (empty($personagem)) {
         echo"<div align='center' class='sem-instancia' style='margin-bottom: 0.5%'>"
         . "	<div align='left' style='padding-left: 0.5%'>"
         . "	    <span>" . sprintf(const_Indefinida_Msg, nomeFormal($categoria, "plural")) . "</span>"

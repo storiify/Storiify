@@ -77,44 +77,41 @@ class ModeloPersonagem {
 	}
     }
 
-    // public function getAtributosListar() {
-        // $qtdMaxAtt = 3;
-        // $atributosSelecionados = array();
+    public function getAtributosListar() {
+        $qtdMaxAtt = 3;
+        $atributosSelecionados = array();
 
-        // if ($this->vis_grl != "") {
-            // $atributosSelecionados["Visão Geral"] = $this->vis_grl;
-        // }
-        // if ($this->fk_ppl_lcld != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            // $bdContext = new BdContextLocalizacao();
-            // $parametros["id"] = $this->fk_ppl_lcld;
-            // $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
+		if ($this->dcr_bsca != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Descrição Básica"] = $this->dcr_bsca;
+        }
+        if ($this->dt_nsc_dets != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Data de Nascimento"] = $this->dt_nsc_dets;
+        }  
+		if ($this->papl_hist != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Papel na História"] = $this->papl_hist;
+        }
+		if ($this->envl_hist != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Envolvimento na História"] = $this->envl_hist;
+        }
+        if ($this->objt_ppl != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Objetivo Principal"] = $this->objt_ppl;
+        }
+        if ($this->mtvc_psna != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Motivações"] = $this->mtvc_psna;
+        }
+		if ($this->fk_lczc_natl != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $bdContext = new BdContextLocalizacao();
+            $parametros["id"] = $this->fk_lczc_natl;
+            $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
             
-            // $atributosSelecionados["Principal Localidade"] = $instancia->nm_lczc();
-        // }
-        // if ($this->fk_fdd_decb != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            // $atributosSelecionados["Fundador/Descoridor"] = $this->fk_fdd_decb;
-        // }
-        // if ($this->hist_gov != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            // $atributosSelecionados["História de Governo"] = $this->hist_gov;
-        // }
-        // if ($this->actm_mor_oglh != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            // $atributosSelecionados["Acontecimento de Maior Orgulho"] = $this->actm_mor_oglh;
-        // }
-        // if ($this->etca_vls != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            // $atributosSelecionados["Ética e Valores"] = $this->etca_vls;
-        // }
-        // if ($this->dcr_ecn != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            // $atributosSelecionados["Descrição da Economia"] = $this->dcr_ecn;
-        // }
-        // if ($this->degd_scl != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            // $atributosSelecionados["Desigualdade Social"] = $this->degd_scl;
-        // }
-        // if ($this->nvl_tecn != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            // $atributosSelecionados["Nível Tecnológico"] = $this->nvl_tecn;
-        // }
+            $atributosSelecionados["Localidade Natal"] = $instancia->nm_lczc();
+        }
+        if ($this->almt_psna != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Alinhamento"] = $this->almt_psna;
+        }
 
-        // return $atributosSelecionados;
-    // }
+        return $atributosSelecionados;
+    }
 
     public static function getTituloPagina($acao) {
         if ($acao == "cadastrar") {
