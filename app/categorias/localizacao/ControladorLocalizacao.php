@@ -14,6 +14,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         require_once PATH_CAT . "/Recurso_natural/BdContextRecurso_natural.php";
         require_once PATH_CAT . "/bioma/BdContextBioma.php";
         require_once PATH_CAT . "/religiao/BdContextReligiao.php";
+        require_once PATH_CAT . "/lingua/BdContextLingua.php";
         require_once PATH_CAT . "/personagem/BdContextPersonagem.php";
     }
 
@@ -37,6 +38,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         $resBioma = $bdBioma->listar("");
         $bdReligiao = new BdContextReligiao();
         $resReligiao = $bdReligiao->listar("");
+        $bdLingua = new BdContextLingua();
+        $resLingua = $bdLingua->listar("");
         $res = array(
             "psna" => $resPsna,
             "lczc" => $resLczc,
@@ -45,7 +48,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             "flora" => $resFlora,
             "rcs_ntrl" => $resRcsNtrl,
             "bioma" => $resBioma,
-            "religiao" => $resReligiao);
+            "religiao" => $resReligiao,
+            "lingua" => $resLingua);
         $this->setResultadosSelect($res);
     }
 
@@ -89,6 +93,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $resBioma = $bdBioma->listar("");
             $bdReligiao = new BdContextReligiao();
             $resReligiao = $bdReligiao->listar("");
+            $bdLingua = new BdContextLingua();
+            $resLingua = $bdLingua->listar("");
             //Get personagens registrados como mais conhecidos
             $idsPsnaCnhd = $bdLczc->listarPsnaCnhd($instancia->pk_lczc());
             //Get raças registradas
@@ -103,6 +109,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $idsBioma = $bdLczc->listarBioma($instancia->pk_lczc());
             //Get religiões registradas
             $idsReligiao = $bdLczc->listarReligiao($instancia->pk_lczc());
+            //Get línguas registradas
+            $idsLingua = $bdLczc->listarLingua($instancia->pk_lczc());
             $res = array(
                 "psna" => $resPsna,
                 "lczc" => $resLczc,
@@ -112,13 +120,15 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
                 "rcs_ntrl" => $resRcsNtrl,
                 "bioma" => $resBioma,
                 "religiao" => $resReligiao,
+                "lingua" => $resLingua,
                 "idsPsnaLczc" => $idsPsnaCnhd,
                 "idsRaca" => $idsRaca,
                 "idsFauna" => $idsFauna,
                 "idsFlora" => $idsFlora,
                 "idsRcsNtrl" => $idsRcsNtrl,
                 "idsBioma" => $idsBioma,
-                "idsReligiao" => $idsReligiao);
+                "idsReligiao" => $idsReligiao,
+                "idsLingua" => $idsLingua);
             $this->setResultadosSelect($res);
         } else {
             redirecionar("?categoria=localizacao&acao=listar");

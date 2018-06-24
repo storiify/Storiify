@@ -48,6 +48,11 @@ class BdContextLocalizacao extends ConexaoBd {
             $idsReligiao = $parametros['fk_relg'];
             unset($parametros['fk_relg']);
         }
+        //Gerencia a coluna de língua
+        if (isset($parametros['fk_lnga'])) {
+            $idsLingua = $parametros['fk_lnga'];
+            unset($parametros['fk_lnga']);
+        }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
@@ -73,6 +78,8 @@ class BdContextLocalizacao extends ConexaoBd {
                 $this->excluirBioma($parametros['pk_lczc']);
                 //Deleta todas as relações religiao
                 $this->excluirReligiao($parametros['pk_lczc']);
+                //Deleta todas as relações língua
+                $this->excluirLingua($parametros['pk_lczc']);
             }
         } else { //Ao criar
             $parametros['dt_cric'] = $horarioAtual;
@@ -96,6 +103,8 @@ class BdContextLocalizacao extends ConexaoBd {
             $this->salvarBiomaExistente($idsBioma, $idAtual);
             //Cria a relação de religiões existentes
             $this->salvarReligiaoExistente($idsReligiao, $idAtual);
+            //Cria a relação de línguas existentes
+            $this->salvarLinguaExistente($idsLingua, $idAtual);
         }
 
         return $res;
@@ -375,6 +384,38 @@ class BdContextLocalizacao extends ConexaoBd {
 
     private function excluirReligiao($idLczc) {
         $tbRel = "tb_localizacao_rel_religiao";
+        $condicao = "fk_lczc='$idLczc'";
+
+        $res = $this->excluirBase($tbRel, $condicao);
+
+        return $res;
+    }
+    
+        private function salvarLinguaExistente($idsLingua, $idLczc) {
+        $tbRel = "tb_localizacao_rel_lingua";
+        foreach ($idsLingua as $lingua) {
+            $rel['fk_lczc'] = $idLczc;
+            $rel['fk_lnga'] = $lingua;
+            $res = $this->inserirBase($rel, $tbRel);
+        }
+        return $res;
+    }
+
+    public function listarLingua($parametros) {
+        $tbRel = "tb_localizacao_rel_lingua";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_lnga', $tbRel, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+        return $res;
+    }
+
+    private function excluirLingua($idLczc) {
+        $tbRel = "tb_localizacao_rel_lingua";
         $condicao = "fk_lczc='$idLczc'";
 
         $res = $this->excluirBase($tbRel, $condicao);

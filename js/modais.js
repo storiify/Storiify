@@ -159,6 +159,34 @@ function inserirOptionReligiao(idReligiao, nomeReligiao) {
 }
 //FINAL RELIGIÃO
 
+//LÍNGUA
+$(".salvar-lingua-modal").on("click", function () {
+    var nm_lnga = $("[name='nm_lnga']").val();
+    var dcr_lnga = $("[name='dcr_lnga']").val();
+    var popd_lnga = $("[name='popd_lnga']").val();
+
+    $.ajax({
+        url: "?categoria=lingua&acao=salvar",
+        method: "POST",
+        data: {isAjax: 'true', nm_lnga: nm_lnga, dcr_lnga: dcr_lnga, popd_lnga: popd_lnga},
+        success: function (data) {
+            alert("A língua" + (nm_lnga == "" ? "" : " " + nm_lnga) + " foi cadastrada com sucesso");
+
+            var pre = "idInserido";
+            var idLingua = data.substr(data.indexOf(pre) + pre.length + 1);
+            inserirOptionLingua(idLingua, nm_lnga);
+
+            $("#modalCadastrarLingua").modal('hide');
+        }
+    });
+});
+
+function inserirOptionLingua(idLingua, nomeLingua) {
+    $("#input-txselr-lingua").append("<option value='" + idLingua + "' selected>" + nomeLingua + "</option>");
+}
+//FINAL LÍNGUA
+
+
 $(".salvar-classe-modal").on("click", function () {
     var nm_cls = $("[name='nm_cls']").val();
     var dcr_cls = $("[name='dcr_cls']").val();
