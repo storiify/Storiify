@@ -8,20 +8,24 @@ class ControladorCena extends Controlador implements InterfaceControlador {
         $this->setCategoria($categoria);
 
         require_once "BdContextCena.php";
-		
     }
 
     public function cadastrar($parametros) {
         $this->setVisao(ModeloCena::$viewForm);
-
         $this->setTituloPagina(ModeloCena::getTituloPagina("cadastrar"));
+
+        $modeloCena = new BdContextCena();
+        $resCena = $modeloCena->listar("");
+        $res = array(
+            "cena" => $resCena);
+        $this->setResultadosSelect($res);
     }
 
     public function listar($parametros) {
-        
+
         $bdContext = new BdContextCena();
-        $instancias = $bdContext->listar($parametros);
-        $this->setResultados($instancias);
+        $res = $bdContext->listar($parametros);
+        $this->setResultados($res);
 
         $this->setVisao(ModeloCena::$viewListar);
 
@@ -29,6 +33,7 @@ class ControladorCena extends Controlador implements InterfaceControlador {
     }
 
     public function editar($parametros) {
+
         $bdContext = new BdContextCena();
         $instancia = new ModeloCena($bdContext->listar($parametros)[0]);
 
@@ -38,47 +43,51 @@ class ControladorCena extends Controlador implements InterfaceControlador {
             $this->setVisao(ModeloCena::$viewForm);
 
             $this->setTituloPagina($instancia->tit_cena());
+
+            //Lista todos as cenas
+            $modeloCena = new BdContextCena();
+            $resCena = $modeloCena->listar("");
+            $res = array(
+                "cena" => $resCena,);
+            $this->setResultadosSelect($res);
         } else {
             redirecionar("?categoria=cena&acao=listar");
         }
     }
 
     public function salvar($parametros) {
-        //Checa se veio a partir de um Ajax
-        $isAjax = false;
-        if (isset($parametros['isAjax']) && $parametros['isAjax'] != "") {
-            $isAjax = $parametros['isAjax'];
-            unset($parametros['isAjax']);
+        $bdContext = new BdContextCena();
+
+        //Cuida da parte de imagem
+        $idUsuario = sessao()->getUserData()->id;
+        if (isset($_FILES) && $_FILES['im_cena']['size'] != 0) {
+            $idCena = $bdContext->proximoID();
+            $parametros['im_cena'] = uploadImagem($idUsuario, "cena", $idCena, $_FILES['im_cena']);
+        }
+        //Cuida da parte da visibilidade
+        if (isset($parametros['vsi_cena']) && is_array($parametros['vsi_cena'])) {
+            $tempStr = 0;
+            foreach ($parametros['vsi_cena'] as $value) {
+                $tempStr = $tempStr + $value;
+            }
+            $parametros['vsi_cena'] = $tempStr;
         }
 
-        //Não altera o que não foi alterado
-        foreach ($parametros as $key => $value) {
-            if (!isset($parametros[$key]) || $parametros[$key] == '') {
-                unset($parametros[$key]);
-            }
-        }
-        
-        //Faz a inserção
-        $bdContext = new BdContextCena();
-        $resultado = $bdContext->salvar($parametros);
-        
-        //Checa o que fazer com o resultado
-        if ($resultado && !$isAjax) {
+        $res = $bdContext->salvar($parametros);
+
+        if ($res) {
             redirecionar("?categoria=cena&acao=listar");
-        } elseif ($resultado && $isAjax) {
-            $idInserido = $bdContext->proximoID() - 1;
-            echo "idInserido:" . $idInserido;
-            exit;
         } else {
             redirecionar("?categoria=cena&acao=cadastrar");
         }
     }
 
     public function excluir($parametros) {
-        $bdContext = new BdContextCena();
-        $resultado = $bdContext->excluir($parametros);
 
-        if ($resultado) {
+        $bdContext = new BdContextCena();
+        $res = $bdContext->excluir($parametros);
+
+        if ($res) {
             redirecionar("?categoria=cena&acao=listar");
         } else {
             redirecionar("?categoria=cena&acao=listar");

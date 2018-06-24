@@ -18,7 +18,6 @@ class ModeloCena {
     private $desm_cena;
     private $dt_cric;
     private $dt_alt;
-
 // </editor-fold>
     //Views
     public static $viewForm = "CadastrarCena";
@@ -35,6 +34,34 @@ class ModeloCena {
                 }
             }
         }
+    }
+
+    public function getAtributosListar() {
+        $qtdMaxAtt = 3;
+        $atributosSelecionados = array();
+
+        if ($this->rsm_cena != "") {
+            $atributosSelecionados["Resumo"] = $this->rsm_cena;
+        }
+        if ($this->fk_cena_ant != "") {
+            $bdContext = new BdContextCena();
+            $parametros["id"] = $this->fk_cena_ant;
+            $instancia = new ModeloCena($bdContext->listar($parametros)[0]);
+            $atributosSelecionados["Cena Anterior"] = "<span class='btn-listar-select' "
+                    . "title='Clique para editar {$instancia->tit_cena}'"
+                    . "href='?categoria=cena&acao=editar&id={$instancia->pk_cena()}'>" .
+                    truncar($instancia->tit_cena(), 20) . "</span>";
+        }
+        if ($this->fk_cena_ptrr != "") {
+            $bdContext = new BdContextCena();
+            $parametros["id"] = $this->fk_cena_ptrr;
+            $instancia = new ModeloCena($bdContext->listar($parametros)[0]);
+            $atributosSelecionados["Cena Posterior"] = "<span class='btn-listar-select' "
+                    . "title='Clique para editar {$instancia->tit_cena}'"
+                    . "href='?categoria=cena&acao=editar&id={$instancia->pk_cena()}'>" .
+                    truncar($instancia->tit_cena(), 20) . "</span>";
+        }
+        return $atributosSelecionados;
     }
 
     public static function getTituloPagina($acao) {
@@ -88,14 +115,14 @@ class ModeloCena {
     public function dt_hora_dets() {
         return $this->dt_hora_dets;
     }
-	
-	public function vsi_cena() {
+
+    public function vsi_cena() {
         return parseCheckbox($this->vsi_cena);
     }
 
     public function rsm_cena() {
         return $this->rsm_cena;
-    }    
+    }
 
     public function desm_cena() {
         return $this->desm_cena;
@@ -108,6 +135,6 @@ class ModeloCena {
     public function dt_alt() {
         return $this->dt_alt;
     }
-	
+
 // </editor-fold>
 }

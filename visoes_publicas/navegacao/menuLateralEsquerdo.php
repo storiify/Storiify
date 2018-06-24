@@ -127,7 +127,7 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=cena&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Listar Cenas</div>      

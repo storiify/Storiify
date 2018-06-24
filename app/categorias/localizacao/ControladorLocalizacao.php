@@ -156,8 +156,6 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
     }
 
     public function salvar($parametros) {
-        
-
         $bdContext = new BdContextLocalizacao();
 
         //Cuida da parte de imagem
