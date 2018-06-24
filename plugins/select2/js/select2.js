@@ -4579,15 +4579,15 @@ S2.define('select2/i18n/en',[],function () {
   // English
   return {
     errorLoading: function () {
-      return 'The results could not be loaded.';
+      return 'Os resultados não puderam ser carregados.';
     },
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      var message = 'Please delete ' + overChars + ' character';
+      var message = 'Por favor delete ' + overChars + ' caracter';
 
       if (overChars != 1) {
-        message += 's';
+        message += 'es';
       }
 
       return message;
@@ -4595,15 +4595,15 @@ S2.define('select2/i18n/en',[],function () {
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      var message = 'Please enter ' + remainingChars + ' or more characters';
+      var message = 'Por favor insira ' + remainingChars + ' ou mais caracteres';
 
       return message;
     },
     loadingMore: function () {
-      return 'Loading more results…';
+      return 'Carregando mais resultados…';
     },
     maximumSelected: function (args) {
-      var message = 'You can only select ' + args.maximum + ' item';
+      var message = 'Você só pode selecionar ' + args.maximum + ' item(ns)';
 
       if (args.maximum != 1) {
         message += 's';
@@ -4612,10 +4612,10 @@ S2.define('select2/i18n/en',[],function () {
       return message;
     },
     noResults: function () {
-      return 'No results found';
+      return 'Nenhum resultado encontrado';
     },
     searching: function () {
-      return 'Searching…';
+      return 'Buscando…';
     }
   };
 });
