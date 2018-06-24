@@ -4,72 +4,85 @@ class ControladorCena extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-	parent::setDicas("Dicas Cena");
+        parent::setDicas("Dicas Cena");
         $this->setCategoria($categoria);
+
+        require_once "BdContextCena.php";
+		
     }
-    
+
     public function cadastrar($parametros) {
-        //Aqui que se puxa as instâncias necessárias para se cadastrar mundos (alimentar selects)
-        $this->setVisao('FormCena');
+        $this->setVisao(ModeloCena::$viewForm);
+
+        $this->setTituloPagina(ModeloCena::getTituloPagina("cadastrar"));
     }
 
     public function listar($parametros) {
-	
-	$modelo = new ModeloCena();
-	$res = $modelo->listar($parametros);
-	
-	sessao()->setCenaData($res);
-        $this->setVisao('ListarCena');
-	$this->setResultados($res);
+        
+        $bdContext = new BdContextCena();
+        $instancias = $bdContext->listar($parametros);
+        $this->setResultados($instancias);
+
+        $this->setVisao(ModeloCena::$viewListar);
+
+        $this->setTituloPagina(ModeloCena::getTituloPagina("listar"));
     }
-    
-    public function listarAoLogar($parametros) {
-	$modelo = new ModeloCena();
-	$res = $modelo->listar($parametros);	
-	sessao()->setCenaData($res);
-    }
-    
 
     public function editar($parametros) {
-	
-        $modelo = new ModeloCena();
-	$res = $modelo->listar($parametros);
-	
-	if($res[0] != false){
-	    $this->setResultados($res[0]);
-	    $this->setVisao('FormCena');
-	}else{
-	    redirecionar("?categoria=cena&acao=listar");
-	}
+        $bdContext = new BdContextCena();
+        $instancia = new ModeloCena($bdContext->listar($parametros)[0]);
+
+        if ($instancia != null) {
+            $this->setResultados($instancia);
+
+            $this->setVisao(ModeloCena::$viewForm);
+
+            $this->setTituloPagina($instancia->tit_cena());
+        } else {
+            redirecionar("?categoria=cena&acao=listar");
+        }
     }
 
     public function salvar($parametros) {
-	
-	$modelo = new ModeloCena();
-	$idUsuario = sessao()->getUserData()->id;
-	if(isset($_FILES) && $_FILES['im_ppl']['size']!=0){	    
-	    $idCena = $modelo->proximoID();
-	    $parametros['im_ppl'] = uploadImagem($idUsuario, "cena", $idCena, $_FILES['im_ppl']);
-	}
-	if(isset($parametros['vsi_cena']) && is_array($parametros['vsi_cena'])){
-	    $tempStr = 0;
-	    foreach ($parametros['vsi_cena'] as $value) {
-		$tempStr = $tempStr+$value;
-	    }
-	    $parametros['vsi_cena'] = $tempStr;
-	}
-	$parametros['fk_usu'] = $idUsuario;
-	$res = $modelo->salvar($parametros);
-	
-	if($res != false){
-	    redirecionar("?categoria=cena&acao=listar");
-	}else{
-	    redirecionar("?categoria=cena&acao=cadastrar");
-	}
+        //Checa se veio a partir de um Ajax
+        $isAjax = false;
+        if (isset($parametros['isAjax']) && $parametros['isAjax'] != "") {
+            $isAjax = $parametros['isAjax'];
+            unset($parametros['isAjax']);
+        }
+
+        //Não altera o que não foi alterado
+        foreach ($parametros as $key => $value) {
+            if (!isset($parametros[$key]) || $parametros[$key] == '') {
+                unset($parametros[$key]);
+            }
+        }
+        
+        //Faz a inserção
+        $bdContext = new BdContextCena();
+        $resultado = $bdContext->salvar($parametros);
+        
+        //Checa o que fazer com o resultado
+        if ($resultado && !$isAjax) {
+            redirecionar("?categoria=cena&acao=listar");
+        } elseif ($resultado && $isAjax) {
+            $idInserido = $bdContext->proximoID() - 1;
+            echo "idInserido:" . $idInserido;
+            exit;
+        } else {
+            redirecionar("?categoria=cena&acao=cadastrar");
+        }
     }
 
     public function excluir($parametros) {
-	
+        $bdContext = new BdContextCena();
+        $resultado = $bdContext->excluir($parametros);
+
+        if ($resultado) {
+            redirecionar("?categoria=cena&acao=listar");
+        } else {
+            redirecionar("?categoria=cena&acao=listar");
+        }
     }
 
 }
