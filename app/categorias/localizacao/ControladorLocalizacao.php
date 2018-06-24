@@ -15,6 +15,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         require_once PATH_CAT . "/bioma/BdContextBioma.php";
         require_once PATH_CAT . "/religiao/BdContextReligiao.php";
         require_once PATH_CAT . "/lingua/BdContextLingua.php";
+        require_once PATH_CAT . "/mito/BdContextMito.php";
         require_once PATH_CAT . "/personagem/BdContextPersonagem.php";
     }
 
@@ -40,6 +41,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         $resReligiao = $bdReligiao->listar("");
         $bdLingua = new BdContextLingua();
         $resLingua = $bdLingua->listar("");
+        $bdMito = new BdContextMito();
+        $resMito = $bdMito->listar("");
         $res = array(
             "psna" => $resPsna,
             "lczc" => $resLczc,
@@ -49,7 +52,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             "rcs_ntrl" => $resRcsNtrl,
             "bioma" => $resBioma,
             "religiao" => $resReligiao,
-            "lingua" => $resLingua);
+            "lingua" => $resLingua,
+            "mito" => $resMito);
         $this->setResultadosSelect($res);
     }
 
@@ -95,6 +99,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $resReligiao = $bdReligiao->listar("");
             $bdLingua = new BdContextLingua();
             $resLingua = $bdLingua->listar("");
+            $bdMito = new BdContextMito();
+            $resMito = $bdMito->listar("");
             //Get personagens registrados como mais conhecidos
             $idsPsnaCnhd = $bdLczc->listarPsnaCnhd($instancia->pk_lczc());
             //Get raças registradas
@@ -111,6 +117,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $idsReligiao = $bdLczc->listarReligiao($instancia->pk_lczc());
             //Get línguas registradas
             $idsLingua = $bdLczc->listarLingua($instancia->pk_lczc());
+            //Get mitos registrados
+            $idsMito = $bdLczc->listarMito($instancia->pk_lczc());
             $res = array(
                 "psna" => $resPsna,
                 "lczc" => $resLczc,
@@ -121,6 +129,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
                 "bioma" => $resBioma,
                 "religiao" => $resReligiao,
                 "lingua" => $resLingua,
+                "mito" => $resMito,
                 "idsPsnaLczc" => $idsPsnaCnhd,
                 "idsRaca" => $idsRaca,
                 "idsFauna" => $idsFauna,
@@ -128,7 +137,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
                 "idsRcsNtrl" => $idsRcsNtrl,
                 "idsBioma" => $idsBioma,
                 "idsReligiao" => $idsReligiao,
-                "idsLingua" => $idsLingua);
+                "idsLingua" => $idsLingua,
+                "idsMito" => $idsMito);
             $this->setResultadosSelect($res);
         } else {
             redirecionar("?categoria=localizacao&acao=listar");

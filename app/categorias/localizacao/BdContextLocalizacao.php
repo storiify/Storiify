@@ -53,6 +53,11 @@ class BdContextLocalizacao extends ConexaoBd {
             $idsLingua = $parametros['fk_lnga'];
             unset($parametros['fk_lnga']);
         }
+        //Gerencia a coluna de mito
+        if (isset($parametros['fk_mito'])) {
+            $idsMito = $parametros['fk_mito'];
+            unset($parametros['fk_mito']);
+        }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
@@ -80,6 +85,8 @@ class BdContextLocalizacao extends ConexaoBd {
                 $this->excluirReligiao($parametros['pk_lczc']);
                 //Deleta todas as relações língua
                 $this->excluirLingua($parametros['pk_lczc']);
+                //Deleta todas as relações mito
+                $this->excluirMito($parametros['pk_lczc']);
             }
         } else { //Ao criar
             $parametros['dt_cric'] = $horarioAtual;
@@ -105,6 +112,8 @@ class BdContextLocalizacao extends ConexaoBd {
             $this->salvarReligiaoExistente($idsReligiao, $idAtual);
             //Cria a relação de línguas existentes
             $this->salvarLinguaExistente($idsLingua, $idAtual);
+            //Cria a relação de mitos existentes
+            $this->salvarMitoExistente($idsMito, $idAtual);
         }
 
         return $res;
@@ -358,7 +367,7 @@ class BdContextLocalizacao extends ConexaoBd {
 
         return $res;
     }
-    
+
     private function salvarReligiaoExistente($idsReligiao, $idLczc) {
         $tbRel = "tb_localizacao_rel_religiao";
         foreach ($idsReligiao as $religiao) {
@@ -390,8 +399,8 @@ class BdContextLocalizacao extends ConexaoBd {
 
         return $res;
     }
-    
-        private function salvarLinguaExistente($idsLingua, $idLczc) {
+
+    private function salvarLinguaExistente($idsLingua, $idLczc) {
         $tbRel = "tb_localizacao_rel_lingua";
         foreach ($idsLingua as $lingua) {
             $rel['fk_lczc'] = $idLczc;
@@ -416,6 +425,38 @@ class BdContextLocalizacao extends ConexaoBd {
 
     private function excluirLingua($idLczc) {
         $tbRel = "tb_localizacao_rel_lingua";
+        $condicao = "fk_lczc='$idLczc'";
+
+        $res = $this->excluirBase($tbRel, $condicao);
+
+        return $res;
+    }
+    
+    private function salvarMitoExistente($idsMito, $idLczc) {
+        $tbRel = "tb_localizacao_rel_mito";
+        foreach ($idsMito as $mito) {
+            $rel['fk_lczc'] = $idLczc;
+            $rel['fk_mito'] = $mito;
+            $res = $this->inserirBase($rel, $tbRel);
+        }
+        return $res;
+    }
+
+    public function listarMito($parametros) {
+        $tbRel = "tb_localizacao_rel_mito";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_mito', $tbRel, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+        return $res;
+    }
+
+    private function excluirMito($idLczc) {
+        $tbRel = "tb_localizacao_rel_mito";
         $condicao = "fk_lczc='$idLczc'";
 
         $res = $this->excluirBase($tbRel, $condicao);

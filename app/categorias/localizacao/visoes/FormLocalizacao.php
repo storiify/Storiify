@@ -880,6 +880,55 @@ $resultado = ($controlador->getResultados() == null ?
                     </div>
                 </div>
                 <!--FINAL - INPUT TEXTOAREA-->
+                <!--MITOS - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-mito">Mitos</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_mito[]" id="input-txselr-mito">
+                                                <?php
+                                                foreach ($resultadoSelect->mito as $modeloSelect) {
+                                                    $modelo = new ModeloMito($modeloSelect);
+                                                    $id = $modelo->pk_mito();
+                                                    $nome = $modelo->nm_mito();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsMito as $idModelo) {
+                                                        if ($id == $idModelo["fk_mito"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarMito" >
+                                        Criar <?= (strlen(ModeloMito::$nomeSingular) <= 10 ? ModeloMito::$nomeSingular : "Novo") ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
                 <!--INPUT TEXTOAREA-->
                 <div class="form-group">
                     <div class="row">

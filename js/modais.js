@@ -186,6 +186,33 @@ function inserirOptionLingua(idLingua, nomeLingua) {
 }
 //FINAL LÍNGUA
 
+//MITO
+$(".salvar-mito-modal").on("click", function () {
+    var nm_mito = $("[name='nm_mito']").val();
+    var dcr_mito = $("[name='dcr_mito']").val();
+    var popd_mito = $("[name='popd_mito']").val();
+
+    $.ajax({
+        url: "?categoria=mito&acao=salvar",
+        method: "POST",
+        data: {isAjax: 'true', nm_mito: nm_mito, dcr_mito: dcr_mito, popd_mito: popd_mito},
+        success: function (data) {
+            alert("O mito" + (nm_mito == "" ? "" : " " + nm_mito) + " foi cadastrado com sucesso");
+
+            var pre = "idInserido";
+            var idMito = data.substr(data.indexOf(pre) + pre.length + 1);
+            inserirOptionMito(idMito, nm_mito);
+
+            $("#modalCadastrarMito").modal('hide');
+        }
+    });
+});
+
+function inserirOptionMito(idMito, nomeMito) {
+    $("#input-txselr-mito").append("<option value='" + idMito + "' selected>" + nomeMito + "</option>");
+}
+//FINAL MITO
+
 
 $(".salvar-classe-modal").on("click", function () {
     var nm_cls = $("[name='nm_cls']").val();

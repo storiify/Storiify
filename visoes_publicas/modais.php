@@ -846,6 +846,109 @@
     </div>
 </div>
 <!--FINAL - MODAL LÍNGUA-->
+<!--MODAL MITO-->
+<div class="modal fade" id="modalCadastrarMito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastrar Mito</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formModalMito" class="form-horizontal">
+                    <!--NOME - INPUT TEXTO-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>                      
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-tx-Nome">Nome</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo">
+                                <input name="nm_mito" value="" 
+                                       placeholder="Digite aqui o Nome do Mito"
+                                       title="Campo para Nome do Mito"
+                                       maxlength="60" type="text"
+                                       class="form-control" id="input-tx-Nome"/>
+                            </div>
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTO-->
+                <!--DESCRIÇÃO - INPUT TEXTOAREA-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txarea-Descricao">Descrição</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo"> 
+                                <textarea name="dcr_mito" value="" 
+                                          placeholder="Digite aqui a Descrição do Mito" 
+                                          title="Campo para Descrição do Mito" 
+                                          id="input-txarea-Descricao"></textarea>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOAREA-->
+                <!--POPULARIDADE - INPUT MINMAX-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>                      
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-minmax-Popularidade">Popularidade</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo">
+                                <input type="text" name="popd_mito" 
+                                       data-minmax-valores="Anônima,Incomum,Conhecida,Popular,Dominante" class="input-minmax" 
+                                       value="" id="input-minmax-Popularidade"></input>
+                            </div>
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT MINMAX-->
+                    <div class="col-md-12 form-controle">
+                        <input type="hidden" name="pk_mito" value="">
+                        <button type="button" id="btn-salvar-form" class="btn btn-azul btn-block salvar-mito-modal">
+                            Salvar Mito
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--FINAL - MODAL MITO-->
 
 <div class="modal fade" id="modalCadastrarClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" >
