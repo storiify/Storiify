@@ -5,6 +5,9 @@ require_once '..\passwordBD.php';
 class ConexaoBd {
 
     private static $instance = NULL;
+    const colunasMinMax = array("hotl_lczc","degd_scl","satc_pop","nvl_tecn","depe_tecn",
+        "acss_tecn","acss_magi","h_psna","peso_psna","prte_fsco","pvmt_raca","rptc_raca","pvmt_fnaagsd_fna",
+        "rrdd_flra","rrdd_rcs_ntrl","popd_relg","popd_lnga","popd_mito","qt_cls","apcc_lmca","vlr_obj","rptc_cls","rptc_pfs","qt_pfs");
     
     public function __construct() {}
     
@@ -39,11 +42,18 @@ class ConexaoBd {
     public function updateBase($parametros,$tabela,$where) {	
 	$query = "";
 	foreach ($parametros as $coluna => $valor) {
-	    $query .= "`".$coluna."`='$valor',";
+            if (in_array($coluna, self::colunasMinMax) && $valor == "") {
+                continue;
+            }
+            if ($valor == "0") {
+                $query .= "`".$coluna."`=NULL,";
+            }else {
+                $query .= "`".$coluna."`='$valor',";
+            }
 	}
 	$query = substr($query, 0, -1);	
 	$sql = "UPDATE `$tabela`a SET $query WHERE $where";
-        
+        consoleLog($sql);
         $res = self::getInstance()->query($sql);
 	if($res->rowCount()>=0){
 	    return true;

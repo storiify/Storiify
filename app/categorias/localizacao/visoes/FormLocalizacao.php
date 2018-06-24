@@ -230,7 +230,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_ppl_lczc" id="input-txselr-PrincipalLocalidade">
-                                    <option value="" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
+                                    <option value="0" selected>-- Localizações de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                     <?php
                                     foreach ($resultadoSelect->lczc as $localizacaoSelect) {
                                         $id = $localizacaoSelect["pk_lczc"];
@@ -402,7 +402,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_fdd_decb" id="input-txselr-FundadorDescobridor">
-                                    <option value="" selected>-- Personagens de <?= $historiaSelecionada->tit_hist() ?> --</option>
+                                    <option value="0" selected>-- Personagens de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                     <?php
                                     foreach ($resultadoSelect->psna as $personagemSelect) {
                                         $id = $personagemSelect["pk_psna"];
