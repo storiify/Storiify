@@ -8,6 +8,11 @@ if ($historiaSelecionada != NULL) {
     $qtdPsna = BdContextHistoria::getQtdPsna($historiaSelecionada->pk_hist());
     $qtdLczc = BdContextHistoria::getQtdLczc($historiaSelecionada->pk_hist());
     $qtdCena = BdContextHistoria::getQtdCena($historiaSelecionada->pk_hist());
+    if ($historiaSelecionada->im_hist() != null) {
+        $imgHistSelecionada = "style='background-image:url({$historiaSelecionada->im_hist()})'";
+    } else {
+        $imgHistSelecionada = "";
+    }
 }
 ?>
 
@@ -16,7 +21,7 @@ if ($historiaSelecionada != NULL) {
         <li class='nav-item cabecalho-menu-lateral row'>
             <div class="row">
                 <div class='col-md-2'>
-                    <div class='historia-avatar' style=""></div>
+                    <div class='historia-avatar' <?= $imgHistSelecionada ?>></div>
                 </div>
                 <div class='col-md-10'>
                     <span class='bem-vindo-texto'>Bem-vindo à</span><br/>
