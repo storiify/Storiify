@@ -190,18 +190,18 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=lingua&acao=listar" class="nav-item list-group-item lista-clicavel">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Língua</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
                     <a href="?categoria=mito&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Mito</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=lingua&acao=listar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Língua</div>
                         </div>
                     </a>
                 </li>
