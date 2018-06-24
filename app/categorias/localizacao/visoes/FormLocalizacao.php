@@ -569,7 +569,7 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txselr-Raca">Raça</label>
+                        <label class="col-md-11 input-label" for="input-txselr-Raca">Raças</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
@@ -618,7 +618,7 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txselr-Fauna">Fauna</label>
+                        <label class="col-md-11 input-label" for="input-txselr-Fauna">Faunas</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
@@ -667,7 +667,7 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txselr-Flora">Flora</label>
+                        <label class="col-md-11 input-label" for="input-txselr-Flora">Floras</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
@@ -716,7 +716,7 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txselr-RcsNtrl">Recurso Natural</label>
+                        <label class="col-md-11 input-label" for="input-txselr-RcsNtrl">Recursos Naturais</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
@@ -765,7 +765,7 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txselr-bioma">Bioma</label>
+                        <label class="col-md-11 input-label" for="input-txselr-bioma">Biomas</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
@@ -818,7 +818,7 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txselr-religiao">Religião</label>
+                        <label class="col-md-11 input-label" for="input-txselr-religiao">Religiões</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
@@ -1651,7 +1651,7 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txselr-magia">Tipos de Magia</label>
+                        <label class="col-md-11 input-label" for="input-txselr-magia">Magias</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
