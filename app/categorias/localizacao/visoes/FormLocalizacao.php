@@ -805,7 +805,56 @@ $resultado = ($controlador->getResultados() == null ?
             </div>
             <!-- FINAL - ABA BIOLOGIA -->
             <!-- ABA CULTURA -->
-            <div id="abaCultura" class="container tab-pane fade"><br>
+            <div id="abaCultura" class="container tab-pane fade">
+                <!--RELIGIÃO - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-religiao">Religião</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_relg[]" id="input-txselr-religiao">
+                                                <?php
+                                                foreach ($resultadoSelect->religiao as $modeloSelect) {
+                                                    $modelo = new ModeloReligiao($modeloSelect);
+                                                    $id = $modelo->pk_relg();
+                                                    $nome = $modelo->nm_relg();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsReligiao as $idModelo) {
+                                                        if ($id == $idModelo["fk_relg"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarReligiao" >
+                                        Criar <?= (strlen(ModeloReligiao::$nomeSingular) <= 10 ? ModeloReligiao::$nomeSingular : "Nova") ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
                 <!--INPUT TEXTOAREA-->
                 <div class="form-group">
                     <div class="row">

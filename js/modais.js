@@ -132,6 +132,32 @@ function inserirOptionBioma(idBioma, nomeBioma) {
 }
 //FINAL BIOMA
 
+//RELIGIÃO
+$(".salvar-religiao-modal").on("click", function () {
+    var nm_relg = $("[name='nm_relg']").val();
+    var dcr_relg = $("[name='dcr_relg']").val();
+    var popd_relg = $("[name='popd_relg']").val();
+
+    $.ajax({
+        url: "?categoria=religiao&acao=salvar",
+        method: "POST",
+        data: {isAjax: 'true', nm_relg: nm_relg, dcr_relg: dcr_relg, popd_relg: popd_relg},
+        success: function (data) {
+            alert("A religião" + (nm_relg == "" ? "" : " " + nm_relg) + " foi cadastrada com sucesso");
+
+            var pre = "idInserido";
+            var idReligiao = data.substr(data.indexOf(pre) + pre.length + 1);
+            inserirOptionReligiao(idReligiao, nm_relg);
+
+            $("#modalCadastrarReligiao").modal('hide');
+        }
+    });
+});
+
+function inserirOptionReligiao(idReligiao, nomeReligiao) {
+    $("#input-txselr-religiao").append("<option value='" + idReligiao + "' selected>" + nomeReligiao + "</option>");
+}
+//FINAL RELIGIÃO
 
 $(".salvar-classe-modal").on("click", function () {
     var nm_cls = $("[name='nm_cls']").val();

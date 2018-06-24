@@ -43,6 +43,11 @@ class BdContextLocalizacao extends ConexaoBd {
             $idsBioma = $parametros['fk_bma'];
             unset($parametros['fk_bma']);
         }
+        //Gerencia a coluna de religião
+        if (isset($parametros['fk_relg'])) {
+            $idsReligiao = $parametros['fk_relg'];
+            unset($parametros['fk_relg']);
+        }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
         $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
@@ -66,6 +71,8 @@ class BdContextLocalizacao extends ConexaoBd {
                 $this->excluirRcsNtrl($parametros['pk_lczc']);
                 //Deleta todas as relações bioma
                 $this->excluirBioma($parametros['pk_lczc']);
+                //Deleta todas as relações religiao
+                $this->excluirReligiao($parametros['pk_lczc']);
             }
         } else { //Ao criar
             $parametros['dt_cric'] = $horarioAtual;
@@ -85,8 +92,10 @@ class BdContextLocalizacao extends ConexaoBd {
             $this->salvarFloraExistente($idsFlora, $idAtual);
             //Cria a relação de recursos naturais existentes
             $this->salvarRcsNtrlExistente($idsRcsNtrl, $idAtual);
-            //Cria a relação de recursos naturais existentes
+            //Cria a relação de biomas existentes
             $this->salvarBiomaExistente($idsBioma, $idAtual);
+            //Cria a relação de religiões existentes
+            $this->salvarReligiaoExistente($idsReligiao, $idAtual);
         }
 
         return $res;
@@ -334,6 +343,38 @@ class BdContextLocalizacao extends ConexaoBd {
 
     private function excluirBioma($idLczc) {
         $tbRel = "tb_localizacao_rel_bioma";
+        $condicao = "fk_lczc='$idLczc'";
+
+        $res = $this->excluirBase($tbRel, $condicao);
+
+        return $res;
+    }
+    
+    private function salvarReligiaoExistente($idsReligiao, $idLczc) {
+        $tbRel = "tb_localizacao_rel_religiao";
+        foreach ($idsReligiao as $religiao) {
+            $rel['fk_lczc'] = $idLczc;
+            $rel['fk_relg'] = $religiao;
+            $res = $this->inserirBase($rel, $tbRel);
+        }
+        return $res;
+    }
+
+    public function listarReligiao($parametros) {
+        $tbRel = "tb_localizacao_rel_religiao";
+        $idLocalizacao = $parametros;
+        $condicao = "WHERE fk_lczc='$idLocalizacao'";
+
+        $res = $this->listarBase('fk_relg', $tbRel, $condicao);
+
+        if (!isset($res) or $res == null) {
+            return array();
+        }
+        return $res;
+    }
+
+    private function excluirReligiao($idLczc) {
+        $tbRel = "tb_localizacao_rel_religiao";
         $condicao = "fk_lczc='$idLczc'";
 
         $res = $this->excluirBase($tbRel, $condicao);

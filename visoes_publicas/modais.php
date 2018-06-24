@@ -508,7 +508,7 @@
     </div>
 </div>
 <!--FINAL - MODAL RECURSO NATURAL-->
-<!--MODAL RECURSO NATURAL-->
+<!--MODAL BIOMA-->
 <div class="modal fade" id="modalCadastrarBioma" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" >
         <div class="modal-content" >
@@ -639,8 +639,110 @@
         </div>
     </div>
 </div>
-<!--FINAL - MODAL RECURSO NATURAL-->
-
+<!--FINAL - MODAL BIOMA-->
+<!--MODAL RELIGIÃO-->
+<div class="modal fade" id="modalCadastrarReligiao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastrar Religião</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formModalReligiao" class="form-horizontal">
+                    <!--NOME - INPUT TEXTO-->
+                    <div class="form-group">
+                        <div class="row">
+                            <!--INPUT CONTROLE-->
+                            <div class="col-md-1 input-controle">
+                                <button type="button" class="btn btn-input-controle minimizar">
+                                    <i class="fa fa-minus"></i>
+                                </button>                      
+                            </div>
+                            <!--FINAL - INPUT CONTROLE-->
+                            <!--INPUT LABEL-->
+                            <label class="col-md-11 input-label" for="input-tx-Nome">Nome</label>
+                            <!--FINAL - INPUT LABEL-->
+                            <!--INPUT CORPO-->
+                            <div class="col-md-12 input-corpo">
+                                <div class="col-md-12 input-conteudo">
+                                    <input name="nm_relg" value="" 
+                                           placeholder="Digite aqui o Nome da Religiao"
+                                           title="Campo para Nome da Religiao"
+                                           maxlength="60" type="text"
+                                           class="form-control" id="input-tx-Nome"/>
+                                </div>
+                            </div>
+                            <!--FINAL - INPUT CORPO-->
+                        </div>
+                    </div>
+                    <!--FINAL - INPUT TEXTO-->
+                    <!--DESCRIÇÃO - INPUT TEXTOAREA-->
+                    <div class="form-group">
+                        <div class="row">
+                            <!--INPUT CONTROLE-->
+                            <div class="col-md-1 input-controle">
+                                <button type="button" class="btn btn-input-controle minimizar">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!--FINAL - INPUT CONTROLE-->
+                            <!--INPUT LABEL-->
+                            <label class="col-md-11 input-label" for="input-txarea-Descricao">Descrição</label>
+                            <!--FINAL - INPUT LABEL-->
+                            <!--INPUT CORPO-->
+                            <div class="col-md-12 input-corpo">
+                                <div class="col-md-12 input-conteudo"> 
+                                    <textarea name="dcr_relg" value="" 
+                                              placeholder="Digite aqui a Descrição da Religiao" 
+                                              title="Campo para Descrição da Religiao" 
+                                              id="input-txarea-Descricao"></textarea>
+                                </div>
+                                <!--NÃO TEM DETALHES-->
+                            </div>
+                            <!--FINAL - INPUT CORPO-->
+                        </div>
+                    </div>
+                    <!--FINAL - INPUT TEXTOAREA-->
+                    <!--POPULARIDADE - INPUT MINMAX-->
+                    <div class="form-group">
+                        <div class="row">
+                            <!--INPUT CONTROLE-->
+                            <div class="col-md-1 input-controle">
+                                <button type="button" class="btn btn-input-controle minimizar">
+                                    <i class="fa fa-minus"></i>
+                                </button>                      
+                            </div>
+                            <!--FINAL - INPUT CONTROLE-->
+                            <!--INPUT LABEL-->
+                            <label class="col-md-11 input-label" for="input-minmax-Popularidade">Popularidade</label>
+                            <!--FINAL - INPUT LABEL-->
+                            <!--INPUT CORPO-->
+                            <div class="col-md-12 input-corpo">
+                                <div class="col-md-12 input-conteudo">
+                                    <input type="text" name="popd_relg" 
+                                           data-minmax-valores="Anônima,Incomum,Conhecida,Popular,Dominante" class="input-minmax" 
+                                           value="" id="input-minmax-Popularidade"></input>
+                                </div>
+                            </div>
+                            <!--FINAL - INPUT CORPO-->
+                        </div>
+                    </div>
+                    <!--FINAL - INPUT MINMAX-->
+                    <div class="col-md-12 form-controle">
+                        <input type="hidden" name="pk_relg" value="">
+                        <button type="button" id="btn-salvar-form" class="btn btn-azul btn-block salvar-religiao-modal">
+                            Salvar Religião
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--FINAL - MODAL RELIGIÃO-->
 
 <div class="modal fade" id="modalCadastrarClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" >

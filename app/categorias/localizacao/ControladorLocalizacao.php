@@ -13,6 +13,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         require_once PATH_CAT . "/flora/BdContextFlora.php";
         require_once PATH_CAT . "/Recurso_natural/BdContextRecurso_natural.php";
         require_once PATH_CAT . "/bioma/BdContextBioma.php";
+        require_once PATH_CAT . "/religiao/BdContextReligiao.php";
         require_once PATH_CAT . "/personagem/BdContextPersonagem.php";
     }
 
@@ -34,6 +35,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         $resRcsNtrl = $bdRcsNtrl->listar("");
         $bdBioma = new BdContextBioma();
         $resBioma = $bdBioma->listar("");
+        $bdReligiao = new BdContextReligiao();
+        $resReligiao = $bdReligiao->listar("");
         $res = array(
             "psna" => $resPsna,
             "lczc" => $resLczc,
@@ -41,7 +44,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             "fauna" => $resFauna,
             "flora" => $resFlora,
             "rcs_ntrl" => $resRcsNtrl,
-            "bioma" => $resBioma);
+            "bioma" => $resBioma,
+            "religiao" => $resReligiao);
         $this->setResultadosSelect($res);
     }
 
@@ -83,6 +87,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $resRcsNtrl = $bdRcsNtrl->listar("");
             $bdBioma = new BdContextBioma();
             $resBioma = $bdBioma->listar("");
+            $bdReligiao = new BdContextReligiao();
+            $resReligiao = $bdReligiao->listar("");
             //Get personagens registrados como mais conhecidos
             $idsPsnaCnhd = $bdLczc->listarPsnaCnhd($instancia->pk_lczc());
             //Get raças registradas
@@ -95,6 +101,8 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             $idsRcsNtrl = $bdLczc->listarRcsNtrl($instancia->pk_lczc());
             //Get biomas registrados
             $idsBioma = $bdLczc->listarBioma($instancia->pk_lczc());
+            //Get religiões registradas
+            $idsReligiao = $bdLczc->listarReligiao($instancia->pk_lczc());
             $res = array(
                 "psna" => $resPsna,
                 "lczc" => $resLczc,
@@ -103,12 +111,14 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
                 "flora" => $resFlora,
                 "rcs_ntrl" => $resRcsNtrl,
                 "bioma" => $resBioma,
+                "religiao" => $resReligiao,
                 "idsPsnaLczc" => $idsPsnaCnhd,
                 "idsRaca" => $idsRaca,
                 "idsFauna" => $idsFauna,
                 "idsFlora" => $idsFlora,
                 "idsRcsNtrl" => $idsRcsNtrl,
-                "idsBioma" => $idsBioma);
+                "idsBioma" => $idsBioma,
+                "idsReligiao" => $idsReligiao);
             $this->setResultadosSelect($res);
         } else {
             redirecionar("?categoria=localizacao&acao=listar");
