@@ -22,6 +22,12 @@ $resultados = $controlador->getResultados();
             <i class="fa fa-plus"></i>
             &nbsp&nbspCriar nova <?= ModeloFauna::$nomeSingular ?>
         </a>
+        <div class="pull-right minimizar-todos" title="Clique para minimizar todas as instâncias">
+            <span>Todos</span>
+            <a class="btn btn-azul">
+                <i class="fa fa-minus"></i>
+            </a>
+        </div>
     </div>
 
     <?php
