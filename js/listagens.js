@@ -1,7 +1,7 @@
 //Deletar
 $(".btn-deletar-instancia").on("click", function () {
     var nome = $(this).closest(".instancia-card").attr("data-nome");
-    if (confirm("Deseja mesmo excluir " + (nome === "" ? "a sua história" : nome) + "?")) {
+    if (confirm("Deseja mesmo excluir " + (nome === "" ? "essa instância" : nome) + "?")) {
         document.location = $(this).siblings().attr("href");
     }
 });
