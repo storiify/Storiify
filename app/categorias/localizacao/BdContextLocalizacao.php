@@ -16,8 +16,10 @@ class BdContextLocalizacao extends ConexaoBd {
         $horarioAtual = date("Y-m-d H:i:s");
         $parametros['dt_alt'] = $horarioAtual;
         //Gerencia a coluna de personagens mais conhecidos
-        $idsPsnaCnhd = (isset($parametros['fk_psna_cnhd']) ? $parametros['fk_psna_cnhd'] : 0);
-        unset($parametros['fk_psna_cnhd']);
+        if (isset($parametros['fk_psna_cnhd'])) {
+            $idsPsnaCnhd = $parametros['fk_psna_cnhd'];
+            unset($parametros['fk_psna_cnhd']);
+        }
         //Gerencia a coluna de raças
         if (isset($parametros['fk_raca'])) {
             $idsRaca = $parametros['fk_raca'];
@@ -104,25 +106,45 @@ class BdContextLocalizacao extends ConexaoBd {
         if ($res) {
             $idAtual = (isset($parametros['pk_lczc']) ? $parametros['pk_lczc'] : $this->proximoID() - 1);
             //Cria a relação de personagens conhecidos
-            $this->salvarPsnaCnhd($idsPsnaCnhd, $idAtual);
+            if (isset($idsPsnaCnhd)) {
+                $this->salvarPsnaCnhd($idsPsnaCnhd, $idAtual);
+            }
             //Cria a relação de raças existentes
-            $this->salvarRacaExistente($idsRaca, $idAtual);
+            if (isset($idsRaca)) {
+                $this->salvarRacaExistente($idsRaca, $idAtual);
+            }
             //Cria a relação de faunas existentes
-            $this->salvarFaunaExistente($idsFauna, $idAtual);
+            if (isset($idsFauna)) {
+                $this->salvarFaunaExistente($idsFauna, $idAtual);
+            }
             //Cria a relação de floras existentes
-            $this->salvarFloraExistente($idsFlora, $idAtual);
+            if (isset($idsFlora)) {
+                $this->salvarFloraExistente($idsFlora, $idAtual);
+            }
             //Cria a relação de recursos naturais existentes
-            $this->salvarRcsNtrlExistente($idsRcsNtrl, $idAtual);
+            if (isset($idsRcsNtrl)) {
+                $this->salvarRcsNtrlExistente($idsRcsNtrl, $idAtual);
+            }
             //Cria a relação de biomas existentes
-            $this->salvarBiomaExistente($idsBioma, $idAtual);
+            if (isset($idsBioma)) {
+                $this->salvarBiomaExistente($idsBioma, $idAtual);
+            }
             //Cria a relação de religiões existentes
-            $this->salvarReligiaoExistente($idsReligiao, $idAtual);
+            if (isset($idsReligiao)) {
+                $this->salvarReligiaoExistente($idsReligiao, $idAtual);
+            }
             //Cria a relação de línguas existentes
-            $this->salvarLinguaExistente($idsLingua, $idAtual);
+            if (isset($idsLingua)) {
+                $this->salvarLinguaExistente($idsLingua, $idAtual);
+            }
             //Cria a relação de mitos existentes
-            $this->salvarMitoExistente($idsMito, $idAtual);
+            if (isset($idsMito)) {
+                $this->salvarMitoExistente($idsMito, $idAtual);
+            }
             //Cria a relação de magias existentes
-            $this->salvarMagiaExistente($idsMagia, $idAtual);
+            if (isset($idsMagia)) {
+                $this->salvarMagiaExistente($idsMagia, $idAtual);
+            }
         }
 
         return $res;
@@ -186,12 +208,12 @@ class BdContextLocalizacao extends ConexaoBd {
 
     private function salvarPsnaCnhd($idsPsnaCnhd, $idLczc) {
         $tbLczcPsna = "tb_localizacao_rel_personagem";
+
         foreach ($idsPsnaCnhd as $psna) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_psna'] = $psna;
-            $res = $this->inserirBase($rel, $tbLczcPsna);
+            $this->inserirBase($rel, $tbLczcPsna);
         }
-        return $res;
     }
 
     public function listarPsnaCnhd($parametros) {
@@ -222,9 +244,8 @@ class BdContextLocalizacao extends ConexaoBd {
         foreach ($idsRaca as $raca) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_raca'] = $raca;
-            $res = $this->inserirBase($rel, $tbLczcRaca);
+            $this->inserirBase($rel, $tbLczcRaca);
         }
-        return $res;
     }
 
     public function listarRaca($parametros) {
@@ -254,9 +275,8 @@ class BdContextLocalizacao extends ConexaoBd {
         foreach ($idsFauna as $fauna) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_fna'] = $fauna;
-            $res = $this->inserirBase($rel, $tbLczcFna);
+            $this->inserirBase($rel, $tbLczcFna);
         }
-        return $res;
     }
 
     public function listarFauna($parametros) {
@@ -286,9 +306,8 @@ class BdContextLocalizacao extends ConexaoBd {
         foreach ($idsFlora as $flora) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_flra'] = $flora;
-            $res = $this->inserirBase($rel, $tbLczcFlra);
+            $this->inserirBase($rel, $tbLczcFlra);
         }
-        return $res;
     }
 
     public function listarFlora($parametros) {
@@ -318,9 +337,8 @@ class BdContextLocalizacao extends ConexaoBd {
         foreach ($idsRscNtrl as $rcsNtrl) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_rcs_ntrl'] = $rcsNtrl;
-            $res = $this->inserirBase($rel, $tbLczcRcsNtrl);
+            $this->inserirBase($rel, $tbLczcRcsNtrl);
         }
-        return $res;
     }
 
     public function listarRcsNtrl($parametros) {
@@ -350,9 +368,8 @@ class BdContextLocalizacao extends ConexaoBd {
         foreach ($idsBioma as $bioma) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_bma'] = $bioma;
-            $res = $this->inserirBase($rel, $tbRel);
+            $this->inserirBase($rel, $tbRel);
         }
-        return $res;
     }
 
     public function listarBioma($parametros) {
@@ -382,9 +399,8 @@ class BdContextLocalizacao extends ConexaoBd {
         foreach ($idsReligiao as $religiao) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_relg'] = $religiao;
-            $res = $this->inserirBase($rel, $tbRel);
+            $this->inserirBase($rel, $tbRel);
         }
-        return $res;
     }
 
     public function listarReligiao($parametros) {
@@ -414,9 +430,8 @@ class BdContextLocalizacao extends ConexaoBd {
         foreach ($idsLingua as $lingua) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_lnga'] = $lingua;
-            $res = $this->inserirBase($rel, $tbRel);
+            $this->inserirBase($rel, $tbRel);
         }
-        return $res;
     }
 
     public function listarLingua($parametros) {
@@ -446,9 +461,8 @@ class BdContextLocalizacao extends ConexaoBd {
         foreach ($idsMito as $mito) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_mito'] = $mito;
-            $res = $this->inserirBase($rel, $tbRel);
+            $this->inserirBase($rel, $tbRel);
         }
-        return $res;
     }
 
     public function listarMito($parametros) {
@@ -472,15 +486,14 @@ class BdContextLocalizacao extends ConexaoBd {
 
         return $res;
     }
-    
+
     private function salvarMagiaExistente($idsMagia, $idLczc) {
         $tbRel = "tb_localizacao_rel_magia";
         foreach ($idsMagia as $magia) {
             $rel['fk_lczc'] = $idLczc;
             $rel['fk_magi'] = $magia;
-            $res = $this->inserirBase($rel, $tbRel);
+            $this->inserirBase($rel, $tbRel);
         }
-        return $res;
     }
 
     public function listarMagia($parametros) {
