@@ -54,7 +54,6 @@ class ModeloPersonagem {
     private $segd_psna;
     private $dt_cric;
     private $dt_alt;
-
 // </editor-fold>
     //Views
     public static $viewForm = "CadastrarPersonagem";
@@ -71,26 +70,26 @@ class ModeloPersonagem {
                 }
             }
         }
-        
-        if($this->im_psna == "") {
-		$this->im_psna = const_Indefinida_IM;
-	}
+
+        if ($this->im_psna == "") {
+            $this->im_psna = const_Indefinida_IM;
+        }
     }
 
     public function getAtributosListar() {
         $qtdMaxAtt = 3;
         $atributosSelecionados = array();
 
-		if ($this->dcr_bsca != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+        if ($this->dcr_bsca != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Descrição Básica"] = $this->dcr_bsca;
         }
         if ($this->dt_nsc_dets != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Data de Nascimento"] = $this->dt_nsc_dets;
-        }  
-		if ($this->papl_hist != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+        }
+        if ($this->papl_hist != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Papel na História"] = $this->papl_hist;
         }
-		if ($this->envl_hist != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+        if ($this->envl_hist != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Envolvimento na História"] = $this->envl_hist;
         }
         if ($this->objt_ppl != "" && count($atributosSelecionados) < $qtdMaxAtt) {
@@ -99,12 +98,15 @@ class ModeloPersonagem {
         if ($this->mtvc_psna != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Motivações"] = $this->mtvc_psna;
         }
-		if ($this->fk_lczc_natl != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+        if ($this->fk_lczc_natl != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $bdContext = new BdContextLocalizacao();
             $parametros["id"] = $this->fk_lczc_natl;
             $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
-            
-            $atributosSelecionados["Localidade Natal"] = $instancia->nm_lczc();
+
+            $atributosSelecionados["Localidade Natal"] = "<span class='btn-listar-select' "
+                    . "title='Clique para editar {$instancia->nm_lczc()}'"
+                    . "href='?categoria=localizacao&acao=editar&id={$instancia->pk_lczc()}'>" .
+                    truncar($instancia->nm_lczc(), 20) . "</span>";
         }
         if ($this->almt_psna != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Alinhamento"] = $this->almt_psna;
@@ -168,14 +170,14 @@ class ModeloPersonagem {
     public function fk_raca() {
         return $this->fk_raca;
     }
-	
-	public function vsi_psna() {
+
+    public function vsi_psna() {
         return parseCheckbox($this->vsi_psna);
     }
 
     public function dcr_bsca() {
         return $this->dcr_bsca;
-    }    
+    }
 
     public function h_psna() {
         return $this->h_psna;
