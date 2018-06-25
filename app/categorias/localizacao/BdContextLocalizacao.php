@@ -68,7 +68,7 @@ class BdContextLocalizacao extends ConexaoBd {
         }
         //Gerencia a qual história essa localização pertence
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
-        $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
+        $parametros['fk_hist'] = ($parametros['fk_hist'] != '' ? $parametros['fk_hist'] : $idHistoria);
 
         $res = false;
 
