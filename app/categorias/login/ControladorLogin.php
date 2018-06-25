@@ -35,13 +35,24 @@ class ControladorLogin extends Controlador implements InterfaceControlador {
     }
 
     public function salvar($parametros) {
-
+	
         $modelo = new ModeloLogin();
 
         $res = $modelo->salvar($parametros);
-        if ($res != true) {
-            echo "erro ao registrar o usuario!";
-        }
+        if ($res !== true) {	    
+	    if($res=='nm'){
+		redirecionar("?categoria=login&acao=editar&msg=Erro com seu nome");
+	    }else if($res=='mail'){
+		redirecionar("?categoria=login&acao=editar&msg=Erro com seu e-mail");
+	    }else {
+		echo "erro ao salvar o usuario!";
+	    }
+        }else{
+	    if(isset($parametros['pk_usu'])){
+		redirecionar("?categoria=login&acao=editar&msg=Editado com sucesso");
+	    }
+	}	
+	
     }
 
     public function verificar($parametros) {
@@ -59,6 +70,15 @@ class ControladorLogin extends Controlador implements InterfaceControlador {
 
     public function editar($parametros) {
         
+	$modelo = new ModeloLogin();	
+	$dados = $modelo->getDadosLogin();
+	
+	$this->setTituloPagina("Editar perfil");
+	if(isset($parametros['msg'])){
+	    $this->setParametros($parametros);
+	}
+	$this->setResultados($dados[0]);
+	$this->setVisao('editar');
     }
 
     public function excluir($parametros) {

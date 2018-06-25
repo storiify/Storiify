@@ -43,22 +43,50 @@ class ModeloLogin extends ConexaoBd {
     public function salvar($parametros) {
 
         $modeloBase = new ConexaoBd();
+	
+	date_default_timezone_set('America/Sao_Paulo');
+	$horarioAtual = date("Y-m-d H:i:s");
+	
+	if(isset($parametros['pk_usu']) && $parametros['pk_usu']!=""){
+	    //atualizar
+	    $id = $parametros['pk_usu'];
+	    unset($parametros['pk_usu']);
+	    $parametros['dt_alt'] = $horarioAtual;
 
-        date_default_timezone_set('America/Sao_Paulo');
-        $horarioAtual = date("Y-m-d H:i:s");
-        $parametros['dt_cric'] = $horarioAtual;
-        $parametros['dt_alt'] = $parametros['dt_cric'];
+	    if(isset($parametros['nm_usu']) && $parametros['nm_usu']==""){
+		return "nm";
+	    }
+	    if(isset($parametros['mail_usu']) && $parametros['mail_usu']==""){
+		return "mail";
+	    }
+	    
+	    if(isset($parametros['dt_nsc']) && ($parametros['dt_nsc']=="" || $parametros['dt_nsc']=="0000-00-00")){
+		unset($parametros['dt_nsc']);
+	    }
+	    
+	    if(isset($parametros['snh_usu']) && $parametros['snh_usu']!=""){
+		$parametros['snh_usu'] = password_hash($parametros['snh_usu'], $this->cryptAlgo);
+	    }else{
+		unset($parametros['snh_usu']);
+	    }
+	    
+	    $res = $modeloBase->updateBase($parametros, $this->tabela, "pk_usu='{$id}'");
+	    
+	}else{
+	    //inserir
+	    $parametros['dt_cric'] = $horarioAtual;
+	    $parametros['dt_alt'] = $parametros['dt_cric'];
 
-        $parametros['nm_usu'] = $parametros['input1'];
-        $parametros['mail_usu'] = $parametros['input2'];
-        $parametros['snh_usu'] = $parametros['input3'];
+	    $parametros['nm_usu'] = $parametros['input1'];
+	    $parametros['mail_usu'] = $parametros['input2'];
+	    $parametros['snh_usu'] = $parametros['input3'];
 
-        unset($parametros['input1'], $parametros['input2'], $parametros['input3']);
+	    unset($parametros['input1'], $parametros['input2'], $parametros['input3']);
 
-        $parametros['snh_usu'] = password_hash($parametros['snh_usu'], $this->cryptAlgo);
+	    $parametros['snh_usu'] = password_hash($parametros['snh_usu'], $this->cryptAlgo);
 
-        $res = $modeloBase->inserirBase($parametros, $this->tabela);
-
+	    $res = $modeloBase->inserirBase($parametros, $this->tabela);
+	}
         return $res;
     }
 
@@ -73,6 +101,16 @@ class ModeloLogin extends ConexaoBd {
         $condicao = "WHERE MAIL_USU='$email'";
 
         $res = $modeloBase->listarBase("*", $this->tabela, $condicao);
+
+        return $res;
+    }
+    
+    public function getDadosLogin() {
+
+        $modeloBase = new ConexaoBd();
+	
+	$idLogado = sessao()->getUserData()->id;	
+        $res = $modeloBase->listarBase("*", $this->tabela, "WHERE pk_usu='$idLogado'");
 
         return $res;
     }

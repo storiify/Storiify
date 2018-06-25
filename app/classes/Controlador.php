@@ -37,7 +37,7 @@ class Controlador {
         }
 
         if (($this->sessao->getChave(CHAVE_LOGIN) == TRUE)) {
-            $acoesPermitidas = ['listar', 'listarCategorias', 'cadastrar', 'editarExterno'];
+            $acoesPermitidas = ['listar', 'listarCategorias', 'cadastrar', 'editarExterno', 'editar'];
             $acoesPermitidasPsna = ['editarExterno'];
             if (($categoria != "historia" && $categoria != "login") || (!in_array($acao, $acoesPermitidas))) {
                 if (!in_array($acao, $acoesPermitidasPsna)) {

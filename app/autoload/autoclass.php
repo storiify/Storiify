@@ -9,12 +9,12 @@
  * 
  * NÃO EDITAR A MENOS QUE SEJA COMBINADO ANTES!
  */
-
-function __autoload($class) {
+spl_autoload_register("autoload");
+function autoload($class) {
     
     $pathfile = PATH_CLASS.$class.'.php';
     $pathc = PATH_CAT;
-       
+    
     if(!file_exists($pathfile)){
         
         // Checa se existe nome da class
@@ -28,13 +28,11 @@ function __autoload($class) {
                         unset($auxClass[$key]);
                     }
                 }
-                //verifica se esta setado o nome da CATEGORIA               
-                $categ = count($auxClass);
-                
-                if (isset($auxClass[$categ])) {
+                //verifica se esta setado o nome da CATEGORIA
+                if (isset($auxClass[2])) {
                     //checa se o diretorio das categorias é valido
-                    if (is_dir($pathc . strtolower($auxClass[$categ]))) {
-                        $verificar = $pathc . strtolower($auxClass[$categ]) . "/" . $class . ".php";
+                    if (is_dir($pathc . strtolower($auxClass[2]))) {
+                        $verificar = $pathc . strtolower($auxClass[2]) . "/" . $class . ".php";
                         if (file_exists($verificar)) {
                             $pathfile = $verificar;
                             //$tipopesquisacompleta = false;

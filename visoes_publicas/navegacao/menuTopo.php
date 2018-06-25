@@ -27,17 +27,14 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
             <div class="container">
                 <!--Botão de Usuário-->
                 <div class="dropdown">
-                    <button type="button" class="btn btn-azul dropdown-toggle btn-usuario" data-toggle="dropdown">
-                        <div class='pull-left'>
-                            <div class='avatar-usuario' style='background-image:url(usuarios/1/1/tb_historia/im_hist.png)'></div>
-                        </div>
-                    <!--<img src="./imagens/sem-foto.png" class="rounded-circle avatar-usuario" />-->
-                        <span class='nome-usuario'><?= $controlador->userData['nome'] ?></span>
+                    <button type="button" class="btn btn-azul dropdown-toggle" data-toggle="dropdown">
+                        <img src="./imagens/sem-foto.png" class="rounded-circle avatar-usuario" />
+                        <?= $controlador->userData['nome'] ?>
                     </button>
                     <div class="dropdown-menu" style="left: calc(100% - 187px);">
-                        <a class="dropdown-item" href="#">Editar Perfil</a>
-                        <a class="dropdown-item" href="#">Configurações da Conta</a>
-                        <a class="dropdown-item" href="#">Ajuda</a>
+                        <a class="dropdown-item" href="?categoria=login&acao=editar">Editar Perfil</a>
+                        <!--a class="dropdown-item" href="#">Configurações da Conta</a>
+                        <a class="dropdown-item" href="#">Ajuda</a-->
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="?categoria=login&acao=deslogar">Sair</a>
                     </div>
