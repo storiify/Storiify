@@ -2,7 +2,7 @@
 
 class BdContextObjeto extends ConexaoBd {
 
-    const tx_tabela = "tb_Objeto";
+    const tx_tabela = "tb_objeto";
     private $campos = '*';
 
     public function __construct() {

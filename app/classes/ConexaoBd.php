@@ -57,7 +57,7 @@ class ConexaoBd {
         }
         $query = substr($query, 0, -1);
         $sql = "UPDATE `$tabela`a SET $query WHERE $where";
-        consoleLog($sql);
+        
         $res = self::getInstance()->query($sql);
         if ($res->rowCount() >= 0) {
             return true;
@@ -89,7 +89,7 @@ class ConexaoBd {
         $valores = substr($valores, 0, -1);
 
         $sql = "INSERT INTO $tabela ($colunas) VALUES ($valores)";
-        consoleLog($sql);
+        
         $res = self::getInstance()->query($sql);
 
         if ($res->rowCount() > 0) {

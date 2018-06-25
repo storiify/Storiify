@@ -12,7 +12,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
         $this->setVisao(ModeloPersonagem::$viewForm);
         $this->setTituloPagina(ModeloPersonagem::getTituloPagina("cadastrar"));
 
-        $bdPsna = new bdContextPersonagem();
+        $bdPsna = new BdContextPersonagem();
         $resPsna = $bdPsna->listar("");
         $bdLczc = new BdContextLocalizacao();
         $resLczc = $bdLczc->listar("");

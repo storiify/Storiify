@@ -2,7 +2,7 @@
 
 class BdContextLembranca extends ConexaoBd {
 
-    const tx_tabela = "tb_Lembranca";
+    const tx_tabela = "tb_lembranca";
     private $campos = '*';
 
     public function __construct() {
