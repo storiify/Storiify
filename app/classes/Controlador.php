@@ -174,9 +174,24 @@ class Controlador {
     public function getSessao() {
         return $this->sessao->getSessao();
     }
+    
+    public function setUserData($userData) {
+        $this->userData = $userData;
+        $this->sessao->setChave('user_data', $userData);
+    }
 
     public function setDicas($dicas = "Dicas não foram setadas!") {
-        $this->dicas = $dicas;
+        
+        $espaco = "";
+        for ($i=0;$i<=200;$i++) {
+            $espaco .= '&nbsp;';
+        }
+        
+        if (is_array($dicas)) {
+            $this->dicas = implode($espaco, $dicas);
+        } else {
+            $this->dicas = $dicas;
+        }
     }
 
     public function getDicas() {
