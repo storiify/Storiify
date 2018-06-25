@@ -27,7 +27,7 @@ $historiaSelecionada = sessao()->getHistoriaSelecionada();
             <div class="container">
                 <!--Botão de Usuário-->
                 <div class="dropdown">
-                    <button type="button" class="btn btn-azul dropdown-toggle" data-toggle="dropdown">
+                    <button type="button" class="btn btn-azul dropdown-toggle btn-usuario" data-toggle="dropdown">
                         <img src="./imagens/sem-foto.png" class="rounded-circle avatar-usuario" />
                         <?= $controlador->userData['nome'] ?>
                     </button>
