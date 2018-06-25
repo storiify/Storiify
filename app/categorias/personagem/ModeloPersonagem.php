@@ -83,8 +83,8 @@ class ModeloPersonagem {
         if ($this->dcr_bsca != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Descrição Básica"] = $this->dcr_bsca;
         }
-        if ($this->dt_nsc_dets != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            $atributosSelecionados["Data de Nascimento"] = $this->dt_nsc_dets;
+        if ($this->dt_nsc != "" && count($atributosSelecionados) < $qtdMaxAtt) {
+            $atributosSelecionados["Data de Nascimento"] = $this->dt_nsc;
         }
         if ($this->papl_hist != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["Papel na História"] = $this->papl_hist;
