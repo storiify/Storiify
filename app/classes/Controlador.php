@@ -177,7 +177,11 @@ class Controlador {
     
     public function setUserData($userData) {
         $this->userData = $userData;
-        $this->sessao->setChave('user_data', $userData);
+        if  (isset($this->sessao)) {
+            $this->sessao->setChave('user_data', $userData);
+        } else {
+            sessao()->setChave('user_data', $userData);
+        }
     }
 
     public function setDicas($dicas = "Dicas não foram setadas!") {

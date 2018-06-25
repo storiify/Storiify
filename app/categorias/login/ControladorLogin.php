@@ -37,19 +37,54 @@ class ControladorLogin extends Controlador implements InterfaceControlador {
     public function salvar($parametros) {
 	
         $modelo = new ModeloLogin();
+        
+        if (isset($parametros['pk_usu']) && $parametros['pk_usu'] != '') {
+            $idUsuario = $parametros['pk_usu'];
+        }
 
+        //Processamento de todas as imagens da categoria
+        $imagens = array('im_usu'); //adicionar nomes dos campos aqui
+
+        foreach ($imagens as $imagem) {
+            $reset = $imagem . '_reset';
+            if (array_key_exists($imagem, $_FILES) && $_FILES[$imagem]['error'] === UPLOAD_ERR_OK) {
+                $parametros[$imagem] = uploadImagem($idUsuario, NULL, $modelo->getTabela(), NULL, $imagem, $_FILES[$imagem]);
+            } else if (isset($parametros[$reset]) && $parametros[$reset] == true) {
+                deleteImagem($idUsuario, NULL, $modelo->getTabela(), NULL, $imagem);
+                $parametros[$imagem] = "0";
+            }
+            unset($parametros[$reset]);
+        }
+        
         $res = $modelo->salvar($parametros);
         if ($res !== true) {	    
 	    if($res=='nm'){
-		redirecionar("?categoria=login&acao=editar&msg=Erro com seu nome");
+                sessao()->setChave('msg', 'O campo "Nome" é obrigatório');
+		redirecionar("?categoria=login&acao=editar");
 	    }else if($res=='mail'){
-		redirecionar("?categoria=login&acao=editar&msg=Erro com seu e-mail");
+                sessao()->setChave('msg', 'O campo "E-mail" é obrigatório');
+		redirecionar("?categoria=login&acao=editar");
 	    }else {
-		echo "erro ao salvar o usuario!";
+                sessao()->setChave('msg', 'Erro ao salvar o usuario');
+		redirecionar("?categoria=login&acao=editar");
 	    }
         }else{
 	    if(isset($parametros['pk_usu'])){
-		redirecionar("?categoria=login&acao=editar&msg=Editado com sucesso");
+                $userData = sessao()->getChave('user_data');
+
+                $userData['id'] = $modelo->pk_usu();
+                $userData['nome'] = $modelo->nm_usu();
+                $userData['sobrenome'] = $modelo->snm_usu();
+                $userData['email'] = $modelo->mail_usu();
+                $userData['apelido'] = $modelo->apdo_usu();
+                if ($modelo->im_usu() != '') {
+                    $userData['imagem'] = $modelo->im_usu();
+                }
+               
+                $this->setUserData($userData);
+                
+                sessao()->setChave('msg', 'Usuario editado com sucesso');
+		redirecionar("?categoria=login&acao=editar");
 	    }
 	}	
 	
