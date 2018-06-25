@@ -4,7 +4,7 @@ class ControladorObjeto extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Objeto");
+       //parent::setDicas("Dicas Objeto");
         $this->setCategoria($categoria);
     }
 

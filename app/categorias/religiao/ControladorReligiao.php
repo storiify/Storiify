@@ -4,7 +4,7 @@ class ControladorReligiao extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Religiao");
+       //parent::setDicas("Dicas Religiao");
         $this->setCategoria($categoria);
     }
 

@@ -4,7 +4,7 @@ class ControladorBioma extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Bioma");
+        //parent::setDicas("Dicas Bioma");
         $this->setCategoria($categoria);
     }
 

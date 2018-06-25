@@ -4,7 +4,7 @@ class ControladorFlora extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Flora");
+        //parent::setDicas("Dicas Flora");
         $this->setCategoria($categoria);
     }
 

@@ -4,7 +4,7 @@ class ControladorMito extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Mito");
+       //parent::setDicas("Dicas Mito");
         $this->setCategoria($categoria);
     }
 

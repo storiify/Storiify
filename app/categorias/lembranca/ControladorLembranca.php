@@ -4,7 +4,7 @@ class ControladorLembranca extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Lembrança");
+       //parent::setDicas("Dicas Lembrança");
         $this->setCategoria($categoria);
     }
 

@@ -4,7 +4,7 @@ class ControladorLingua extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Lingua");
+       //parent::setDicas("Dicas Lingua");
         $this->setCategoria($categoria);
     }
 

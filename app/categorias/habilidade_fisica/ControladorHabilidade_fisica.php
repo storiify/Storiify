@@ -4,7 +4,7 @@ class ControladorHabilidade_fisica extends Controlador implements InterfaceContr
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Habilidade Física");
+       //parent::setDicas("Dicas Habilidade Física");
         $this->setCategoria($categoria);        
     }
 

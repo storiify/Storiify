@@ -4,7 +4,7 @@ class ControladorRecurso_natural extends Controlador implements InterfaceControl
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Recurso Natural");
+       //parent::setDicas("Dicas Recurso Natural");
         $this->setCategoria($categoria);
     }
 
