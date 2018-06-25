@@ -18,7 +18,7 @@ class BdContextPersonagem extends ConexaoBd {
         $parametros['dt_alt'] = $horarioAtual;
 
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
-        $parametros['fk_hist'] = (isset($parametros['fk_hist']) ? $parametros['fk_hist'] : $idHistoria);
+        $parametros['fk_hist'] = ($parametros['fk_hist'] != '' ? $parametros['fk_hist'] : $idHistoria);
 
         $res = false;
 
