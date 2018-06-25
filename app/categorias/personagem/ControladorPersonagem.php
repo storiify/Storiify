@@ -4,7 +4,15 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Personagem");
+        $dicas = array(
+            'Clique no ícone de imagem para adicionar uma imagem para seu personagem',
+            'Usando o campo de nome, você pode nomear seu personagem e também pode colocar mais detalhes sobre ele',
+            'Você pode alternar de abas clicando sobre elas',
+            'Você pode escolher a localização natal do seu personagem entre as localizações disponíveis',
+            'Você pode definir a visibilidade de seu personagem de acordo com a sua preferência'
+        );
+
+        parent::setDicas($dicas);
         $this->setCategoria($categoria);
     }
 

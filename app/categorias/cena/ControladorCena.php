@@ -4,7 +4,15 @@ class ControladorCena extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Cena");
+        $dicas = array(
+            'Clique no ícone de imagem para adicionar uma imagem para sua cena',
+            'Você pode alternar de abas clicando sobre elas',
+            'Usando o campo de título, você pode nomear sua cena e também pode colocar mais detalhes sobre ele',
+            'Nos campos "Cena Anterior" e "Próxima Cena" você pode definir quais as cenas virão antes e depois da cena atual',
+            'Você pode definir a visibilidade da sua cena de acordo com a sua preferência'
+        );
+
+        parent::setDicas($dicas);
         $this->setCategoria($categoria);
     }
 

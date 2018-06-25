@@ -4,7 +4,15 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Localização");
+        $dicas = array(
+            'Clique no ícone de imagem para adicionar uma imagem para sua localização',
+            'Você pode alternar de abas clicando sobre elas',
+            'Usando o campo de nome, você pode nomear sua localização e também pode colocar mais detalhes sobre ela',
+            'Em "Personagens mais conhecidos", você pode escolher um ou mais personagens mais conhecidos da sua localização',
+            'Você pode definir a visibilidade de sua localização de acordo com a sua preferência'
+        );
+        
+        parent::setDicas($dicas);
         $this->setCategoria($categoria);
     }
 
@@ -144,18 +152,18 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
     }
 
     public function salvar($parametros) {
-        
+
         $idUsuario = sessao()->getUserData()->id;
-        
+
         $idHistoria = sessao()->getHistoriaSelecionada()->pk_hist();
-        
+
         $bdContext = new BdContextLocalizacao();
         if (isset($parametros['pk_lczc']) && $parametros['pk_lczc'] != '') {
             $idLocalizacao = $parametros['pk_lczc'];
         } else {
             $idLocalizacao = $bdContext->proximoID();
         }
-        
+
         //Processamento de todas as imagens da categoria
         $imagens = array('im_lczc'); //adicionar nomes dos campos aqui
 
@@ -169,7 +177,7 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
             }
             unset($parametros[$reset]);
         }
-        
+
         //Cuida da parte da visibilidade
         if (isset($parametros['vsi_lczc']) && is_array($parametros['vsi_lczc'])) {
             $tempStr = 0;
