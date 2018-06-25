@@ -197,7 +197,7 @@ class BdContextPersonagem extends ConexaoBd {
     }
 
     private function salvarClasseExistente($idsClasse, $idPsna) {
-        $tbRelClasse = "tb_personagem_rel_Classe";
+        $tbRelClasse = "tb_personagem_rel_classe";
         foreach ($idsClasse as $classe) {
             $rel['fk_psna'] = $idPsna;
             $rel['fk_cls'] = $classe;
@@ -207,7 +207,7 @@ class BdContextPersonagem extends ConexaoBd {
     }
 
     public function listarClasse($parametros) {
-        $tbRelClasse = "tb_personagem_rel_Classe";
+        $tbRelClasse = "tb_personagem_rel_classe";
         $idPersonagem = $parametros;
         $condicao = "WHERE fk_psna='$idPersonagem'";
 
@@ -220,7 +220,7 @@ class BdContextPersonagem extends ConexaoBd {
     }
 
     private function excluirClasse($idPsna) {
-        $tbRelClasse = "tb_personagem_rel_Classe";
+        $tbRelClasse = "tb_personagem_rel_classe";
         $condicao = "fk_psna='$idPsna'";
 
         $res = $this->excluirBase($tbRelClasse, $condicao);
