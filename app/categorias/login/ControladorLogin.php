@@ -65,7 +65,7 @@ class ControladorLogin extends Controlador implements InterfaceControlador {
                 sessao()->setChave('msg', 'O campo "E-mail" é obrigatório');
 		redirecionar("?categoria=login&acao=editar");
 	    }else {
-                sessao()->setChave('msg', 'Erro ao salvar o usuario');
+                sessao()->setChave('msg', 'Erro ao salvar o usuário');
 		redirecionar("?categoria=login&acao=editar");
 	    }
         }else{
@@ -83,7 +83,7 @@ class ControladorLogin extends Controlador implements InterfaceControlador {
                
                 $this->setUserData($userData);
                 
-                sessao()->setChave('msg', 'Usuario editado com sucesso');
+                sessao()->setChave('msg', 'Usuário editado com sucesso');
 		redirecionar("?categoria=login&acao=editar");
 	    }
 	}	
