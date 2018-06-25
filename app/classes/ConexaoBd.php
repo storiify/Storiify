@@ -49,7 +49,7 @@ class ConexaoBd {
             if (in_array($coluna, self::colunasMinMax) && $valor == "") {
                 continue;
             }
-            if ($valor == "0") {
+            if ($valor == "0" || $valor == "") {
                 $query .= "`" . $coluna . "`=NULL,";
             } else {
                 $query .= "`" . $coluna . "`='$valor',";
@@ -57,7 +57,6 @@ class ConexaoBd {
         }
         $query = substr($query, 0, -1);
         $sql = "UPDATE `$tabela`a SET $query WHERE $where";
-        
         $res = self::getInstance()->query($sql);
         if ($res->rowCount() >= 0) {
             return true;
@@ -77,7 +76,7 @@ class ConexaoBd {
                 continue;
             }
 
-            if ($valor == "0") {
+            if ($valor == "0" || $valor == "") {
                 $colunas .= $coluna . ',';
                 $valores .= "NULL,";
             } else {
@@ -89,7 +88,6 @@ class ConexaoBd {
         $valores = substr($valores, 0, -1);
 
         $sql = "INSERT INTO $tabela ($colunas) VALUES ($valores)";
-        
         $res = self::getInstance()->query($sql);
 
         if ($res->rowCount() > 0) {

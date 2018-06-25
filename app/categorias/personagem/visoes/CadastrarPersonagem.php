@@ -1450,6 +1450,7 @@ $resultado = ($controlador->getResultados() == null ?
     <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
     <div class="col-md-12 form-controle">
 	<input type="hidden" name="pk_psna" value="<?= $resultado->pk_psna(); ?>">
+        <input type='hidden' name='fk_hist' value='<?= $resultado->fk_hist(); ?>'>
     <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
             Salvar Personagem
     </button>

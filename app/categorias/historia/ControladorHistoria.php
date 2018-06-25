@@ -56,12 +56,6 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
     }
 
     public function salvar($parametros) {
-        //Não altera o que não foi alterado
-        foreach ($parametros as $key => $value) {
-            if (!isset($parametros[$key]) || $parametros[$key] == '') {
-                unset($parametros[$key]);
-            }
-        }
         $idUsuario = sessao()->getUserData()->id;
         
         $bdContext = new BdContextHistoria();
