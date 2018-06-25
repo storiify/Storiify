@@ -116,8 +116,8 @@
 				</div>
 				<div class="form-group">
 				    <div class="col-xs-12">
-					<input type="checkbox" name="ckBoxTermos" value="termosAceitos"/>
-					<label>
+					<input type="checkbox" name="ckBoxTermos" id='boxAceite' value="termosAceitos"/>
+					<label for='boxAceite'>
 					    Li e aceito os <a href="#">termos de uso</a>
 					</label>
 				    </div>
