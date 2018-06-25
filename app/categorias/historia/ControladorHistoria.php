@@ -6,9 +6,6 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas História");
         $this->setCategoria($categoria);
-
-        require_once "BdContextHistoria.php";
-        require_once PATH_CAT . "/personagem/BdContextPersonagem.php";
     }
 
     public function cadastrar($parametros) {

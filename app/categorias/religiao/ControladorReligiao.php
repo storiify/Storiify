@@ -6,8 +6,6 @@ class ControladorReligiao extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Religiao");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextReligiao.php";
     }
 
     public function cadastrar($parametros) {

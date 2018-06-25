@@ -6,8 +6,6 @@ class ControladorCena extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Cena");
         $this->setCategoria($categoria);
-
-        require_once "BdContextCena.php";
     }
 
     public function cadastrar($parametros) {

@@ -5,9 +5,7 @@ class ControladorHabilidade_fisica extends Controlador implements InterfaceContr
     public function __construct($categoria) {
         parent::__construct();
         parent::setDicas("Dicas Habilidade Física");
-        $this->setCategoria($categoria);
-        
-        require_once "BdContextHabilidade_fisica.php";
+        $this->setCategoria($categoria);        
     }
 
     public function cadastrar($parametros) {

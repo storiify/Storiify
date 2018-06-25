@@ -6,18 +6,6 @@ class ControladorLocalizacao extends Controlador implements InterfaceControlador
         parent::__construct();
         parent::setDicas("Dicas Localização");
         $this->setCategoria($categoria);
-
-        require_once "BdContextLocalizacao.php";
-        require_once PATH_CAT . "/raca/BdContextRaca.php";
-        require_once PATH_CAT . "/fauna/BdContextFauna.php";
-        require_once PATH_CAT . "/flora/BdContextFlora.php";
-        require_once PATH_CAT . "/Recurso_natural/BdContextRecurso_natural.php";
-        require_once PATH_CAT . "/bioma/BdContextBioma.php";
-        require_once PATH_CAT . "/religiao/BdContextReligiao.php";
-        require_once PATH_CAT . "/lingua/BdContextLingua.php";
-        require_once PATH_CAT . "/mito/BdContextMito.php";
-        require_once PATH_CAT . "/magia/BdContextMagia.php";
-        require_once PATH_CAT . "/personagem/BdContextPersonagem.php";
     }
 
     public function cadastrar($parametros) {

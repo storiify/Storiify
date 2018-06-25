@@ -6,8 +6,6 @@ class ControladorFauna extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Fauna");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextFauna.php";
     }
 
     public function cadastrar($parametros) {

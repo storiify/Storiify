@@ -6,8 +6,6 @@ class ControladorClasse extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Classe");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextClasse.php";
     }
 
     public function cadastrar($parametros) {
@@ -18,7 +16,7 @@ class ControladorClasse extends Controlador implements InterfaceControlador {
 
     public function listar($parametros) {
         
-        $bdContext = new BdContextclasse();
+        $bdContext = new BdContextClasse();
         $instancias = $bdContext->listar($parametros);
         $this->setResultados($instancias);
 
@@ -58,7 +56,7 @@ class ControladorClasse extends Controlador implements InterfaceControlador {
         }
         
         //Faz a inserção
-        $bdContext = new BdContextclasse();
+        $bdContext = new BdContextClasse();
         $resultado = $bdContext->salvar($parametros);
         
         //Checa o que fazer com o resultado

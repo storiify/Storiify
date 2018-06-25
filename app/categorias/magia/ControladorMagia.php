@@ -6,8 +6,6 @@ class ControladorMagia extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Magia");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextMagia.php";
     }
 
     public function cadastrar($parametros) {

@@ -6,8 +6,6 @@ class ControladorLingua extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Lingua");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextLingua.php";
     }
 
     public function cadastrar($parametros) {

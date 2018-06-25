@@ -6,8 +6,6 @@ class ControladorFlora extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Flora");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextFlora.php";
     }
 
     public function cadastrar($parametros) {

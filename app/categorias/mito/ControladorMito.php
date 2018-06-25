@@ -6,8 +6,6 @@ class ControladorMito extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Mito");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextMito.php";
     }
 
     public function cadastrar($parametros) {

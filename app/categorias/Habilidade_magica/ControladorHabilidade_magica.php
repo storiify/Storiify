@@ -6,8 +6,6 @@ class ControladorHabilidade_magica extends Controlador implements InterfaceContr
         parent::__construct();
         parent::setDicas("Dicas Habilidade Física");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextHabilidade_magica.php";
     }
 
     public function cadastrar($parametros) {

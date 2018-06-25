@@ -6,8 +6,6 @@ class ControladorLembranca extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Lembrança");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextLembranca.php";
     }
 
     public function cadastrar($parametros) {

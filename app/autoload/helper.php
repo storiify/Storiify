@@ -142,8 +142,7 @@ function build_dir_imagem($idUsuario, $idHistoria, $nmCategoria, $idInstancia) {
     } else {
         $dir .= "$idHistoria/$nmCategoria/";
 
-        //if ($nmCategoria != BdContextHistoria::tx_tabela) {
-        if ($nmCategoria != 'tb_historia') {
+        if ($nmCategoria != BdContextHistoria::tx_tabela) {
             $dir .= "$idInstancia/";
         }
     }

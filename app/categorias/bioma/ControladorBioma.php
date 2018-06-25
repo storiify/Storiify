@@ -6,8 +6,6 @@ class ControladorBioma extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Bioma");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextBioma.php";
     }
 
     public function cadastrar($parametros) {

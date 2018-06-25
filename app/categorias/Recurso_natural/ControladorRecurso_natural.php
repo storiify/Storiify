@@ -6,8 +6,6 @@ class ControladorRecurso_natural extends Controlador implements InterfaceControl
         parent::__construct();
         parent::setDicas("Dicas Recurso Natural");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextRecurso_natural.php";
     }
 
     public function cadastrar($parametros) {

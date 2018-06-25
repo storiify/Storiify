@@ -6,18 +6,6 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
         parent::__construct();
         parent::setDicas("Dicas Personagem");
         $this->setCategoria($categoria);
-
-        require_once "BdContextPersonagem.php";
-        require_once PATH_CAT . "/raca/BdContextRaca.php";
-        require_once PATH_CAT . "/classe/BdContextClasse.php";
-        require_once PATH_CAT . "/profissao/BdContextprofissao.php";
-        require_once PATH_CAT . "/localizacao/BdContextLocalizacao.php";
-        require_once PATH_CAT . "/objeto/BdContextObjeto.php";
-        require_once PATH_CAT . "/habilidade_fisica/BdContextHabilidade_fisica.php";
-        require_once PATH_CAT . "/habilidade_magica/BdContextHabilidade_magica.php";
-        require_once PATH_CAT . "/lembranca/BdContextLembranca.php";
-        require_once PATH_CAT . "/cena/BdContextCena.php";
-        require_once PATH_CAT . "/historia/BdContextHistoria.php";
     }
 
     public function cadastrar($parametros) {
@@ -60,7 +48,7 @@ class ControladorPersonagem extends Controlador implements InterfaceControlador 
 
     public function listar($parametros) {
 
-        $bdRaca = new bdContextPersonagem();
+        $bdRaca = new BdContextPersonagem();
         $res = $bdRaca->listar($parametros);
         $this->setResultados($res);
 

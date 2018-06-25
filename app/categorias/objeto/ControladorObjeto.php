@@ -6,8 +6,6 @@ class ControladorObjeto extends Controlador implements InterfaceControlador {
         parent::__construct();
         parent::setDicas("Dicas Objeto");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextObjeto.php";
     }
 
     public function cadastrar($parametros) {
