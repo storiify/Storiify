@@ -55,7 +55,7 @@
 					</div>
 				    </div>
 				</div>
-				<div class="form-group">								
+<!--				<div class="form-group">								
 					<div class="form-check mb-2 mr-sm-2 mb-sm-0">						
 						<a href="esqueceuSenha.html" class="float-right">Esqueceu sua Senha?</a>						
                         <input  class="form-check-input" type="checkbox">
@@ -63,7 +63,7 @@
 						    Lembre-me
 						</label>
 					</div>				    
-				</div>
+				</div>-->
 				<hr>
 				<div class="panel panel-default">
 				    <div class="clearfix">				
