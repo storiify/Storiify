@@ -229,7 +229,7 @@ class BdContextPersonagem extends ConexaoBd {
     }
 
     private function salvarProfissaoExistente($idsPfs, $idPsna) {
-        $tbRelPfs = "tb_personagem_rel_Profissao";
+        $tbRelPfs = "tb_personagem_rel_profissao";
         foreach ($idsPfs as $pfs) {
             $rel['fk_psna'] = $idPsna;
             $rel['fk_pfs'] = $pfs;
@@ -239,7 +239,7 @@ class BdContextPersonagem extends ConexaoBd {
     }
 
     public function listarProfissao($parametros) {
-        $tbRelPfs = "tb_personagem_rel_Profissao";
+        $tbRelPfs = "tb_personagem_rel_profissao";
         $idPersonagem = $parametros;
         $condicao = "WHERE fk_psna='$idPersonagem'";
 
@@ -252,7 +252,7 @@ class BdContextPersonagem extends ConexaoBd {
     }
 
     private function excluirProfissao($idPsna) {
-        $tbRelPfs = "tb_personagem_rel_Profissao";
+        $tbRelPfs = "tb_personagem_rel_profissao";
         $condicao = "fk_psna='$idPsna'";
 
         $res = $this->excluirBase($tbRelPfs, $condicao);
