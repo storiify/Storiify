@@ -95,7 +95,7 @@ $msg = $controlador->getParametros();
 			<input name="snh_usu" value="" 
 			       placeholder="Digite aqui sua senha caso queira mudar"
 			       title="Digite aqui sua senha caso queira mudar"
-			       maxlength="30" type="text"
+			       maxlength="30" type="password"
 			       class="form-control" id="snh_usu"/>
 		    </div>
 		</div>		
