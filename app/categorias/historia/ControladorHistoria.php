@@ -4,7 +4,16 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas História");
+
+        $dicas = array(
+            'Clique no ícone de imagem para adicionar uma imagem para sua história',
+            'Usando o campo de título, você pode nomear sua história e também pode colocar mais detalhes sobre ele',
+            'Você pode colocar os nomes dos autores e ilustradores da sua história',
+            'Você pode alternar de abas clicando sobre elas',
+            'Você pode definir a visibilidade da sua história de acordo com a sua preferência'
+        );
+
+        parent::setDicas($dicas);
         $this->setCategoria($categoria);
     }
 
@@ -57,7 +66,7 @@ class ControladorHistoria extends Controlador implements InterfaceControlador {
 
     public function salvar($parametros) {
         $idUsuario = sessao()->getUserData()->id;
-        
+
         $bdContext = new BdContextHistoria();
         if (isset($parametros['pk_hist']) && $parametros['pk_hist'] != '') {
             $idHistoria = $parametros['pk_hist'];
