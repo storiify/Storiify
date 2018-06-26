@@ -19,8 +19,7 @@
 	<!-- <link href="./css/bootstrap.css" rel="stylesheet" /> -->
     </head>
     <body class="focused-form" style="">
-
-
+        <br><br><br>
 	<div class="container">
 	    <a href="?categoria=login&acao=logar" class="login-logo" style="margin: 0px;">
 	    <div class="text-center">
