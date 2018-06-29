@@ -4,7 +4,7 @@ class ControladorMundo extends Controlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Mundo");
+       //parent::setDicas("Dicas Mundo");
         $this->setCategoria($categoria);
     }
 

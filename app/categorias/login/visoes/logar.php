@@ -19,8 +19,7 @@
 	<!-- <link href="./css/bootstrap.css" rel="stylesheet" /> -->
     </head>
     <body class="focused-form" style="">
-
-
+        <br><br><br>
 	<div class="container">
 	    <a href="?categoria=login&acao=logar" class="login-logo" style="margin: 0px;">
 	    <div class="text-center">
@@ -55,7 +54,7 @@
 					</div>
 				    </div>
 				</div>
-				<div class="form-group">								
+<!--				<div class="form-group">								
 					<div class="form-check mb-2 mr-sm-2 mb-sm-0">						
 						<a href="esqueceuSenha.html" class="float-right">Esqueceu sua Senha?</a>						
                         <input  class="form-check-input" type="checkbox">
@@ -63,7 +62,7 @@
 						    Lembre-me
 						</label>
 					</div>				    
-				</div>
+				</div>-->
 				<hr>
 				<div class="panel panel-default">
 				    <div class="clearfix">				
@@ -116,8 +115,8 @@
 				</div>
 				<div class="form-group">
 				    <div class="col-xs-12">
-					<input type="checkbox" />
-					<label>
+					<input type="checkbox" name="ckBoxTermos" id='boxAceite' value="termosAceitos"/>
+					<label for='boxAceite'>
 					    Li e aceito os <a href="#">termos de uso</a>
 					</label>
 				    </div>

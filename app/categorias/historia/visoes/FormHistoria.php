@@ -52,7 +52,8 @@ $resultado = ($controlador->getResultados() == null ?
                                 <div class="input-imagem" title="Campo para Imagem da história" id="input-im-ImagemdaHistoria"
                                      style="background-image:url(<?= $resultado->im_hist() ?>)"></div>
 
-                                <input value="" accept="image/*" type='file' class="imgUploader" name="im_hist"/>
+                                <input value="" accept='.png,.jpg,.jpeg' type='file' class="imgUploader" name="im_hist"/>
+                                <input value="" type="hidden" name="im_hist_reset" class="request-reset"/>
 
                                 <a class="input-imagem-reset" title="Clique para resetar a Imagem da História" alt="Clique para resetar a Imagem da História">
                                     <i class="fa fa-ban"></i>
@@ -320,14 +321,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_psna_ppl" id="input-txselr-PersonagemPrincipal">
-                                    <option value="" selected>
-                                        <?php
-                                        if ($resultado->fk_psna_ppl() == "") {
-                                            echo"Seus Personagens aparecerão aqui";
-                                        } else {
-                                            echo"Personagens de {$resultado->tit_hist()}";
-                                        }
-                                        ?></option>
+                                    <option value="0" selected>-- Personagens de <?= $resultado->tit_hist() ?> --</option>
                                     <?php
                                     foreach ($resultadoSelect->psna as $personagemSelect) {
                                         $id = $personagemSelect["pk_psna"];

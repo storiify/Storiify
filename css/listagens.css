@@ -21,6 +21,44 @@ th{
 .criar-nova-instancia{
     margin-left: 14%;
 }
+
+.minimizar-todos{
+    margin-right: 2rem;
+    cursor: pointer;
+}
+.minimizar-todos>span{
+    border: 1px solid black;
+    border-right: 0;
+    border-bottom-left-radius: .25rem;
+    border-top-left-radius: .25rem;
+    padding-top: .05rem;
+    padding-left: .3rem;
+    padding-right: .4rem;
+    padding-bottom: .35rem;
+    margin-right: -7px;
+    font-weight: bold;
+    -webkit-transition-duration: 0.2s !important; /* Safari */
+    transition-duration: 0.2s !important;
+}
+.minimizar-todos>a{
+    height: 30px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.minimizar-todos:hover>span{
+    background-color: white !important;
+    color: #ff7b00 !important;
+    border-top:1px solid #ff7b00 !important;
+    border-left:1px solid #ff7b00 !important;
+    border-bottom:1px solid #ff7b00 !important;
+}
+.minimizar-todos:hover>a{
+    background-color: white !important;
+    color: #ff7b00 !important;
+    border:1px solid #ff7b00 !important;
+    border-right: 0;
+}
+
 .sem-instancia{
     width: 80%;
     margin-left: auto;

@@ -57,12 +57,14 @@ function truncar($stringEntrada, $tamanhoMaximo, $dots = "...") {
     return (strlen($stringEntrada) > $tamanhoMaximo) ? substr($stringEntrada, 0, $tamanhoMaximo - strlen($dots)) . $dots : $stringEntrada;
 }
 
-function uploadImagem($idUsuario, $nmCategoria, $idInstancia, $file) {
+function uploadImagem($idUsuario, $idHistoria, $nmCategoria, $idInstancia, $nomeSaida, $file) {
     if ($file["size"] == 0) {
         return null;
     }
-    $nomeSaida = "im_ppl";
-    $diretorioAlvo = "usuarios/$idUsuario/$nmCategoria/$idInstancia/";
+
+    deleteImagem($idUsuario, $idHistoria, $nmCategoria, $idInstancia, $nomeSaida); //deleta a imagem antiga antes de fazer o upload
+
+    $diretorioAlvo = build_dir_imagem($idUsuario, $idHistoria, $nmCategoria, $idInstancia);
 
     //Check if the directory already exists.
     if (!is_dir($diretorioAlvo)) {
@@ -84,13 +86,22 @@ function uploadImagem($idUsuario, $nmCategoria, $idInstancia, $file) {
         //echo "File is not an image.";
         $uploadOk = 0;
     }
+
+    /* Mudar PHP.ini para
+      ; Maximum allowed size for uploaded files.
+      ; http://php.net/upload-max-filesize
+      upload_max_filesize=5M
+     * post_max_size=15M
+     * memory_limit = 128M
+     */
+
     // Check file size
     if ($file["size"] > 5000000) {
         //echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
     // Allow certain file formats
-    if ($imExtensao != "png" && $imExtensao != "jpg" && $imExtensao != "jpeg" && $imExtensao != "gif") {
+    if ($imExtensao != "png" && $imExtensao != "jpg" && $imExtensao != "jpeg") {
         $uploadOk = 0;
     }
     // Check if $uploadOk is set to 0 by an error
@@ -109,15 +120,45 @@ function uploadImagem($idUsuario, $nmCategoria, $idInstancia, $file) {
     }
 }
 
-function deleteImagem($idUsuario, $nmCategoria, $idInstancia) {
+function deleteImagem($idUsuario, $idHistoria, $nmCategoria, $idInstancia, $nomeSaida) {
 
-    $diretorioAlvo = "usuarios/$idUsuario/$nmCategoria/$idInstancia/";
-    $arquivoAlvo = $diretorioAlvo . "im_ppl.png";
+    $diretorioAlvo = build_dir_imagem($idUsuario, $idHistoria, $nmCategoria, $idInstancia);
+    $arquivoAlvo = $diretorioAlvo . $nomeSaida . '.*';
 
-    if (file_exists($arquivoAlvo)) {
-        unlink($arquivoAlvo);
-        rmdir($diretorioAlvo);
+    $files = glob($arquivoAlvo);
+
+    foreach ($files as $file) {
+        if (file_exists($file)) {
+            unlink($file);
+        }
     }
+}
+
+function build_dir_imagem($idUsuario, $idHistoria, $nmCategoria, $idInstancia) {
+    $dir = "usuarios/$idUsuario/";
+
+    if ($nmCategoria == ModeloLogin::tx_tabela) {
+        $dir .= "$nmCategoria/";
+    } else {
+        $dir .= "$idHistoria/$nmCategoria/";
+
+        if ($nmCategoria != BdContextHistoria::tx_tabela) {
+            $dir .= "$idInstancia/";
+        }
+    }
+    return $dir;
+}
+
+/* Função dir_is_empty não utilizada no momento, será usada para limpar os diretórios futuramente */
+
+function dir_is_empty($dir) {
+    $handle = opendir($dir);
+    while (false !== ($entry = readdir($handle))) {
+        if ($entry != "." && $entry != "..") {
+            return FALSE;
+        }
+    }
+    return TRUE;
 }
 
 function parseCheckbox($valor) {
@@ -142,13 +183,25 @@ function nomeFormal($nome, $plural = "singular") {
                 ($nome == "cena" ? "Cenas" :
                 ($nome == "personagem" ? "Personagens" :
                 ($nome == "raca" ? "Raças" :
-                "Categoria não encontrada"))))));
+                ($nome == "classe" ? "Classes" :
+                ($nome == "profisao" ? "Profissões" :
+                ($nome == "habilidade_fisica" ? "Habilidades Físicas" :
+                ($nome == "habilidade_magica" ? "Habilidades Mágicas" :
+                ($nome == "lembranca" ? "Lembranças" :
+                ($nome == "objeto" ? "Objetos" :
+                "Categoria não encontrada"))))))))))));
     }
-    return ($nome == "historia" ? "História" : 
-            ($nome == "mundo" ? "Mundo" : 
-            ($nome == "localizacao" ? "Localização" : 
-            ($nome == "cena" ? "Cena" : 
-            ($nome == "personagem" ?  "Personagem" :
-            ($nome == "raca" ?  "Raça" : 
-            "Categoria não encontrada"))))));
+    return ($nome == "historia" ? "História" :
+            ($nome == "mundo" ? "Mundo" :
+            ($nome == "localizacao" ? "Localização" :
+            ($nome == "cena" ? "Cena" :
+            ($nome == "personagem" ? "Personagem" :
+            ($nome == "raca" ? "Raça" :
+            ($nome == "classe" ? "Classe" :
+            ($nome == "profisao" ? "Profissão" :
+            ($nome == "habilidade_fisica" ? "Habilidade Física" :
+            ($nome == "habilidade_magica" ? "Habilidade Mágica" :
+            ($nome == "lembranca" ? "Lembrança" :
+            ($nome == "objeto" ? "Objeto" :
+            "Categoria não encontrada"))))))))))));
 }

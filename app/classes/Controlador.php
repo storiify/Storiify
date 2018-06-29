@@ -14,7 +14,7 @@ class Controlador {
     private $visao;
     private $visaoUnica;
     private $sessao;
-    private $dicas;
+    private $dicas = '';
     private $userData;
     private $tituloPagina;
     private $resultadosSelect;
@@ -22,7 +22,23 @@ class Controlador {
     public function __construct() {
         //Em Breve chamar sessão aqui
         $this->sessao = new Sessao();
-        $this->dicas = "As dicas ficarão rodando aqui!";
+        $dicas = array(
+            'O Storiify possui 4 categorias principais: História, Personagem, Localização e Cenas',
+            'Você pode utilizar o menu lateral para alternar rapidamente a história que está editando',
+            'Todas as instâncias que você criar pertencerão à história que você selecionou',
+            'Você pode alternar entre as abas de uma categoria sem medo de perder seu trabalho',
+            'Comece pelos campos que você já tem idéias formadas, isso o ajudará no preenchimento dos outros',
+            'O Storiify permite você soltar sua imaginação de maneira bem estruturada!',
+            'É possível acessar suas histórias onde quer que você esteja, é só acessar storiify.epizy.com de qualquer dispositivo',
+            'Nenhum campo é obrigatório! Você pode inclusive ter um personagem sem nome se assim desejar',
+            'Tenha horários pré-determinados para responder mensagens/e-mails, para evitar a baixa produtividade',
+            'Busque inspirações antes de começar a passar as suas idéias ao Storiify',
+            'Depois de períodos de trabalho intenso, um intervalo para caminhar é uma ótima maneira de refrescar os pensamentos',
+            'Não se esqueça de salvar seu trabalho periodicamente!'
+        );
+         
+        $this->setDicas($dicas);
+                
         $this->tituloPagina = "Torne suas Histórias reais!";
     }
 
@@ -37,10 +53,13 @@ class Controlador {
         }
 
         if (($this->sessao->getChave(CHAVE_LOGIN) == TRUE)) {
-            $acoesPermitidas = ['listar', 'listarCategorias', 'cadastrar'];
+            $acoesPermitidas = ['listar', 'listarCategorias', 'cadastrar', 'editarExterno', 'editar'];
+            $acoesPermitidasPsna = ['editarExterno'];
             if (($categoria != "historia" && $categoria != "login") || (!in_array($acao, $acoesPermitidas))) {
-                if ($this->sessao->getHistoriaSelecionada() == NULL) {
-                    redirecionar("?categoria=historia&acao=listar");
+                if (!in_array($acao, $acoesPermitidasPsna)) {
+                    if ($this->sessao->getHistoriaSelecionada() == NULL) {
+                        redirecionar("?categoria=historia&acao=listar");
+                    }
                 }
             }
         }
@@ -171,9 +190,28 @@ class Controlador {
     public function getSessao() {
         return $this->sessao->getSessao();
     }
+    
+    public function setUserData($userData) {
+        $this->userData = $userData;
+        if  (isset($this->sessao)) {
+            $this->sessao->setChave('user_data', $userData);
+        } else {
+            sessao()->setChave('user_data', $userData);
+        }
+    }
 
     public function setDicas($dicas = "Dicas não foram setadas!") {
-        $this->dicas = $dicas;
+        
+        $espaco = "";
+        for ($i=0;$i<=200;$i++) {
+            $espaco .= '&nbsp;';
+        }
+        
+        if (is_array($dicas)) {
+            $this->dicas .= implode($espaco, $dicas);
+        } else {
+            $this->dicas .= $dicas;
+        }
     }
 
     public function getDicas() {

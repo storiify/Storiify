@@ -225,10 +225,6 @@ textarea, input[type="text"]{
 
 /*FINAL - INPUT IMAGEM*/
 /*INPUT INCLUIR*/
-/*.incluir-btn-remover{
-    border-top-right-radius: 0px; 
-    border-bottom-right-radius: 0px;
-}*/
 .input-incluir{
     padding: 0;
 }
@@ -244,49 +240,6 @@ textarea, input[type="text"]{
     border-top-left-radius: 0px; 
     border-bottom-left-radius: 0px;
 }
-
-/*.incluir-status{
-    text-align: center;
-    background-color: white !important;
-}
-filhos
-.btn-icl-controle{
-    background-color: #162338;
-    color:white;
-    position:relative;
-    right:0;
-    border-radius: 0 0.25rem 0.25rem 0;
-}
-@media screen and (max-width: 767px){
-    .btn-icl-controle{
-        position:absolute;
-        height: 150px;
-        top:58px;
-        right:-30px;
-        width:30px;
-    }
-    .btn-icl-controle i{
-        position:absolute;
-        top:67px;
-        right:8px;
-    }
-}
-.btn-icl-controle:hover{
-    background-color: white;
-    color:#ff7b00;
-    border:1px solid #ff7b00;
-}
-.incluir-filho{
-    margin-top: 10px;
-    font-weight:bold;
-    color:#74777b;
-}
-.incluir-filho-corpo{
-    background-color: white;
-    border-radius: 0.25rem 0 0 0.25rem;
-    margin-right: 0 !important;
-    padding: 5px 20px;
-}*/
 /*FINAL - INPUT INCLUIR*/
 /*INPUT MINMAX*/
 .irs-slider{

@@ -77,6 +77,10 @@ class ModeloLocalizacao {
                 }
             }
         }
+
+        if ($this->im_lczc == "") {
+            $this->im_lczc = const_Indefinida_IM;
+        }
     }
 
     public function getAtributosListar() {
@@ -90,10 +94,19 @@ class ModeloLocalizacao {
             $bdContext = new BdContextLocalizacao();
             $parametros["id"] = $this->fk_ppl_lczc;
             $instancia = new ModeloLocalizacao($bdContext->listar($parametros)[0]);
-            $atributosSelecionados["Principal Localidade"] = $instancia->nm_lczc();
+            $atributosSelecionados["Principal Localidade"] = "<span class='btn-listar-select' "
+                    . "title='Clique para editar {$instancia->nm_lczc()}'"
+                    . "href='?categoria=localizacao&acao=editar&id={$instancia->pk_lczc()}'>" .
+                    truncar($instancia->nm_lczc(), 20) . "</span>";
         }
         if ($this->fk_fdd_decb != "" && count($atributosSelecionados) < $qtdMaxAtt) {
-            $atributosSelecionados["Fundador/Descobridor"] = $this->fk_fdd_decb;
+            $bdContext = new BdContextPersonagem();
+            $parametros["id"] = $this->fk_fdd_decb;
+            $instancia = new ModeloPersonagem($bdContext->listar($parametros)[0]);
+            $atributosSelecionados["Fundador/Descobridor"] = "<span class='btn-listar-select' "
+                    . "title='Clique para editar {$instancia->nm_psna()}'"
+                    . "href='?categoria=personagem&acao=editar&id={$instancia->pk_psna()}'>" .
+                    truncar($instancia->nm_psna(), 20) . "</span>";
         }
         if ($this->hist_gov != "" && count($atributosSelecionados) < $qtdMaxAtt) {
             $atributosSelecionados["História de Governo"] = $this->hist_gov;

@@ -2,12 +2,13 @@
 
 class BdContextHistoria extends ConexaoBd {
 
-    private $tabela = "tb_historia";
     private $campos;
+    const tx_tabela = 'tb_historia';
 
     public function __construct($campos = '*') {
         parent::__construct();
         $this->campos = $campos;
+        $this->tabela = self::tx_tabela;
     }
 
     public function salvar($parametros) {
@@ -33,7 +34,7 @@ class BdContextHistoria extends ConexaoBd {
     }
 
     public function listar($parametros) {
-        
+
         $idusuario = sessao()->getUserData()->id;
         $condicao = "WHERE fk_usu='$idusuario'";
 

@@ -1,68 +1,20 @@
-<?php $resultado = $controlador->getResultados();
+<?php $historiaSelecionada = sessao()->getHistoriaSelecionada();
+$resultadoSelect = $controlador->getResultadosSelect();
 
-if(empty((array)$resultado->editar)){
-    $nm_psna = '';
-    // PK
-    $pk_psna = '';
-    // Aba 1
-    $im_psna = './imagens/sem-foto.png';
-	$dt_nsc = '';
-	$vsi_psna = array();
-	$dets_bsca = '';
-	$h_psna = '';
-	$h_psna_dets = '';
-	$peso_psna = '';
-	$peso_dets_pnsa = '';
-	$prte_psna = '';
-	$prte_psna_dets = '';
-	$pele_psna = '';
-	$pele_psna_dets = '';
-	$cblo_psna = '';
-	$cblo_psna_dets = '';
-	$vstm_psna = '';
-	$vstm_psna_dets = '';
-	$acsr_psna = '';
-	$acsr_psna_dets = '';
-	$cptc_pst = '';
-	$cptc_pst_dets = '';
-	$cptc_ngt = '';
-	$cptc_ngt_dets = '';
-	$almt_psna = '';
-	$almt_psna_dets = ''; 
-	$papl_psna = '';
-	$papl_psna_dets = '';
-	$envl_psna = '';
-	$mmt_psna = '';
-	$objt_psna = '';
-	$objt_psna_dets = '';
-	$objt_prlel_psna = '';
-	$objt_prlel_psna_dets = '';
-	$mtvc_psna = '';
-	$evt_psna = '';
-	$evt_psna_dets = '';
-	$pda_psna = '';
-	$pda_psna_dets = '';
-	$medo_psna = '';
-	$segd_psna = '';
-}else{
-    $personagem = $resultado->editar;
-    foreach ($personagem as $key => $value) {
-	$$key = $value;
-    }
-	$vsi_psna = parseCheckbox($vsi_psna);
-}
+$resultado = new ModeloPersonagem(array());
+$resultado = ($controlador->getResultados() == null ?
+        new ModeloPersonagem(array()) : $controlador->getResultados());
 
 ?>
 
 <div style="margin-top:60px;">
-    <div class="marquee"><?= $this->getDicas(); var_dump($resultado->relLczc);
-	?></div>
+    <div class="marquee"><?= $this->getDicas();?></div>
 </div>
 
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?php echo ($nm_psna == '') ? 'Personagem' : $nm_psna; ?></h1>
+        <h1><?= (empty($resultado->nm_psna()) ? ModeloPersonagem::$nomeSingular : $resultado->nm_psna(30)) ?></h1>
     </div>
 </div>
 
@@ -104,20 +56,20 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                    <div class="col-md-12 input-conteudo">
                                 
-                                <div class="input-imagem" title="Campo para Imagem da Personagem" id="input-im-ImagemdoPersonagem"
-                                     style="background-image:url(<?php echo $im_psna; ?>)"></div>
-                                
-                                <input value="<?php echo $im_psna; ?>" 
-                                       accept='.png,.jpg' type='file' class="imgUploader" name="im_psna"/>
-                                
-                                <a class="input-imagem-reset" title="Clique para resetar a Imagem da História" alt="Clique para resetar a Imagem do Personagem">
-                                    <i class="fa fa-ban"></i>
-                                </a>
+						<div class="input-imagem" title="Campo para Imagem da Personagem" id="input-im-ImagemdoPersonagem"
+							 style="background-image:url(<?= $resultado->im_psna() ?>)"></div>
+						
+						<input value="" accept='.png,.jpg,.jpeg' type='file' class="imgUploader" name="im_psna"/>
+                                                <input value="" type="hidden" name="im_psna_reset" class="request-reset"/>
+						
+						<a class="input-imagem-reset" title="Clique para resetar a Imagem da História" alt="Clique para resetar a Imagem do Personagem">
+							<i class="fa fa-ban"></i>
+						</a>
 								
 						<div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="detalhes-conteudo">
-                                <textarea name="im_psna_dets" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $im_psna_dets; ?></textarea>
+                                <textarea name="im_psna_dets" placeholder="Digite Aqui os Detalhes da Imagem do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->im_psna_dets() ?></textarea>
                             </div>
                         </div>
                                 
@@ -142,12 +94,12 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="nm_psna" value="<?php echo $nm_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Nome" id="input-tx-Nome" maxlength="45"/>
+                            <input name="nm_psna" value="<?= $resultado->nm_psna() ?>" type="text" class="form-control" placeholder="Digite Aqui o Nome do Personagem" id="input-tx-Nome" maxlength="45"/>
                         </div>
 						<div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="detalhes-conteudo">
-                                <textarea name="nm_psna_dets" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $nm_psna_dets; ?></textarea>
+                                <textarea name="nm_psna_dets" placeholder="Digite Aqui os Detalhes do Nome do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->nm_psna_dets() ?></textarea>
                             </div>
                         </div>							
                     </div>
@@ -173,15 +125,15 @@ if(empty((array)$resultado->editar)){
                         <div class="col-md-12 input-conteudo">
                             <div class="input-checkbox" id="input-ckbx-Sexo">
                             <div class="form-check-inline ckbox-servo">
-                                <input type="radio" value="M" name="sexo_psna" id ="ckbx-Sexo-opt" <?php if($sexo_psna == "M"){ echo "checked";} ?>/>
+                                <input type="radio" value="M" name="sexo_psna" id ="ckbx-Sexo-opt" <?= ($resultado->sexo_psna() == "M") ? "checked" : ""; ?>/>
                                 <label for="ckbx-0-opt1">Masculino</label>
                             </div>
                             <div class="form-check-inline ckbox-servo">
-                                <input type="radio" value="F" name="sexo_psna" id ="ckbx-Sexo-opt1" <?php if($sexo_psna == "F"){ echo "checked";} ?>/>
+                                <input type="radio" value="F" name="sexo_psna" id ="ckbx-Sexo-opt1" <?= ($resultado->sexo_psna() == "F") ? "checked" : ""; ?>/>
                                 <label for="ckbx-0-opt1">Feminino</label>
                             </div>
                             <div class="form-check-inline ckbox-servo">
-                                <input type="radio" value="O" name="sexo_psna" id ="ckbx-Sexo-opt2" <?php if($sexo_psna == "O"){ echo "checked";} ?>/>
+                                <input type="radio" value="O" name="sexo_psna" id ="ckbx-Sexo-opt2" <?= ($resultado->sexo_psna() == "O") ? "checked" : ""; ?>/>
                                 <label for="ckbx-0-opt2">Outro</label>
                             </div>                            
                         </div>
@@ -206,44 +158,14 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="dt_nsc" value="<?php echo $dt_nsc; ?>" type="date" class="form-control" placeholder="Placeholder para Data de Nascimento" id="input-tx-DatadeNascimento"/>
+                            <input name="dt_nsc" value="<?= $resultado->dt_nsc(); ?>" type="date" class="form-control" placeholder="Digite Aqui a Data de Nascimento do Personagem" id="input-tx-DatadeNascimento"/>
                         </div>
 						<div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="detalhes-conteudo">
-                                <textarea name="dt_nsc_dets" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $dt_nsc_dets; ?></textarea>
+                                <textarea name="dt_nsc_dets" placeholder="Digite Aqui os Detalhes do Nascimento do Personagem" title="Digite seu texto aqui" maxlength="1000"><?php echo $resultado->dt_nsc_dets(); ?></textarea>
                             </div>
                         </div>	
-                    </div>
-                    <!--FINAL - INPUT CORPO-->
-                </div>
-            </div>
-            <!--FINAL - INPUT DATA-->
-            <!--INPUT TEXTOSELECT-->
-            <div class="form-group">
-                <div class="row">
-                    <!--INPUT CONTROLE-->
-                    <div class="col-md-1 input-controle">
-                        <button type="button" class="btn btn-input-controle minimizar">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                    <!--FINAL - INPUT CONTROLE-->
-                    <!--INPUT LABEL-->
-                    <label class="col-md-11 input-label" for="input-txselr-Mundo">Mundo</label>
-                    <!--FINAL - INPUT LABEL-->
-                    <!--INPUT CORPO-->
-                    <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-Mundo">
-                                <option selected="selected">Terra do Nunca</option>
-                                <option>Nárnia</option>
-                                <option>Terra Média</option>
-                                <option>Reino Tão Tão Distante</option>
-                                <option selected="selected">Alagaësia</option>
-                            </select>
-                        </div>
-                        <!--NÃO TEM DETALHES-->
                     </div>
                     <!--FINAL - INPUT CORPO-->
                 </div>
@@ -265,17 +187,17 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" name="lclz_natl[]" multiple="multiple" id="input-txselr-LocalizacaoNatal">
-								<?php
-								foreach ($resultado->relLczc as $localizacao){		
-									$localizacao = (object) $localizacao;
-									$nomeLczc = $localizacao->nm_lczc;
-									$selectedLczc = ($localizacao->pk_lczc == $localizacao->fk_lczc) ? "selected" : "";
-									echo "<option value='$localizacao->pk_lczc'"
-									. "$selectedLczc>" . truncar($nomeLczc, 25, "...") . "</option>";
-									}
-									unset ($aux);
-								?>
+                            <select class="form-control select2 input-textoselect" name="fk_lczc_natl" id="input-txselr-LocalizacaoNatal">
+                                <option value="" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
+                                        <?php
+                                        foreach ($resultadoSelect->relLczc as $localizacaoSelect) {
+                                        $id = $localizacaoSelect["pk_lczc"];
+                                        $nome = $localizacaoSelect["nm_lczc"];
+                                        $isSelected = ($resultado->fk_lczc_natl() == $id ? "selected" : "");
+                                        echo "<option value='$id' $isSelected>$nome</option>";
+
+                                        }
+                                ?>
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->
@@ -286,80 +208,94 @@ if(empty((array)$resultado->editar)){
             <!--FINAL - INPUT TEXTOSELECT-->
             <!--INPUT TEXTOSELECT-->
             <div class="form-group">
-                <div class="row">
-                    <!--INPUT CONTROLE-->
-                    <div class="col-md-1 input-controle">
-                        <button type="button" class="btn btn-input-controle minimizar">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                    <!--FINAL - INPUT CONTROLE-->
-                    <!--INPUT LABEL-->
-                    <label class="col-md-11 input-label" for="input-txselr-Raca">Raça</label>
-                    <!--FINAL - INPUT LABEL-->
-                    <!--INPUT CORPO-->
-                    <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-Raca">
-                                <option selected="selected">Humano</option>
-                                <option>Orc</option>
-                                <option>Anão</option>
-                                <option>Morto-Vivo</option>
-                                <option>Elfo Noturno</option>
-                                <option>Tauren</option>
-                                <option>Gnomo</option>
-                                <option>Troll</option>
-                                <option>Draenei</option>
-                                <option>Elfo Sangrento</option>
-                                <option>Worgen</option>
-                                <option>Goblin</option>
-                                <option>Pandaren</option>
-                            </select>
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
                         </div>
-                        <!--NÃO TEM DETALHES-->
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-Raca">Raça</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" name="fk_raca" id="input-txselr-Raca">
+									    <option value="" selected>-- Raças de <?= $historiaSelecionada->tit_hist() ?> --</option>
+
+										<?php
+                                        foreach ($resultadoSelect->raca as $racaSelect) {
+                                        $id = $racaSelect["pk_raca"];
+                                        $nome = $racaSelect["nm_raca"];
+                                        $isSelected = ($resultado->fk_raca() == $id ? "selected" : "");
+                                        echo "<option value='$id' $isSelected>$nome</option>";
+                                        }
+										?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarRaca" >
+                                        Criar Novo
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
                     </div>
-                    <!--FINAL - INPUT CORPO-->
                 </div>
-            </div>
             <!--FINAL - INPUT TEXTOSELECT-->
             <!--INPUT INCLUIR-->
             <div class="form-group">
-                <div class="row">
-                    <!--INPUT CONTROLE-->
-                    <div class="col-md-1 input-controle">
-                        <button type="button" class="btn btn-input-controle minimizar">
-                            <i class="fa fa-minus"></i>
-                        </button>                      
-                    </div>
-                    <!--FINAL - INPUT CONTROLE-->
-                    <!--INPUT LABEL-->
-                    <label class="col-md-11 input-label" for="input-incr-Classe">Classe</label>
-                    <!--FINAL - INPUT LABEL-->
-                    <!--INPUT CORPO-->
-                    <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <div class="input-incluir" 
-                                 data-inputs-internos="tx[Nome]&txarea[Descrição]&minmax[Quantidade](Quase Inexistente, Baixa, Média, Alta, Abundante)&minmax[Reputação](Odiado, Desvalorizado, Neutro, Respeitado, Venerado)" 
-                                 id="cls">
-                                <div class="input-group"> 
-									<div class="col-md-10" style="padding-right: 0px;">
-										<select class="form-control select2" multiple="multiple">
-											<option>Pandaren</option>
-										</select>
-									</div>
-                                    <span class="input-group-btn incluir-adicionar">
-                                        <button class="btn btn-azul incluir-btn-adicionar" type="button" data-toggle="modal" id="btnFormCls" data-target="#formCls">Criar Classe</button>
-                                    </span>
-                                </div>
-                                <div class="incluir-filhos-area">
-                                    <!--Aqui entrarão as instâncias-->
-                                </div>
-                            </div>
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
                         </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-classe">Classe</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple"  name="fk_classe[]" id="input-txselr-classe">
+                                        <?php
+                                        foreach ($resultadoSelect->classe as $classeSelect) {
+                                            $classe = new ModeloClasse($classeSelect);
+                                            $id = $classe->pk_cls();
+                                            $nome = $classe->nm_cls();
+                                            $isSelected = "";
+                                            foreach ($resultadoSelect->idsClasse as $idsClasse) {
+                                                if ($id == $idsClasse['fk_cls']) {
+                                                    $isSelected = "selected";
+                                                    break;
+                                                }
+                                            }
+                                            echo "<option value='$id' $isSelected>$nome</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarClasse" >
+                                        Criar Novo
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
                     </div>
-                    <!--FINAL - INPUT CORPO-->
                 </div>
-            </div>
             <!--FINAL - INPUT INCLUIR-->
             <!--INPUT INCLUIR-->
             <div class="form-group">
@@ -376,25 +312,35 @@ if(empty((array)$resultado->editar)){
                     <!--FINAL - INPUT LABEL-->
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-						<input type="hidden" value="<?php echo $nm_psna; ?>" id="teste"></input>
-                            <div class="input-incluir" 
-                                 data-inputs-internos="tx[Nome]&txarea[Descrição]&minmax[Quantidade](Quase Inexistente, Baixa, Média, Alta, Abundante)&minmax[Reputação](Odiado, Desvalorizado, Neutro, Respeitado, Venerado)" 
-                                 id="pfs" value="<?php echo $nm_psna; ?>">                           <div class="input-group">
-                                    <span class="input-group-btn incluir-remover">
-                                        <button class="btn btn-azul incluir-btn-remover" type="button">Remover</button>
-                                    </span>
-                                    <input value="0" class="form-control incluir-status" readonly="readonly" />
-                                    <span class="input-group-btn incluir-adicionar">
-                                        <button class="btn btn-azul incluir-btn-adicionar" type="button">Adicionar</button>
-                                    </span>
-                                </div>
-                                <div class="incluir-filhos-area">
-                                    <!--Aqui entrarão as instâncias-->
-                                </div>
+                        <div class="col-md-12 input-conteudo row">
+                            <div class="col-md-11 input-incluir">
+                                <select class="form-control select2 input-textoselect" multiple="multiple"  name="fk_profissao[]" id="input-txselr-profissao">
+                                <?php
+                                foreach ($resultadoSelect->pfs as $pfsSelect) {
+                                        $pfs = new ModeloProfissao($pfsSelect);
+                                        $id = $pfs->pk_pfs();
+                                        $nome = $pfs->nm_pfs();
+                                        $isSelected = "";
+                                        foreach ($resultadoSelect->idsPfs as $idPfs) {
+                                                if ($id == $idPfs['fk_pfs']) {
+                                                        $isSelected = "selected";
+                                                        break;
+                                                }
+                                        }
+                                        echo "<option value='$id' $isSelected>$nome</option>";
+                                }
+                                ?>
+                                </select>
                             </div>
+                            <span class="incluir-adicionar col-md-1">
+                                <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                                data-toggle="modal" data-target="#modalCadastrarProfissao" >
+                                        Criar Novo
+                                </button>
+                            </span>
                         </div>
-                    </div>
+						<!--NÃO TEM DETALHES-->
+                        </div>
                     <!--FINAL - INPUT CORPO-->
                 </div>
             </div>
@@ -416,29 +362,25 @@ if(empty((array)$resultado->editar)){
                         <div class="col-md-12 input-corpo">
                             <div class="input-checkbox" id="input-ckbx-Visibilidade">
                                 <div class="form-check-inline ckbox-mestre">
-                                    <input title="Seleciona todas as opções"
-					   <?php echo(count($vsi_psna)==3? "checked": "") ?>
+                                    <input title="Seleciona todas as opções" <?= (count($resultado->vsi_psna()) == 3 ? "checked" : "") ?>
                                            type="checkbox" id ="ckbx-Visibilidade-mestre"/>
                                     <label for="ckbx-Visibilidade-mestre">Todos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input name="vsi_psna[]" value="1" 
-                                           <?php echo(in_array(1, $vsi_psna)? "checked": "") ?>
-                                           title="Permite que sua equipe possa visualizar essa história"
+                                    <input name="vsi_psna[]" value="1" <?= (in_array(1, $resultado->vsi_psna()) ? "checked" : "") ?>
+                                           title="Permite que seus amigos possam visualizar essa Localização"
                                            type="checkbox" id ="ckbx-Visibilidade-opt1"/>
-                                    <label for="ckbx-Visibilidade-opt1">Equipe</label>
+                                    <label for="ckbx-Visibilidade-opt1">Amigos</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input name="vsi_psna[]" value="2"
-                                           <?php echo(in_array(2, $vsi_psna)? "checked": "") ?>
-                                           title="Permite que todos os seus amigos possam visualizar essa história"
+                                    <input name="vsi_psna[]" value="2" <?= (in_array(2, $resultado->vsi_psna()) ? "checked" : "") ?>
+                                           title="Permite que sua equipe possa visualizar essa Localização"
                                            type="checkbox" id ="ckbx-Visibilidade-opt2"/>
-                                    <label for="ckbx-Visibilidade-opt2">Amigos</label>
+                                    <label for="ckbx-Visibilidade-opt2">Equipe</label>
                                 </div>
                                 <div class="form-check-inline ckbox-servo">
-                                    <input name="vsi_psna[]" value="4"
-                                           <?php echo(in_array(4, $vsi_psna)? "checked": "") ?>
-                                           title="Permite que o público possa visualizar essa história"
+                                    <input name="vsi_psna[]" value="4" <?= (in_array(4, $resultado->vsi_psna()) ? "checked" : "") ?>
+                                           title="Permite que o público possa visualizar essa Localização"
                                            type="checkbox" id ="ckbx-Visibilidade-opt3"/>
                                     <label for="ckbx-Visibilidade-opt3">Público</label>
                                 </div>
@@ -468,7 +410,7 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo"> 
-                            <textarea name="dcr_bsca" value="" placeholder="Placeholder para Descrição Básica" title="Descrição Básica" id="input-txarea-DescricaoBasica" maxlength="1000"><?php echo $dcr_bsca; ?></textarea>
+                            <textarea name="dcr_bsca" value="" placeholder="Digite Aqui a Descrição Básica do Personagem" title="Descrição Básica" id="input-txarea-DescricaoBasica" maxlength="1000"><?= $resultado->dcr_bsca(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -492,13 +434,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                           <input type="text" name="h_psna" data-minmax-valores="Anão, Baixo, Normal, Alto, Gigante" class="input-minmax" value="<?php echo $h_psna; ?>" id="input-minmax-Altura"></input>
+                           <input type="text" name="h_psna" data-minmax-valores="Anão, Baixo, Normal, Alto, Gigante" class="input-minmax" value="<?= $resultado->h_psna(); ?>" id="input-minmax-Altura"></input>
 						</div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="detalhes-conteudo">
-                                <textarea name="h_psna_dets" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $h_psna_dets; ?></textarea>
+                                <textarea name="h_psna_dets" placeholder="Digite Aqui os Detalhes Da Altura do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->h_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -523,14 +465,14 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">					
-                            <input type="text" name="peso_psna" data-minmax-valores="Raquítico, Magro, Normal, Gordo, Obeso"  class="input-minmax" value="<?php echo $peso_psna; ?>" id="input-minmax-Peso" ></input>							
+                            <input type="text" name="peso_psna" data-minmax-valores="Raquítico, Magro, Normal, Gordo, Obeso"  class="input-minmax" value="<?= $resultado->peso_psna(); ?>" id="input-minmax-Peso" ></input>							
 						</div>
 						
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="peso_pnsa_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $peso_pnsa_dets; ?></textarea>
+                                <textarea name="peso_pnsa_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Peso do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->peso_pnsa_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -555,13 +497,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input type="text" name="prte_fsco" data-minmax-valores="Frangote, Fraco, Normal, Atlético, Musculoso" class="input-minmax" value="<?php echo $prte_fsco; ?>" id="input-minmax-PorteFisico"></input>
+                            <input type="text" name="prte_fsco" data-minmax-valores="Frangote, Fraco, Normal, Atlético, Musculoso" class="input-minmax" value="<?= $resultado->prte_fsco(); ?>" id="input-minmax-PorteFisico"></input>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="prte_fsco_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $prte_fsco_dets; ?></textarea>
+                                <textarea name="prte_fsco_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Porte Físico do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->prte_fsco_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -586,13 +528,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="tip_pele" value="<?php echo $tip_pele; ?>" type="text" class="form-control" placeholder="Placeholder para Tipo de Pele" id="input-tx-TipodePele" maxlength="45"/>
+                            <input name="tip_pele" value="<?= $resultado->tip_pele(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Tipo De Pele do Personagem" id="input-tx-TipodePele" maxlength="45"/>
                         </div>
                         <!--DETALHES--> 
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="tip_pele_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $tip_pele_dets; ?></textarea>
+                                <textarea name="tip_pele_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes da Pele do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->tip_pele_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -617,13 +559,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="cblo_pnsa" value="<?php echo $cblo_pnsa; ?>" type="text" class="form-control" placeholder="Placeholder para Cabelo" id="input-tx-TipodePele" maxlength="45"/>
+                            <input name="cblo_pnsa" value="<?= $resultado->cblo_pnsa(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Tipo de Cabelo do Personagem" id="input-tx-TipodePele" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="cblo_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $cblo_psna_dets; ?></textarea>
+                                <textarea name="cblo_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Cabelo do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->cblo_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -648,13 +590,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="vstm_psna" value="<?php echo $vstm_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Vestimentas" id="input-tx-Vestimentas" maxlength="45"/>
+                            <input name="vstm_psna" value="<?= $resultado->vstm_psna(); ?>" type="text" class="form-control" placeholder="Digite Aqui os Tipos de Vestimentas do Personagem" id="input-tx-Vestimentas" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="vstm_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $vstm_psna_dets; ?></textarea>
+                                <textarea name="vstm_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes da Vestimenta do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->vstm_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -679,13 +621,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="acsr_psna" value="<?php echo $acsr_psna; ?>" type="text" class="form-control" placeholder="Placeholder para Acessórios" id="input-tx-Acessorios" maxlength="45"/>
+                            <input name="acsr_psna" value="<?= $resultado->acsr_psna(); ?>" type="text" class="form-control" placeholder="Digite Aqui os Acessórios do Personagem" id="input-tx-Acessorios" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="acsr_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $acsr_psna_dets; ?></textarea>
+                                <textarea name="acsr_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes dos Acessórios do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->acsr_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -709,24 +651,34 @@ if(empty((array)$resultado->editar)){
                     <!--FINAL - INPUT LABEL-->
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <div class="input-incluir" 
-                                 data-inputs-internos="tx[Nome]&txarea[Descrição]&txarea[Aparência]&minmax[Valoração](Banal, Barata, Acessível, Cara, Exorbitante)" 
-                                 id="input-incr-Objetos">
-                                <div class="input-group">
-                                    <span class="input-group-btn incluir-remover">
-                                        <button class="btn btn-azul incluir-btn-remover" type="button">Remover</button>
-                                    </span>
-                                    <input value="0" class="form-control incluir-status" readonly="readonly" />
-                                    <span class="input-group-btn incluir-adicionar">
-                                        <button class="btn btn-azul incluir-btn-adicionar" type="button">Adicionar</button>
-                                    </span>
-                                </div>
-                                <div class="incluir-filhos-area">
-                                    <!--Aqui entrarão as instâncias-->
-                                </div>
+                        <div class="col-md-12 input-conteudo row">
+                            <div class="col-md-11 input-incluir">
+                                <select class="form-control select2 input-textoselect" multiple="multiple"  name="fk_objeto[]" id="input-txselr-objeto">
+                                    <?php
+                                    foreach ($resultadoSelect->obj as $objSelect) {
+                                            $obj = new ModeloObjeto($objSelect);
+                                            $id = $obj->pk_obj();
+                                            $nome = $obj->nm_obj();
+                                            $isSelected = "";
+                                            foreach ($resultadoSelect->idsObj as $idObj) {
+                                                    if ($id == $idObj['fk_obj']) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                    }
+                                            }
+                                            echo "<option value='$id' $isSelected>$nome</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
+                            <span class="incluir-adicionar col-md-1">
+                                <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                                data-toggle="modal" data-target="#modalCadastrarObjeto" >
+                                        Criar Novo
+                                </button>
+                            </span>
                         </div>
+                    <!--NÃO TEM DETALHES-->
                     </div>
                     <!--FINAL - INPUT CORPO-->
                 </div>
@@ -752,13 +704,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="cptc_pst" value="<?php echo $cptc_pst ?>" type="text" class="form-control" placeholder="Placeholder para Competências Positivas" id="input-tx-CompetenciasPositivas" maxlength="45" />
+                            <input name="cptc_pst" value="<?= $resultado->cptc_pst() ?>" type="text" class="form-control" placeholder="Digite Aqui as Competências Positivas do Personagem" id="input-tx-CompetenciasPositivas" maxlength="45" />
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="cptc_pst_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $cptc_pst_dets; ?></textarea>
+                                <textarea name="cptc_pst_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes das Competências Positivas do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->cptc_pst_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -783,13 +735,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="cptc_ngt" value="<?php echo $cptc_ngt; ?>" type="text" class="form-control" placeholder="Placeholder para Competências Negativas" id="input-tx-CompetenciasNegativas" maxlength="45"/>
+                            <input name="cptc_ngt" value="<?= $resultado->cptc_ngt(); ?>" type="text" class="form-control" placeholder="Digite Aqui as Competências Negativas Do Personagem" id="input-tx-CompetenciasNegativas" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="cptc_ngt_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $cptc_ngt_dets; ?></textarea>
+                                <textarea name="cptc_ngt_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes da Competencias Negativas do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->cptc_ngt_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -814,13 +766,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input type="text" name="almt_psna" data-minmax-valores="Maléfico, Perverso, Neutro, Bondoso, Santo" class="input-minmax" value="<?php echo $almt_psna; ?>" id="input-minmax-Alinhamento" maxlength="45"></input>
+                            <input type="text" name="almt_psna" data-minmax-valores="Maléfico, Perverso, Neutro, Bondoso, Santo" class="input-minmax" value="<?= $resultado->almt_psna(); ?>" id="input-minmax-Alinhamento" maxlength="45"></input>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="almt_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $almt_psna_dets; ?></textarea>
+                                <textarea name="almt_psna_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Alinhamento do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->almt_psna_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -844,24 +796,34 @@ if(empty((array)$resultado->editar)){
                     <!--FINAL - INPUT LABEL-->
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <div class="input-incluir" 
-                                 data-inputs-internos="tx[Nome]&txarea[Descrição]&minmax[Poder](Muito fraca, Fraca, Normal, Forte, Muito forte)" 
-                                 id="input-incr-HabilidadesFisicas">
-                                <div class="input-group">
-                                    <span class="input-group-btn incluir-remover">
-                                        <button class="btn btn-azul incluir-btn-remover" type="button">Remover</button>
-                                    </span>
-                                    <input value="0" class="form-control incluir-status" readonly="readonly" />
-                                    <span class="input-group-btn incluir-adicionar">
-                                        <button class="btn btn-azul incluir-btn-adicionar" type="button">Adicionar</button>
-                                    </span>
-                                </div>
-                                <div class="incluir-filhos-area">
-                                    <!--Aqui entrarão as instâncias-->
-                                </div>
+                        <div class="col-md-12 input-conteudo row">
+                            <div class="col-md-11 input-incluir">
+                                <select class="form-control select2 input-textoselect" multiple="multiple"  name="fk_hbld_fsca[]" id="input-txselr-habilidade-fisica">
+                                    <?php
+                                    foreach ($resultadoSelect->hbld_fsca as $hbld_fscaSelect) {
+                                        $hbld_fsca = new ModeloHabilidade_fisica($hbld_fscaSelect);
+                                        $id = $hbld_fsca->pk_hbld_fsca();
+                                        $nome = $hbld_fsca->nm_hbld_fsca();
+                                        $isSelected = "";
+                                        foreach ($resultadoSelect->idsHbld_fsca as $idHbld_fsca) {
+                                            if ($id == $idHbld_fsca['fk_hbld_fsca']) {
+                                                $isSelected = "selected";
+                                                break;
+                                            }
+                                        }
+                                        echo "<option value='$id' $isSelected>$nome</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
+                            <span class="incluir-adicionar col-md-1">
+                                <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                                data-toggle="modal" data-target="#modalCadastrarHabilidadeFisica" >
+                                        Criar Novo
+                                </button>
+                            </span>
                         </div>
+                    <!--NÃO TEM DETALHES-->
                     </div>
                     <!--FINAL - INPUT CORPO-->
                 </div>
@@ -880,24 +842,34 @@ if(empty((array)$resultado->editar)){
                     <!--FINAL - INPUT LABEL-->
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <div class="input-incluir" 
-                                 data-inputs-internos="tx[Nome]&txarea[Descrição]&minmax[Poder](Muito fraco, Fraco, Normal, Forte, Muito forte)"  
-                                 id="input-incr-HabilidadesMágicas">
-                                <div class="input-group">
-                                    <span class="input-group-btn incluir-remover">
-                                        <button class="btn btn-azul incluir-btn-remover" type="button">Remover</button>
-                                    </span>
-                                    <input value="0" class="form-control incluir-status" readonly="readonly" />
-                                    <span class="input-group-btn incluir-adicionar">
-                                        <button class="btn btn-azul incluir-btn-adicionar" type="button">Adicionar</button>
-                                    </span>
-                                </div>
-                                <div class="incluir-filhos-area">
-                                    <!--Aqui entrarão as instâncias-->
-                                </div>
+                        <div class="col-md-12 input-conteudo row">
+                            <div class="col-md-11 input-incluir">
+                                <select class="form-control select2 input-textoselect" multiple="multiple"  name="fk_hbld_mgca[]" id="input-txselr-habilidade-magica">
+                                    <?php
+                                    foreach ($resultadoSelect->hbld_mgca as $hbld_mgcaSelect) {
+                                        $hbld_mgca = new ModeloHabilidade_magica($hbld_mgcaSelect);
+                                        $id = $hbld_mgca->pk_hbld_mgca();
+                                        $nome = $hbld_mgca->nm_hbld_mgca();
+                                        $isSelected = "";
+                                        foreach ($resultadoSelect->idsHbld_mgca as $idHbld_mgca) {
+                                            if ($id == $idHbld_mgca['fk_hbld_mgca']) {
+                                                $isSelected = "selected";
+                                                break;
+                                            }
+                                        }
+                                        echo "<option value='$id' $isSelected>$nome</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
+                            <span class="incluir-adicionar col-md-1">
+                                <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                                data-toggle="modal" data-target="#modalCadastrarHabilidademagica" >
+                                        Criar Novo
+                                </button>
+                            </span>
                         </div>
+                    <!--NÃO TEM DETALHES-->
                     </div>
                     <!--FINAL - INPUT CORPO-->
                 </div>
@@ -923,13 +895,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="papl_hist" value="<?php echo $papl_hist; ?>" type="text" class="form-control" placeholder="Placeholder para Papel na História" id="input-tx-PapelnaHistoria" maxlength="45"/>
+                            <input name="papl_hist" value="<?= $resultado->papl_hist(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Papel na História que o Personagem possui" id="input-tx-PapelnaHistoria" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="papl_hist_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $papl_hist_dets; ?></textarea>
+                                <textarea name="papl_hist_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Pepel na História do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->papl_hist_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -954,7 +926,7 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="envl_hist" value="" placeholder="Placeholder para Envolvimento na História" title="Envolvimento na História" id="input-txarea-EnvolvimentonaHistoria" maxlength="1000"><?php echo $envl_hist; ?></textarea>
+                            <textarea name="envl_hist" value="" placeholder="Digite Aqui o Envolvimento na História do Personagem" title="Envolvimento na História" id="input-txarea-EnvolvimentonaHistoria" maxlength="1000"><?= $resultado->envl_hist(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -978,7 +950,7 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="mmt_mact" value="" placeholder="Placeholder para Momento Marcante" title="Momento Marcante" id="input-txarea-MomentoMarcante" maxlength="1000"><?php echo $mmt_mact; ?></textarea>
+                            <textarea name="mmt_mact" value="" placeholder="Digite Aqui o Momento Marcante do Personagem" title="Momento Marcante" id="input-txarea-MomentoMarcante" maxlength="1000"><?= $resultado->mmt_mact(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -1002,13 +974,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="objt_ppl" value="<?php echo $objt_ppl; ?>" type="text" class="form-control" placeholder="Placeholder para Objetivo Principal" id="input-tx-ObjetivoPrincipal" maxlength="45"/>
+                            <input name="objt_ppl" value="<?= $resultado->objt_ppl(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Objetivo Principal Do Personagem" id="input-tx-ObjetivoPrincipal" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="objt_ppl_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $objt_ppl_dets; ?></textarea>
+                                <textarea name="objt_ppl_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Objetivo Principal do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->objt_ppl_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -1033,13 +1005,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="objt_pllo" value="<?php echo $objt_pllo; ?>" type="text" class="form-control" placeholder="Placeholder para Objetivo Paralelo" id="input-tx-ObjetivoParalelo" maxlength="45"/>
+                            <input name="objt_pllo" value="<?= $resultado->objt_pllo(); ?>" type="text" class="form-control" placeholder="Digite Aqui o Objetivo Paralelo do Personagem" id="input-tx-ObjetivoParalelo" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="objt_pllo_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $objt_pllo_dets; ?></textarea>
+                                <textarea name="objt_pllo_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes do Objetivo Paralelo do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->objt_pllo_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -1064,10 +1036,16 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-IntroducaonoEnredo">
-                                <option selected="selected">Cena1</option>
-                                <option>Cena2</option>
-                                <option>Cena3</option>
+                            <select class="form-control select2 input-textoselect" name="fk_cena_into_erdo" id="input-txselr-LocalizacaoNatal">
+                                <option value="" selected>-- Cenas de <?= $historiaSelecionada->tit_hist() ?> --</option>
+									<?php
+									foreach ($resultadoSelect->cena as $cenaSelect) {
+									$id = $cenaSelect["pk_cena"];
+									$nome = $cenaSelect["tit_cena"];
+									$isSelected = ($resultado->fk_cena_into_erdo() == $id ? "selected" : "");
+									echo "<option value='$id' $isSelected>$nome</option>";
+									}
+									?>      
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->
@@ -1092,7 +1070,7 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="mtvc_psna" value="" placeholder="Placeholder para Motivações" title="Motivações" id="input-txarea-Motivacoes" maxlength="1000"><?php echo $mtvc_psna; ?></textarea>
+                            <textarea name="mtvc_psna" value="" placeholder="Digite Aqui as Motivações do Personagem" title="Motivações" id="input-txarea-Motivacoes" maxlength="1000"><?= $resultado->mtvc_psna(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -1120,16 +1098,22 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-Familia">
+                            <select class="form-control select2 input-textoselect" name="familia[]" multiple="multiple" id="input-txselr-Familia">
                                 <?php
-									foreach ($resultado->psna as $familia){
-									$familia = (object) $familia;
-									$nomeFamly = $familia->nm_psna;
-									// $selectedFamly = ($familia->pk_psna == $personagemSelecionada->pk_psna) ? "selected" : "";
-
-									echo "<option value='$familia->pk_psna'>" . truncar($nomeFamly, 25, "...") . "</option>";
-									}
-								?>
+                               foreach ($resultadoSelect->psna as $familiaSelect) {
+                                    $personagem = new ModeloPersonagem($familiaSelect);
+                                    $id = $personagem->pk_psna();
+                                    $nome = $personagem->nm_psna();
+                                    $isSelected = "";
+                                    foreach ($resultadoSelect->idsFamilia as $idsFamilia) {
+                                        if ($id == $idsFamilia['fk_psna2']) {
+                                                $isSelected = "selected";
+                                                break;
+                                        }
+                                    }
+                                    echo "<option value='$id' $isSelected>$nome</option>";
+                               }
+                               ?>
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->
@@ -1154,10 +1138,22 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-Amigos">
-                                <option>Personagem1</option>
-                                <option selected="selected">Personagem2</option>
-                                <option>Personagem3</option>
+                            <select class="form-control select2 input-textoselect" name="amigos[]" multiple="multiple" id="input-txselr-Amigos">
+                                <?php
+                                foreach ($resultadoSelect->psna as $AmigosSelect) {
+                                $personagem = new ModeloPersonagem($AmigosSelect);
+                                $id = $personagem->pk_psna();
+                                $nome = $personagem->nm_psna();
+                                $isSelected = "";
+                                foreach ($resultadoSelect->idsAmigos as $idsAmigos) {
+                                    if ($id == $idsAmigos['fk_psna2']) {
+                                            $isSelected = "selected";
+                                            break;
+                                    }
+                                }
+                                echo "<option value='$id' $isSelected>$nome</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->
@@ -1182,10 +1178,22 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-LacosAfetivos">
-                                <option>Personagem1</option>
-                                <option selected="selected">Personagem2</option>
-                                <option>Personagem3</option>
+                            <select class="form-control select2 input-textoselect" name="lacos[]" multiple="multiple" id="input-txselr-LacosAfetivos">
+                               <?php
+                                foreach ($resultadoSelect->psna as $LacosSelect) {
+                                $personagem = new ModeloPersonagem($LacosSelect);
+                                $id = $personagem->pk_psna();
+                                $nome = $personagem->nm_psna();
+                                $isSelected = "";
+                                foreach ($resultadoSelect->idsLacos as $idslacos) {
+                                    if ($id == $idslacos['fk_psna2']) {
+                                        $isSelected = "selected";
+                                        break;
+                                    }
+                                }
+                                echo "<option value='$id' $isSelected>$nome</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->
@@ -1210,10 +1218,22 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-CompanheirosnaHistoria">
-                                <option>Personagem1</option>
-                                <option>Personagem2</option>
-                                <option selected="selected">Personagem3</option>
+                            <select class="form-control select2 input-textoselect" name="companheiros[]" multiple="multiple" id="input-txselr-CompanheirosnaHistoria">
+                                <?php
+                                foreach ($resultadoSelect->psna as $LacosSelect) {
+                                $personagem = new ModeloPersonagem($LacosSelect);
+                                $id = $personagem->pk_psna();
+                                $nome = $personagem->nm_psna();
+                                $isSelected = "";
+                                foreach ($resultadoSelect->idsComp as $idsComp) {
+                                    if ($id == $idsComp['fk_psna2']) {
+                                        $isSelected = "selected";
+                                        break;
+                                    }
+                                }
+                                echo "<option value='$id' $isSelected>$nome</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->
@@ -1238,10 +1258,22 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <select class="form-control select2 input-textoselect" multiple="multiple" id="input-txselr-Rivais">
-                                <option>Personagem1</option>
-                                <option>Personagem2</option>
-                                <option selected="selected">Personagem3</option>
+                            <select class="form-control select2 input-textoselect" name="rivais[]" multiple="multiple" id="input-txselr-Rivais">
+                                <?php
+                                foreach ($resultadoSelect->psna as $LacosSelect) {
+                                $personagem = new ModeloPersonagem($LacosSelect);
+                                $id = $personagem->pk_psna();
+                                $nome = $personagem->nm_psna();
+                                $isSelected = "";
+                                foreach ($resultadoSelect->idsRivais as $idsRivais) {
+                                    if ($id == $idsRivais['fk_psna2']) {
+                                        $isSelected = "selected";
+                                        break;
+                                    }
+                                }
+                                echo "<option value='$id' $isSelected>$nome</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <!--NÃO TEM DETALHES-->
@@ -1270,13 +1302,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="evt_mact" value="<?php echo $evt_mact; ?>" type="text" class="form-control" placeholder="Placeholder para Evento Marcante" id="input-tx-EventoMarcante" maxlength="45"/>
+                            <input name="evt_mact" value="<?= $resultado->evt_mact(); ?>" type="text" class="form-control" placeholder="Digite Aqui um Evento Marcante do Personagem" id="input-tx-EventoMarcante" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="evt_mact_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $evt_mact_dets; ?></textarea>
+                                <textarea name="evt_mact_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os detalhes do Evento Marcante do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->evt_mact_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -1301,13 +1333,13 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <input name="pda_mact" value="<?php echo $pda_mact; ?>" type="text" class="form-control" placeholder="Placeholder para Perda Marcante" id="input-tx-PerdaMarcante" maxlength="45"/>
+                            <input name="pda_mact" value="<?= $resultado->pda_mact(); ?>" type="text" class="form-control" placeholder="Digite Aqui uma Perda Marcante do Personagem" id="input-tx-PerdaMarcante" maxlength="45"/>
                         </div>
                         <!--DETALHES-->
                         <div class="col-md-12 input-detalhes">
                             <a class="detalhes-link">Adicionar Detalhes</a>
 							<div class="conteudoDetalhes col-sm-12 col-md-offset-1" style="display:none;">
-                                <textarea name="pda_mact_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Campo de texto para detalhes" title="Digite seu texto aqui" maxlength="1000"><?php echo $pda_mact_dets; ?></textarea>
+                                <textarea name="pda_mact_dets" value="" id="txtAreaAltura" class="form-control" placeholder="Digite Aqui os Detalhes da Perda Marcante do Personagem" title="Digite seu texto aqui" maxlength="1000"><?= $resultado->pda_mact_dets(); ?></textarea>
                             </div>
                         </div>
                         <!--FINAL - DETALHES-->
@@ -1332,7 +1364,7 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="medo_psna" value="" placeholder="Placeholder para Medos" title="Medos" id="input-txarea-Medos" maxlength="1000"><?php echo $medo_psna; ?></textarea>
+                            <textarea name="medo_psna" value="" placeholder="Digite Aqui Medos do Personagem" title="Medos" id="input-txarea-Medos" maxlength="1000"><?= $resultado->medo_psna(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -1356,7 +1388,7 @@ if(empty((array)$resultado->editar)){
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
                         <div class="col-md-12 input-conteudo">
-                            <textarea name="segd_psna" value="" placeholder="Placeholder para Segredos" title="Segredos" id="input-txarea-Segredos" maxlength="1000"><?php echo $segd_psna; ?></textarea>
+                            <textarea name="segd_psna" value="" placeholder="Digite Aqui Segredos do Personagem" title="Segredos" id="input-txarea-Segredos" maxlength="1000"><?= $resultado->segd_psna(); ?></textarea>
                         </div>
                         <!--NÃO TEM DETALHES-->
                     </div>
@@ -1379,25 +1411,35 @@ if(empty((array)$resultado->editar)){
                     <!--FINAL - INPUT LABEL-->
                     <!--INPUT CORPO-->
                     <div class="col-md-12 input-corpo">
-                        <div class="col-md-12 input-conteudo">
-                            <div class="input-incluir" 
-                                 data-inputs-internos="txarea[Descrição]&txarea[Personagens Presentes]&minmax[Apreciação](Abominada, Odiada, Normal, Apreciada, Adorada)" 
-                                 id="input-incr-Lembrancas">
-                                <div class="input-group">
-                                    <span class="input-group-btn incluir-remover">
-                                        <button class="btn btn-azul incluir-btn-remover" type="button">Remover</button>
-                                    </span>
-                                    <input value="0" class="form-control incluir-status" readonly="readonly" />
-                                    <span class="input-group-btn incluir-adicionar">
-                                        <button class="btn btn-azul incluir-btn-adicionar" type="button">Adicionar</button>
-                                    </span>
-                                </div>
-                                <div class="incluir-filhos-area">
-                                    <!--Aqui entrarão as instâncias-->
-                                </div>
+                        <div class="col-md-12 input-conteudo row">
+                            <div class="col-md-11 input-incluir">
+                                <select class="form-control select2 input-textoselect" multiple="multiple"  name="fk_lembranca[]" id="input-txselr-lembranca">
+                                <?php
+                                foreach ($resultadoSelect->lmca as $lmcaSelect) {
+                                    $lmca = new ModeloLembranca($lmcaSelect);
+                                    $id = $lmca->pk_lmca();
+                                    $nome = $lmca->dcr_lmca();
+                                    $isSelected = "";
+                                    foreach ($resultadoSelect->idsLmca as $idsLmca) {
+                                            if ($id == $idsLmca['fk_lmca']) {
+                                                    $isSelected = "selected";
+                                                    break;
+                                            }
+                                    }
+                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                }
+                                ?>
+                                </select>
                             </div>
+                            <span class="incluir-adicionar col-md-1">
+                                <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                                data-toggle="modal" data-target="#modalCadastrarLembranca" >
+                                        Criar Novo
+                                </button>
+                            </span>
                         </div>
-                    </div>
+						<!--NÃO TEM DETALHES-->
+                        </div>
                     <!--FINAL - INPUT CORPO-->
                 </div>
             </div>
@@ -1407,7 +1449,8 @@ if(empty((array)$resultado->editar)){
             </div>
     <!-- FINAL - CONTEÚDO DAS ABAS DE NAVEGAÇÃO -->
     <div class="col-md-12 form-controle">
-	<input type="hidden" name="pk_psna" value="<?php echo $pk_psna; ?>">
+	<input type="hidden" name="pk_psna" value="<?= $resultado->pk_psna(); ?>">
+        <input type='hidden' name='fk_hist' value='<?= $resultado->fk_hist(); ?>'>
     <button type="submit" id="btn-salvar-form" class="btn btn-azul btn-block">
             Salvar Personagem
     </button>

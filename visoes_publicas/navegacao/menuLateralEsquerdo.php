@@ -4,10 +4,12 @@ $historias = sessao()->getHistoriasData();
 $historiaSelecionada = sessao()->getHistoriaSelecionada();
 
 if ($historiaSelecionada != NULL) {
-    $qtdHist = count((array)$historias);
+    $qtdHist = count((array) $historias);
     $qtdPsna = BdContextHistoria::getQtdPsna($historiaSelecionada->pk_hist());
     $qtdLczc = BdContextHistoria::getQtdLczc($historiaSelecionada->pk_hist());
     $qtdCena = BdContextHistoria::getQtdCena($historiaSelecionada->pk_hist());
+
+    $imgHistSelecionada = "style='background-image:url({$historiaSelecionada->im_hist()})'";
 }
 ?>
 
@@ -16,7 +18,7 @@ if ($historiaSelecionada != NULL) {
         <li class='nav-item cabecalho-menu-lateral row'>
             <div class="row">
                 <div class='col-md-2'>
-                    <div class='historia-avatar' style=""></div>
+                    <div class='historia-avatar' <?= $imgHistSelecionada ?>></div>
                 </div>
                 <div class='col-md-10'>
                     <span class='bem-vindo-texto'>Bem-vindo à</span><br/>
@@ -25,14 +27,12 @@ if ($historiaSelecionada != NULL) {
                         foreach ($historias as $historiaArray) {
                             $historia = new ModeloHistoria($historiaArray);
                             $nome = $historia->tit_hist();
-                            
+
                             if ($historiaSelecionada != null) {
                                 $selected = ($historia->pk_hist() == $historiaSelecionada->pk_hist()) ? "selected" : "";
-                            }
-                            else{
+                            } else {
                                 $selected = "";
                             }
-                            
                             echo "<option value='{$historia->pk_hist()}'"
                             . "$selected>" . truncar($nome, 25, "...") . "</option>";
                         }
@@ -56,7 +56,7 @@ if ($historiaSelecionada != NULL) {
         </li>
 
         <li class="item-sem-filhos">
-            <a href="?categoria=historia&acao=listar" class="nav-item list-group-item lista-clicavel">
+            <a href="?categoria=historia&acao=editar&id=<?= ($historiaSelecionada != null ? $historiaSelecionada->pk_hist() : "") ?>" class="nav-item list-group-item lista-clicavel">
                 <i class='fa fa-book col-md-2'></i>
                 <span class='col-md-10'>História</span>
             </a>
@@ -129,7 +129,7 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=cena&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Listar Cenas</div>      
@@ -168,7 +168,7 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=recursonatural&acao=listar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=recurso_natural&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Recurso Natural</div>
@@ -192,18 +192,18 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=lingua&acao=listar" class="nav-item list-group-item lista-clicavel">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8 acao-categoria">Língua</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
                     <a href="?categoria=mito&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Mito</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="?categoria=lingua&acao=listar" class="nav-item list-group-item lista-clicavel">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8 acao-categoria">Língua</div>
                         </div>
                     </a>
                 </li>
@@ -232,7 +232,7 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=habilidadefisica&acao=listar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=habilidade_fisica&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Habilidade Física</div>
@@ -240,7 +240,7 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=habilidademagica&acao=listar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=habilidade_magica&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Habilidade Mágica</div>
@@ -248,7 +248,7 @@ if ($historiaSelecionada != NULL) {
                     </a>
                 </li>
                 <li>
-                    <a href="?categoria=lembraca&acao=listar" class="nav-item list-group-item lista-clicavel">
+                    <a href="?categoria=lembranca&acao=listar" class="nav-item list-group-item lista-clicavel">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-8 acao-categoria">Lembrança</div>

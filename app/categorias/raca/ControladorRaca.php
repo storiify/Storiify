@@ -4,10 +4,8 @@ class ControladorRaca extends Controlador implements InterfaceControlador {
 
     public function __construct($categoria) {
         parent::__construct();
-        parent::setDicas("Dicas Raça");
+       //parent::setDicas("Dicas Raça");
         $this->setCategoria($categoria);
-        
-        require_once "BdContextRaca.php";
     }
 
     public function cadastrar($parametros) {

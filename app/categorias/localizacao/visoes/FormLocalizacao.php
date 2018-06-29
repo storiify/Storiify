@@ -13,9 +13,10 @@ $resultado = ($controlador->getResultados() == null ?
 
 <div id="titulo-bg">
     <div id="categoria-titulo" class="row">
-        <h1><?= (empty($resultado->nm_lczc()) ?
-        ModeloLocalizacao::$nomeSingular : $resultado->nm_lczc(30))
-?>
+        <h1><?=
+            (empty($resultado->nm_lczc()) ?
+                    ModeloLocalizacao::$nomeSingular : $resultado->nm_lczc(30))
+            ?>
         </h1>
     </div>
 </div>
@@ -62,8 +63,8 @@ $resultado = ($controlador->getResultados() == null ?
                                 <div class="input-imagem" title="Campo para Imagem da Localização" id="input-im-ImagemdaLocalizacao"
                                      style="background-image:url(<?= $resultado->im_lczc() ?>)"></div>
 
-                                <input value="<?= $resultado->im_lczc() ?>" 
-                                       accept='.png,.jpg' type='file' class="imgUploader" name="im_lczc"/>
+                                <input value="" accept='.png,.jpg,.jpeg' type='file' class="imgUploader" name="im_lczc"/>
+                                <input value="" type="hidden" name="im_lczc_reset" class="request-reset"/>
 
                                 <a class="input-imagem-reset" title="Clique para resetar a Imagem da Localização" alt="Clique para resetar a Imagem da Localização">
                                     <i class="fa fa-ban"></i>
@@ -229,7 +230,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_ppl_lczc" id="input-txselr-PrincipalLocalidade">
-                                    <option value="" selected>-- Localidades de <?= $historiaSelecionada->tit_hist() ?> --</option>
+                                    <option value="0" selected>-- Localizações de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                     <?php
                                     foreach ($resultadoSelect->lczc as $localizacaoSelect) {
                                         $id = $localizacaoSelect["pk_lczc"];
@@ -401,7 +402,7 @@ $resultado = ($controlador->getResultados() == null ?
                             <div class="col-md-12 input-conteudo">
                                 <select class="form-control select2 input-textoselect" 
                                         name="fk_fdd_decb" id="input-txselr-FundadorDescobridor">
-                                    <option value="" selected>-- Personagens de <?= $historiaSelecionada->tit_hist() ?> --</option>
+                                    <option value="0" selected>-- Personagens de <?= $historiaSelecionada->tit_hist() ?> --</option>
                                     <?php
                                     foreach ($resultadoSelect->psna as $personagemSelect) {
                                         $id = $personagemSelect["pk_psna"];
@@ -568,7 +569,7 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txselr-Raca">Raça</label>
+                        <label class="col-md-11 input-label" for="input-txselr-Raca">Raças</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
@@ -596,7 +597,7 @@ $resultado = ($controlador->getResultados() == null ?
                                 <span class="incluir-adicionar col-md-1">
                                     <button class="btn btn-azul incluir-btn-adicionar" type="button"
                                             data-toggle="modal" data-target="#modalCadastrarRaca" >
-                                        Criar <?= ModeloRaca::$nomeSingular?>
+                                        Criar <?= ModeloRaca::$nomeSingular ?>
                                     </button>
                                 </span>
                             </div>
@@ -617,7 +618,7 @@ $resultado = ($controlador->getResultados() == null ?
                         </div>
                         <!--FINAL - INPUT CONTROLE-->
                         <!--INPUT LABEL-->
-                        <label class="col-md-11 input-label" for="input-txselr-Fauna">Fauna</label>
+                        <label class="col-md-11 input-label" for="input-txselr-Fauna">Faunas</label>
                         <!--FINAL - INPUT LABEL-->
                         <!--INPUT CORPO-->
                         <div class="col-md-12 input-corpo">
@@ -645,7 +646,154 @@ $resultado = ($controlador->getResultados() == null ?
                                 <span class="incluir-adicionar col-md-1">
                                     <button class="btn btn-azul incluir-btn-adicionar" type="button"
                                             data-toggle="modal" data-target="#modalCadastrarFauna" >
-                                        Criar <?= ModeloFauna::$nomeSingular?>
+                                        Criar <?= ModeloFauna::$nomeSingular ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
+                <!--FLORA - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-Flora">Floras</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_flra[]" id="input-txselr-Flora">
+                                                <?php
+                                                foreach ($resultadoSelect->flora as $modeloSelect) {
+                                                    $modelo = new ModeloFlora($modeloSelect);
+                                                    $id = $modelo->pk_flra();
+                                                    $nome = $modelo->nm_flra();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsFlora as $idModelo) {
+                                                        if ($id == $idModelo["fk_flra"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarFlora" >
+                                        Criar <?= ModeloFlora::$nomeSingular ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
+                <!--RECURSO NATURAL - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-RcsNtrl">Recursos Naturais</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_rcs_ntrl[]" id="input-txselr-RcsNtrl">
+                                                <?php
+                                                foreach ($resultadoSelect->rcs_ntrl as $modeloSelect) {
+                                                    $modelo = new ModeloRecurso_natural($modeloSelect);
+                                                    $id = $modelo->pk_rcs_ntrl();
+                                                    $nome = $modelo->nm_rcs_ntrl();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsRcsNtrl as $idModelo) {
+                                                        if ($id == $idModelo["fk_rcs_ntrl"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarRcsNtrl" >
+                                        Criar <?= (strlen(ModeloRecurso_natural::$nomeSingular) <= 6 ? ModeloRecurso_natural::$nomeSingular : "Novo") ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
+                <!--BIOMA - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-bioma">Biomas</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_bma[]" id="input-txselr-bioma">
+                                                <?php
+                                                foreach ($resultadoSelect->bioma as $modeloSelect) {
+                                                    $modelo = new ModeloBioma($modeloSelect);
+                                                    $id = $modelo->pk_bma();
+                                                    $nome = $modelo->nm_bma();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsBioma as $idModelo) {
+                                                        if ($id == $idModelo["fk_bma"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarBioma" >
+                                        Criar <?= (strlen(ModeloBioma::$nomeSingular) <= 6 ? ModeloBioma::$nomeSingular : "Novo") ?>
                                     </button>
                                 </span>
                             </div>
@@ -658,7 +806,56 @@ $resultado = ($controlador->getResultados() == null ?
             </div>
             <!-- FINAL - ABA BIOLOGIA -->
             <!-- ABA CULTURA -->
-            <div id="abaCultura" class="container tab-pane fade"><br>
+            <div id="abaCultura" class="container tab-pane fade">
+                <!--RELIGIÃO - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-religiao">Religiões</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_relg[]" id="input-txselr-religiao">
+                                                <?php
+                                                foreach ($resultadoSelect->religiao as $modeloSelect) {
+                                                    $modelo = new ModeloReligiao($modeloSelect);
+                                                    $id = $modelo->pk_relg();
+                                                    $nome = $modelo->nm_relg();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsReligiao as $idModelo) {
+                                                        if ($id == $idModelo["fk_relg"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarReligiao" >
+                                        Criar <?= (strlen(ModeloReligiao::$nomeSingular) <= 10 ? ModeloReligiao::$nomeSingular : "Nova") ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
                 <!--INPUT TEXTOAREA-->
                 <div class="form-group">
                     <div class="row">
@@ -684,6 +881,55 @@ $resultado = ($controlador->getResultados() == null ?
                     </div>
                 </div>
                 <!--FINAL - INPUT TEXTOAREA-->
+                <!--MITOS - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-mito">Mitos</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_mito[]" id="input-txselr-mito">
+                                                <?php
+                                                foreach ($resultadoSelect->mito as $modeloSelect) {
+                                                    $modelo = new ModeloMito($modeloSelect);
+                                                    $id = $modelo->pk_mito();
+                                                    $nome = $modelo->nm_mito();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsMito as $idModelo) {
+                                                        if ($id == $idModelo["fk_mito"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarMito" >
+                                        Criar <?= (strlen(ModeloMito::$nomeSingular) <= 10 ? ModeloMito::$nomeSingular : "Novo") ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
                 <!--INPUT TEXTOAREA-->
                 <div class="form-group">
                     <div class="row">
@@ -709,6 +955,55 @@ $resultado = ($controlador->getResultados() == null ?
                     </div>
                 </div>
                 <!--FINAL - INPUT TEXTOAREA-->
+                <!--LÍNGUAS - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-lingua">Línguas</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_lnga[]" id="input-txselr-lingua">
+                                                <?php
+                                                foreach ($resultadoSelect->lingua as $modeloSelect) {
+                                                    $modelo = new ModeloLingua($modeloSelect);
+                                                    $id = $modelo->pk_lnga();
+                                                    $nome = $modelo->nm_lnga();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsLingua as $idModelo) {
+                                                        if ($id == $idModelo["fk_lnga"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarLingua" >
+                                        Criar <?= (strlen(ModeloLingua::$nomeSingular) <= 10 ? ModeloLingua::$nomeSingular : "Nova") ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
                 <!--INPUT TEXTOAREA-->
                 <div class="form-group">
                     <div class="row">
@@ -1345,6 +1640,55 @@ $resultado = ($controlador->getResultados() == null ?
             <!-- FINAL - ABA TECNOLOGIA -->
             <!-- ABA MAGIA -->
             <div id="abaMagia" class="container tab-pane fade">
+                <!--MAGIAS - INPUT TEXTOSELECT-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--INPUT CONTROLE-->
+                        <div class="col-md-1 input-controle">
+                            <button type="button" class="btn btn-input-controle minimizar">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!--FINAL - INPUT CONTROLE-->
+                        <!--INPUT LABEL-->
+                        <label class="col-md-11 input-label" for="input-txselr-magia">Magias</label>
+                        <!--FINAL - INPUT LABEL-->
+                        <!--INPUT CORPO-->
+                        <div class="col-md-12 input-corpo">
+                            <div class="col-md-12 input-conteudo row">
+                                <div class="col-md-11 input-incluir">
+                                    <select class="form-control select2 input-textoselect" multiple="multiple" 
+                                            name="fk_magi[]" id="input-txselr-magia">
+                                                <?php
+                                                foreach ($resultadoSelect->magia as $modeloSelect) {
+                                                    $modelo = new ModeloMagia($modeloSelect);
+                                                    $id = $modelo->pk_magi();
+                                                    $nome = $modelo->nm_magi();
+                                                    $isSelected = "";
+                                                    foreach ($resultadoSelect->idsMagia as $idModelo) {
+                                                        if ($id == $idModelo["fk_magi"]) {
+                                                            $isSelected = "selected";
+                                                            break;
+                                                        }
+                                                    }
+                                                    echo "<option value='$id' $isSelected>$nome</option>";
+                                                }
+                                                ?>
+                                    </select>
+                                </div>
+                                <span class="incluir-adicionar col-md-1">
+                                    <button class="btn btn-azul incluir-btn-adicionar" type="button"
+                                            data-toggle="modal" data-target="#modalCadastrarMagia" >
+                                        Criar <?= (strlen(ModeloMagia::$nomeSingular) <= 10 ? ModeloMagia::$nomeSingular : "Nova") ?>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--NÃO TEM DETALHES-->
+                        </div>
+                        <!--FINAL - INPUT CORPO-->
+                    </div>
+                </div>
+                <!--FINAL - INPUT TEXTOSELECT-->
                 <!--INPUT MINMAX-->
                 <div class="form-group">
                     <div class="row">
@@ -1373,8 +1717,7 @@ $resultado = ($controlador->getResultados() == null ?
                                 <div class="detalhes-conteudo">
                                     <textarea name="acss_magi_dets" 
                                               placeholder="Digite aqui os detalhes para o Acesso à Magia" 
-                                              title="Campo para detalhes do Acesso à Magia">
-<?= $resultado->acss_magi_dets() ?>
+                                              title="Campo para detalhes do Acesso à Magia"><?= $resultado->acss_magi_dets() ?>
                                     </textarea>
                                 </div>
                             </div>
@@ -1407,7 +1750,7 @@ $resultado = ($controlador->getResultados() == null ?
                                           placeholder="Digite aqui os Efeitos da Magia na Localização" 
                                           title="Campo para Efeitos da Magia na Localização" 
                                           id="input-txarea-EfeitosdaMagianaLocalizacao">
-<?= $resultado->efe_magi_lczc() ?>
+                                              <?= $resultado->efe_magi_lczc() ?>
                                 </textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
@@ -1439,7 +1782,7 @@ $resultado = ($controlador->getResultados() == null ?
                                           placeholder="Digite aqui sobre os Efeitos da Magia na Sociedade" 
                                           title="Campo para Efeitos da Magia na Sociedade" 
                                           id="input-txarea-EfeitosdaMagianaSociedade">
-<?= $resultado->efe_magi_scdd() ?>
+                                              <?= $resultado->efe_magi_scdd() ?>
                                 </textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->
@@ -1471,7 +1814,7 @@ $resultado = ($controlador->getResultados() == null ?
                                           placeholder="Digite aqui sobre os Efeitos da Magia na Tecnologia" 
                                           title="Campo para Efeitos da Magia na Tecnologia" 
                                           id="input-txarea-EfeitosdaMagianaTecnologia">
-<?= $resultado->efe_magi_tecn() ?>
+                                              <?= $resultado->efe_magi_tecn() ?>
                                 </textarea>
                             </div>
                             <!--NÃO TEM DETALHES-->

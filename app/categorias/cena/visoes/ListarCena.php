@@ -1,97 +1,93 @@
-<div id="titulo-bg">
-    <div id="categoria-titulo" class="row">
-        <h1><?php echo nomeFormal($categoria, "plural") ?></h1>
-    </div>    
+<?php
+$resultados = $controlador->getResultados();
+?>
+
+<div class="pular-menu">
+    <div class="marquee"><?= $this->getDicas() ?></div>
 </div>
 
-<div class="conteudo" style="margin-top: 100px;">
-    
+
+<div id="titulo-bg">
+    <div id="categoria-titulo" class="row">
+        <h1><?= nomeFormal($categoria, "plural") ?></h1>
+    </div>
+</div>
+
+<div class="conteudo">
     <!--BOTÃO DE CRIAR NOVA INSTÂNCIA-->
     <div class='pos-cabecalho mx-auto'>
-        <a href='?categoria=<?php echo $categoria ?>&acao=cadastrar' 
-           title='Clique para criar uma nova <?php echo nomeFormal($categoria) ?>'
+        <a href='?categoria=<?= $categoria ?>&acao=cadastrar' 
+           title='Clique para criar uma nova <?= ModeloCena::$nomeSingular ?>'
            class='btn btn-azul criar-nova-instancia'>
             <i class="fa fa-plus"></i>
-            &nbsp&nbspCriar nova <?php echo nomeFormal($categoria) ?>
+            &nbsp&nbspCriar nova <?= ModeloCena::$nomeSingular ?>
         </a>
+        <div class="pull-right minimizar-todos" title="Clique para minimizar todas as instâncias">
+            <span>Todos</span>
+            <a class="btn btn-azul">
+                <i class="fa fa-minus"></i>
+            </a>
+        </div>
     </div>
 
-    <!--CASO NÃO HAJA INSTÂNCIAS-->
     <?php
-    if (empty($resultados)) {
+    if (isset($resultados)) {
+        foreach ($resultados as $cenaArray) {
+            $cena = new ModeloCena($cenaArray);
+            $nome = $cena->tit_cena();
+            $imagemPrincipal = ($cena->im_cena() != "" ? $cena->im_cena() : const_Indefinida_IM);
+
+            $camposListar = "";
+            foreach ($cena->getAtributosListar() as $nomeCampo => $valorCampo) {
+                $camposListar .= "<tr>"
+                        . "         <th scope='row'>$nomeCampo</th>"
+                        . "         <td>$valorCampo</td>"
+                        . "       </tr>";
+            }
+
+            echo
+            "<div title='Clique para editar $nome'"
+            . "class='instancia-card mx-auto row' data-id='{$cena->pk_cena()}' data-nome='$nome'>"
+            . "    <div class='instancia-corpo col-md-11 row'>"
+            . "        <div class='instancia-imagem' style='background-image:url($imagemPrincipal)'></div>"
+            . "        <div class='instancia-conteudo col'>"
+            . "            <div class='instancia-cabecalho'>"
+            . "                <span>$nome</span>"
+            . "            </div>"
+            . "            <div class='instancia-detalhes'>"
+            . "                <table class='table'>"
+            . "                     $camposListar"
+            . "                </table>"
+            . "            </div>"
+            . "            <div class='instancia-ultima-alteracao hidden-xl-down'>"
+            . "                <span>Última edição: {$cena->dt_alt()} </span>"
+            . "            </div>"
+            . "        </div>"
+            . "    </div>"
+            . "    <a href='?categoria=$categoria&acao=editar&id={$cena->pk_cena()}'></a>"
+            . "    <div class='instancia-controle col-md-1' style='padding-left: 0px;'>"
+            . "        <button class='btn btn-azul btn-deletar-instancia' title='Clique para deletar $nome'>"
+            . "            <i class='fa fa-times'></i>"
+            . "        </button>"
+            . "        <a href='?categoria=$categoria&acao=excluir&id={$cena->pk_cena()}' class='deletar-instancia-escondido'></a>"
+            . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar'>"
+            . "            <i class='fa fa-minus'></i>"
+            . "        </button>"
+            . "        <!--button class='btn btn-azul btn-pdf-instancia' "
+            . "title='" . ($nome == "" ? " Clique para gerar PDF" : "Clique para gerar PDF de " . $nome) . " '>"
+            . "            <i class='fa fa-file-pdf-o'></i>"
+            . "        </button-->"
+            . "    </div>"
+            . "</div>";
+        }
+    }
+    if (!isset($cena)) {
         echo"<div align='center' class='sem-instancia' style='margin-bottom: 0.5%'>"
-	. "	<div align='left' style='padding-left: 0.5%'>"
-        . "	    <span>".sprintf(const_Indefinida_Msg, nomeFormal($categoria, "plural"))."</span>"
-	. "	</div>"
+        . "	<div align='left' style='padding-left: 0.5%'>"
+        . "	    <span>" . sprintf(const_Indefinida_Msg, nomeFormal($categoria, "plural")) . "</span>"
+        . "	</div>"
         . "     <img src='" . const_Indefinida . "' alt='' style='max-width: 99%;'/>"
         . "</div>";
-    }
-    ?>
-
-    <?php
-    if(isset($resultados)){
-    foreach ($resultados as $cena) {
-	$modelo = (object) $cena;
-        $imagemPrincipal = (isset($modelo->im_cena)) ? $modelo->im_cena : const_Indefinida_IM;
-        $nome = $modelo->tit_cena.($modelo->tit_cena!=''?' - '.$modelo->tit_cena:'');
-        $dataInLocal = $modelo->dt_alt;
-
-        echo
-        "<div title='Clique para editar $nome'"
-        . "class='instancia-card mx-auto row clicavel' data-id='$modelo->pk_cena' data-nome='$nome'>"
-        . "    <div class='instancia-corpo col-md-11 row'>"
-        . "        <div class='instancia-imagem' style='background-image:url($imagemPrincipal)'></div>"
-        . "        <div class='instancia-conteudo col'>"
-        . "            <div class='instancia-cabecalho'>"
-        . "                <span>$nome</span>"
-        . "            </div>"
-        . "            <div class='instancia-detalhes'>"
-        . "                <table class='table'>"
-        . "                    <tr>"
-        . "                        <th scope='row'>Título:</th>"
-        . "                        <td>" . $modelo->tit_cena . "</td>"
-        . "                    </tr>"
-		. "                    <tr>"
-        . "                        <th scope='row'>Público Alvo:</th>"
-        . "                        <td>" . $modelo->vsi_cena . "</td>"
-        . "                    </tr>"
-		. "                    <tr>"
-        . "                        <th scope='row'>Resumo:</th>"
-        . "                        <td>" . $modelo->rsm_cena . "</td>"
-        . "                    </tr>"
-		. "                    <tr>"
-        . "                </table>"
-        . "            </div>"
-        . "            <div class='instancia-ultima-alteracao hidden-xl-down'>"
-        . "                <span>Última edição: $dataInLocal</span>"
-        . "            </div>"
-        . "        </div>"
-        . "    </div>"
-        . "    <a href='?categoria=$categoria&acao=editar&id=$modelo->pk_cena'></a>"
-        . "    <div class='instancia-controle col-md-1' style='padding-left: 0px;'>"
-        . "        <button class='btn btn-azul btn-deletar-instancia' title='Clique para deletar $nome'>"
-        . "            <i class='fa fa-times'></i>"
-        . "        </button>"
-        . "        <a href='?categoria=$categoria&acao=excluir&parametros=$modelo->pk_cena' class='deletar-instancia-escondido'></a>"
-        . "        <button class='btn btn-azul btn-minimizar-instancia' title='Clique para minimizar $nome'>"
-        . "            <i class='fa fa-minus'></i>"
-        . "        </button>"
-        . "        <button class='btn btn-azul btn-pdf-instancia' "
-        . "title='" . ($nome == "" ? " Clique para gerar PDF" : "Clique para gerar PDF de " . $nome) . " '>"
-        . "            <i class='fa fa-file-pdf-o'></i>"
-        . "        </button>"
-        . "        <!--button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
-        . "            <i class='fa fa-warning'></i>"
-        . "        </button>"
-        . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
-        . "            <i class='fa fa-warning'></i>"
-        . "        </button>"
-        . "        <button class='btn btn-azul btn-pdf-instancia' title='Em breve' disabled>"
-        . "            <i class='fa fa-warning'></i>"
-        . "        </button-->"
-        . "    </div>"
-        . "</div>";
-    }
     }
     ?>
 </div>
